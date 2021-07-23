@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Media index{% endblock %}
+
+{% block body %}
+    <section id="trouveSpot-section1">
+        <div>
+            <h1>Media index</h1>
+        </div>
+    </section>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medium in media %}
+            <tr>
+                <td>{{ medium.id }}</td>
+                <td>{{ medium.nom }}</td>
+                <td>{{ medium.description }}</td>
+                <td>{{ medium.image }}</td>
+                <td>
+                    <a href="{{ path('media_show', {'id': medium.id}) }}">show</a>
+                    <a href="{{ path('media_edit', {'id': medium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('media_new') }}">Create new</a>
+{% endblock %}

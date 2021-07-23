@@ -1,0 +1,161 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Escalade{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+<section id="home-section1">
+    <div>
+        <h1> Univers d'Escalade </h1>
+        <h1>Sortez grimper!</h1>
+    </div>
+</section>
+  {# afficher le message de réservation efféctué #}
+{% if app.flashes("info") is defined  %} 
+    {% for message in app.flashes("info")%}
+    dump($message)
+        <div class= "text">
+            {{message}}
+        </div>
+{% endfor %}
+{% endif %}
+<section id="home-section2">
+<div class="text-div">
+    <p>Qu'est-ce que l'escalade?
+        A l'origine, l'escalade apparaissait comme une activité dérivée de l'alpinisme.
+        Elle n'était alors considérée que comme un moyen d'entraînement pour les courses d'alpinisme. C'est
+        au 19e siècle que l'escalade est devenue un sport à part entière en Allemagne et en Angleterre. Le
+        but était déjà d'atteindre le haut d'une paroi rocheuse, d'un bloc ou d'un mur d'escalade le plus
+        rapidement possible. Pendant un siècle, le matériel a évolué au rythme des performances des
+        grimpeurs. C'est à partir des années 1960 que les salles d'escalade se sont multipliées donnant un
+        réel élan à la pratique de la discipline. Au niveau mondial, mais aussi dans l'Hexagone, les
+        Français obtiennent généralement des bons résultats dans les trois épreuves possibles (difficulté,
+        vitesse et bloc). A l'image de Juliette Danion, championne du monde 2007 de bloc. « C'est un sport
+        riche et praticable par tout le monde, quelles que soient ses capacités physiques »
+        « C'est une activité qui prône la confiance en soi, la solidarité envers ses copains et le
+        dépassement de soi à tous les niveaux. Dans les Associations sportives, on peut faire de l'escalade
+        en toute sécurité, soit en loisir, soit en compétition avec en ligne de mire les championnats de
+        France UNSS ».
+        Présentée parfois comme une activité à risques, l'escalade est une pratique très sécurisée; donc
+        aucun risque de se faire mal et beaucoup de plaisir à prendre. Les collégiens et lycéens l'ont bien
+        compris puisqu'ils sont 58 500, avec autant de filles que de garçons, à avoir pris une licence
+        scolaire.
+    </p>
+    <h3>Trouve ton spot!</h3>
+    <a href="{{ path("site_index" )}}"class="button">Cliquez ici</a>
+</div>
+</section>
+<section id="home-section4">
+    <h2>Concours photo</h2>
+    <p>N'hésitez pas à nous envoyer vos photos à cette adresse!</p>
+    <a href="mailto:ddemassy@gmail.com" class="concours">concours.photos@monsite.fr</a>
+</section>
+<section class="row pt-5" id="concours">
+    <article class="col-12 col-sm-6 col-lg-3 ">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/bear-79838_1280.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climb-1.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climb-2.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climb-3.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climb-4.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climber.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/climbing.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+    <article class="col-12 col-sm-6 col-lg-3">
+        <div class="card" style="width: 18rem;">
+        <img src="{{asset('img/person.jpg')}}" class="card-img-top" alt="images_concours">
+        <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+    </article>
+</section>
+<section id="gallery-section">
+        <h2>Gallery</h2>
+        <div class="container">
+            <div class="box box_a">
+                <img  src="{{asset('img/bear-79838_1280.jpg')}}" alt="image">    
+            </div>
+            <div class="box box_b">
+                <img src="{{asset('img/climb-1.jpg')}}" alt="image">
+            </div>
+            <div class="box box_c">
+                <img src="{{asset('img/climb-2.jpg')}}" alt="image">
+            </div>
+            <div class="box box_d">
+                <img src="{{asset('img/climb-3.jpg')}}" alt="image">
+            </div>
+            <div class="box box_e">
+                <img src="{{asset('img/climb-4.jpg')}}" alt="image">
+            </div>
+            <div class="box box_f">
+                <img src="{{asset('img/climber.jpg')}}" alt="image">
+            </div>
+            <div class="box box_g">
+                <img src="{{asset('img/climbing.jpg')}}" alt="image">
+            </div>
+            <div class="box box_h">
+                <img src="{{asset('img/person.jpg')}}" alt="image">
+            </div>
+            <div class="box box_i">
+                <img src="{{asset('img/person.jpg')}}" alt="image">
+            </div>
+            <div class="box box_j">
+                <img src="{{asset('img/rocks-1.jpg')}}" alt="image">
+            </div>
+            <div class="box box_j">
+                <img src="{{asset('img/rocks-1.jpg')}}" alt="image">
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

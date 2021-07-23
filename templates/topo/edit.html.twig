@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Topo{% endblock %}
+
+{% block body %}
+    <section id="trouveSpot-section1">  
+        <div>
+            <h1>Edit Topo</h1>
+        </div>
+    </section>
+    
+
+    {{ include('topo/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('topo_index') }}">back to list</a>
+
+    {{ include('topo/_delete_form.html.twig') }}
+{% endblock %}

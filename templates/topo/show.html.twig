@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Topo{% endblock %}
+{# {% form_themes delete_form 'bootstrap_5_layout.html.twig' %} #}
+{% block body %}
+    <section id="trouveSpot-section1">
+        <div>
+            <h1>Topo</h1>
+        </div>
+    </section>
+
+    
+    <table class="table tableTopos">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ topo.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ topo.titre }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ topo.pays }}</td>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <td>{{ topo.region }}</td>
+            </tr>
+            <tr>
+                <th>DatedeParution</th>
+                <td>{{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>DatedeMiseajour</th>
+                <td>{{ topo.datedeMiseajour ? topo.datedeMiseajour|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ topo.prix }}</td>
+            </tr>
+            <tr>
+                <th>Auteur</th>
+                <td>{{ topo.auteur }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ topo.description }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ topo.type ? topo.type|join(', ') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ topo.image }}</td>
+            </tr>
+            <tr>
+                <th>Image2</th>
+                <td>{{ topo.imageFile }}</td>
+            </tr>
+            {# <tr>
+                <th>Maj</th>
+                <td>{{ topo.maj ? topo.maj|date('Y-m-d H:i:s') : '' }}</td>
+            </tr> #}
+        </tbody>
+    </table>
+
+    <a href="{{ path('topo_index') }}">back to list</a>
+
+    <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
+
+    {{ include('topo/_delete_form.html.twig') }}
+{% endblock %}

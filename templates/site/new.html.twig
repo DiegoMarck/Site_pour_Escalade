@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Site{% endblock %}
+
+{% block body %}
+    <section id="AjoutSite">
+        <div>
+            <h1>Ajoute ton site</h1>
+        </div>
+    </section>
+    <section id="form_new_site">
+    {{ include('site/_form.html.twig') }}
+    <section/>
+    <a href="{{ path('site_index') }}">back to list</a>
+{% endblock %}

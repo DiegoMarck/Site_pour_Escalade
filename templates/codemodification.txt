@@ -1,0 +1,247 @@
+//, {
+                  //  icon: myIcon
+                //}); 
+                // pas de addTo(macarte), l'affichage sera géré par la bibliothèque des clusters
+                //var marker = L.marker([48.852969, 2.349903]).addTo(macarte);
+
+
+<script type="text/javascript">
+        // On initialise la latitude et la longitude de Paris (centre de la carte)
+        var lat = 48.852969;
+        var lon = 2.349903;
+        var macarte = null;
+        var markerClusters; // Servira à stocker les groupes de marqueurs
+        // Nous initialisons une liste de marqueurs
+        var sites = {
+            "cul de l'elephan":{
+                "lat": 48.3727,
+                "lon": 2.51059
+            }
+            "Paris": {
+                "lat": 48.852969,
+                "lon": 2.349903
+            },
+            "Brest": {
+                "lat": 48.383,
+                "lon": -4.500
+            },
+            "Quimper": {
+                "lat": 48.000,
+                "lon": -4.100
+            },
+            "Bayonne": {
+                "lat": 43.500,
+                "lon": -1.467
+            }
+        };
+        // Fonction d'initialisation de la carte
+        function initMap() {
+            // Nous définissons le dossier qui contiendra les marqueurs
+            var iconBase = 'http://localhost/carte/icons/';
+            // Créer l'objet "macarte" et l'insèrer dans l'élément HTML qui a l'ID "map"
+            
+            //var markerClusters = [];
+
+            macarte = L.map('map').setView([lat, lon], 11);
+            markerClusters = L.markerClusterGroup(); // Nous initialisons les groupes de marqueurs
+            // Leaflet ne récupère pas les cartes (tiles) sur un serveur par défaut. Nous devons lui préciser où nous souhaitons les récupérer. Ici, openstreetmap.fr
+            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(macarte);
+            // Nous parcourons la liste des villes
+            for (site in sites) {
+                // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
+                var myIcon = L.icon({
+                    iconUrl: iconBase + "iconeMap.jpg",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 50],
+                    popupAnchor: [-3, -76],
+                });
+                var marker = L.marker([sites[site].lat, sites[site].lon]).addTo(macarte);
+                
+
+                marker.bindPopup(site);
+                markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
+                //markerClusters.push(marqueur);
+
+            }
+            //var groupe = new L.featureGroup(markerClusters);
+            //macarte.fitBounds(groupe.getBounds().pad(0.5));
+
+            macarte.addLayer(markerClusters);
+        }
+        window.onload = function() {
+            // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+            initMap();
+        };
+    </script>
+
+
+
+---------map google -------------
+
+function initMapGoogle() {
+  
+ let gmap = new google.maps.Map(document.getElementById("map1"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8
+  });
+}
+// src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmAAx6yFyy47qGbRdBsSeVUcn9q03a8pQ&callback=initMap&libraries=&v=weekly"
+//      async
+
+      // Create the script tag, set the appropriate attributes
+      var script = document.createElement('script');
+      script.onload = function(){
+      }
+script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCmAAx6yFyy47qGbRdBsSeVUcn9q03a8pQ&callback=initMap';
+script.async = true;
+// Attach your callback function to the `window` object
+window.onload = function() {
+
+  initMapGoogle();
+};
+
+// Append the 'script' element to 'head'
+document.head.appendChild(script);
+
+//leaflet map 
+
+essaie de lien sur le marqueurs
+var route = "{{ path('site_show', {'id':sites.id}) |escape('js') }}";   
+        marker.onclick = redirect;
+        function redirect(){
+            return route
+        }
+
+if (sites.id>0 && id>0){
+    marqueur.bindPopup(<a href="{{ path('site_show', {'id':sites.id}) }}">site</a>);
+}
+
+{# console.log(sites.id)
+console.log(sites) #}
+               {# console.log(site) #}
+        {# for (site in sites){
+            console.log(site)
+        } #}
+        {# var sites = {
+            Paris0: {
+                id: 0,
+                lat: 48.852969,
+                lon: 2.349903,
+            },
+            Paris1: {
+                id: 1,
+                lat: 48.852970,
+                lon: 2.349903,
+            },
+            Paris2: {
+                id: 2,
+                lat: 48.852971,
+                lon: 2.349903,
+            },
+            Paris3: {
+                id: 3,
+                lat: 48.852972,
+                lon: 2.349903,
+            },
+            Paris4: {
+                id: 4,
+                lat: 48.852973,
+                lon: 2.349903,
+            },
+            Paris5: {
+                id: 5,
+                lat: 48.852974,
+                lon: 2.349903,
+            },
+            Paris6: {
+                id: 6,
+                lat: 48.852975,
+                lon: 2.349903,
+            },
+            Brest: {
+                id: 34,
+                lat: 48.383,
+                lon: -4.5,
+            },
+            Quimper: {
+                id: 75,
+                lat: 48.0,
+                lon: -4.1,
+            },
+            Bayonne: {
+                id: 13,
+                lat: 43.5,
+                lon: -1.467,
+            },
+            }; #}
+
+            <script id="sites-data" type="application/json">
+        //definiton de la variable site dans le script
+        {# var site = {{sites}} #}
+        var site = {{sites|json_encode()}}
+        const sites = JSON.parse(document.getElementById('sites-data').textContent);
+        //on initialise la carte
+        var carte = L.map('macarte').setView([48.852969, 2.349903], 5);
+        //on charge les tuiles
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(carte);
+        
+         var icone = L.icon({
+                    iconUrl:"../img/pointeur-de-carte.png",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 50],
+                    popupAnchor: [-2, -44],
+                });
+
+        // on parcours les différents sites
+                   
+        for ( site in sites) {
+           
+                // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor) 
+                //on crée un marqueur et on lui donne un popup
+                var marqueur = L.marker([sites[site].lat, sites[site].lon],{icon:icone}).addTo(carte);
+                //marqueur.bindPopup('<h3>sites</h3>');
+                //marqueur.bindPopup(site);
+                             
+                marqueur.bindPopup(<a href="{{ path('site_show', {'id':sites.id}) }}">site</a>);
+
+                
+               // markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
+                //markerClusters.push(marqueur);
+            }
+                              
+    </script>
+
+controller index thomes
+    // $sites = $siteRepository->findAll();
+        // $rep = new JsonResponse();
+        // $rep->headers->set("Content-Type", "application/Json");
+        // $rep->setData(array("sites"=>$sites));
+
+        //definiton de la variable site dans le script
+        {# var site = {{sites}} #}
+        {{sites|json_encode()}}
+        {# var site = {{sites|json_encode()}} #}
+        const sites = JSON.parse(document.getElementById('sites-data').textContent);
+        //on initialise la carte
+
+        /**
+     * @Route("/", name="site_index", methods={"GET"})
+     */
+    public function index(SiteRepository $siteRepository): Response
+    {
+        return $this->render('site/index.html.twig', [
+            'sites' => $siteRepository->findAll(),
+          
+            
+        ]);
+    }

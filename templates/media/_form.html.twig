@@ -1,0 +1,15 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {# verifier si la route est site_edit on affiche les images #}
+    {% if app.request.attributes.get('_route') == 'site_edit' %}
+        <h2>Images</h2>
+        {% for image in site.media %}
+            <div>
+                <img src="{{ asset('/uploads/' ~ site.nom) }}" alt="image" width="150">
+                {# <a href="{{ path('siteDeleteImage', {'id':site.id}) }}" data-dlete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a> #}
+            </div>
+        {% endfor %}
+    {% endif %}
+  
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

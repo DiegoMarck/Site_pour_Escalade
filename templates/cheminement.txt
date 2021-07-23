@@ -1,0 +1,197 @@
+création du dossier ProjetEscalade
+se placer dans se dossier
+création du projet Symfony :
+Symfony new projetescalade --full
+modification du fichier .env
+Créer la BDD : php bin/console doctrine:database:create
+symfony server:start
+
+Créer les entitées Site, Région, Topos : 
+
+php bin/console make:entity
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+php bin/console doctrine:migrations:migrate
+
+faire les cruds pour les classes Sites, Region, Topos
+php bin/console make:crud
+NomDeLaClasse concernée
+
+Mise en place de la sécurité : 
+
+création d'un espace priver pour les users et les admins
+
+1.	composer require symfony/security-bundle
+Début de la mise en place de la sécurité
+ 
+2.	php bin/console make:user
+3.	php bin/console make:auth = systhème d'authentification
+créer le formulaire de login dans le dossier security
+va dans authenticator et modifie la ligne 100 en décommentant et donne une route user ou admin
+rajoute cette condition pour donnée l'accès au backoffice si c'est un admni.
+
+ if(in_array('ROLE_ADMIN', $user->getRoles() ))//verifi si admin
+        {
+            dump($user->getRoles());
+            return new RedirectResponse($this->urlGenerator->generate('admin'));
+        }
+        else
+        {
+            return new RedirectResponse($this->urlGenerator->generate('front'));
+        }
+        throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+création du serityControler
+Rajouter isGranted au dessus de class qui réserve l'acces aux admin, permet de vérifie que l'utilisateur connecté est un admin 
++ encoder pour encoder les mots de passe
+Dans user on va créer la fonction __toString(){ return $this->getPseudo() ;}   - sous le construct
+on doit charger la librairie suivante :
+4. composer require orm -fixture --dev
+5. php bin/console make:fixture    
+
+
+6. php bin/console doctrine:fixture:load
+Quest. Carefull…  -> yes
+
+Mise en place du FRont et de l'admin
+7.	On rajoute un controller php bin/console make:controller Front
+8.	On rajoute un controller php bin/console make:controller Admin
+
+Mise en pace de la librairie Vichuploader pour l'upload des fichiers multimédias
+modification du fichier yaml, importation de la classe use Vich\UploaderBundle\Form\Type\VichImageType; dans le fichier SiteType.php et TopoType.php
+
+Importation de mon travail en css et adaptation à symfony, mise en place du côté responsive, philosophie mobile first. Menu burger pour mobile,  ++ responsive.
+
+Mise en place du formulaire d'ajoute de site avec les différent type de menu, checkbox, liste déroulantes. Mise en pace d'un peu de Bootstrape vu avec Laura pour rendre plus agréable la présentation : ["attr"=>["class"=>"form-control"]] à ajouter dans le $builder dans chaque 'add', chaque champ. Le lien Bootstrape est rajouté dans base.html.twig.
+
+Crud des entitées concernées dont User
+
+Pour l'upload des images
+
+1/Pour upload une image on doit 
+ 
+Aller sur https://github.com/dustin10/VichUploaderBundle/blob/master/docs/installation.md
+ 
+2/Lancer la commande : 
+ 
+composer require vich/uploader-bundle
++ yes
+
+Configuration du chargement d'image multiple dans Site sans vich
+On ajoute le champ  dans le formulaire de Site :
+->add('site', FileType::class, [
+                'label' => false,
+                'multiple' => true,🟢
+                'mapped' =>false, 
+                'required' => false
+            ])
+puis dans service.yaml rajoute dans parameters:
+    images_directory: '%kernel.projet_dir%/public/uploads'
+puis 3 modifications dans ControllerSite cf SiteController
+
+Puis rajoute cascade={"persist"} dans ppté media de Site
+Dans le Sitecontroller,on instantie un objet de media
+
+Ajoute et complète ces 2 fonctions  dans le siteController: 
+
+use Symfony\Component\HttpKernel\KernelInterface;
+
+public function upload( KernelInterface $kernel): Response
+    {
+ 
+       $imagesDir = $kernel->getProjectDir().'/public/uploads'; // equivalent à $this->getParameter('images_directory')
+       dump($imagesDir) ;
+        return $this->render('site/show.html.twig');
+    }
+
+public function new(Request $request): Response
+{
+    $site = new Site();
+    $form = $this->createForm(SiteType::class, $site);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        //on recupère les medias transmises
+        $media = $form->get('site')->getData();
+        //on boucle sur les medias 
+        foreach($media as $medi){
+            //on génère un nouveau nom de fichier
+            $fichier = md5(uniqid()) . '.' . $medi->guessExtension();
+            //on copie le fichier dans le dossier img
+            $medi->move(
+                $this->getParameter('images_directory'),
+                $fichier
+            );
+            //on stocke l'image dans la bdd
+            $img = new Media();
+            $img->setNom($fichier);
+            $site->addMedium($img);
+
+        }
+
+On colle le même code à partir de la ligne 113 dans le edit
+
+->réglages du css :
+dans body :
+/*position: relative;
+    float: left;*/
+    overflow: scroll;
+
+Donne une seconde class, .tableTopos dans la table de index topo: 
+.tableTopos{
+    width: 100% !important;
+    color: mediumblue;
+    display: block;
+    overflow: scroll;
+}
+cela va surcharger la class. C'est le niveau de surcharge qui opère préférentiellement.
+
+Retour sur le dévelopement du formulaire avec la liste déroulante des Typederochers . Pour cela il faut transformer l'array en string.
+Il faut également rajouter  'In Stock' => true,
+                            'Out of Stock' => false,			     
+                            ),'multiple' => true, 
+                            'expanded' => false,
+après tous les choix possibles de la liste dans choices.
+
+Ajouter d'un lien adresse mail pour le concours photo
+
+Ajout du footer dans base.hhtml.twig
+
+amelioration des markers et creation du ien de la carte vers les Sites
+
+//marker.bindPopup( "<a href="{{ path("site_show" )}}">"site"</a>");
+ marqueur.bindPopup(<a href="{{ path('site_show', {'id':sites.id}) }}">site</a>);
+
+Modification BDD
+SET @num :0;
+UPDATE site SET id = @num := (@num+1);
+ALTER TABLE site AUTO_INCREMENT = 1;
+
+fonts : Tillana regular 400:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tillana&display=swap" rel="stylesheet">
+css : font-family: 'Tillana', cursive;
+
+Averia Libre
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Averia+Libre:wght@300&family=Tillana&display=swap" rel="stylesheet">
+
+CSS rules to specify families
+
+font-family: 'Averia Libre', cursive;
+font-family: 'Tillana', cursive;
+
+erreur:
+Configuration de pmadb… en erreurDocumentation
+Fonctions relationnelles Désactivé
+
+Travail sur la validation -> installer :
+    + composer require symfony/validator doctrine/annotations
+    +use Symfony\Component\Validator\Constraints as Assert;
+    +cf doc exemple sur la longueur : 
+    @Assert\Length(
+        *      min = 2,
+        *      max = 50,
+        *      minMessage = "Your first name must be at least {{ limit }} characters long",
+        *      maxMessage = "Your first name cannot be longer than {{ limit }} characters")

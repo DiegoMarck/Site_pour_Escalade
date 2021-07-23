@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Media{% endblock %}
+
+{% block body %}
+    <section id="trouveSpot-section1">
+        <div>
+            <h1>Edit Media</h1>
+        </div>
+    </section>
+    
+
+    {{ include('media/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('media_index') }}">back to list</a>
+
+    {{ include('media/_delete_form.html.twig') }}
+{% endblock %}

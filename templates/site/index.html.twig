@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Site index{% endblock %}
+
+{% block body %}
+    <section id="trouveSpot">
+        <div>
+            <h1>Trouve ton spot!</h1>
+        </div>
+    </section>
+    
+    <section id="map">
+        <!-- Ici s'affichera la carte -->
+        <div id="macarte"></div>
+    </section>
+    
+
+    {# <div id="macarte"></div> #}
+
+
+
+    {# <div id="map1"></div> #}
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    
+    {% block javascripts %}
+        {# alert(); #}
+    {% endblock %}
+    
+    
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+    <!-- Fichiers Javascript -->
+    {# <script type='text/javascript' src='https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js'></script> #}
+    
+
+{# {{dump(sites)}} #}
+{# <script id="sites-data" type="application/json">{{sites|json_encode()}}</script> #}
+    
+    
+    <script>
+       {# var site = {{sites}} #}
+       {# var site = {{ sites|serialize('json') }} #}
+       {# var site = {{ sites|json_encode()|raw }} #}
+        {# var site = {{sites|json_encode()}} #}
+        {# const sites = JSON.parse(document.getElementById('sites-data').textContent); #}
+        {# window.appConfig = {
+        sitesUrl: '{{ path('site-all') }}',
+        }; #}
+        
+        {# var sitesGroup = L.layerGroup(); #}
+        var carte = L.map('macarte').setView([48.852969, 2.349903], 5);
+        //on charge les tuiles
+        {# carte.on("load", function() {
+        addSites();
+        }); #}
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+                // Il est toujours bien de laisser le lien vers la source des données
+                attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+                minZoom: 1,
+                maxZoom: 20
+            }).addTo(carte);
+        
+         var icone = L.icon({
+                    iconUrl:"../img/pointeur-de-carte.png",
+                    iconSize: [50, 50],
+                    iconAnchor: [25, 50],
+                    popupAnchor: [-2, -44],
+                });
+
+        // on parcours les différents sites
+                   
+        for ( site in sites) {
+           
+                // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor) 
+                //on crée un marqueur et on lui donne un popup
+                var marqueur = L.marker([sites[site].lat, sites[site].lon],{icon:icone}).addTo(carte);
+                //marqueur.bindPopup('<h3>sites</h3>');
+                marqueur.bindPopup(sites);
+                             
+
+
+                
+               // markerClusters.addLayer(marker); // Nous ajoutons le marqueur aux groupes
+                //markerClusters.push(marqueur);
+            }
+            {# async function addSites() {
+                var response = await fetch(window.appConfig.sitesUrl);
+                var json = await response.json();
+
+                json.forEach(function (item) {
+                    L.marker([item.latitude, item.longitude]).addTo(sitesGroup);
+                });
+
+                carte.addLayer(sitesGroup);
+            } #}
+                              
+    </script>
+
+        {{dump(sites)}}
+    {% for site in sites %} #} 
+                    
+
+                <a href="{{ path('site_show', {'id': site.id}) }}">{{site.nom}}</a>              
+    {% endfor %} 
+    
+
+
+    
+    
+    
+    
+    <a href="{{ path('site_new') }}">Create new</a>
+    {# <a href="{{ path('site_show') }}">Create new</a> #}
+    
+{% endblock %}

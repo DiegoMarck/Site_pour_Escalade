@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section id="contact">
+        <div>
+            <h2>N'hésitez pas me contacter</h2>
+        </div>
+    </section>
+    {# afficher le message de réservation efféctué #}
+{% if app.flashes("info") is defined  %} 
+    {% for message in app.flashes("info")%}
+        <div class= "text">
+            {{message}}
+        </div>
+{% endfor %}
+{% endif %}
+
+    <section id="form">
+    {{ form_start( form ) }}
+    {{ form_row( form.email ) }}
+    {{ form_row( form.name ) }}
+    {{ form_row(form.message)}}
+    {{ form_row(form.telephone)}}
+    <button type="submit">Envoyer le message</button>
+    {{ form_end( form ) }}
+    
+    </section>
+    
+    
+{% endblock %}

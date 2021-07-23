@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Media{% endblock %}
+
+{% block body %}
+    <section id="trouveSpot-section1">
+        <div>
+            <h1>Create new Media</h1>
+        </div>
+    </section>
+    
+
+    {{ include('media/_form.html.twig') }}
+
+    <a href="{{ path('media_index') }}">back to list</a>
+{% endblock %}

@@ -15,8 +15,30 @@
         </div>
 {% endfor %}
 {% endif %}
-
+<div class="container">
+     <div>
+				<label for="inputEmail">Email</label>
+				<input type="email"  name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+	</div>
+    <div>
+				<label for="inputNom">Nom</label>
+				<input type="text"  name="nom" id="inputnom" class="form-control" autocomplete="nom" required autofocus>
+	</div>
+    <div>
+				<label for="inputMessage">Message</label>
+				<input type="textarea" name="message" id="inputmessage" class="form-control" autocomplete="message" required autofocus>
+	</div>
+    <div>
+				<label for="inputTelephone">Telephone</label>
+				<input type="text"  name="telephone" id="inputTelephone" class="form-control" autocomplete="telephone" required autofocus>
+	</div>
+    <div>
+        <button type="submit">Envoyer le message</button>
+    </div>
+</div>
+<div class="form-group">
     <section id="form">
+   
     {{ form_start( form ) }}
     {{ form_row( form.email ) }}
     {{ form_row( form.name ) }}
@@ -26,6 +48,6 @@
     {{ form_end( form ) }}
     
     </section>
-    
+</div>
     
 {% endblock %}

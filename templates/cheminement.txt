@@ -40,7 +40,7 @@ rajoute cette condition pour donnée l'accès au backoffice si c'est un admni.
             return new RedirectResponse($this->urlGenerator->generate('front'));
         }
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
-création du serityControler
+création du securityControler
 Rajouter isGranted au dessus de class qui réserve l'acces aux admin, permet de vérifie que l'utilisateur connecté est un admin 
 + encoder pour encoder les mots de passe
 Dans user on va créer la fonction __toString(){ return $this->getPseudo() ;}   - sous le construct
@@ -195,3 +195,34 @@ Travail sur la validation -> installer :
         *      max = 50,
         *      minMessage = "Your first name must be at least {{ limit }} characters long",
         *      maxMessage = "Your first name cannot be longer than {{ limit }} characters")
+
+
+Projet Gitter 20/07/2021
+
+
+bin/console doctrine:migrations:sync-metadata-storage.
+
+recherche mise en forme sur les formulaires ->  yarn add bootstrap
++  @import "~bootstrap/scss/bootstrap"; dans css
+decommenter le twig.yaml
+yarn run encore dev
+
+Mise en place du converter. Création du fichier converter.html.twig et de la route /conv dans siteController avec la fonction converter. 
+Mise en place des fichiers stylesConverter.css et script.js correspondant.
+
+
+API pays
+<img src=`https://www.countryflags.io/${country}/flat/64.png`>
+
+
+$countries = array("countries" => array(
+    		["id"=> "1" , 
+    		"code"=>"AD", 
+    		"nom"=> "Andorra"],
+    		["id"=>"2", 
+    		"code"=>"AE", 
+    		"nom"=>"United Arab Emirates"],
+    		["id"=>"3", 
+    		"code"=>"AF", 
+    		"nom"=>"Afghanistan"]
+ 		));

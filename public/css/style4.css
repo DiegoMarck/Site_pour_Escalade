@@ -37,6 +37,8 @@
  p{
     padding: 2px 10px;
  }
+
+ @import "~bootstrap/scss/bootstrap";
  
  /*---- philosophie mobile first 1ère Page-----*/
  
@@ -513,6 +515,13 @@ form .village {
     background-repeat: no-repeat;
     background-size: cover;
  }
+#form{
+    border : 1px solid black;
+    
+}
+
+
+
 /*--------------philosophie mobile first------------------------*/
 
 /* ----------mobile gallery-section --------------*/

@@ -93,6 +93,14 @@ class SiteController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
+    /**
+     * @Route("/conv", name="site_converter")
+     */
+    public function converter():Response
+    {
+        return  $this->render('site/converter.html.twig');
+    }
 
     /**
      * @Route("/{id}", name="site_show", methods={"GET"})

@@ -237,6 +237,9 @@ table .table {
   width: 95%;
   padding: 10px;
 }
+.wrap t3-sl t3-sl-1 .container{
+  border: 2px solid black;
+}
 
 /*-------- philosophie mobile first - 2ième Page - trouve ton spot !----------*/
 

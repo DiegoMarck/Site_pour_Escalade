@@ -9,28 +9,26 @@
         </div>
     </section>
 				
-                    <section id="tabs" class="tab-container">
-                                        <h2>Liste de des Topos de France</h2>
-                            <div class="container">
-                        <nav class="onglets">
+    <section id="tabs" class="tab-container">
+                        <h2>Liste de des Topos de France</h2>
+            <div class="container">
+        <div class="onglets">
+                <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
+                <a href="#" class="col-4" class="tabA">Par nom</a>
+                <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>  
+        </div>
+            </div>
+        <div class="panel">
+                        <p>Choisi une région</p>
+                        <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
                         
-                                <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
-                                <a href="#" class="col-4" class="tabA">Par nom</a>
-                                <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>
-                            
-                        </nav>
-                            </div>
-                        <div class="panel">
-                                        <p>Choisi une région</p>
-                                        <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
-                                        
-                                        </div>
-                        <div class="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dignissimos explicabo mollitia quam alias natus?</div>
-                        <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
-                    </section>
+                        </div>
+        <div class="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dignissimos explicabo mollitia quam alias natus?</div>
+        <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
+    </section>
                
 
-    <table class="table tableTopos">
+    {# <table class="table tableTopos">
         <thead>
             <tr>
                 <th>Id</th>
@@ -44,7 +42,7 @@
                 <th>Description</th>
                 <th>Type</th>
                 <th>Image</th>
-                {# <th>Maj</th> #}
+               
                 <th>actions</th>
             </tr>
         </thead>
@@ -62,7 +60,6 @@
                 <td>{{ topo.description }}</td>
                 <td>{{ topo.type ? topo.type|join(', ') : '' }}</td>
                 <td>{{ topo.image }}</td>
-                {# <td>{{ topo.maj ? topo.maj|date('Y-m-d H:i:s') : '' }}</td> #}
                 <td>
                     <a href="{{ path('topo_show', {'id': topo.id}) }}">show</a>
                     <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
@@ -74,7 +71,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
  <a href="{{ path('topo_new') }}">Create new</a>
 {% endblock %}
 

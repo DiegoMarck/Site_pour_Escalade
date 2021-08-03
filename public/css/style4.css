@@ -48,7 +48,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 20px; /* 20 */
-  /* position: absolute; */
+  position: absolute;
   width: 100%;
   font-size: 20px;
   height: 70px;
@@ -156,7 +156,7 @@ nav .nav-list li a:link {
 }
 .home-titre div {
   position: absolute;
-  margin-top: 20px;
+ margin-top: 20px;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -164,7 +164,7 @@ nav .nav-list li a:link {
   text-align: center;
   background: #9bd9f294;
   border-radius: 10px;
-  padding: 4px;
+ padding: 4px;
 }
 
 table .table {
@@ -470,6 +470,7 @@ form .village {
 a{	
 	text-decoration: none;
 }
+
 /** tabs **/
 .tab-container{
 	width:100%;
@@ -508,15 +509,14 @@ a{
 	background-color: rgba(100,161,157,1);
 	color:#fff;
 }
-.tab-container .onglets a{
+/* .tab-container .onglets a{
   border: 2px solid black;
   background-color: grey;
-  /* width: 33%; */
   height: 50px;
   word-wrap: break-word;
   text-align: center;
   font-size: 0.8em;
-}
+} */
 .tab-container .panel img{
   max-width: 94%; 
   justify-content: center;
@@ -799,6 +799,7 @@ footer {
     z-index: 1000;
     background: rgba(20,76,116,0.37);
     text-align: center;
+    margin-top: 0px;
   }
   nav * {
     font-size: 1rem;

@@ -156,7 +156,7 @@ Ajouter d'un lien adresse mail pour le concours photo
 
 Ajout du footer dans base.hhtml.twig
 
-amelioration des markers et creation du ien de la carte vers les Sites
+amelioration des markers et creation du lien de la carte vers les Sites
 
 //marker.bindPopup( "<a href="{{ path("site_show" )}}">"site"</a>");
  marqueur.bindPopup(<a href="{{ path('site_show', {'id':sites.id}) }}">site</a>);
@@ -226,3 +226,5 @@ $countries = array("countries" => array(
     		"code"=>"AF", 
     		"nom"=>"Afghanistan"]
  		));
+
+Mise en place de l'API Platform

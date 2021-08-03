@@ -27,7 +27,7 @@ class ContactType extends AbstractType
                 "required"=>true,
                 "label"=>"Nom et prenom",
                 "data"=> $user ? $user->getPseudo() : "" 
-            ],["attr"=>["class"=>"form-control"]])
+            ])
             ->add('message', TextareaType::class, [
                 "attr"=>[
                     "cols"=>100,

@@ -5,10 +5,13 @@
 {% block body %}
     <section id="AjoutSite">
         <div>
-            <h1>Ajoute ton site</h1>
+            <h1>Ajouter un site</h1>
         </div>
     </section>
     <section id="form_new_site">
+
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
     {{ include('site/_form.html.twig') }}
     <section/>
     <a href="{{ path('site_index') }}">back to list</a>

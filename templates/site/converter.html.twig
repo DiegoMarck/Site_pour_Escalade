@@ -1,156 +1,457 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Converter{% endblock %}
-
-{% block javascripts %}
-        
-        {# <script src="../../public/js/scripts.js"></script>
-        <script src="../../public/js/scripts.js"></script> #}
-      
-
+{% block title %}Converter
 {% endblock %}
+
+{% block javascripts %}{% endblock %}
+
 {% block body %}
-    <section id="converter">
-        <div>
-            <h1>Convertisseur</h1>
-        </div>
-    </section>
-    <div class="container">
-        <div class="section section--title">
-            <h1 class="title">Convertisseur de niveau d'escalade</h1>
-        </div>
-        <div class="section section--converter">
-            <div class="col col--left">
-                <div class="input__container input__container--margin">
-                    <label for="originSystem" class="input__label">System: </label>
-                    <select name="originSystem" id="originSystem" class="input__select">
-                        <option value="french" selected>French</option>
-                        <option value="yds">YDS</option>
-                        <option value="uiaa">UIAA</option>
-                        <option value="ewbank">Ewbank</option>
-                        <option value="brazilian">Brazilian</option>
-                        <option value="british">British</option>
-                    </select>
-                </div>
-                <div class="input__container">
-                    <label for="originGrade" class="input__label">Grade: </label>
-                    <select name="originGrade" id="originGrade" class="input__select">
-                        <option selected disabled>-- choose --</option>
-                    </select>
-                </div>
-            </div>
+	<section id="converter">
+		<div>
+			<h1>Convertisseur</h1>
+		</div>
+	</section>
+	<div class="container">
+		<h2>
+			<a id="echelles-escalade" name="echelles-escalade">Quelles sont les différentes échelles de cotation en escalade et où sont-elles utilisées ?</a>
+		</h2>
+		<p>En principe, il existe autant d'échelles qu'il existe de types d'escalade. Néanmoins, toutes n'ont pas la même étendue. Certaines sont utilisées au niveau international, d'autres n'existent qu'au niveau régional.</p>
+		<p>De plus, il existe des échelles de cotation spécifiques pour les
+			<a href="https://www.alpiniste.fr/cotation-alpinisme-calculateur/" title="Vers les échelles de sports de montagne du CAS">sports de montagne</a>
+			(alpinisme, randonnée, ski à rando, randonnées en raquettes à neige), pour les
+			<a href="https://www.alpiniste.fr/cotation-via-ferrata-calculateur/" title="Vers les échelles de difficultés en via ferrata">via ferrata</a>, ainsi que pour les
+			<a href="https://www.alpiniste.fr/cotation-vtt-calculateur/" title="Vers les échelles de single tracks en vtt">single tracks en vtt</a>.&nbsp;Notre calculatrice est basée sur l'échelle du DAV.</p>
+		<h3>
+			<a id="cotation-uiaa" name="cotation-uiaa"></a>Cotation UIAA</h3>
+		<p>Il s'agit de l'échelle de cotation de la fédération internationale d'escalade. Elle fait également partie intégrante des échelles du CAS. La cotation est donnée en chiffres arabes suivis d'un plus (+) de valorisation ou un moins (-) de dévaluation. Un chiffre comprend donc trois degrés de difficultés. Pour préciser cette cotation, on utilise de surcroît des paliers intermédiaires. 7+/8- indique donc une difficulté allant d'un 7+ difficile à un 8- facile.</p>
+		<p>La cotation UIAA est essentiellement utilisée pour
+			<strong>l'escalade sportive en Europe</strong>
+			et plus particulièrement dans l'Ouest de l'Allemagne. Elle est très prisée dans les
+			<strong>salles d'escalade</strong>.</p>
+		<p>En principe, elle oscille entre 1 et 11+. Néanmoins, les cotations 1 et 2 ne requièrent pas forcément l'aide des mains et ne sont donc pas utilisés en escalade sportive. Globalement, pour cette discipline, on destine les cotations 3-6 aux débutants, 6-7 aux confirmés, 8-10 aux très bons grimpeurs et les niveaux supérieurs à la crème de la crème.</p>
+		<h3>
+			<a id="cotation-francaise" name="cotation-francaise"></a>Cotation française</h3>
+		<p>La cotation française est utilisée essentiellement sur le
+			<strong>territoire français</strong>et en
+			<strong>escalade sportive internationale</strong>. Quiconque cherche à se distinguer par ses voies difficiles sur internet et au niveau international doit donc le faire en français.</p>
+		<p>Grâce à l'ajout de lettres, la cotation française offre plus de niveaux intermédiaires que la cotation UIAA. Elle se traduit par une combinaison de chiffres arabes et des lettre a, b et c. De plus, une valeur peut-être valorisée par un +. La dévalorisation par le moins n'existe pas. Finalement, le niveau de difficulté 7 contient en réalité six degrés de difficulté.</p>
+		<h3>
+			<a id="cotation-bloc" name="cotation-bloc"></a>Fontainebleau / bloc</h3>
+		<figure class="right"><img src="https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/escalade-bloc.jpg" alt="Escalade bloc" width="50%"></figure>
+		<p>La petite ville de Fontainebleau se situe au sud de Paris nichée dans'une forêt magnifique. Elle offre un nombre infini de blocs de grès, qui sont comme créés pour le
+			<a href="https://www.alpiniste.fr/bouldering-slackline/" title="Acheter un équipement de bouldering dans la boutique de Alpiniste.fr">bouldering</a>. Rien d'étonnant donc que cette discipline soit née à Fontainebleau. Tandis que dans le reste du monde, on découvrait à peine l'escalade libre et laissait le bouldering pour l'entraînement d'escalade pour l'hiver, Bleau pratiquait et perfectionnait déjà cette discipline en tant que sport à part entière. Il est donc tout à fait logique que la cotation de Fontainebleau s'impose comme échelle du bouldering dans
+			<strong>toute l'Europe</strong>.</p>
+		<p>Semblable à la cotation française, le système d'évaluation utilise des chiffres arabes, des lettres, le signe + pour la valorisation, mais pas de signe – pour la dévaluation. Afin de différencier les deux échelles, la cotation de fontainebleau est précédée de fb.</p>
+		<p>Toutefois, il est important de noter que l'échelle fb débute un peu plus haut que la cotation française en escalade sportive. Un 5b (fb) correspond environ à un 6b. De plus, de manière purement théorique, on fait aussi la différence entre les traversées (travers parallèle au sol) et le bouldering « bloc ». Les traverses possèdent encore une échelle propre qui se situe à un niveau légèrement inférieur. Elle est cependant rarement utilisée car les traverses se démodent. Malheureusement.</p>
+		<p>Par contre, de nombreuses
+			<strong>salles de bouldering</strong>
+			utilisent aussi l'échelle de Fontainebleau.</p>
+		<h3>
+			<a id="cotation-allemande" name="cotation-allemande"></a>
+			Cotation allemande (Saxe)</h3>
+		<p>Célèbre par la multitude de magnifiques rochers de grès qui le caractérise,
+			<strong>l'Elbsandsteingebirge</strong>
+			(le Massif gréseux de l’Elbe) témoigne également d'une belle tradition d'escalade très ancienne. Se distinguant nettement des autres en Allemagne, il possède tout naturellement sa propre échelle de cotation.</p>
+		<p>Le matériel d’assurage en métal, tels coinceurs et les friends, est
+			<strong>strictement interdit</strong>, car l’équipement en métal détruirait le grès sensible. Les grimpeurs de la région utilisent plutôt des
+			<a href="https://www.alpiniste.fr/sangles-cordelettes/" title="Achat sangles &amp; cordelettes">sangles</a>
+			nouées et des
+			<a href="https://www.alpiniste.fr/cordes-d-escalade/" title="Achat cordes d’escalade">cordes</a>
+			combinéd avec quelques broches de relais placées par-ci par-là. Comme la
+			<a href="https://www.alpiniste.fr/magnesie/" title="Achat magnésie d’escalade">magnésie</a>
+			est aussi interdite, les grimpeurs locaux se servent de leurs vêtements en coton pour essuyer la sueur de leurs mains.</p>
+		<p>La cotation ressemble beaucoup à celle de
+			<a href="#cotation-uiaa">l’UIAA
+			</a>
+			même si elle est écrite en chiffres romains et qu’elle dépend énormément du premier grimpeur qui a surmonté la voie, car c’est lui qui cote la voie et il est le seul à pouvoir changer cette cotation.
+			À partir du chiffre VII on rajoute les lettres a, b ou c ; XIc est actuellement le degrés de difficulté le plus élevé.</p>
+		<p>Cette cotation est surtout utilisée dans
+			<strong>l’Est de l'Allemagne et la République Tchèque</strong>.</p>
+		<h3>
+			<a id="cotation-sierra" name="cotation-sierra"></a>
+			Cotation américaine (Sierra)</h3>
+		<p>
+			Elle est utilisée exclusivement en
+			<strong>Amérique du Nord</strong>. Néanmoins, comme certaines des zones d'escalade les plus connues se trouvent aux États-Unis, on associe le paye avec l’escalade moderne et la naissance de d’échelles de cotation détaillées.</p>
+		<p>La cotation américaine commence de 1 à 4 pour les randonnée plus ou moins difficiles. C’est à partir de 5.0 que le terrain devient plus sportif.
+			À partir de ce chiffre, la vraie cotation pour l’escalade sur rocher commence.
+			De 5.0 à 5.3 on escalade, de 5.4 à 5.7 c’est faisables pour les débutants, de 5.8 à 5.11 c’est pour les grimpeurs plus expérimentés et de 5.12 à 5.14 c’est pour les grimpeurs avancés. Au-delà du chiffre 5.15 se joue l’escalade professionnelle.</p>
+		<p>La cotation américaine est subdivisée avec les lettres a,b,c,d pour permettre d’ajouter des niveau supplémentaires, par exemple un 5.11d.
+			Comme le chiffre 5 ne change pas, on retrouve souvent les chiffres représentés seulement par leur deuxième partie, comme par exemple 11d.</p>
+		<p>La cotation américaine rajoute en plus le degrés de sécurité de la voie. Il est basé sur la classification des films :</p>
+		<ul>
+			<li>
+				<strong>PG</strong>
+				(Parentual Guidance - Accord parental): points d’assurage rares ou espacés</li>
+			<li>
+				<strong>R</strong>
+				(Restricted – enfants moins de 17 ans doivent être accompagnés d'un adulte): blessures possibles en chutant</li>
+			<li>
+				<strong>R/X</strong>
+				(Restricted/Adult Audience - interdit aux moins de 17 ans/public adulte): une chute pourrait entrainer des blessures graves ou même la mort</li>
+			<li>
+				<strong>X</strong>
+				(Adult Audience – public adulte): une chute entraine des blessures graves ou la mort</li>
+		</ul>
+		<h3>
+			<a id="cotation-anglaise" name="cotation-anglaise"></a>Cotation anglaise / trad</h3>
+		<p>La cotation anglaise se décline en deux catégories : L'engagement total (adjectival grade) et la difficulté technique (technical grade) qui se réfèrent tous deux à l'escalade traditionnelle, c'est-à-dire la
+			<a href="https://www.alpiniste.fr/bigwall-trad/" title="Acheter un équipement de trad dans la boutique de Alpiniste.fr">trad</a>
+			qui se pratique avec des assurages intermédiaires. Les voies d'escalade sportive sont évaluées à l'aide de la cotation française.</p>
+		<h4>
+			<a id="adjectival-grade" name="adjectival-grade"></a>Adjectival Grade</h4>
+		<p>Cette notation vise à livrer une
+			<strong>estimation globale</strong>
+			de la difficulté d'une voie. Elle prend en compte les facteurs tels que l'exigence technique, l'assurage, la qualité de la roche, l'exposition et l'endurance. La mesure s'effectue sur la base d'un défi d'<strong>ascension à vue dans le style traditionnel</strong>, autrement dit, l'alpiniste dépourvu de toute information s'engage pour la première fois sur la voie et sans jamais avoir vu quiconque l'escalader.</p>
+		<p>Vous l'aurez compris, pour les degrés de difficulté supérieurs, cette exigence s'assouplit quelque peu : même si des voies de degré jusqu'à E8 ont déjà été gravies à vue sporadiquement, on escalade au plus tard à partir de E6 dans un style libre classique. Ne pas négliger ce qui prévaut toujours : Soyez honnête quant au style de votre pratique, les assurages intermédiaires placés au préalable ne sont pas acceptés !</p>
+		<figure class="right"><img src="https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/rhapsody-e11-james-pearson.jpg" alt="James Pearson E11 Rhapsody" width="50%"/>
+			<figcaption>Escalade trad jusqu'aux limites : James Pearson in der Rhapsody (E11)</figcaption>
+		</figure>
+		<p>Créée au début du 20e siècle par O.G Jones, la cotation anglaise n'a depuis cessé d'être développée et complétée. À la fin des années 70, on a décidé d'ouvrir le degré E « extremely Severe », afin de pouvoir le développer en continu : E1, E2 etc.</p>
+		<p>Jusqu'à ce jour, la voie la plus difficile gravie dans ce niveau l'a été en 2006 par Dave Mac Leod avec
+			<a href="https://www.youtube.com/watch?v=KFYUqCrUFcs" title="Vidéo : Mac Leod on Rhapsody E11" target="_blank">Rhapsody</a>
+			sur le Dumbarton Rock en Écosse. Ce degré de difficulté équivaut à 8c/+en cotation française. La voie comprend un danger de chute de 20 mètres sur une bande étroite, ce qui mérite un E11.</p>
+		<h4>
+			<a id="technical-grade" name="technical-grade"></a>Technical Grade</h4>
+		<p>L'échelle technique se réfère à l'escalade traditionnelle tout en ne considérant que les
+			<strong>exigences techniques</strong>
+			du pas le plus ardu de la voie, également désigné crux. Les paramètres comme le danger ou l'endurance ne sont pas pris en compte dans la cotation.</p>
+		<p>Cette échelle émane à l'origine du bouldering et plus précisément de l'échelle de Fontainebleau. C'est la raison pour laquelle, elle est exprimée en chiffres arabes suivis d'une extension grâce aux lettres a, b, c.</p>
+		<p>En principe, le technical grade croît avec l'adjectival grade, en revanche l'adjectival grade n'augmente pas forcément si l'exigence technique est élevée.</p>
+		<h4>
+			<a id="trad-climbing" name="trad-climbing"></a>Cotation d'ensemble trad</h4>
+		<p>La combinaison des adjectival et technical grades permet de bien définir le type de voie : Une voie cotée E1 5b correspond à des exigences « moyennes ». Un technical grade de niveau semblable, p. ex. E1 5c/6a, indique que la voie a un crux court et s'assure facilement. À l'inverse, E1 4c annonce des pas relativement faciles d'un point de vue technique, mais une mauvaise protection ou des exigences élevées en termes d'endurance, voire les deux.</p>
+		<p>Dans les voies avec plusieurs longueurs, il est d'usage d'attribuer un adjectival grade global et de donner une cotation technique pour chaque longueur.</p>
+		<h3>
+			<a id="cotation-scandinave" name="cotation-scandinave"></a>Cotation scandinave</h3>
+		<p>En Scandinavie, l'escalade sportive utilise l'échelle française, mais on rencontre aussi la cotation UIAA. Toutefois, pour les voies d'escalade sportives difficiles, les valeurs françaises prévalent.</p>
+		<figure class="right"><img src="https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/cascade-de-glace.jpg" alt="Casacde de glace" width="50%"/></figure>
+		<h3>
+			<a id="cotation-cascade-glace" name="cotation-cascade-glace"></a>Cascade de glace et escalade mixte</h3>
+		<p>Rien d'étonnant que la cotation de cette discipline soit très difficile car la voie dépend beaucoup de la saison et des conditions météorologiques. En réalité, les voies se réinventent chaque année. Une voie peut être complètement recouverte une année et devenir l'année suivante une voie d'escalade mixte ou de dry-tooling. C'est la raison pour laquelle, on a l'habitude de dire que les degrés de difficulté peuvent varier d'un degré et demi au maximum.</p>
+		<p>En
+			<a href="https://www.alpiniste.fr/alpinisme-cascade-de-glace/" title="Acheter un équipement de cascade de glace dans la boutique de Alpiniste.fr">cascade de glace</a>, on utilise une échelle WI comprenant sept niveaux. Elle oscille entre WI1 et WI7. WI signifie
+			<strong>Water Ice</strong>. En 2010, Will Gadd et Tim Emmett ont proposé le degré W10 pour la voie « Spray On » en Colombie Britannique. Cette cotation ne figure pas encore dans l'échelle générale.</p>
+		<p>La difficulté réside dans l'angle d'inclinaison de la paroi et les possibilités d'assurage.</p>
+	</div>
 
-            <div class="col col--center">=</div>
+	<div class="container_converter">
+		<div class="section section--title">
+			<h1 class="title">Convertisseur de niveau d'escalade</h1>
+		</div>
+		<div class="section section--converter">
+			<div class="col col--left">
+				<div class="input__container input__container--margin">
+					<label for="originSystem" class="input__label">System:
+					</label>
+					<select name="originSystem" id="originSystem" class="input__select">
+						<option value="french" selected>French</option>
+						<option value="yds">YDS</option>
+						<option value="uiaa">UIAA</option>
+						<option value="ewbank">Ewbank</option>
+						<option value="brazilian">Brazilian</option>
+						<option value="british">British</option>
+					</select>
+				</div>
+				<div class="input__container">
+					<label for="originGrade" class="input__label">Grade:
+					</label>
+					<select name="originGrade" id="originGrade" class="input__select">
+						<option selected disabled>-- choose --</option>
+					</select>
+				</div>
+			</div>
 
-            <div class="col col--right">
-                <div class="input__container input__container--margin">
-                    <label for="targetSystem" class="input__label">System: </label>
-                    <select name="targetSystem" id="targetSystem" class="input__select">
-                            <option value="french" selected>French</option>
-                            <option value="yds">YDS</option>
-                            <option value="uiaa">UIAA</option>
-                            <option value="ewbank">Ewbank</option>
-                            <option value="brazilian">Brazilian</option>
-                            <option value="british">British</option>
-                    </select>
-                </div>
-                <div class="input__container">
-                        <label for="originGrade" class="input__label">Grade: </label>
-                        <span id="targetGrade" class="color--highlight">--</span>
-                    </div>
-            </div>
-        </div>
-    </div>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+			<div class="col col--center">=</div>
 
-        gtag('config', 'UA-84160849-4');
-    </script>
-    <script>
-                // VARIABLES
-            const originSystemEl = document.querySelector('#originSystem');
-            const originGradeEl = document.querySelector('#originGrade');
-            const targetSystemEl = document.querySelector('#targetSystem');
-            const targetGradeEl = document.querySelector('#targetGrade');
+			<div class="col col--right">
+				<div class="input__container input__container--margin">
+					<label for="targetSystem" class="input__label">System:
+					</label>
+					<select name="targetSystem" id="targetSystem" class="input__select">
+						<option value="french" selected>French</option>
+						<option value="yds">YDS</option>
+						<option value="uiaa">UIAA</option>
+						<option value="ewbank">Ewbank</option>
+						<option value="brazilian">Brazilian</option>
+						<option value="british">British</option>
+					</select>
+				</div>
+				<div class="input__container">
+					<label for="originGrade" class="input__label">Grade:
+					</label>
+					<span id="targetGrade" class="color--highlight">--</span>
+				</div>
+			</div>
+		</div>
+	</div>
 
-            const grades = {
-                french:       ["3",     "4a",    "4b",      "4c",     "5a",    "5b",    "5c",      "6a",      "6a+",     "6b",      "6b+",       "6c",           "6c+",       "7a",        "7a+",     "7b",          "7b+",     "7c",        "7c+",       "8a",       "8a+",       "8b",      "8b+",       "8c",       "8c+",       "9a",      "9a+",       "9b"],
-                yds:          ["5.4",   "5.5",   "5.6",     "5.7",    "5.8",   "5.9",   "5.10a",   "5.10b",   "5.10c",   "5.10d",   "5.11a",     "5.11b",        "5.11c",     "5.11d",     "5.12a",   "5.12b",       "5.12c",   "5.12d",     "5.13a",     "5.13b",    "5.13c",     "5.13d",   "5.14a",     "5.14b",    "5.14c",     "5.14d",   "5.15a",     "5.15b"],
-                uiaa:         ["III",   "IV",    "IV+",     "V",      "V+",    "VI-",   "VI",      "VI+",     "VII-",    "VII",     "VII+",      "VII+/VIII-",   "VIII-",     "VIII",      "VIII+",   "VIII+/IX-",   "IX-",     "IX",        "IX+",       "IX+/X-",   "X-",        "X",       "X+",        "X+/XI-",   "XI-",       "XI",      "XI+",       "XII-"],
-                ewbank:       ["12",    "13",    "14",      "15",     "16",    "17",    "18",      "19",      "20",      "21",      "22",        "23",           "23/24",     "24",        "25",      "26",          "26/27",   "27",        "28",        "29",       "30",        "31",      "32",        "33",       "34",        "35",      "36",        "37", ],
-                brazilian:    ["2",     "2/3",   "3/3c",    "3c",     "4",     "5a",    "5b/5c",   "6a",      "6b",      "6c",      "6c/7a",     "7a/7b",        "7b",        "7c",        "8a",      "8b",          "8c",      "9a",        "9b",        "9c",       "10a",       "10b",     "10c",       "11a",      "11b",       "11c",     "12a",       "12c"],
-                british:      ["H.D",   "V.D",   "H.V.D",   "M.S.",   "4a",    "4b",    "4c",      "5a",      "5b",      "5c",      "5c/6a",     "6a",           "6a/(6b)",   "(6a)/6b",   "6b",      "6b/6c",       "6c",      "6c/(7a)",   "(6c)/7a",   "7a",       "7a/(7b)",   "7a/7b",   "(7a)/7b",   "7b",       "7b/(7c)",   "7b/7c",   "(7b)/7c",   "7c/8a"]
-            }
+	
+	<script>
+		window.dataLayer = window.dataLayer || [];
+function gtag() {
+dataLayer.push(arguments);
+}
+gtag('js', new Date());
+
+gtag('config', 'UA-84160849-4');
+	</script>
+	<script>
+		// VARIABLES
+const originSystemEl = document.querySelector('#originSystem');
+const originGradeEl = document.querySelector('#originGrade');
+const targetSystemEl = document.querySelector('#targetSystem');
+const targetGradeEl = document.querySelector('#targetGrade');
+
+const grades = {
+french: [
+"3",
+"4a",
+"4b",
+"4c",
+"5a",
+"5b",
+"5c",
+"6a",
+"6a+",
+"6b",
+"6b+",
+"6c",
+"6c+",
+"7a",
+"7a+",
+"7b",
+"7b+",
+"7c",
+"7c+",
+"8a",
+"8a+",
+"8b",
+"8b+",
+"8c",
+"8c+",
+"9a",
+"9a+",
+"9b"
+],
+yds: [
+"5.4",
+"5.5",
+"5.6",
+"5.7",
+"5.8",
+"5.9",
+"5.10a",
+"5.10b",
+"5.10c",
+"5.10d",
+"5.11a",
+"5.11b",
+"5.11c",
+"5.11d",
+"5.12a",
+"5.12b",
+"5.12c",
+"5.12d",
+"5.13a",
+"5.13b",
+"5.13c",
+"5.13d",
+"5.14a",
+"5.14b",
+"5.14c",
+"5.14d",
+"5.15a",
+"5.15b"
+],
+uiaa: [
+"III",
+"IV",
+"IV+",
+"V",
+"V+",
+"VI-",
+"VI",
+"VI+",
+"VII-",
+"VII",
+"VII+",
+"VII+/VIII-",
+"VIII-",
+"VIII",
+"VIII+",
+"VIII+/IX-",
+"IX-",
+"IX",
+"IX+",
+"IX+/X-",
+"X-",
+"X",
+"X+",
+"X+/XI-",
+"XI-",
+"XI",
+"XI+",
+"XII-"
+],
+ewbank: [
+"12",
+"13",
+"14",
+"15",
+"16",
+"17",
+"18",
+"19",
+"20",
+"21",
+"22",
+"23",
+"23/24",
+"24",
+"25",
+"26",
+"26/27",
+"27",
+"28",
+"29",
+"30",
+"31",
+"32",
+"33",
+"34",
+"35",
+"36",
+"37",
+],
+brazilian: [
+"2",
+"2/3",
+"3/3c",
+"3c",
+"4",
+"5a",
+"5b/5c",
+"6a",
+"6b",
+"6c",
+"6c/7a",
+"7a/7b",
+"7b",
+"7c",
+"8a",
+"8b",
+"8c",
+"9a",
+"9b",
+"9c",
+"10a",
+"10b",
+"10c",
+"11a",
+"11b",
+"11c",
+"12a",
+"12c"
+],
+british: [
+"H.D",
+"V.D",
+"H.V.D",
+"M.S.",
+"4a",
+"4b",
+"4c",
+"5a",
+"5b",
+"5c",
+"5c/6a",
+"6a",
+"6a/(6b)",
+"(6a)/6b",
+"6b",
+"6b/6c",
+"6c",
+"6c/(7a)",
+"(6c)/7a",
+"7a",
+"7a/(7b)",
+"7a/7b",
+"(7a)/7b",
+"7b",
+"7b/(7c)",
+"7b/7c",
+"(7b)/7c",
+"7c/8a"
+]
+}
 
 
-            let originSystem;
-            let originGrade;
-            let targetSystem;
-            let currentIndex;
+let originSystem;
+let originGrade;
+let targetSystem;
+let currentIndex;
 
-            // EVENT LISTENERS
-            originSystemEl.addEventListener('change', _updateOriginSystem);
-            originGradeEl.addEventListener('change', _updateGrades);
-            targetSystemEl.addEventListener('change', _updateTargetSystem);
+// EVENT LISTENERS
+originSystemEl.addEventListener('change', _updateOriginSystem);
+originGradeEl.addEventListener('change', _updateGrades);
+targetSystemEl.addEventListener('change', _updateTargetSystem);
 
-            // FUNCTIONS
+// FUNCTIONS
 
-            function _updateOriginSystem(e) {
-                originSystem = _getSelectValue(e.target);
-                _resetOriginOptions();
-            }
+function _updateOriginSystem(e) {
+originSystem = _getSelectValue(e.target);
+_resetOriginOptions();
+}
 
-            function _updateTargetSystem(e) {
-                targetSystem = _getSelectValue(e.target);
-                _updateGrades();
-            }
+function _updateTargetSystem(e) {
+targetSystem = _getSelectValue(e.target);
+_updateGrades();
+}
 
-            function _updateGrades() {
-                originGrade = _getSelectValue(originGradeEl);
-                currentIndex = grades[originSystem].indexOf(originGrade.toString());
+function _updateGrades() {
+originGrade = _getSelectValue(originGradeEl);
+currentIndex = grades[originSystem].indexOf(originGrade.toString());
 
-                if (grades[originSystem].indexOf(originGrade.toString()) >= 0) {
-                    _outputResult(grades[targetSystem][currentIndex]);
-                }
-            }
+if (grades[originSystem].indexOf(originGrade.toString()) >= 0) {
+_outputResult(grades[targetSystem][currentIndex]);
+}
+}
 
-            // HELPER FUNCTIONS
-            function _getSelectValue(sel) {
-                return sel.value;
-            }
+// HELPER FUNCTIONS
+function _getSelectValue(sel) {
+return sel.value;
+}
 
-            function _resetOriginOptions() {
-                originGradeEl.innerHTML = '';
-                let el = document.createElement("option");
-                el.textContent = '-- choose --';
-                el.selected = true;
-                el.disabled = true;
-                originGradeEl.appendChild(el);
+function _resetOriginOptions() {
+originGradeEl.innerHTML = '';
+let el = document.createElement("option");
+el.textContent = '-- choose --';
+el.selected = true;
+el.disabled = true;
+originGradeEl.appendChild(el);
 
-                for(let i = 0; i < grades[originSystem].length; i++) {
-                    let el = document.createElement("option");
-                    el.textContent = grades[originSystem][i];
-                    el.value = grades[originSystem][i];
-                    originGradeEl.appendChild(el);
-                }
-            }
+for (let i = 0; i < grades[originSystem].length; i++) {
+let el = document.createElement("option");
+el.textContent = grades[originSystem][i];
+el.value = grades[originSystem][i];
+originGradeEl.appendChild(el);
+}
+}
 
-            function _outputResult(result) {
-                targetGradeEl.innerHTML = result;
-            }
+function _outputResult(result) {
+targetGradeEl.innerHTML = result;
+}
 
 
-            // init
-            function init() {
-                originSystem = _getSelectValue(originSystemEl);
-                targetSystem = _getSelectValue(targetSystemEl);
-                _resetOriginOptions();
-            }
+// init
+function init() {
+originSystem = _getSelectValue(originSystemEl);
+targetSystem = _getSelectValue(targetSystemEl);
+_resetOriginOptions();
+}
 
-            init();
-    
-    </script>
-    
+init();
+	</script>
+
 {% endblock %}

@@ -60,12 +60,12 @@
                 height: 500px;
                 width: 70%px;
                 padding: 20px;
-                border: solid 2px;
+               /* border: solid 2px;*/
             }
             #macarte{
-                height: 450px;
-                border: solid 2px;
-                margin: 20px 40px;
+                height: 850px;
+               /*border: solid 2px;*/
+                margin: 10px 10px;
             }
            
             {# #map1{
@@ -79,9 +79,8 @@
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
-        {% block javascripts %}
-            <script src="../public/js/scripts.js"></script>
-        {% endblock %}
+        
+           
     </head>
     <body>
         <header>
@@ -90,9 +89,9 @@
             <label for="menu"><i class="fas fa-bars"></i></label>
             <input type="checkbox" id="menu">
             <ul class="nav-list">
-                <li><a href="{{ path("front" )}}">Home</a></li>
-                <li><a href="{{ path("site_index" )}}">Site d'escalade</a></li>
-                <li><a href="{{ path("site_new" )}}">Ajoute ton site</a></li>
+                <li><a href="{{ path("front" )}}">Accueil</a></li>
+                <li><a href="{{ path("site_index" )}}">Rechercher un Site</a></li>
+                <li><a href="{{ path("site_new" )}}">Ajouter ton site</a></li>
                 <li><a href="{{ path("topo_index" )}}">Les topos</a>
                     {# <ul class="sub-menu">
                         <li>Topos des pays dans le monde</li>
@@ -115,6 +114,10 @@
         {% block body %}{% endblock %}
     <footer>
         <p>Copyright Diego R. de Massy, 2021.</p>
-    </footer>   
+    </footer> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+     <script src="{{ asset('js/scripts.js') }}"></script>
+            {% block javascripts %}
+            {% endblock %}  
     </body>
 </html>

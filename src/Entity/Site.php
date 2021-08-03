@@ -2,19 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\SiteRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SiteRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 
 
 /**
+ * 
  * @ORM\Entity(repositoryClass=SiteRepository::class)
  * @Vich\Uploadable
+ * @ApiResource()
  */
 class Site
 {
@@ -426,12 +429,12 @@ class Site
     }
 
 
-    public function getDifficulte(): ?array
+    public function getDifficulte(): ?string
     {
         return $this->difficulte;
     }
 
-    public function setDifficulte(array $difficulte): self
+    public function setDifficulte(?string $difficulte): self
     {
         $this->difficulte = $difficulte;
 

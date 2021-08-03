@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TopoRepository;
 use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -12,8 +13,10 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
+ * 
  * @ORM\Entity(repositoryClass=TopoRepository::class)
  * @Vich\Uploadable
+ * @ApiResource()
  */
 class Topo
 {

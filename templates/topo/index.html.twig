@@ -5,10 +5,30 @@
 {% block body %}
     <section id="topoIndex">
         <div>
-            <h1>Topo index</h1>
+            <h1>Recherche de Topos</h1>
         </div>
     </section>
-    
+				
+                    <section id="tabs" class="tab-container">
+                                        <h2>Liste de des Topos de France</h2>
+                            <div class="container">
+                        <nav class="onglets">
+                        
+                                <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
+                                <a href="#" class="col-4" class="tabA">Par nom</a>
+                                <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>
+                            
+                        </nav>
+                            </div>
+                        <div class="panel">
+                                        <p>Choisi une région</p>
+                                        <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
+                                        
+                                        </div>
+                        <div class="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dignissimos explicabo mollitia quam alias natus?</div>
+                        <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
+                    </section>
+               
 
     <table class="table tableTopos">
         <thead>
@@ -55,6 +75,57 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('topo_new') }}">Create new</a>
+ <a href="{{ path('topo_new') }}">Create new</a>
 {% endblock %}
+
+{% block javascripts %}
+   
+    <script>
+                // gestion du tab
+        function tabsPlugin(){
+            let onglets = $('#tabs .onglets a')
+            let panels = $('#tabs .panel');
+            // console.log(panels, onglets);
+
+            function openPanel(index){
+                // console.log(index);
+                panels.css({'display':'none'});//panels , vous allez tous disparaître
+                panels.eq(index).css({'display':'block'});//sauf celui de l'index du lien affiche toi
+            }
+
+            function setCssClass(onglet){
+                onglets.removeClass('actif');
+                onglet.addClass('actif');
+            }
+
+            function setSize(){
+                let h = 0;
+                panels.each(function(){
+                    if(h<$(this).innerHeight()){
+                        h=$(this).innerHeight();
+                    }
+                    // console.log($(this).innerHeight(), h)
+                });
+                panels.css({'height':h});
+            }
+
+            onglets.on('click', function(ev){
+                ev.preventDefault();
+                openPanel($(this).index());
+                setCssClass($(this));
+            });
+
+            function init(){
+                openPanel(0);
+                setSize();
+            }
+            init();
+    }
+        $(document).ready(function(){
+        tabsPlugin();
+        
+        });
+    </script>
+
+{% endblock %}
+   

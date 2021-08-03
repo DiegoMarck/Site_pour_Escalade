@@ -1,4 +1,4 @@
-alert(coucou);
+
 
 // VARIABLES
 const originSystemEl = document.querySelector('#originSystem');

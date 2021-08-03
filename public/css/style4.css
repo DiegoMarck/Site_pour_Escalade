@@ -12,7 +12,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: #f2e205;
+  background-color: #317133;
   /*position: relative;
     float: left;*/
   overflow: scroll;
@@ -39,16 +39,16 @@ p {
 
 @import "~bootstrap/scss/bootstrap";
 
-/*---- philosophie mobile first 1ère Page-----*/
+/*---- philosophie mobile first 1ère Page------------------------------------*/
 
-/* ----- élément de section de navigation  ----  */
+/* ----- élément de section de navigation  --------------------------------  */
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px; /* 20 */
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   font-size: 20px;
   height: 70px;
@@ -63,14 +63,14 @@ nav {
 }
 
 nav * {
-  color: #0e0d0d;
+  color: #ffff;
   /* font-size: 20px; */
   /* height: 50px; */
 }
 
 nav input[type="checkbox"],
 .nav-list {
-  display: none; /* fait dispraitre la cesa à cocher    */
+  display: none; /* fait dispraitre la case à cocher    */
   /* height: 35px; */
 }
 
@@ -79,8 +79,8 @@ nav input[type="checkbox"]:checked + .nav-list {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-top: 270px;
-  background: #d9b50469;
+  margin-top: 370px;
+  background: rgba(20,76,116,0.37);
   width: 100%;
   /* height: 35px; */
   left: 0;
@@ -143,9 +143,10 @@ nav .nav-list li a:link {
   transform: scale(1);
 } */
 
-/*---------------mobile home section-1ère Page--------------------------*/
 
-#home-section1 {
+/*---------------------------------Philosophie mobile first - mobile home section - 1ère Page--------------------------*/
+
+.home-titre {
   height: 60vh;
   width: 100%;
   background-image: url("../img/climbing-2.jpg");
@@ -153,7 +154,7 @@ nav .nav-list li a:link {
   background-repeat: no-repeat;
   background-size: cover;
 }
-#home-section1 div {
+.home-titre div {
   position: absolute;
   margin-top: 20px;
   top: 20%;
@@ -165,18 +166,7 @@ nav .nav-list li a:link {
   border-radius: 10px;
   padding: 4px;
 }
-#home-section2 .container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-#home-section3 .container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-#home-section4 .container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
+
 table .table {
   width: 50%;
 }
@@ -184,19 +174,8 @@ table .table {
     min-height: 100vh;
  } */
 
-.container-photos {
-  column-count: 1;
-}
-.container-photos .img {
-  min-height: 50px;
-  min-width: 50px;
-}
-.container-photos img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-#home-section4 {
+
+.accueil_concours {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -214,9 +193,6 @@ table .table {
   padding: 4px;
   display: flex;
   flex-wrap: wrap;
-  /* width: 100%;   */
-  /* margin: 2px; */
-  /* background-color: #f00; */
 }
 #concours {
   width: 100%;
@@ -229,24 +205,18 @@ table .table {
   align-items: center;
   margin-left: 30px;
 }
-/* .card img{
-    width: 220px;
-    height: 230px;
-} */
 .text-div {
   width: 95%;
   padding: 10px;
 }
-.wrap t3-sl t3-sl-1 .container{
-  border: 2px solid black;
+
+.container_presentation{
+  /* border: 1px solid black; */
+  background: #859daf;
 }
 
-/*-------- philosophie mobile first - 2ième Page - trouve ton spot !----------*/
+/*-------- philosophie mobile first - 2ième Page - Rechercher un site----------*/
 
-/* #trouveSpot{
-   height: 40vh;
-   width: 100%;
-} */
 
 .tableA {
   width: 100% !important;
@@ -268,7 +238,7 @@ table .table {
 }
 
 #trouveSpot {
-  height: 35vh;
+  height: 60vh;
   width: 100%;
   background-image: url("../img/escalade2.jpg");
   background-position: center;
@@ -277,17 +247,6 @@ table .table {
 }
 
 /* titre haut de page  */
-/* .container2 h2 {  
-      background-color: rgb(182, 180, 180);
-      border: 1px solid rgb(223, 222, 222);
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      margin: 40px 10px;
-      padding: 5px;
-      border-radius: 20px;
-      width: 70%;
-  }   */
 
 .lieu fieldset {
   /* champ du formulaire  */
@@ -325,9 +284,10 @@ legend {
 }
 div #map {
   /* carte  */
-  margin: 50px;
-  padding: 20px;
+  /* margin: 20px;
+  padding: 20px; */
   width: auto;
+  height: 600px;
 }
 
 #période {
@@ -344,18 +304,8 @@ div #map {
 .colonne3 {
   grid-column: 3; /* placement en colonne 2 */
 }
-/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-#map1 {
-  width: 80%;
-  height: 80%;
-  border: solid 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 10%;
-  background-color: rgb(183, 189, 178);
-}
+
+
 
 /* Optional: Makes the sample page fill the window. */
 html,
@@ -365,7 +315,7 @@ body {
   padding: 0;
 }
 
-/*---------------------------------------philosophie mobile first-------------------------*/
+
 /* ---------------------------------------- 3ième page - Ajout Site -------------------------*/
 
 /* titre haut de page  */
@@ -387,9 +337,9 @@ body {
   padding: 4px;
 }
 #AjoutSite {
-  height: 30vh;
+  height: 60vh;
   width: 100%;
-  background-image: url("../img/escalade2.jpg");
+  background-image: url("../img/stunning-shot-of-young-man-climbing-up-cliff-on-cold-and-foggy-day.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -484,7 +434,7 @@ form .village {
   display: block;
 }
 
-/*--------------------philosophie mobile first------------------------------------------*/
+
 /* ------------------- 4ième page -Topo ------------------------------------------------*/
 
 .tableTopos {
@@ -510,16 +460,174 @@ form .village {
   padding: 4px;
 }
 #topoIndex {
-  height: 30vh;
+  height: 60vh;
   width: 100%;
-  background-image: url("../img/escalade2.jpg");
+  background-image: url("../img/beautiful-view-of-avalanche-peak-arthur-s-pass-new-zealand.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
+a{	
+	text-decoration: none;
+}
+/** tabs **/
+.tab-container{
+	width:100%;
+	position: relative;
+	margin: 20px 0;
+  border: 2px solid black;
+}
+.tab-container .onglets{
+	background-color: rgba(100,161,157,0.5);
+	display: flex;
+	height: 30px;
+	line-height: 30px;
+  border:2px solid black;
+}
+.onglets{
+	background-color: rgba(100,161,157,0.5);
+	display: flex;
+	height: 30px;
+	line-height: 30px;
+  border:2px solid black;
+}
+.tab-container .onglets a{
+	flex:1;
+	border: 1px solid rgba(100,161,157,1);
+	border-bottom: none;
+	color: #64a19d;
+	text-align: center;
+}
+.tab-container .panel{
+	padding:10px;
+	background-color: #426377;
+	position: relative;
+	border: 1px solid rgba(100,161,157,1);
+}
+.tab-container .onglets a.actif{
+	background-color: rgba(100,161,157,1);
+	color:#fff;
+}
+.tab-container .onglets a{
+  border: 2px solid black;
+  background-color: grey;
+  /* width: 33%; */
+  height: 50px;
+  word-wrap: break-word;
+  text-align: center;
+  font-size: 0.8em;
+}
+.tab-container .panel img{
+  max-width: 94%; 
+  justify-content: center;
+  margin:auto;
+  padding: 10px;
+}
 
-/*-------------------------philosophie mobile first-------------------------------------*/
-/* ------------------------- 5ième page -Contact --------------------------------------*/
+
+/* ------------------------- 5ième page -Converter --------------------------------------*/
+
+#converter {
+  height: 60vh;
+  width: 100%;
+  /* background-image: url("../img/Rclimbing.jpg"); */
+  background-image: url("https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/vtt-single-track.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#converter div {
+  position: absolute;
+  margin-top: 20px;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: #9bd9f294;
+  border-radius: 10px;
+  padding: 4px;
+}
+.color--highlight {
+  color: var(--color-highlight);
+  font-weight: 700;
+}
+
+.container_converter {
+  background-color: #859daf;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top : 0px;
+}
+
+.title {
+  margin-bottom: 1em;
+}
+
+.section--converter {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  grid-gap: 2em;
+}
+
+.col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column
+}
+
+.col--center {
+  align-items: center;
+  font-size: 4em;
+  font-weight: 700;
+  color: var(--color-highlight);
+}
+
+.input__container--margin {
+  margin-bottom: 1em;
+}
+
+.input__label {
+  display: inline-block;
+  text-align: right;
+  border-right: 1em;
+  width: 70px;
+}
+
+.input__select {
+  position: relative;
+  width: 150px;
+  vertical-align: middle;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 2px;
+  padding: 4px 8px;
+  background: url('./images/menu-down.svg') 96% / 15% no-repeat ;
+}
+
+
+@media screen and (max-width: 540px) {
+  .title {
+      text-align: center;
+  }
+
+  .section--converter {
+      grid-template-columns: 1fr;
+  }
+
+  .col--center {
+      height: 20px;
+  }
+}
+
+
+/* ------------------------- 6ième page -Contact --------------------------------------*/
 
 #form {
   color: lightcoral;
@@ -544,15 +652,39 @@ form .village {
 }
 
 #contact {
-  height: 40vh;
+  height: 60vh;
   width: 100%;
-  background-image: url("../img/escalade2.jpg");
+  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 #form {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+}
+
+/* ------------------------- 7ième page - Template du site --------------------------------------*/
+
+
+.siteTemplate div {
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: #9bd9f294;
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.siteTemplate {
+  height: 60vh;
+  width: 100%;
+  background-image: url("../img/climbA.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*--------------philosophie mobile first------------------------*/
@@ -660,11 +792,12 @@ footer {
 }
 
 /*--------- laptop------------ */
+
 @media screen and (min-width: 1024px) {
   nav {
     position: fixed;
     z-index: 1000;
-    background: #d9b50491;
+    background: rgba(20,76,116,0.37);
     text-align: center;
   }
   nav * {

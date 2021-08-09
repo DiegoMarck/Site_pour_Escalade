@@ -5,14 +5,15 @@ namespace App\Controller;
 use App\Entity\Site;
 use App\Entity\Media;
 use App\Form\SiteType;
-use App\Repository\MediaRepository;
 use App\Repository\SiteRepository;
+use App\Repository\MediaRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/site")
@@ -104,6 +105,7 @@ class SiteController extends AbstractController
 
     /**
      * @Route("/{id}", name="site_show", methods={"GET"})
+     * 
      */
     public function show(Site $site, MediaRepository $mediarepository, $id): Response
     {

@@ -3,9 +3,20 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+<section id="registration">
+    <div>
+        <h2>Registration form</h2>
+    </div>
+</section>
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
-    {{ include('user/_form.html.twig') }}
+<section>
+
+    <div class="container">
+        {{ include('user/_form.html.twig') }}
+    </div>
+
+</section>
 
     <a href="{{ path('user_index') }}">back to list</a>
 {% endblock %}

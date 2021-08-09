@@ -1,7 +1,6 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-
     <section id="contact">
         <div>
             <h2>N'hésitez pas me contacter</h2>
@@ -13,11 +12,10 @@
         <div class= "text">
             {{message}}
         </div>
-{% endfor %}
+    {% endfor %}
 {% endif %}
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
-{# {% form_theme form 'foundation_5_layout.html.twig' %} #}
 
 <div class="container">
     <div class="form-group">

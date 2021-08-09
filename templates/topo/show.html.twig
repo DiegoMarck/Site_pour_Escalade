@@ -8,7 +8,12 @@
             <h1>Topo</h1>
         </div>
     </section>
-
+            {# {% for image in topo.media %}
+                <div>
+                    <img
+                    src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
+                </div>
+		    {% endfor %} #}
     
     <table class="table tableTopos">
         <tbody>
@@ -66,6 +71,13 @@
             </tr> #}
         </tbody>
     </table>
+    {% for image in topo.media %}
+			<div>
+				<img
+				src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
+			{# <a href="{{ path('siteDeleteImage', {'id':site.id}) }}" data-dlete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a> #}
+			</div>
+	{% endfor %}
 
     <a href="{{ path('topo_index') }}">back to list</a>
 

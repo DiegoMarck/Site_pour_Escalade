@@ -55,6 +55,12 @@ class Media
      */
     private $maj;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Topo::class, inversedBy="media")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $topo;
+
     public function __toString(){
         return $this->nom;
     }
@@ -149,6 +155,18 @@ class Media
     public function setMaj($maj)
     {
         $this->maj = $maj;
+
+        return $this;
+    }
+
+    public function getTopo(): ?Topo
+    {
+        return $this->topo;
+    }
+
+    public function setTopo(?Topo $topo): self
+    {
+        $this->topo = $topo;
 
         return $this;
     }

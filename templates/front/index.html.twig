@@ -1,177 +1,291 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Escalade
-{% endblock %}
+{% block title %}Escalade{% endblock %}
 
 {% block body %}
-	
-	
-	<section class="home-titre">
-		<div>
-			<h1>
-				Univers d'Escalade
-			</h1>
-			<h1>Sortez grimper!</h1>
-		</div>
-	</section>
 
-	{# afficher le message de réservation efféctué #}
-	{% if app.flashes("info") is defined  %}
-		{% for message in app.flashes("info")%}
-			dump($message)
-			<div class="text">
-				{{message}}
-			</div>
-		{% endfor %}
-	{% endif %}
+    <section class="home-titre">
+        <div>
+            <h1>
+                Univers d'Escalade               
+            </h1>
+            <h1>
+                Sortez grimper!                         
+            </h1>
+        </div>
+    </section>
+    {# afficher le message de réservation efféctué #}
+    {% if app.flashes("info") is defined %}
+        {% for message in app.flashes("info") %}              
+            <div class="text">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <section class="container_presentation">
+        <div class="row">
+            <div class="col">
+                <div class="jumbotron">
+                    <p>
+                        <span>
+                            Tous les sites de France géolocalisés
+                                                                                                            
+                                                                                
+                                                    
+                        </span>
+                    </p>
+                    <p>
+                        <a href="{{ path("site_index" ) }}" class="button">
+                            <img src="{{ asset('img/SitesFrance.png') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="jumbotron">
+                    <p>
+                        <span class="box_accueil">
+                            1 applications gratuites pour smartphones et tablettes
+                                                                                                                        
+                                                                                        
+                                                        
+                        </span>
+                    </p>
+                    <p>
+                        <a href="{{ path("site_index" ) }}" class="button">
+                            <img src="{{ asset('img/imageApplication.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="jumbotron">
+                    <p>
+                        <span class="box_accueil">
+                            Des centaines de topos livres
+                                                                                                                                                                        
+                                                                                                                                        
+                                                                                                    
+                                                                
+                            <br>
+                                téléchargeables et numériques
+                                                                                                                                                    
+                                                                                                            
+                                                                    
+                            </span>
+                    </p>
+                    <p>
+                        <a href="{{ path("site_index" ) }}" class="button">
+                            <img class="img-thumbnail" src="{{ asset('img/imageLivre2.jpg') }}" alt="iOSAndroidvaWindowsPhone" width="400" height="188" />
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="jumbotron">
+                    <p>
+                        <span class="box_accueil" style="line-height:2.6">
+                            Plusieurs milliers de photos !
+                                                                                                                                                
+                                                                                                        
+                                                                
+                        </span>
+                    </p>
+                    <p>
+                        <a href="{{ path("site_index" ) }}" class="button">
+                            <img src="{{ asset('img/three-zinnen.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
+                    </p>
+                </div>
+            </div>
+        </div>          
+    </section>
 
+    <div class="text-div">
+        <p>
+            Qu'est-ce que l'escalade?
+                                                                                                                                                                                                                                                                                                                                                                A l'origine, l'escalade apparaissait comme une activité dérivée de l'alpinisme.
+                                                                                                                                                                                                                                                                                                                                                                Elle n'était alors considérée que comme un moyen d'entraînement pour les courses d'alpinisme. C'est
+                                                                                                                                                                                                                                                                                                                                                                au 19e siècle que l'escalade est devenue un sport à part entière en Allemagne et en Angleterre. Le
+                                                                                                                                                                                                                                                                                                                                                                but était déjà d'atteindre le haut d'une paroi rocheuse, d'un bloc ou d'un mur d'escalade le plus
+                                                                                                                                                                                                                                                                                                                                                                rapidement possible. Pendant un siècle, le matériel a évolué au rythme des performances des
+                                                                                                                                                                                                                                                                                                                                                                grimpeurs. C'est à partir des années 1960 que les salles d'escalade se sont multipliées donnant un
+                                                                                                                                                                                                                                                                                                                                                                réel élan à la pratique de la discipline. Au niveau mondial, mais aussi dans l'Hexagone, les
+                                                                                                                                                                                                                                                                                                                                                                Français obtiennent généralement des bons résultats dans les trois épreuves possibles (difficulté,
+                                                                                                                                                                                                                                                                                                                                                                vitesse et bloc). A l'image de Juliette Danion, championne du monde 2007 de bloc. « C'est un sport
+                                                                                                                                                                                                                                                                                                                                                                riche et praticable par tout le monde, quelles que soient ses capacités physiques »
+                                                                                                                                                                                                                                                                                                                                                                « C'est une activité qui prône la confiance en soi, la solidarité envers ses copains et le
+                                                                                                                                                                                                                                                                                                                                                                dépassement de soi à tous les niveaux. Dans les Associations sportives, on peut faire de l'escalade
+                                                                                                                                                                                                                                                                                                                                                                en toute sécurité, soit en loisir, soit en compétition avec en ligne de mire les championnats de
+                                                                                                                                                                                                                                                                                                                                                                France UNSS ».
+                                                                                                                                                                                                                                                                                                                                                                Présentée parfois comme une activité à risques, l'escalade est une pratique très sécurisée; donc
+                                                                                                                                                                                                                                                                                                                                                                aucun risque de se faire mal et beaucoup de plaisir à prendre. Les collégiens et lycéens l'ont bien
+                                                                                                                                                                                                                                                                                                                                                                compris puisqu'ils sont 58 500, avec autant de filles que de garçons, à avoir pris une licence
+                                                                                                                                                                                                                                                                                                                                                                scolaire.
+                                                                                                        
+                                                                                            
+                                                                
+                                    
+        </p>
+    </div>
 
-	<section class="container_presentation">
-		<div class="row">
-			<div class="col">
-				<div class="jumbotron">
-					<p>
-						<span>Tous les sites de France géolocalisés</span>
-					</p>
-					<p>
-						<a href="{{ path("site_index" )}}" class="button"><img src="{{asset('img/SitesFrance.png')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
-						
-					</p>
-				</div>
-			</div>
-			<div class="col">
-				<div class="jumbotron">
-					<p>
-						<span class="box_accueil">1 applications gratuites pour smartphones et tablettes</span>
-					</p>
-					<p>
-						<a href="{{ path("site_index" )}}" class="button"><img src="{{asset('img/imageApplication.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
-					</p>
-				</div>
-			</div>
-			<div class="col">
-				<div class="jumbotron">
-					<p>
-						<span class="box_accueil">
-							Des centaines de topos livres
-							<br>
-							téléchargeables et numériques</span>
-					</p>
-					<p>
-						
-						<a href="{{ path("site_index" )}}" class="button"><img class="img-thumbnail" src="{{asset('img/imageLivre2.jpg')}}" alt="iOSAndroidvaWindowsPhone" width="400" height="188"/></a>
-					</p>
-				</div>
-			</div>
-			<div class="col">
-				<div class="jumbotron">
-					<p>
-						<span class="box_accueil" style="line-height:2.6">Plusieurs milliers de photos !</span>
-					</p>
-					<p>
-						<a href="{{ path("site_index" )}}" class="button"><img src="{{asset('img/three-zinnen.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3" width="400" height="188"></a>
-					</p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="text-div">
-		<p>Qu'est-ce que l'escalade?
-																																																													A l'origine, l'escalade apparaissait comme une activité dérivée de l'alpinisme.
-																																																													Elle n'était alors considérée que comme un moyen d'entraînement pour les courses d'alpinisme. C'est
-																																																													au 19e siècle que l'escalade est devenue un sport à part entière en Allemagne et en Angleterre. Le
-																																																													but était déjà d'atteindre le haut d'une paroi rocheuse, d'un bloc ou d'un mur d'escalade le plus
-																																																													rapidement possible. Pendant un siècle, le matériel a évolué au rythme des performances des
-																																																													grimpeurs. C'est à partir des années 1960 que les salles d'escalade se sont multipliées donnant un
-																																																													réel élan à la pratique de la discipline. Au niveau mondial, mais aussi dans l'Hexagone, les
-																																																													Français obtiennent généralement des bons résultats dans les trois épreuves possibles (difficulté,
-																																																													vitesse et bloc). A l'image de Juliette Danion, championne du monde 2007 de bloc. « C'est un sport
-																																																													riche et praticable par tout le monde, quelles que soient ses capacités physiques »
-																																																													« C'est une activité qui prône la confiance en soi, la solidarité envers ses copains et le
-																																																													dépassement de soi à tous les niveaux. Dans les Associations sportives, on peut faire de l'escalade
-																																																													en toute sécurité, soit en loisir, soit en compétition avec en ligne de mire les championnats de
-																																																													France UNSS ».
-																																																													Présentée parfois comme une activité à risques, l'escalade est une pratique très sécurisée; donc
-																																																													aucun risque de se faire mal et beaucoup de plaisir à prendre. Les collégiens et lycéens l'ont bien
-																																																													compris puisqu'ils sont 58 500, avec autant de filles que de garçons, à avoir pris une licence
-																																																													scolaire.
-		</p>
-	</div>
+        <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
 
-	<div class="accueil_concours">
-		<h2>Concours photo</h2>
-		<p>N'hésitez pas à nous envoyer vos photos à cette adresse!</p>
-		<a href="mailto:ddemassy@gmail.com" class="concours">concours.photos@monsite.fr</a>
-	</div>
-	
-	<section id="concours-section">
-		<div class="container">
-			<figure class="figure">
-				<img src="{{asset('img/bear-79838_1280.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
-				<figcaption class="figure-caption text-center">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500,</figcaption>
-			</figure>
-		</div>
-		<div class="container">
-			<figure class="figure">
-				<img src="{{asset('img/climb-1.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
-				<figcaption class="figure-caption text-center">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</figcaption>
-			</figure>
-		</div>
-		<div class="container">
-			<figure class="figure">
-				<img src="{{asset('img/climb-2.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
-				<figcaption class="figure-caption text-center">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</figcaption>
-			</figure>
-		</div>
-		<div class="container">
-			<figure class="figure">
-				<img src="{{asset('img/hikers-on-top.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
-				<figcaption class="figure-caption text-center">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</figcaption>
-			</figure>
-		</div>
-		<div class="container">
-			<figure class="figure">
-				<img src="{{asset('img/artificialClimber.jpg')}}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
-				<figcaption class="figure-caption text-center">Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.</figcaption>
-			</figure>
-		</div>
-	</section>
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExemple" data-slide-to="1"></li>
+                <li data-target="#carouselExemple" data-slide-to="2"></li>
+            </ol>
 
-	<section id="gallery-section">
-		<h2>Gallery</h2>
-		<div class="container">
-			<div class="box box_a">
-				<img src="{{asset('img/bear-79838_1280.jpg')}}" alt="image">
-			</div>
-			<div class="box box_b">
-				<img src="{{asset('img/climb-1.jpg')}}" alt="image">
-			</div>
-			<div class="box box_c">
-				<img src="{{asset('img/climb-2.jpg')}}" alt="image">
-			</div>
-			<div class="box box_d">
-				<img src="{{asset('img/climb-3.jpg')}}" alt="image">
-			</div>
-			<div class="box box_e">
-				<img src="{{asset('img/climb-4.jpg')}}" alt="image">
-			</div>
-			<div class="box box_f">
-				<img src="{{asset('img/climber.jpg')}}" alt="image">
-			</div>
-			<div class="box box_g">
-				<img src="{{asset('img/climbing.jpg')}}" alt="image">
-			</div>
-			<div class="box box_h">
-				<img src="{{asset('img/person.jpg')}}" alt="image">
-			</div>
-			<div class="box box_i">
-				<img src="{{asset('img/climbing-wall.jpg')}}" alt="image">
-			</div>
-			<div class="box box_j">
-				<img src="{{asset('img/rocks-1.jpg')}}" alt="image">
-			</div>
+            <div class="carousel-inner">
 
-		</div>
-	</section>
+                <div class="carousel-item active">
+                    <div class="img-container">
+                        <img src="{{ asset('img/bear-79838_1280.jpg') }}" class="d-block">
+                    </div>
+                </div>
 
-	{% endblock %}
+                <div class="carousel-item">
+                    <div class="img-container">
+                        <img src="{{ asset('img/climb-1.jpg') }}" class="d-block">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="img-container">
+                        <img src="{{ asset('img/climb-2.jpg') }}" class="d-block">
+                    </div>
+                </div>
+            </div>
+
+            <a href="#carouselExemple" class="carousel-control-prev" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="ture"></span>
+                <span class="sr-only">
+                    Previous                             
+                </span>
+            </a>
+            <a href="#carouselExemple" class="carousel-control-next" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">
+                    Next                                         
+                </span>
+            </a>
+        </div>
+
+        <div class="accueil_concours">
+            <h2>
+                Concours photo                            
+            </h2>
+            <p>  
+                N'hésitez pas à nous envoyer vos photos à cette adresse!                                                                                                       
+            </p>
+            <a href="mailto:ddemassy@gmail.com" class="concours">
+               concours.photos@monsite.Fr                                         
+            </a>
+        </div>
+
+        <section id="concours-section">
+                    <div class="container">
+                        <figure class="figure">
+                            <img src="{{ asset('img/bear-79838_1280.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500,
+                                                                                                                                                                                            
+                                                                                                                                        
+                                                                                    
+                                </figcaption>
+                        </figure>
+                    </div>
+                    <div class="container">
+                        <figure class="figure">
+                            <img src="{{ asset('img/climb-1.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                                                                                                                                                                                                        
+                                                                                                                                                
+                                                                                        
+                                </figcaption>
+                        </figure>
+                    </div>
+                    <div class="container">
+                        <figure class="figure">
+                            <img src="{{ asset('img/climb-2.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                                                                                                                                                                                                                    
+                                                                                                                                                        
+                                                                                            
+                                </figcaption>
+                        </figure>
+                    </div>
+                    <div class="container">
+                        <figure class="figure">
+                            <img src="{{ asset('img/hikers-on-top.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                                                                                                                                                                                                                                
+                                                                                                                                                                
+                                                                                                
+                                </figcaption>
+                        </figure>
+                    </div>
+                    <div class="container">
+                        <figure class="figure">
+                            <img src="{{ asset('img/artificialClimber.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression.
+                                                                                                                                                                                                                                            
+                                                                                                                                                                        
+                                                                                                    
+                                </figcaption>
+                        </figure>
+                    </div>
+        </section>
+
+    <section id="gallery-section">
+        <h2>
+            Gallery
+                                                                                                                                                                                                                                                            
+                                                                    
+        </h2>
+        <div class="container">
+            <div class="box box_a">
+                <img src="{{ asset('img/bear-79838_1280.jpg') }}" alt="image">
+            </div>
+            <div class="box box_b">
+                <img src="{{ asset('img/climb-1.jpg') }}" alt="image">
+            </div>
+            <div class="box box_c">
+                <img src="{{ asset('img/climb-2.jpg') }}" alt="image">
+            </div>
+            <div class="box box_d">
+                <img src="{{ asset('img/climb-3.jpg') }}" alt="image">
+            </div>
+            <div class="box box_e">
+                <img src="{{ asset('img/girl.jpg') }}" alt="image">
+            </div>
+            <div class="box box_f">
+                <img src="{{ asset('img/climber.jpg') }}" alt="image">
+            </div>
+            <div class="box box_g">
+                <img src="{{ asset('img/climbing.jpg') }}" alt="image">
+            </div>
+            <div class="box box_h">
+                <img src="{{ asset('img/person.jpg') }}" alt="image">
+            </div>
+            <div class="box box_i">
+                <img src="{{ asset('img/climbing-wall.jpg') }}" alt="image">
+            </div>
+            <div class="box box_j">
+                <img src="{{ asset('img/rocks-1.jpg') }}" alt="image">
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascript %}
+    <script>
+		$('.carousel').carousel({
+			pause: "null"
+		})
+	</script>
+{% endblock %}
+                                                                                        

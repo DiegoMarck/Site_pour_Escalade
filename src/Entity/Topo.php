@@ -88,15 +88,20 @@ class Topo
      */
     private $imageFile;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="topo")
+     */
+    private $media;
+
     
 
     public function __construct()
     {
         $this->nomSite = new ArrayCollection();
+        $this->media = new ArrayCollection();
     }
     // public function __toString(){
-    //     return $this->getImageFile;
-
+    //     return $this->getMedia;
     // }
 
     public function getId(): ?int
@@ -268,6 +273,36 @@ class Topo
             $this->datedeMiseajour = new \DateTime();
 
         }
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getMedia(): Collection
+    {
+        return $this->media;
+    }
+
+    public function addMedium(Media $medium): self
+    {
+        if (!$this->media->contains($medium)) {
+            $this->media[] = $medium;
+            $medium->setTopo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedium(Media $medium): self
+    {
+        if ($this->media->removeElement($medium)) {
+            // set the owning side to null (unless already changed)
+            if ($medium->getTopo() === $this) {
+                $medium->setTopo(null);
+            }
+        }
+
         return $this;
     }
 }

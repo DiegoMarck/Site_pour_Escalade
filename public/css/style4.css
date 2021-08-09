@@ -19,16 +19,16 @@ body {
 }
 
 section {
-  padding: 50px 0px;
+  padding: 20px 0px;
 }
 h1 {
-  color: #8c6620;
+  color: #fff;
   margin: 20px 20px;
   text-align: center;
 }
 
 h2 {
-  color: #8c6620;
+  color:#fff;
   margin: 20px;
   text-align: center;
 }
@@ -64,8 +64,8 @@ nav {
 
 nav * {
   color: #ffff;
-  /* font-size: 20px; */
-  /* height: 50px; */
+  /* font-size: 20px;
+  height: 50px; */
 }
 
 nav input[type="checkbox"],
@@ -79,7 +79,7 @@ nav input[type="checkbox"]:checked + .nav-list {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-top: 370px;
+  margin-top: 430px;
   background: rgba(20,76,116,0.37);
   width: 100%;
   /* height: 35px; */
@@ -89,7 +89,7 @@ nav input[type="checkbox"]:checked + .nav-list {
 }
 
 nav .nav-list li {
-  margin: 4px 2px;
+  margin: 10px 10px 10px 10px;
   text-align: left;
   padding: 2px;
   font-size: 20px;
@@ -98,53 +98,10 @@ nav .nav-list li {
 nav .nav-list li a:link {
   text-decoration: none;
 }
-/* rajout de la partie menu déroulant https://fr.w3docs.com/snippets/css/comment-creer-un-menu-de-navigation-deroulant-avec-css.html */
-/* nav { 
-  text-align: center;
-}
-.nav-list {
-  display: inline-block;
-}
-.nav-list > li {
-  float: left;
-  color: #e298e1;
-  width: 140px;
-  height: 40px;
-  line-height: 40px;
-  background-color : rgba(62, 101, 255, 0.157);
-  cursor: pointer;
-  font-size: 17px;
-}
-.sub-menu {
-  transform: scale(0);
-  transform-origin: top center;
-  transition: all 300ms ease-in-out;
-}
-.sub-menu li {
-  font-size: 14px;
-  background: rgba(0, 0, 0, 0.8);
-  padding: 8px 0;
-  color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  transform: scale(0);
-  transform-origin: top center;
-  transition: all 300ms ease-in-out;
-}
-.sub-menu li:last-child {
-  border-bottom: 0;
-}
-.sub-menu li:hover {
-  background: black;
-}
-.nav-list > li:hover .sub-menu li {
-  transform: scale(1);
-}
-.nav-list > li:hover .sub-menu {
-  transform: scale(1);
-} */
 
 
-/*---------------------------------Philosophie mobile first - mobile home section - 1ère Page--------------------------*/
+
+/*----------Philosophie mobile first - mobile home section - 1ère Page--------------------------*/
 
 .home-titre {
   height: 60vh;
@@ -153,18 +110,19 @@ nav .nav-list li a:link {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
 }
 .home-titre div {
   position: absolute;
- margin-top: 20px;
+  margin-top: 20px;
   top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
- padding: 4px;
+  padding: 4px;
 }
 
 table .table {
@@ -181,7 +139,7 @@ table .table {
   flex-direction: column;
 }
 .concours > a {
-  color: rgba(143, 108, 224, 0.561);
+  /* color: rgba(143, 108, 224, 0.561); */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -214,6 +172,62 @@ table .table {
   /* border: 1px solid black; */
   background: #859daf;
 }
+figcaption{
+  color: #fff;
+}
+.figure-caption{
+  color: black;
+}
+
+/* css du carroussel */
+#carouselExemple {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 120px;
+  border-radius: 10px 100px / 120px;
+  box-shadow: 1px 1px 12px #0000;
+}
+.carousel-item img {
+  width: 100%;
+  height: 60vh;
+}
+/* amelioration du css du carroussel avec un box-shadow */
+/* .img-container {
+  display: inline-block;
+  position: relative;
+} */
+
+.img-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0px 0px 30px 20px black inset;
+}
+/* .carousel-item:before {
+  -webkit-box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
+  box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+} */
+
+
+/* rajoute de css sur la class jumbotron pour avoir toutes les images et text de chaque jumbotron equilibré proportionnellement */
+.jumbotron {
+  background: url('backgroundimage.jpg') no-repeat center center fixed;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
 /*-------- philosophie mobile first - 2ième Page - Rechercher un site----------*/
 
@@ -232,7 +246,7 @@ table .table {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -244,6 +258,8 @@ table .table {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
+
 }
 
 /* titre haut de page  */
@@ -259,7 +275,7 @@ table .table {
 
 legend {
   /* champ du formulaire  */
-  color: rgb(17, 26, 128);
+  /* color: rgb(17, 26, 128);
   background-color: rgba(76, 163, 29, 0.826);
   font-size: 15px;
   border: 1px solid rgb(223, 127, 207);
@@ -267,7 +283,7 @@ legend {
   border-radius: 20px;
   width: 200px;
   padding: 6px;
-  text-align: left;
+  text-align: left; */
 }
 
 #form .lieu {
@@ -332,7 +348,7 @@ body {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -343,6 +359,8 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
+
 }
 #AjoutSite div h2 {
   color: rgba(9, 29, 209, 0.705);
@@ -455,7 +473,7 @@ form .village {
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -466,6 +484,8 @@ form .village {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
+
 }
 a{	
 	text-decoration: none;
@@ -476,21 +496,21 @@ a{
 	width:100%;
 	position: relative;
 	margin: 20px 0;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 .tab-container .onglets{
 	background-color: rgba(100,161,157,0.5);
 	display: flex;
 	height: 30px;
 	line-height: 30px;
-  border:2px solid black;
+  /* border:2px solid black; */
 }
 .onglets{
 	background-color: rgba(100,161,157,0.5);
 	display: flex;
-	height: 30px;
-	line-height: 30px;
-  border:2px solid black;
+	height: 70px;
+	line-height: 500px;
+  /* border:2px solid black; */
 }
 .tab-container .onglets a{
 	flex:1;
@@ -523,6 +543,16 @@ a{
   margin:auto;
   padding: 10px;
 }
+.Ajouter_topo{
+  /* border:2px solid black; */
+  text-align: center;
+  color: black;
+  font-size: 20px;
+}
+.index_topo{
+  border-bottom: 2mm ridge rgba(100,161,157,1);
+  display: flex;
+}
 
 
 /* ------------------------- 5ième page -Converter --------------------------------------*/
@@ -535,6 +565,8 @@ a{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
+
 }
 #converter div {
   position: absolute;
@@ -544,7 +576,7 @@ a{
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -646,7 +678,7 @@ a{
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -658,10 +690,12 @@ a{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* margin-top: -30px; */
+
 }
-#form {
-  /* border: 1px solid black; */
-}
+/* #form {
+  border: 1px solid black;
+} */
 
 /* ------------------------- 7ième page - Template du site --------------------------------------*/
 
@@ -673,7 +707,7 @@ a{
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  background: #9bd9f294;
+  background: rgba(66,99,119,0.38);
   border-radius: 10px;
   padding: 4px;
 }
@@ -705,14 +739,71 @@ a{
   height: 100%;
   object-fit: cover;
 }
+/* ------Users : registration form-------------- */
+
+#form {
+  color: lightcoral;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 30px 30px;
+}
+#contact_message {
+  width: 50%;
+}
+#registration div {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: rgba(66,99,119,0.38);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+#registration {
+  height: 60vh;
+  width: 100%;
+  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* -----------------Admin Section -----------------------*/
+#admin div {
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: rgba(66,99,119,0.38);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+#admin {
+  height: 60vh;
+  width: 100%;
+  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
 
 /*--------section Footer ---------- */
 
 footer {
   text-align: center;
   color: white;
-  background: rgba(3, 3, 107, 0.815);
+  background: #426377;
   padding: 1.1rem;
   margin-bottom: 0;
   margin-top: 90vh;
@@ -733,7 +824,7 @@ footer {
     font-size: 2rem;
   }
 
-  /* -------tablette home section------- */
+  /* ----------tablette home section------------------------ */
 
   .card {
     padding: 8px;
@@ -784,7 +875,7 @@ footer {
     column-count: 2;
     gap: 0;
   }
-
+  
   /* -------tablette contact section------- */
   #contact-section .form-div {
     margin: 0px 80px;

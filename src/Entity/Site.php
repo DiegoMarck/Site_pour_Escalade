@@ -198,7 +198,7 @@ class Site
      * @ORM\OneToMany(targetEntity=Media::class, mappedBy="site", cascade={"persist"})
      */
     private $media;
-
+    //cascade->upload multiple donc plus besoin des 2 suivant
     // /**
     //  * @ORM\Column(type="string", length=255, nullable=true)
     //  */

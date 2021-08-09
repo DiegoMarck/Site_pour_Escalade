@@ -10,20 +10,39 @@
     </section>
 				
     <section id="tabs" class="tab-container">
-                        <h2>Liste de des Topos de France</h2>
-            <div class="container">
-        <div class="onglets">
-                <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
-                <a href="#" class="col-4" class="tabA">Par nom</a>
-                <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>  
-        </div>
+        <h2>Liste de des Topos de France</h2>
+        <div class="container">
+            <div class="onglets">
+                    <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
+                    <a href="#" class="col-4" class="tabA">Par nom</a>
+                    <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>  
             </div>
+        </div>
         <div class="panel">
                         <p>Choisi une région</p>
                         <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
                         
                         </div>
-        <div class="panel">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, dignissimos explicabo mollitia quam alias natus?</div>
+        <div class="panel">
+            {% for topo in topos %}
+                <section class="index_topo">
+                    <div>
+                        <p>{{ topo.image }}</p>
+                    </div>
+                    <div>
+                        <p>{{ topo.titre }}</p>
+                        <p>{{ topo.region }}</p>
+                        <p>{{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</p>
+                    </div>   
+                </section>
+            {% endfor %}
+            {# {% for image in topo.media %}
+			<div>
+				<img
+				src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
+			</div>
+		    {% endfor %} #}
+        </div>
         <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
     </section>
                
@@ -72,7 +91,12 @@
         {% endfor %}
         </tbody>
     </table> #}
- <a href="{{ path('topo_new') }}">Create new</a>
+    {% if is_granted ('ROLE_USER')%}
+{% endif %}
+<div class="Ajouter_topo">
+<a href="{{ path('app_login') }}">Créer un nouveau Topo</a>
+</div>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -83,18 +107,15 @@
             let onglets = $('#tabs .onglets a')
             let panels = $('#tabs .panel');
             // console.log(panels, onglets);
-
             function openPanel(index){
                 // console.log(index);
                 panels.css({'display':'none'});//panels , vous allez tous disparaître
                 panels.eq(index).css({'display':'block'});//sauf celui de l'index du lien affiche toi
             }
-
             function setCssClass(onglet){
                 onglets.removeClass('actif');
                 onglet.addClass('actif');
             }
-
             function setSize(){
                 let h = 0;
                 panels.each(function(){
@@ -105,13 +126,11 @@
                 });
                 panels.css({'height':h});
             }
-
             onglets.on('click', function(ev){
                 ev.preventDefault();
                 openPanel($(this).index());
                 setCssClass($(this));
             });
-
             function init(){
                 openPanel(0);
                 setSize();
@@ -120,7 +139,6 @@
     }
         $(document).ready(function(){
         tabsPlugin();
-        
         });
     </script>
 

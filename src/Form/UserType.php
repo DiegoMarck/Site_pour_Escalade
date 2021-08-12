@@ -18,6 +18,13 @@ class UserType extends AbstractType
             // ->add('email')
             // ->add('roles')
             // ->add('password')
+            ->add('name', NameType::class, [
+                "label"=>"Your name",
+                "attr"=>[
+                    "class"=>"form-control"
+                ], 
+                "help"=>"You need your name to connect yourself"
+            ])
             ->add('email', EmailType::class, [
                 "label"=>"Votre couriel",
                 "attr"=>[

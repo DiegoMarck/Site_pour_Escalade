@@ -1,144 +1,255 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Site{% endblock %}
+{% block title %}Site
+{% endblock %}
 
 {% block body %}
 
-    <div class="siteTemplate">
-        <div>
-            <h1>Site</h1>
-            
-        </div>
-    </div>
-    <a href='https://fr.freepik.com/photos/nuage'>Nuage photo créé par wirestock - fr.freepik.com</a>
-    
-{% dump(media) %}
-{% for image in site.media %}
-    <div>
-        <img src="{{ asset('/uploads/' ~ image )}}" alt="Image" width="150px" heigth="160">
-    </div>
-{% endfor %}
+	<div class="siteTemplate">
+		<div>
+			<h1>Site</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ site.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ site.nom }}</td>
-            </tr>
-            <tr>
-                <th>GrandeVilleProche</th>
-                <td>{{ site.grandeVilleProche }}</td>
-            </tr>
-            <tr>
-                <th>VilleLaPlusProche</th>
-                <td>{{ site.villeLaPlusProche }}</td>
-            </tr>
-            <tr>
-                <th>Exposition</th>
-                <td>{{ site.exposition ? site.exposition|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>AltitudeAuxPiedsdesVoies</th>
-                <td>{{ site.altitudeAuxPiedsdesVoies }}</td>
-            </tr>
-            <tr>
-                <th>DureeMarcheAproche</th>
-                <td>{{ site.dureeMarcheAproche }}</td>
-            </tr>
-            <tr>
-                <th>ProfilMarcheApproche</th>
-                <td>{{ site.profilMarcheApproche ? site.profilMarcheApproche|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>PracticabiitePiedsdesVoies</th>
-                <td>{{ site.practicabiitePiedsdesVoies ? site.practicabiitePiedsdesVoies|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Latitude</th>
-                <td>{{ site.latitude }}</td>
-            </tr>
-            <tr>
-                <th>Longitude</th>
-                <td>{{ site.longitude }}</td>
-            </tr>
-            <tr>
-                <th>NombreFalaise</th>
-                <td>{{ site.nombreFalaise }}</td>
-            </tr>
-            <tr>
-                <th>HauteurMax</th>
-                <td>{{ site.hauteurMax }}</td>
-            </tr>
-            <tr>
-                <th>TypeEscalade</th>
-                <td>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>TypeEquipement</th>
-                <td>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>NombredeVoie</th>
-                <td>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Difficulte</th>
-                <td>{{ site.difficulte ? site.difficulte|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>SiteInteressantpourGrimpeur</th>
-                <td>{{ site.siteInteressantpourGrimpeur ? site.siteInteressantpourGrimpeur|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>TypeRocher</th>
-                <td>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>ProfileFalaise</th>
-                <td>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>TypedePrise</th>
-                <td>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Restriction</th>
-                <td>{{ site.restriction }}</td>
-            </tr>
-            <tr>
-                <th>InfoSuplementaire</th>
-                <td>{{ site.infoSuplementaire }}</td>
-            </tr>
-            <tr>
-                <th>SiteInternet</th>
-                <td>{{ site.siteInternet }}</td>
-            </tr>
-            <tr>
-                <th>VoieMythique</th>
-                <td>{{ site.voieMythique }}</td>
-            </tr>
-            <tr>
-                <th>Nomprenompseudo</th>
-                <td>{{ site.nomprenompseudo }}</td>
-            </tr>
-            <tr>
-                <th>AdresseMail</th>
-                <td>{{ site.adresseMail }}</td>
-            </tr>
-            <tr>
-                <th>Meilleurperiode</th>
-                <td>{{ site.meilleurperiode ? site.meilleurperiode|join(', ') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+		</div>
+	</div>
+	<a href='https://fr.freepik.com/photos/nuage'>Nuage photo créé par wirestock - fr.freepik.com</a>
 
-    <a href="{{ path('site_index') }}">back to list</a>
+	{% dump(media) %}
 
-    <a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
 
-    {{ include('site/_delete_form.html.twig') }}
+	<section id="tabs" class="tab-container">
+		<div>
+		<h2>{{ site.nom }}</h2>
+		</div>
+		<div class="container">
+			<div class="onglets">
+				<a href="#" class="actif" class="col-4" class="tabA">Détail</a>
+				<a href="#" class="col-4" class="tabA">Photo</a>
+				<a href="#" class="col-4" class="tabA">Carte</a>
+			</div>
+		</div>
+		<div class="panel">
+			<div class="difficulté">
+				<p>Site intéressant pour les voies</p>
+				<div class="inline">
+					<p>de
+						{{ site.difficulte ? site.difficulte|join(', ') : '' }}</p>
+					<p>à
+						{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</p>
+				</div>
+			</div>
+			<div class="inline">
+				<p>Type d'escalade</p>
+				<p>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Type d'équipement</p>
+				<p>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Nombre de Voie</p>
+				<p>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Hauteur maximum</p>
+				<p>{{ site.hauteurMax }}</p>
+			</div>
+			<div class="inline">
+				<p>Type de rocher</p>
+				<p>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Profile de falaise:</p>
+				<p>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Type de Prise</p>
+				<p>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Exposition</p>
+				<p>{{ site.exposition ? site.exposition|join(', ') : '' }}</p>
+			</div>
+			<div class="inline">
+				<p>Altitude aux pieds des Voies</p>
+				<p>{{ site.altitudeAuxPiedsdesVoies }}</p>
+			</div>
+		</div>
+		<div class="panel">
+			{% for image in site.media %}
+				<div>
+					<img src="{{ asset('/uploads/' ~ image )}}" alt="Image" width="150px" heigth="160">
+				</div>
+			{% endfor %}
+
+		</div>
+		<div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
+	</section>
+	{# <table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ site.id }}</td>
+				</tr>
+				<tr>
+					<th>Nom</th>
+					<td>{{ site.nom }}</td>
+				</tr>
+				<tr>
+					<th>GrandeVilleProche</th>
+					<td>{{ site.grandeVilleProche }}</td>
+				</tr>
+				<tr>
+					<th>VilleLaPlusProche</th>
+					<td>{{ site.villeLaPlusProche }}</td>
+				</tr>
+				<tr>
+					<th>Exposition</th>
+					<td>{{ site.exposition ? site.exposition|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>AltitudeAuxPiedsdesVoies</th>
+					<td>{{ site.altitudeAuxPiedsdesVoies }}</td>
+				</tr>
+				<tr>
+					<th>DureeMarcheAproche</th>
+					<td>{{ site.dureeMarcheAproche }}</td>
+				</tr>
+				<tr>
+					<th>ProfilMarcheApproche</th>
+					<td>{{ site.profilMarcheApproche ? site.profilMarcheApproche|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>PracticabiitePiedsdesVoies</th>
+					<td>{{ site.practicabiitePiedsdesVoies ? site.practicabiitePiedsdesVoies|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Latitude</th>
+					<td>{{ site.latitude }}</td>
+				</tr>
+				<tr>
+					<th>Longitude</th>
+					<td>{{ site.longitude }}</td>
+				</tr>
+				<tr>
+					<th>NombreFalaise</th>
+					<td>{{ site.nombreFalaise }}</td>
+				</tr>
+				<tr>
+					<th>HauteurMax</th>
+					<td>{{ site.hauteurMax }}</td>
+				</tr>
+				<tr>
+					<th>TypeEscalade</th>
+					<td>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>TypeEquipement</th>
+					<td>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>NombredeVoie</th>
+					<td>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Difficulte</th>
+					<td>{{ site.difficulte ? site.difficulte|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Difficulte2</th>
+					<td>{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>SiteInteressantpourGrimpeur</th>
+					<td>{{ site.siteInteressantpourGrimpeur ? site.siteInteressantpourGrimpeur|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>TypeRocher</th>
+					<td>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>ProfileFalaise</th>
+					<td>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>TypedePrise</th>
+					<td>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</td>
+				</tr>
+				<tr>
+					<th>Restriction</th>
+					<td>{{ site.restriction }}</td>
+				</tr>
+				<tr>
+					<th>InfoSuplementaire</th>
+					<td>{{ site.infoSuplementaire }}</td>
+				</tr>
+				<tr>
+					<th>SiteInternet</th>
+					<td>{{ site.siteInternet }}</td>
+				</tr>
+				<tr>
+					<th>VoieMythique</th>
+					<td>{{ site.voieMythique }}</td>
+				</tr>
+				<tr>
+					<th>Nomprenompseudo</th>
+					<td>{{ site.nomprenompseudo }}</td>
+				</tr>
+				<tr>
+					<th>AdresseMail</th>
+					<td>{{ site.adresseMail }}</td>
+				</tr>
+				<tr>
+					<th>Meilleurperiode</th>
+					<td>{{ site.meilleurperiode ? site.meilleurperiode|join(', ') : '' }}</td>
+				</tr>
+			</tbody>
+		</table> #}
+
+	<a href="{{ path('site_index') }}">back to list</a>
+
+	<a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
+
+	{{ include('site/_delete_form.html.twig') }}
+{% endblock %}
+{% block javascripts %}
+
+	<script>
+		// gestion du tab
+function tabsPlugin() {
+let onglets = $('#tabs .onglets a')
+let panels = $('#tabs .panel');
+// console.log(panels, onglets);
+function openPanel(index) { // console.log(index);
+panels.css({'display': 'none'}); // panels , vous allez tous disparaître
+panels.eq(index).css({'display': 'block'}); // sauf celui de l'index du lien affiche toi
+}
+function setCssClass(onglet) {
+onglets.removeClass('actif');
+onglet.addClass('actif');
+}
+function setSize() {
+let h = 0;
+panels.each(function () {
+if (h < $(this).innerHeight()) {
+h = $(this).innerHeight();
+}
+// console.log($(this).innerHeight(), h)
+});
+panels.css({'height': h});
+}
+onglets.on('click', function (ev) {
+ev.preventDefault();
+openPanel($(this).index());
+setCssClass($(this));
+});
+function init() {
+openPanel(0);
+setSize();
+}
+init();
+}
+$(document).ready(function () {
+tabsPlugin();
+});
+	</script>
 {% endblock %}

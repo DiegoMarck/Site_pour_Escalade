@@ -228,3 +228,24 @@ $countries = array("countries" => array(
  		));
 
 Mise en place de l'API Platform
+
+
+
+mise en place de la bibiothèque fakerphp/faker pour faire les fixtures
+composer require fakerphp/faker --dev  car besoin qu'en mode dev
+public function load(ObjectManager $manager)
+    {
+        //utilisation des faker
+        $faker = Faker\Factory::create('fr_FR');
+
+        //création d'un utilisateur
+        $user = new User();
+        $password = $this->encoder->encodePassword($user, 'password');
+            $user->setEmail('user@test.com')
+                    ->setPseudo($faker->Pseudo())
+                    ->setRoles($faker->Roles());
+            $user->setPassword($faker->$password);
+            // $product = new Product();
+        $manager->persist($user);
+
+php bin/console doctrine:fixture:load

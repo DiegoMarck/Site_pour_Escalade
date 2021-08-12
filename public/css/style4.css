@@ -451,6 +451,15 @@ form .village {
   /* text-align: center; */
   display: block;
 }
+/* -----------------Page template de Sites ---------------------------------------------- */
+.difficulté{
+  display: block;
+}
+.inline{
+  display: flex;
+  flex-direction: row;
+}
+
 
 
 /* ------------------- 4ième page -Topo ------------------------------------------------*/

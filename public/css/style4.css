@@ -1,961 +1,1169 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  list-style-type: none;
-  font-family: "Kalam", cursive;
-}
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #317133;
-  /*position: relative;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style-type: none;
+            font-family: "Kalam", cursive;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* background-color: #317133; */
+            background-color: rgba(49, 113, 51, 0.5);
+            /*position: relative;
     float: left;*/
-  overflow: scroll;
-}
+            overflow: scroll;
+        }
 
-section {
-  padding: 20px 0px;
-}
-h1 {
-  color: #fff;
-  margin: 20px 20px;
-  text-align: center;
-}
+        section {
+            padding: 20px 0px;
+        }
 
-h2 {
-  color:#fff;
-  margin: 20px;
-  text-align: center;
-}
+        h1 {
+            color: #fff;
+            margin: 20px 20px;
+            text-align: center;
+        }
 
-p {
-  padding: 2px 10px;
-}
+        h2 {
+            color: #fff;
+            margin: 20px;
+            text-align: center;
+        }
 
-@import "~bootstrap/scss/bootstrap";
+        p {
+            padding: 2px 10px;
+        }
 
-/*---- philosophie mobile first 1ère Page------------------------------------*/
+        @import "~bootstrap/scss/bootstrap";
+        /*---- philosophie mobile first 1ère Page------------------------------------*/
 
-/* ----- élément de section de navigation  --------------------------------  */
+        /* ----- élément de section de navigation  --------------------------------  */
 
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px; /* 20 */
-  position: absolute;
-  width: 100%;
-  font-size: 20px;
-  height: 70px;
-}
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            /* 20 */
+            position: absolute;
+            width: 100%;
+            font-size: 20px;
+            height: 70px;
+            margin-top: 8px;
+        }
 
-.logo {
-  width: auto;
-  height: 5.5em; /* ici tu aplique la taille voulue */
-  font-size: 0.5em; /* tu change la taille de ton atl */
-  margin-top: 15px; /*ici ton margin pour le centrer*/
-  margin-left: 20px; /* tout comme celui -ci */
-}
+        .logo {
+            width: auto;
+            height: 5.5em;
+            /* ici tu aplique la taille voulue */
+            font-size: 0.5em;
+            /* tu change la taille de ton atl */
+            margin-top: 15px;
+            /*ici ton margin pour le centrer*/
+            margin-left: 9px;
+            /* tout comme celui -ci */
+        }
 
-nav * {
-  color: #ffff;
-  /* font-size: 20px;
+        nav * {
+            color: #ffff;
+            /* font-size: 20px;
   height: 50px; */
-}
+        }
 
-nav input[type="checkbox"],
-.nav-list {
-  display: none; /* fait dispraitre la case à cocher    */
-  /* height: 35px; */
-}
+        nav input[type="checkbox"], .nav-list {
+            display: none;
+            /* fait dispraitre la case à cocher    */
+            /* height: 35px; */
+        }
 
-nav input[type="checkbox"]:checked + .nav-list {
-  /* fait appraitre le menu quand la case est cliqué   */
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  margin-top: 430px;
-  background: rgba(20,76,116,0.37);
-  width: 100%;
-  /* height: 35px; */
-  left: 0;
-  padding-left: 20px;
-  z-index: 1000;
-}
+        nav input[type="checkbox"]:checked+.nav-list {
+            /* fait appraitre le menu quand la case est cliqué   */
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            margin-top: 430px;
+            background: rgba(20, 76, 116, 0.37);
+            width: 100%;
+            /* height: 35px; */
+            left: 0;
+            padding-left: 20px;
+            z-index: 1000;
+        }
 
-nav .nav-list li {
-  margin: 10px 10px 10px 10px;
-  text-align: left;
-  padding: 2px;
-  font-size: 20px;
-}
+        nav .nav-list li {
+            margin: 17px 11px 5px 14px;
+            text-align: left;
+            /* text-align: center; */
+            padding: 2px;
+            font-size: 20px;
+            /* display: flex;
+  justify-content: center;
+  align-items: center; */
+        }
 
-nav .nav-list li a:link {
-  text-decoration: none;
-}
+        nav .nav-list li a:link {
+            text-decoration: none;
+        }
 
+        /* ---------------------------------------Philosophie mobile first---------------------------------------------------- */
 
+        /*--------------------------  -1ère Page- mobile home section + consours photo----------------------------------------------------*/
 
-/*----------Philosophie mobile first - mobile home section - 1ère Page--------------------------*/
+        .home-titre {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/climbing-2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -15px;
+        }
 
-.home-titre {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/climbing-2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-}
-.home-titre div {
-  position: absolute;
-  margin-top: 20px;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
+        .home-titre div {
+            position: absolute;
+            margin-top: 100px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
 
-table .table {
-  width: 50%;
-}
-/* #img-div{
+        table .table {
+            width: 50%;
+        }
+
+        /* #img-div{
     min-height: 100vh;
  } */
 
-
-.accueil_concours {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.concours > a {
-  /* color: rgba(143, 108, 224, 0.561); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 20px 20px 20px;
-  padding: 10px 10px;
-  text-align: center;
-}
-#concours article {
-  padding: 4px;
-  display: flex;
-  flex-wrap: wrap;
-}
-#concours {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-.card {
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  margin-left: 30px;
-}
-.text-div {
-  width: 95%;
-  padding: 10px;
-}
-
-.container_presentation{
-  /* border: 1px solid black; */
-  background: #859daf;
-}
-figcaption{
-  color: #fff;
-}
-.figure-caption{
-  color: black;
-}
-
-/* css du carroussel */
-#carouselExemple {
-  width: 70%;
-  margin: 0 auto;
-  margin-top: 120px;
-  border-radius: 10px 100px / 120px;
-  box-shadow: 1px 1px 12px #0000;
-}
-.carousel-item img {
-  width: 100%;
-  height: 60vh;
-}
-/* amelioration du css du carroussel avec un box-shadow */
-/* .img-container {
-  display: inline-block;
-  position: relative;
-} */
-
-.img-container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  box-shadow: 0px 0px 30px 20px black inset;
-}
-/* .carousel-item:before {
-  -webkit-box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
-  box-shadow: inset 0 0 20rem rgba(0, 0, 0, 1);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  content: "";
-} */
-
-
-/* rajoute de css sur la class jumbotron pour avoir toutes les images et text de chaque jumbotron equilibré proportionnellement */
-.jumbotron {
-  background: url('backgroundimage.jpg') no-repeat center center fixed;
-  padding-top: 20%;
-  padding-bottom: 20%;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-}
-
-/*-------- philosophie mobile first - 2ième Page - Rechercher un site----------*/
-
-
-.tableA {
-  width: 100% !important;
-  color: mediumblue;
-  display: block;
-  overflow: scroll;
-}
-
-#trouveSpot div {
-  position: absolute;
-  top: 25%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-#trouveSpot {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/escalade2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-
-}
-
-/* titre haut de page  */
-
-.lieu fieldset {
-  /* champ du formulaire  */
-  width: 100%;
-  border: none;
-  font-size: 15px;
-  /* margin-top: 10px; */
-  padding: 10px;
-}
-
-legend {
-  /* champ du formulaire  */
-  /* color: rgb(17, 26, 128);
-  background-color: rgba(76, 163, 29, 0.826);
-  font-size: 15px;
-  border: 1px solid rgb(223, 127, 207);
-  box-shadow: 5px 5px 5px burlywood;
-  border-radius: 20px;
-  width: 200px;
-  padding: 6px;
-  text-align: left; */
-}
-
-#form .lieu {
-  min-height: 100vh;
-  width: 100%;
-}
-.container2 {
-  /* formulaire page2  */
-  display: grid;
-  grid-template-columns: 1fr;
-  /* grid-gap: 10px; */
-  text-align: left;
-  width: 10%;
-}
-div #map {
-  /* carte  */
-  /* margin: 20px;
-  padding: 20px; */
-  width: auto;
-  height: 600px;
-}
-
-#période {
-  /* partie de la période   */
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-}
-.colonne1 {
-  grid-column: 1; /* placement en colonne 1 */
-}
-.colonne2 {
-  grid-column: 2; /* placement en colonne 2 */
-}
-.colonne3 {
-  grid-column: 3; /* placement en colonne 2 */
-}
-
-
-
-/* Optional: Makes the sample page fill the window. */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-
-/* ---------------------------------------- 3ième page - Ajout Site -------------------------*/
-
-/* titre haut de page  */
-
-#AjoutSite {
-  height: 60vh;
-  width: 100%;
-}
-
-#AjoutSite div {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-#AjoutSite {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/stunning-shot-of-young-man-climbing-up-cliff-on-cold-and-foggy-day.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-
-}
-#AjoutSite div h2 {
-  color: rgba(9, 29, 209, 0.705);
-}
-
-.container3 h2 {
-  background-color: rgb(182, 180, 180);
-  border: 1px solid rgb(223, 222, 222);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-top: 30px;
-  padding: 10px;
-  border-radius: 20px;
-  width: 70%;
-}
-
-.ajoutesite {
-  /* mise en place du formulaire  */
-  display: grid;
-  grid-gap: 4px;
-  gap: 4px;
-  margin-top: 90px;
-}
-/*- titre 3ième page -*/
-/* #ajoutesite {   
-   color: blueviolet;
-   border: 1px solid blueviolet;
-   width: 67%;
-   position: relative;
-   display: flex;
-   justify-content: space-around;
-   align-items: left;
-   margin-top: 80px;
-   padding: 5px;
-   border-radius: 10px;
-} */
-
-form .exposition {
-  /* partie formulaire sur l'exposition  */
-  /* display: flex;
-    width: 100%vh;
-    Flex-direction: row; 
-    justify-content: space-around; */
-  display: grid;
-  justify-content: center;
-  grid-template-columns: 8px 290px;
-  width: 97%;
-}
-form #exposition {
-  /* partie formulaire sur l'exposition  */
-  display: grid;
-  justify-content: center;
-  align-items: flex-start;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: -10px;
-  margin-left: 100px;
-  width: 60%;
-}
-form .nomduSite {
-  display: flex;
-  justify-content: space-around;
-  margin-left: -30px;
-}
-form .ville {
-  display: flex;
-  justify-content: space-around;
-  margin-left: -10px;
-}
-form .village {
-  display: flex;
-  justify-content: space-around;
-  margin-left: -10px;
-}
-#email {
-  margin: 3px;
-  padding: 3px;
-}
-#submit {
-  margin: 3px;
-  padding: 3px;
-}
-#site {
-  width: 80%;
-  margin: 20px 20px;
-}
-#form_new_site {
-  /* text-align: center; */
-  display: block;
-}
-/* -----------------Page template de Sites ---------------------------------------------- */
-.difficulté{
-  display: block;
-}
-.inline{
-  display: flex;
-  flex-direction: row;
-}
-
-
-
-/* ------------------- 4ième page -Topo ------------------------------------------------*/
-
-.tableTopos {
-  width: 100% !important;
-  color: mediumblue;
-  display: block;
-  overflow: scroll;
-}
-#topoIndex {
-  height: 60vh;
-  width: 100%;
-}
-
-#topoIndex div {
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-#topoIndex {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/beautiful-view-of-avalanche-peak-arthur-s-pass-new-zealand.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-
-}
-a{	
-	text-decoration: none;
-}
-
-/** tabs **/
-.tab-container{
-	width:100%;
-	position: relative;
-	margin: 20px 0;
-  /* border: 2px solid black; */
-}
-.tab-container .onglets{
-	background-color: rgba(100,161,157,0.5);
-	display: flex;
-	height: 30px;
-	line-height: 30px;
-  /* border:2px solid black; */
-}
-.onglets{
-	background-color: rgba(100,161,157,0.5);
-	display: flex;
-	height: 70px;
-	line-height: 500px;
-  /* border:2px solid black; */
-}
-.tab-container .onglets a{
-	flex:1;
-	border: 1px solid rgba(100,161,157,1);
-	border-bottom: none;
-	color: #64a19d;
-	text-align: center;
-}
-.tab-container .panel{
-	padding:10px;
-	background-color: #426377;
-	position: relative;
-	border: 1px solid rgba(100,161,157,1);
-}
-.tab-container .onglets a.actif{
-	background-color: rgba(100,161,157,1);
-	color:#fff;
-}
-/* .tab-container .onglets a{
-  border: 2px solid black;
-  background-color: grey;
-  height: 50px;
-  word-wrap: break-word;
-  text-align: center;
-  font-size: 0.8em;
-} */
-.tab-container .panel img{
-  max-width: 94%; 
-  justify-content: center;
-  margin:auto;
-  padding: 10px;
-}
-.Ajouter_topo{
-  /* border:2px solid black; */
-  text-align: center;
-  color: black;
-  font-size: 20px;
-}
-.index_topo{
-  border-bottom: 2mm ridge rgba(100,161,157,1);
-  display: flex;
-}
-
-
-/* ------------------------- 5ième page -Converter --------------------------------------*/
-
-#converter {
-  height: 60vh;
-  width: 100%;
-  /* background-image: url("../img/Rclimbing.jpg"); */
-  background-image: url("https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/vtt-single-track.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-
-}
-#converter div {
-  position: absolute;
-  margin-top: 20px;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-.color--highlight {
-  color: var(--color-highlight);
-  font-weight: 700;
-}
-
-.container_converter {
-  background-color: #859daf;
-  min-height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin-top : 0px;
-}
-
-.title {
-  margin-bottom: 1em;
-}
-
-.section--converter {
-  display: grid;
-  grid-template-columns: 1fr 40px 1fr;
-  grid-gap: 2em;
-}
-
-.col {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  flex-direction: column
-}
-
-.col--center {
-  align-items: center;
-  font-size: 4em;
-  font-weight: 700;
-  color: var(--color-highlight);
-}
-
-.input__container--margin {
-  margin-bottom: 1em;
-}
-
-.input__label {
-  display: inline-block;
-  text-align: right;
-  border-right: 1em;
-  width: 70px;
-}
-
-.input__select {
-  position: relative;
-  width: 150px;
-  vertical-align: middle;
-  outline: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border-radius: 2px;
-  padding: 4px 8px;
-  background: url('./images/menu-down.svg') 96% / 15% no-repeat ;
-}
-
-
-@media screen and (max-width: 540px) {
-  .title {
-      text-align: center;
-  }
-
-  .section--converter {
-      grid-template-columns: 1fr;
-  }
-
-  .col--center {
-      height: 20px;
-  }
-}
-
-
-/* ------------------------- 6ième page -Contact --------------------------------------*/
-
-#form {
-  color: lightcoral;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 30px 30px;
-}
-#contact_message {
-  width: 50%;
-}
-#contact div {
-  position: absolute;
-  top: 30%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-#contact {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  /* margin-top: -30px; */
-
-}
-/* #form {
-  border: 1px solid black;
-} */
-
-/* ------------------------- 7ième page - Template du site --------------------------------------*/
-
-
-.siteTemplate div {
-  position: absolute;
-  top: 25%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-.siteTemplate {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/climbA.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/*--------------philosophie mobile first------------------------*/
-
-/* ----------mobile gallery-section --------------*/
-
-#gallery-section .container {
-  column-count: 1;
-}
-
-#gallery-section .box {
-  min-height: 100px;
-  min-width: 100px;
-}
-
-#gallery-section .box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-/* ------Users : registration form-------------- */
-
-#form {
-  color: lightcoral;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 30px 30px;
-}
-#contact_message {
-  width: 50%;
-}
-#registration div {
-  position: absolute;
-  top: 30%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-#registration {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* -----------------Admin Section -----------------------*/
-#admin div {
-  position: absolute;
-  top: 30%;
-  left: 40%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(66,99,119,0.38);
-  border-radius: 10px;
-  padding: 4px;
-}
-
-#admin {
-  height: 60vh;
-  width: 100%;
-  background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-
-
-
-
-/*--------section Footer ---------- */
-
-footer {
-  text-align: center;
-  color: white;
-  background: #426377;
-  padding: 1.1rem;
-  margin-bottom: 0;
-  margin-top: 90vh;
-  /* width: 100vh; */
-}
-
-/*-------------------------------------------------------------------------*/
-/*-----------------------------RESPONSIVE----------------------------------*/
-/*-------------------------------------------------------------------------*/
-/* lorsqu'on va arriver à une largeur min de 768px reférence pour les tablette, je vais modifier des choses */
-
-/* -------tablette welcome section------- */
-@media screen and (min-width: 768px) {
-  #home-section3 {
-    background-position-y: top;
-  }
-  h2 {
-    font-size: 2rem;
-  }
-
-  /* ----------tablette home section------------------------ */
-
-  .card {
-    padding: 8px;
-    width: 30%;
-    margin-left: 60px;
-  }
-  .card img {
-    width: 250px;
-    height: 230px;
-  }
-  #description-section .container {
-    margin: 30px;
-  }
-  #description-section .container .card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  #description-section .container .card .text-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  #description-section .card1 {
-    grid-template-areas: "text-div img-div";
-  }
-  #description-section .card1 .text-div {
-    grid-area: text-div;
-  }
-  #description-section .card1 .img-div {
-    grid-area: img-div;
-  }
-
-  /* -------tablette about me section------- */
-
-  #about-me-section .card {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-  #about-me-section .card .text-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
-
-  /* -------tablette gallery section------- */
-
-  #gallery-section .container {
-    column-count: 2;
-    gap: 0;
-  }
-  
-  /* -------tablette contact section------- */
-  #contact-section .form-div {
-    margin: 0px 80px;
-  }
-}
-
-/*--------- laptop------------ */
-
-@media screen and (min-width: 1024px) {
-  nav {
-    position: fixed;
-    z-index: 1000;
-    background: rgba(20,76,116,0.37);
-    text-align: center;
-    margin-top: 0px;
-  }
-  nav * {
-    font-size: 1rem;
-    margin: 5px 20px 5px 20px;
-    padding: 4px;
-  }
-  nav label {
-    display: none;
-  }
-  nav .nav-list {
-    display: flex;
-    width: 70%;
-    justify-content: space-evenly;
-  }
-  nav .nav-list a {
-    transition: 1s;
-  }
-  nav .nav-list a:hover {
-    margin-left: 8px;
-    transition: 1s;
-  }
-
-  /*------- laptop description section */
-  #description-section .container {
-    padding: 150px;
-  }
-
-  /*------- laptop gallery section */
-  #gallery-section .container {
-    padding: 15px;
-    display: grid;
-    grid-template:
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh
-      "1fr 1fr 1fr 1fr 1fr" 33.33vh;
-  }
-  #gallery-section .box {
-    transition: 1s;
-  }
-  #gallery-section .box:hover {
-    transform: scale(1.05);
-    transition: 1s;
-    color: #2e6ea6;
-  }
-  .box_b,
-  .box_f,
-  .box_h {
-    grid-column: span 2;
-  }
-  .box_a,
-  .box_g {
-    grid-row: span 2;
-  }
-  /*------- laptop review section */
-  #review-section .container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
+        .accueil_concours {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .concours>a {
+            /* color: rgba(143, 108, 224, 0.561); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px 20px 20px 20px;
+            padding: 10px 10px;
+            text-align: center;
+        }
+
+        #concours article {
+            padding: 4px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        #concours {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            margin-left: 30px;
+        }
+
+        .text-div {
+            width: 95%;
+            padding: 10px;
+        }
+
+        .container_presentation {
+            /* border: 1px solid black; */
+            background: #859daf;
+        }
+
+        figcaption {
+            color: #fff;
+        }
+
+        .figure-caption {
+            color: black;
+        }
+
+        /* css du carroussel */
+
+        #carouselExemple {
+            width: 70%;
+            margin: 0 auto;
+            margin-top: 120px;
+            border-radius: 10px 100px / 120px;
+            box-shadow: 1px 1px 12px #0000;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 60vh;
+        }
+
+        .img-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            box-shadow: 0px 0px 30px 20px black inset;
+        }
+
+        /* rajoute de css sur la class jumbotron pour avoir toutes les images et text de chaque jumbotron equilibré proportionnellement */
+
+        .jumbotron {
+            background: url('backgroundimage.jpg') no-repeat center center fixed;
+            padding-top: 20%;
+            padding-bottom: 20%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            background-size: cover;
+            -o-background-size: cover;
+            margin-top: -25px;
+            margin-bottom: -20px;
+        }
+
+        #gallery-section {
+            margin-bottom: -360px;
+        }
+
+        /*-------- philosophie mobile first - 2ième Page - Rechercher un site----------------------------------------------*/
+
+        /* ------------------------------------------------------------------------------------------------------------------------ */
+
+        .tableA {
+            width: 100% !important;
+            color: mediumblue;
+            display: block;
+            overflow: scroll;
+        }
+
+        #trouveSpot div {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+            margin-top: 90px;
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #trouveSpot {
+            height: 500px;
+            width: 100%;
+            background-image: url("../img/escalade2.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        /* titre haut de page  */
+
+        .lieu fieldset {
+            /* champ du formulaire  */
+            width: 100%;
+            border: none;
+            font-size: 15px;
+            /* margin-top: 10px; */
+            padding: 10px;
+        }
+
+        #form .lieu {
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .container2 {
+            /* formulaire page2  */
+            display: grid;
+            grid-template-columns: 1fr;
+            /* grid-gap: 10px; */
+            text-align: left;
+            width: 10%;
+        }
+
+        div #map {
+            width: auto;
+            height: 600px;
+            bottom: -50px;
+            border: 2px solid black;
+        }
+
+        #map {
+            bottom: -50px;
+            /* border: 2px solid black; */
+            margin-bottom: -350px;
+        }
+
+        #période {
+            /* partie de la période   */
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+        }
+
+        .colonne1 {
+            grid-column: 1;
+            /* placement en colonne 1 */
+        }
+
+        .colonne2 {
+            grid-column: 2;
+            /* placement en colonne 2 */
+        }
+
+        .colonne3 {
+            grid-column: 3;
+            /* placement en colonne 2 */
+        }
+
+        h4 {
+            padding: 20px;
+            background-color: #3171337e;
+            width: 90%;
+            margin: 50px 10px;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .titre2 img {
+            /* border: 2px solid black; */
+            width: 90%;
+            height: 150px;
+            margin: 30px 10px;
+            border-radius: 50px;
+            padding: 20px;
+            min-width: 80px;
+        }
+
+        .col-6 .titre {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: row;
+        }
+
+        /* ---------------------------------------- 3ième page - Ajout Site ---------------------------------------*/
+        /* --------------------------------------------------------------------------------------------------- */
+        
+        .expo-checkbox{
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        }
+        #AjoutSite {
+            height: 60vh;
+            width: 100%;
+        }
+
+        .form-control {
+            width: 120%;
+        }
+
+        .custom-file-label {
+            width: 95%;
+        }
+
+        .container_site {
+            margin-bottom: -300px;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .row_as {
+            padding: 40px;
+            margin-top: 100px;
+            margin-left: 50px;
+        }
+
+        .row_as img {
+            width: 60vh;
+            height: 50vh;
+            border: 2px solid black;
+        }
+
+        .card {
+            width: 60vh;
+            height: 50vh;
+        }
+
+        #AjoutSite div {
+            position: absolute;
+            top: 38%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #AjoutSite {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/stunning-shot-of-young-man-climbing-up-cliff-on-cold-and-foggy-day.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        #AjoutSite div h2 {
+            color: rgba(9, 29, 209, 0.705);
+        }
+
+        .container3 h2 {
+            background-color: rgb(182, 180, 180);
+            border: 1px solid rgb(223, 222, 222);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding: 10px;
+            border-radius: 20px;
+            width: 70%;
+        }
+
+        .ajoutesite {
+            /* mise en place du formulaire  */
+            display: grid;
+            grid-gap: 4px;
+            gap: 4px;
+            margin-top: 90px;
+        }
+
+        form .exposition {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 8px 290px;
+            width: 97%;
+        }
+
+        form #exposition {
+            /* partie formulaire sur l'exposition  */
+            display: grid;
+            justify-content: center;
+            align-items: flex-start;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: -10px;
+            margin-left: 100px;
+            width: 60%;
+        }
+
+        form .nomduSite {
+            display: flex;
+            justify-content: space-around;
+            margin-left: -30px;
+        }
+
+        form .ville {
+            display: flex;
+            justify-content: space-around;
+            margin-left: -10px;
+        }
+
+        form .village {
+            display: flex;
+            justify-content: space-around;
+            margin-left: -10px;
+        }
+
+        #email {
+            margin: 3px;
+            padding: 3px;
+        }
+
+        #submit {
+            margin: 3px;
+            padding: 3px;
+        }
+
+        #site {
+            width: 80%;
+            margin: 20px 20px;
+        }
+
+        #form_new_site {
+            /* text-align: center; */
+            display: block;
+        }
+
+        .exposition {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid black;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        }
+        
+        .exposition .col-6 .premiere{
+            margin-right: 150px;
+            padding: 30px;
+        }
+        /* -----------------Page template de Sites ---------------------------------------------- */
+
+        /* --------------------------------------------------------------------------------------- */
+
+        .difficulté {
+            display: block;
+        }
+
+        .inline {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .siteTemplate div {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .siteTemplate {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/climbA.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -20px;
+        }
+        /* --------------------------Editer un topo -------------------------------------- */
+
+        .edition div {
+            position: absolute;
+            top: 25%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .edition {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/climbA.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -20px;
+        }
+
+
+
+
+        /* ------------------- 4ième page -Topo ------------------------------------------------*/
+
+        /* ---------------------------------------------------------------------------------------------- */
+
+        .tableTopos {
+            width: 100% !important;
+            color: mediumblue;
+            display: block;
+            overflow: scroll;
+        }
+
+        #topoIndex {
+            height: 60vh;
+            width: 100%;
+        }
+
+        #topoIndex div {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #topoIndex {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/beautiful-view-of-avalanche-peak-arthur-s-pass-new-zealand.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /** tabs **/
+
+        .tab-container {
+            width: 100%;
+            position: relative;
+            margin: 20px 0;
+            /* border: 2px solid black; */
+        }
+
+        .tab-container .onglets {
+            background-color: rgba(100, 161, 157, 0.5);
+            display: flex;
+            height: 30px;
+            line-height: 30px;
+            /* border:2px solid black; */
+        }
+
+        .onglets {
+            background-color: rgba(100, 161, 157, 0.5);
+            display: flex;
+            height: 70px;
+            line-height: 500px;
+            /* border:2px solid black; */
+        }
+
+        .tab-container .onglets a {
+            flex: 1;
+            border: 1px solid rgba(100, 161, 157, 1);
+            border-bottom: none;
+            color:  #317133;
+            text-align: center;
+        }
+
+        .tab-container .panel {
+            padding: 10px;
+            background-color: #42637798;
+            position: relative;
+            border: 1px solid rgba(100, 161, 157, 1);
+        }
+
+        .tab-container .onglets a.actif {
+            background-color: rgba(100, 161, 157, 1);
+            color: #fff;
+        }
+
+        .tab-container .panel img {
+            max-width: 94%;
+            justify-content: center;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .Ajouter_topo {
+            /* border:2px solid black; */
+            text-align: center;
+            color: black;
+            font-size: 20px;
+        }
+
+        .index_topo {
+            border-bottom: 2mm ridge rgba(100, 161, 157, 1);
+            display: flex;
+        }
+
+        /* ------------------------Création d'un nouveau topo---------------------------------- */
+
+        /* ----------------------------------------------------------------------------------------- */
+
+        #nouveau_topo {
+            height: 60vh;
+            width: 100%;
+            /* background-image: url("../img/Rclimbing.jpg"); */
+            background-image: url("https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/vtt-single-track.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        #nouveau_topo div {
+            position: absolute;
+            margin-top: 20px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .container_topoNew {
+            margin-top: 80px;
+            margin-bottom: -330px;
+        }
+
+        .form-inline {
+            background-color: transparent;
+            border: none;
+        }
+
+        .tab-container .onglets a.actif {
+            text-decoration: none;
+        }
+
+        /* ------------------------- 5ième page -Converter --------------------------------------*/
+
+        /* ---------------------------------------------------------------------------------------------------- */
+
+        #converter {
+            height: 60vh;
+            width: 100%;
+            /* background-image: url("../img/Rclimbing.jpg"); */
+            background-image: url("https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/vtt-single-track.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        #converter div {
+            position: absolute;
+            margin-top: 20px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        .color--highlight {
+            color: var(--color-highlight);
+            font-weight: 700;
+        }
+
+        .container_converter {
+            background-color: #859daf;
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 0px;
+        }
+
+        .title {
+            margin-bottom: 1em;
+        }
+
+        .section--converter {
+            display: grid;
+            grid-template-columns: 1fr 40px 1fr;
+            grid-gap: 2em;
+        }
+
+        .col {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column
+        }
+
+        .col--center {
+            align-items: center;
+            font-size: 4em;
+            font-weight: 700;
+            color: var(--color-highlight);
+        }
+
+        .input__container--margin {
+            margin-bottom: 1em;
+        }
+
+        .input__label {
+            display: inline-block;
+            text-align: right;
+            border-right: 1em;
+            width: 70px;
+        }
+
+        .input__select {
+            position: relative;
+            width: 150px;
+            vertical-align: middle;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 2px;
+            padding: 4px 8px;
+            background: url('./images/menu-down.svg') 96% / 15% no-repeat;
+        }
+
+        @media screen and (max-width: 540px) {
+            .title {
+                text-align: center;
+            }
+            .section--converter {
+                grid-template-columns: 1fr;
+            }
+            .col--center {
+                height: 20px;
+            }
+        }
+
+        /* ------------------------- 6ième page -Contact --------------------------------------------------------------*/
+
+        /* ------------------------------------------------------------------------------------------------------------ */
+
+        #form {
+            color: lightcoral;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 30px 30px;
+        }
+
+        #contact_message {
+            width: 50%;
+        }
+
+        #contact div {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #contact {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        /* ------------------------- 7ième page -Security/Login --------------------------------------*/
+
+        /* ------------------------------------------------------------------------------------------------------ */
+
+        #section_login {
+            height: 60vh;
+            width: 100%;
+            /* background-image: url("../img/Rclimbing.jpg"); */
+            background-image: url("../img/saxon-switzerland-539418__340.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        #section_login div {
+            position: absolute;
+            margin-top: 20px;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        /* ----------------------------- Page 8 - Entrainement index----------------------- */
+
+        /* --------------------------------------------------------------------------------- */
+
+        #section_entrainement div {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #section_entrainement {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -16px;
+        }
+
+        /* ----------------------------- Page 9 -Ajouter un Entrainement ----------------------- */
+
+        /* --------------------------------------------------------------------------------- */
+
+        #section_entrainement_ajout div {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #section_entrainement_ajout {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -20px;
+        }
+
+        .row_entrainement {
+            margin-top: 70px;
+            width: 120vh;
+        }
+
+        /* ----------------------------- Page 10 - User Registration ----------------------- */
+
+        /* --------------------------------------------------------------------------------- */
+
+        .form-group {
+            margin-bottom: 1rem;
+            width: 75%;
+            margin-left: 50px;
+        }
+
+        /*--------------philosophie mobile first------------------------*/
+
+        /* ----------mobile gallery-section --------------*/
+
+        #gallery-section .container {
+            column-count: 1;
+        }
+
+        #gallery-section .box {
+            min-height: 100px;
+            min-width: 100px;
+        }
+
+        #gallery-section .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ------Users : registration form-------------- */
+
+        #form {
+            color: lightcoral;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 30px 30px;
+        }
+
+        #contact_message {
+            width: 50%;
+        }
+
+        #registration div {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #registration {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* -----------------Admin Section -----------------------*/
+
+        #admin div {
+            position: absolute;
+            top: 30%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background: rgba(66, 99, 119, 0.38);
+            border-radius: 10px;
+            padding: 4px;
+        }
+
+        #admin {
+            height: 60vh;
+            width: 100%;
+            background-image: url("../img/silhouette-of-group-people-have-fun-at-the-top-of-the-mountain-near-the-tent-during-the-sunset.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /*--------section Footer ---------- */
+
+        footer {
+            text-align: center;
+            color: white;
+            background: #426377;
+            padding: 1.1rem;
+            margin-bottom: 0;
+            margin-top: 90vh;
+            /* width: 100vh; */
+        }
+
+        /*-------------------------------------------------------------------------*/
+
+        /*-----------------------------RESPONSIVE----------------------------------*/
+
+        /*-------------------------------------------------------------------------*/
+
+        /* lorsqu'on va arriver à une largeur min de 768px reférence pour les tablette, je vais modifier des choses */
+
+        /* -------tablette welcome section------- */
+
+        @media screen and (min-width: 768px) {
+            #home-section3 {
+                background-position-y: top;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            /* ----------tablette home section------------------------ */
+            /* -------tablette gallery section------- */
+            #gallery-section .container {
+                column-count: 2;
+                gap: 0;
+            }
+            /* -------tablette contact section------- */
+            #contact-section .form-div {
+                margin: 0px 80px;
+            }
+        }
+
+        /*--------- laptop------------ */
+
+        @media screen and (min-width: 1024px) {
+            nav {
+                position: fixed;
+                z-index: 1000;
+                background: rgba(20, 76, 116, 0.37);
+                text-align: center;
+                margin-top: 0px;
+            }
+            nav * {
+                font-size: 1rem;
+                margin: 5px 20px 5px 20px;
+                padding: 4px;
+            }
+            nav label {
+                display: none;
+            }
+            nav .nav-list {
+                display: flex;
+                width: 87%;
+                justify-content: space-evenly;
+                margin-left: -20px;
+                margin-right: 20px;
+            }
+            nav .nav-list a {
+                transition: 1s;
+                text-decoration: none;
+            }
+            nav .nav-list a:hover {
+                margin-left: 8px;
+                transition: 1s;
+            }
+            nav .nav-list li {
+                margin: 17px 11px 5px 14px;
+                text-align: center;
+                padding: 2px;
+                font-size: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+            }
+            /*------- laptop description section */
+            /* #description-section .container {
+        padding: 150px;
+    } */
+            /*------- laptop gallery section */
+            #gallery-section .container {
+                padding: 15px;
+                display: grid;
+                grid-template: "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh;
+            }
+            #gallery-section .box {
+                transition: 1s;
+            }
+            #gallery-section .box:hover {
+                transform: scale(1.05);
+                transition: 1s;
+                color: #2e6ea6;
+            }
+            .box_b, .box_f, .box_h {
+                grid-column: span 2;
+            }
+            .box_a, .box_g {
+                grid-row: span 2;
+            }
+            /*------- laptop review section */
+            /* #review-section .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    } */
+        }

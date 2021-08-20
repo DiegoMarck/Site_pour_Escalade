@@ -49,8 +49,8 @@
             {# <!-- lien map google map -->
             			<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> #}
 
-            <!-- lien javascript google map api loader -->
-            <script src="https://unpkg.com/@googlemaps/js-api-loader@1.0.0/dist/index.min.js"></script>
+            {# <!-- lien javascript google map api loader -->
+            <script src="https://unpkg.com/@googlemaps/js-api-loader@1.0.0/dist/index.min.js"></script> #}
 
             <script type="text/javascript" src="{{ asset ("js/main.js") }}"></script>
 
@@ -60,31 +60,26 @@
 
             <link rel="stylesheet" href="{{ asset ("css/style4.css") }}">
             <style type="text/css">
-				#map {
-					/* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-					height: 500px;
-					width: 70 %px;
-					padding: 20px;
-					/* border: solid 2px;*/
-				}
-				#macarte {
-					height: 850px;
-					/*border: solid 2px;*/
-					margin: 10px;
-				}
+				
+            #macarte {
+                height: 850px;
+                margin: 50px 100px;
+                padding: 20px;
+            }
+            #macarte2 {
+                height: 450px;
+                margin: 20px;
+            }
 
-				{# {
-					# #map1 {
-						/* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
-						height: 500px;
-						width: 70 %px;
-						margin: 40px;
-						padding: 20px;
-					} #
-				} #}
+				
 			</style>
         {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
+        <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+        <!-- Fichiers Javascript -->
                 <!-- script carroussel -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             
@@ -114,22 +109,27 @@
                     </li>
                     <li>
                         <a href="{{ path("site_index" ) }}">
-                            Rechercher un Site
+                             Sites
                         </a>
                     </li>
                     <li>
                         <a href="{{ path("site_new" ) }}">
-                            Ajouter ton site
+                            Ajouter un site
                         </a>
                     </li>
                     <li>
                         <a href="{{ path("topo_index" ) }}">
-                            Les topos
+                             Topos
                         </a>
                     </li>
                     <li>
                         <a href="{{ path("site_converter" ) }}">
                             Convertisseur
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path("entrainement_index" ) }}">
+                            Entrainement
                         </a>
                     </li>
                     <li>

@@ -49,6 +49,11 @@ class User implements UserInterface
      */
     private $prenom;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Entrainement::class, inversedBy="participant")
+     */
+    private $entrainement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -162,6 +167,18 @@ class User implements UserInterface
     public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getEntrainement(): ?Entrainement
+    {
+        return $this->entrainement;
+    }
+
+    public function setEntrainement(?Entrainement $entrainement): self
+    {
+        $this->entrainement = $entrainement;
 
         return $this;
     }

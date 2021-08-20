@@ -277,9 +277,28 @@ class SiteType extends AbstractType
             ->add('voieMythique', null, ["attr"=>["class"=>"form-control"]])
             ->add('nomprenompseudo', null, ["attr"=>["class"=>"form-control"]])
             ->add('adresseMail', null, ["attr"=>["class"=>"form-control"]])
-            ->add('meilleurperiode')
+            ->add('meilleurperiode', ChoiceType::class, array(
+                'choices' => array(
+                    'janvier' => 'janvier',
+                    'février ' => 'février',
+                    'mars ' => 'mars',
+                    'avril ' => 'avril',
+                    'mai ' => 'mai',
+                    'juin ' => 'juin',
+                    'juillet ' => 'juillet',
+                    'août ' => 'août',
+                    'septembre ' => 'septembre',
+                    'octobre ' => 'octobre',
+                    'novembre ' => 'novembre',
+                    'décembre ' => 'décembre',
+                ),
+                // 'choices_as_values' => true, 
+                'multiple' => true, 
+                'expanded' => true
+               
+                ))
             ->add('site', FileType::class, [
-                'label' => false,
+                'label' => 'photos',
                 'multiple' => true,
                 'mapped' =>false, 
                 'required' => false

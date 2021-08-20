@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TopoType extends AbstractType
 {
@@ -21,8 +22,15 @@ class TopoType extends AbstractType
             ->add('prix', null, ["attr"=>["class"=>"form-control"]])
             ->add('auteur', null, ["attr"=>["class"=>"form-control"]])
             ->add('description', null, ["attr"=>["class"=>"form-control"]])
-            ->add('type', null, ["attr"=>["class"=>"form-control"]])
-            ->add('image', null, ["attr"=>["class"=>"form-control"]])
+            ->add('type', ChoiceType::class,
+            array(
+                    'choices' => array(
+                        'livre'=>'livre',
+                        "téléchargeable"=>"téléchargeable",
+                        "en ligne"=>"en ligne",
+                       
+                )))
+            // ->add('image', null, ["attr"=>["class"=>"form-control"]])
             ->add('imageFile', VichImageType::class, [
                 "required"=>false,
                 'allow_delete'=>true,
@@ -46,4 +54,8 @@ class TopoType extends AbstractType
             'data_class' => Topo::class,
         ]);
     }
+
+   
 }
+
+

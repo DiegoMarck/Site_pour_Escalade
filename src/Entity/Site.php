@@ -198,6 +198,17 @@ class Site
      * @ORM\OneToMany(targetEntity=Media::class, mappedBy="site", cascade={"persist"})
      */
     private $media;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Entrainement::class, mappedBy="lieu_entrainement")
+     */
+    private $entrainements;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="photoSite")
+     */
+    private $photos;
+    
     //cascade->upload multiple donc plus besoin des 2 suivant
     // /**
     //  * @ORM\Column(type="string", length=255, nullable=true)
@@ -213,6 +224,8 @@ class Site
     public function __construct()
     {
         $this->media = new ArrayCollection();
+        $this->entrainements = new ArrayCollection();
+        $this->photos = new ArrayCollection();
     }
 
     public function __toString(){
@@ -660,6 +673,63 @@ class Site
     //     }
     //     return $this;
     // }
+
+    /**
+     * @return Collection|Entrainement[]
+     */
+    public function getEntrainements(): Collection
+    {
+        return $this->entrainements;
+    }
+
+    public function addEntrainement(Entrainement $entrainement): self
+    {
+        if (!$this->entrainements->contains($entrainement)) {
+            $this->entrainements[] = $entrainement;
+            $entrainement->addLieuEntrainement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEntrainement(Entrainement $entrainement): self
+    {
+        if ($this->entrainements->removeElement($entrainement)) {
+            $entrainement->removeLieuEntrainement($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getPhotos(): Collection
+    {
+        return $this->photos;
+    }
+
+    public function addPhoto(Media $photo): self
+    {
+        if (!$this->photos->contains($photo)) {
+            $this->photos[] = $photo;
+            $photo->setPhotoSite($this);
+        }
+
+        return $this;
+    }
+
+    public function removePhoto(Media $photo): self
+    {
+        if ($this->photos->removeElement($photo)) {
+            // set the owning side to null (unless already changed)
+            if ($photo->getPhotoSite() === $this) {
+                $photo->setPhotoSite(null);
+            }
+        }
+
+        return $this;
+    }
 
     
 }

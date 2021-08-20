@@ -73,9 +73,13 @@ class Topo
     private $description;
 
     /**
-     * @ORM\Column(type="array", nullable=true)
+     * @ORM\Column(type="string", length=255 , nullable=true)
      */
-    private $type = [];
+    private $type;
+    // /**
+    //  * @ORM\Column(type="array", nullable=true)
+    //  */
+    // private $type = [];
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -100,9 +104,9 @@ class Topo
         $this->nomSite = new ArrayCollection();
         $this->media = new ArrayCollection();
     }
-    // public function __toString(){
-    //     return $this->getMedia;
-    // }
+    public function __toString(){
+        return $this->getTitre();
+    }
 
     public function getId(): ?int
     {
@@ -229,12 +233,12 @@ class Topo
         return $this;
     }
 
-    public function getType(): ?array
+    public function getType(): ?string
     {
         return $this->type;
     }
 
-    public function setType(?array $type): self
+    public function setType(?string $type): self
     {
         $this->type = $type;
 

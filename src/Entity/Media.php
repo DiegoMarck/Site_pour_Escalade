@@ -61,6 +61,16 @@ class Media
      */
     private $topo;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Entrainement::class, inversedBy="media2")
+     */
+    private $entrainement;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="photos")
+     */
+    private $photoSite;
+
     public function __toString(){
         return $this->nom;
     }
@@ -167,6 +177,30 @@ class Media
     public function setTopo(?Topo $topo): self
     {
         $this->topo = $topo;
+
+        return $this;
+    }
+
+    public function getEntrainement(): ?Entrainement
+    {
+        return $this->entrainement;
+    }
+
+    public function setEntrainement(?Entrainement $entrainement): self
+    {
+        $this->entrainement = $entrainement;
+
+        return $this;
+    }
+
+    public function getPhotoSite(): ?Site
+    {
+        return $this->photoSite;
+    }
+
+    public function setPhotoSite(?Site $photoSite): self
+    {
+        $this->photoSite = $photoSite;
 
         return $this;
     }

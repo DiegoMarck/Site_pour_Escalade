@@ -37,4 +37,5 @@ security:
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/topo/new, roles: ROLE_USER }
+        - { path: ^/site/new, roles: ROLE_USER }
         # - { path: ^/profile, roles: ROLE_USER }

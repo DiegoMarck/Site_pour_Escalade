@@ -249,3 +249,16 @@ public function load(ObjectManager $manager)
         $manager->persist($user);
 
 php bin/console doctrine:fixture:load
+
+
+creation de l'entité entrainement
+
+Continuation de l'installation de l'easybundle
+composer require easycorp/easyadmin-bundle
+php bin/console make:admin:dashboard
+php bin/console make:admin:crud
+
+<i class="fas fa-globe"></i>
+<i class="fas fa-book"></i>
+<i class="fas fa-running"></i>
+<i class="fas fa-users"></i>

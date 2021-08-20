@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -17,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class MediaController extends AbstractController
 {
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/", name="media_index", methods={"GET"})
      */
     public function index(MediaRepository $mediaRepository): Response
@@ -60,6 +62,7 @@ class MediaController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="media_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Media $medium): Response

@@ -8,6 +8,7 @@ use App\Repository\TopoRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
@@ -27,6 +28,7 @@ class TopoController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_USER")
      * @Route("/new", name="topo_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -61,6 +63,7 @@ class TopoController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}/edit", name="topo_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Topo $topo): Response
@@ -81,6 +84,7 @@ class TopoController extends AbstractController
     }
 
     /**
+     * @IsGranted("ROLE_ADMIN")
      * @Route("/{id}", name="topo_delete", methods={"POST"})
      */
     public function delete(Request $request, Topo $topo): Response

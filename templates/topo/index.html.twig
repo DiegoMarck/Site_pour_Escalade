@@ -13,20 +13,24 @@
         <h2>Liste de des Topos de France</h2>
         <div class="container">
             <div class="onglets">
-                    <a href="#" class="actif"  class="col-4" class="tabA">Topos par régions</a>
-                    <a href="#" class="col-4" class="tabA">Par nom</a>
-                    <a href="#" class="col-4" class="tabA">Topos téléchargeables</a>  
+                    <a href="#" class="actif"  class="col-4" class="tabA">Par Régions</a>
+                    <a href="#" class="col-4" class="tabA">Par Nom</a>
+                    <a href="#" class="col-4" class="tabA">Téléchargeables</a>  
             </div>
         </div>
         <div class="panel">
                         <p>Choisi une région</p>
                         <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
                         
-                        </div>
+        </div>
         <div class="panel">
+        {# dump{{topos}} #}
             {% for topo in topos %}
                 <section class="index_topo">
                     <div>
+                        <img src="{{topo.image }}">
+                        {# <img src="{{app.request.basepath}}/public/img/{{topo.image}}" alt="monimg" /> #}
+                        {# <img src="{{ vich_uploader_asset(Topo, 'imageFile' )}}" class="card-img-top" alt="images" width="350"> #}
                         <p>{{ topo.image }}</p>
                     </div>
                     <div>
@@ -36,12 +40,13 @@
                     </div>   
                 </section>
             {% endfor %}
-            {# {% for image in topo.media %}
-			<div>
-				<img
-				src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
-			</div>
-		    {% endfor %} #}
+            {% for image in topos %}
+                <div>
+                    <img
+                    src="{{ asset('/uploads/' ~ image.titre) }}" class="card-img-top" alt="images" width="350">
+                    {# src="{{ vich_uploader_asset(Topo, 'imageFile' )}}" class="card-img-top" alt="images" width="350"> #}
+                </div>
+		    {% endfor %}
         </div>
         <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
     </section>
@@ -91,11 +96,13 @@
         {% endfor %}
         </tbody>
     </table> #}
+
     {% if is_granted ('ROLE_USER')%}
-{% endif %}
-<div class="Ajouter_topo">
-<a href="{{ path('app_login') }}">Créer un nouveau Topo</a>
-</div>
+
+    <div class="Ajouter_topo">
+    <a href="{{ path('topo_new') }}">Créer un nouveau Topo</a>
+    </div>
+    {% endif %}
 
 {% endblock %}
 

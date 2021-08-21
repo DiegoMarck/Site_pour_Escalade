@@ -1,4 +1,23 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="container regitration" width="50%">
+    {{ form_start(form) }}
+    {# {{ form_widget(form) }} #}
+    {# {{ form_label(form.prenom) }}
+    {{ form_widget(form.prenom) }} #}
+    
+    {# {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email) }} #}
+    {# {% form_theme form _self %}
+    
+        <div class="row bg-light">
+            <div class="col-md-12"><h4>Editer le fournisseur</h4></div>
+            <div class="col-md-6">{{ form_row(form.name) }}</div>
+            <div class="col-md-6">{{ form_row(form.prenom) }}</div>
+            <div class="col-md-4">{{ form_row(form.email) }}</div>
+        </div>
+    
+        {{ form_widget(form) }} #}
+    {{ form_end(form) }}
+</div>
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>

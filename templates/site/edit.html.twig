@@ -3,21 +3,26 @@
 {% block title %}Edit Site{% endblock %}
 
 {% block body %}
-    <section id="trouveSpot-section1">
+    <section id="edition">
         <div>
-            <h1>Edit Site</h1>
+            <h1>Editer un Site</h1>
         </div>
     </section>
 
-{# {% for image in site.media %}
-    <div>
-        <img src="{{ asset('/uploads/' ~ image )}}" alt="media" width="250px" heigth="260">
-    </div>
-{% endfor %} #}
+<div class="container">
+    {# {% for image in site.media %}
+        <div>
+            <img src="{{ asset('/uploads/' ~ image )}}" alt="media" width="250px" heigth="260">
+        </div>
+    {% endfor %} #}
+    
+        {{ include('site/_form.html.twig', {'button_label': 'Update'}) }}
+    
+            <div class="container">
+                <div class="col-6"><a href="{{ path('site_index') }}">back to list</a></div>
+                <div class="col-6">{{ include('site/_delete_form.html.twig') }}</div>
+            </div>
+        
+</div>
 
-    {{ include('site/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('site_index') }}">back to list</a>
-
-    {{ include('site/_delete_form.html.twig') }}
 {% endblock %}

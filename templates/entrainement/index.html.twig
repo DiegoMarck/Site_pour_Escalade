@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrainement index{% endblock %}
+
+{% block body %}
+
+    <section id="section_entrainement">
+        <div>
+            <h1>Entrainements</h1>
+        </div>
+    </section>
+
+        
+        {% for entrainement in entrainements %}
+            <section class="index_entrainement">
+                <div>
+                    <p>{{ entrainement.id }}</p>
+                    <p>{{ entrainement.exercice }}</p>
+                    <p>{{ entrainement.type }}</p>
+                    <p>{{ entrainement.materiel }}</p>
+                    <p>{{ entrainement.description }}</p>
+                </div>
+                <div>
+                    <p>{{ entrainement.media }}</p>
+                </div>
+                
+                    <a href="{{ path('entrainement_show', {'id': entrainement.id}) }}">show</a>
+                    <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
+            </section>
+            
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        
+
+    <a href="{{ path('entrainement_new') }}">Create new</a>
+{% endblock %}

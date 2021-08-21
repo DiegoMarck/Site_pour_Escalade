@@ -1,18 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Site{% endblock %}
+{% block title %}New Site
+{% endblock %}
 
 {% block body %}
-    <section id="AjoutSite">
-        <div>
-            <h1>Ajouter un site</h1>
-        </div>
-    </section>
-    <section id="form_new_site">
+	<section id="AjoutSite">
+		<div>
+			<h1>Ajouter un site</h1>
+		</div>
+	</section>
+	<div class="container container_site">
+		<div class="col-6">
+			<section id="form_new_site">
+				{% form_theme form 'bootstrap_4_layout.html.twig' %}
+				{{ include('site/_form.html.twig') }}
+                
+			<section/>
 
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+		</div>
+		<div class="col-6">
 
-    {{ include('site/_form.html.twig') }}
-    <section/>
-    <a href="{{ path('site_index') }}">back to list</a>
+				<div class="row row_as">
+					
+					<figure class="figure2">
+                            <img src="{{ asset('img/landscape.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+                                <figcaption class="figure-caption text-center">
+                                    Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500,                
+                                </figcaption>
+                    </figure>
+				</div>
+                <div class="row row_as">
+                    
+					<figure class="figure2">
+                            <img src="{{ asset('img/mountains2.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+							<figcaption class="figure-caption text-center">
+								Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500,                
+							</figcaption>
+                    </figure>
+                </div>
+                <div class="row row_as">
+                   
+					<figure class="figure2">
+                            <img src="{{ asset('img/saxon-switzerland-539418__340.jpg') }}" class="figure-img img-fluid rounded" alt="Logo HTML w3">
+							<figcaption class="figure-caption text-center">
+								Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500,                
+							</figcaption>
+                    </figure>
+                </div>
+
+		</div>
+		<a href="{{ path('site_index') }}">back to list</a>
+	</div>
 {% endblock %}

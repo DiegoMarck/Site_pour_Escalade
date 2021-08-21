@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Entrainement{% endblock %}
+
+{% block body %}
+
+<section id="section_entrainement_ajout">
+    <div>
+        <h1> Ajouter une section d'entrainement</h1>
+    </div>
+</section>
+
+<div class="container container_enrtainement">
+    
+        <div class="row row_entrainement">
+            {{ include('entrainement/_form.html.twig') }}
+            
+            <a href="{{ path('entrainement_index') }}">back to list</a>
+        </div>
+
+</div>
+
+
+{% endblock %}

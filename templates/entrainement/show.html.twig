@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrainement{% endblock %}
+
+{% block body %}
+    <h1>Entrainement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entrainement.id }}</td>
+            </tr>
+            <tr>
+                <th>Exercice</th>
+                <td>{{ entrainement.exercice }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ entrainement.type }}</td>
+            </tr>
+            <tr>
+                <th>Materiel</th>
+                <td>{{ entrainement.materiel }}</td>
+            </tr>
+            <tr>
+                <th>Media</th>
+                <td>{{ entrainement.media }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entrainement.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('entrainement_index') }}">back to list</a>
+
+    <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
+
+    {{ include('entrainement/_delete_form.html.twig') }}
+{% endblock %}

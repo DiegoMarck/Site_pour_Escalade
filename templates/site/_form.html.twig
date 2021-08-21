@@ -1,23 +1,33 @@
-<div
-	class="container">
+<div class="container">
 	{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
 	<div class="form-group">{{form_row(form.nom)}}</div>
+	
+		{{ form_errors(form.exposition) }}
+		{{ form_label(form.exposition, 'Exposition', {'label_attr': {'class': 'foo'}}) }}
+		{{ form_widget(form.exposition, {'attr': {'class': 'expo-checkbox'}}) }}
+	
 
-	{# verifier si la route est site_edit on affiche les images #}
-	{% if app.request.attributes.get('_route') == 'site_edit' %}
-		<h2>Images</h2>
-		{% for image in site.media %}
-			<div>
-				<img
-				src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
-			{# <a href="{{ path('siteDeleteImage', {'id':site.id}) }}" data-dlete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a> #}
-			</div>
-		{% endfor %}
-	{% endif %}
-	{# {{ form_row(form.save) }} #}
+	
 
+	
+	
+{# verifier si la route est site_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'site_edit' || app.request.attributes.get('_route') == 'site_index'%}
+	<h2>Images</h2>
+	{% for image in site.media %}
+		<div>
+			<img
+			src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
+		{# <a href="{{ path('siteDeleteImage', {'id':site.id}) }}" data-dlete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a> #}
+		</div>
+	{% endfor %}
+{% endif %}
+{# {{ form_row(form.save) }} #}
+{{ form_end(form) }}
 	<div>
-		<button class="btn">{{ button_label|default('Save') }}</button>
+	<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 	</div>
-	{{ form_end(form) }}
+	
+
 </div>

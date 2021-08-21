@@ -1,67 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Site index{% endblock %}
+{% block title %}Site index
+{% endblock %}
 
 {% block body %}
-    <section id="trouveSpot">
-        <div>
-            <h1>Recherche de Site</h1>
+	<section id="trouveSpot">
+		<div>
+			<h1>Recherche un Site</h1>
+		</div>
+	</section>
+	<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 titre">
+                <h4>Carte des Sites de France</h4>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 titre2">
+                {# <img src="{{asset("\img\mountaineer.jpg")}}" alt="deco"> #}
+                <img src="{{ asset('img/mountaineer.jpg') }}" alt="image">
+            </div>
         </div>
-    </section>
-    
-    <section id="map">
-        <!-- Ici s'affichera la carte -->
-        <div id="macarte"></div>
-    </section>
-        
-    <!-- Make sure you put this AFTER Leaflet's CSS -->
-    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-    crossorigin=""></script>
-    <!-- Fichiers Javascript -->
-    
-   
+    </div>
+	<section id="map">
+		<!-- Ici s'affichera la carte -->
+		<div id="macarte"></div>
+	</section>
 
-    <a href="{{ path('site_new') }}">Create new</a>
-       
+	<a href="{{ path('site_new') }}">Ajouter un nouveau site</a>
+
 {% endblock %}
 
 {% block javascripts %}
-        <script>
-            var carte = L.map('macarte').setView([48.852969, 2.349903], 5);
-            //on charge les tuiles
-            {# carte.on("load", function() {
-            addSites();
-            }); #}
-            L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-                    // Il est toujours bien de laisser le lien vers la source des données
-                    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-                    minZoom: 1,
-                    maxZoom: 20
-                }).addTo(carte);
-            
-            var icone = L.icon({
-                        iconUrl:"../img/pointeur-de-carte.png",
-                        iconSize: [50, 50],
-                        iconAnchor: [25, 50],
-                        popupAnchor: [-2, -44],
-                    });
-                    // Requête
-                    $.ajax({
-                        url: '/api/sites'
-                    }).done(function(response){
-                        //var datas = JSON.parse(response);
-                        console.log(response['hydra:member']);
-                        var sites = response['hydra:member'];
-                    sites.forEach( site => {
-                        //console.log(site.latitude);
-                        // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor) 
-                        //on crée un marqueur et on lui donne un popup
-                        var latLng = L.latLng(site.latitude, site.longitude)
-                        var marqueur = L.marker(latLng).addTo(carte);
-                        marqueur.bindPopup('<h3>'+site.nom+'</h3><p>'+site.nombredeVoie+'</p><a href="/site/'+site.id+'">site</a>');
-                        })
-                    });                  
-        </script>
-    
-    {% endblock %}
+	<script>
+		var carte = L.map('macarte').setView([
+48.852969, 2.349903
+], 5);
+// on charge les tuiles
+
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', { // Il est toujours bien de laisser le lien vers la source des données
+attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+minZoom: 1,
+maxZoom: 20
+}).addTo(carte);
+
+var icone = L.icon({
+iconUrl: "../img/pointeur-de-carte.png",
+iconSize: [
+50, 50
+],
+iconAnchor: [
+25, 50
+],
+popupAnchor: [-2, -44]
+});
+// Requête
+$.ajax({url: '/api/sites'}).done(function (response) { // var datas = JSON.parse(response);
+console.log(response['hydra:member']);
+var sites = response['hydra:member'];
+sites.forEach(site => {
+// Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
+// on crée un marqueur et on lui donne un popup
+var latLng = L.latLng(site.latitude, site.longitude)
+var marqueur = L.marker(latLng).addTo(carte);
+marqueur.bindPopup('<h3>' + site.nom + '</h3><p>' + site.nombredeVoie + '</p><a href="/site/' + site.id + '">site</a>');
+})
+});
+	</script>
+
+{% endblock %}

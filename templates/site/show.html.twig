@@ -18,7 +18,7 @@
 
 	<section id="tabs" class="tab-container">
 		<div>
-		<h2>{{ site.nom }}</h2>
+			<h2>{{ site.nom }}</h2>
 		</div>
 		<div class="container">
 			<div class="onglets">
@@ -28,50 +28,88 @@
 			</div>
 		</div>
 		<div class="panel">
-			<div class="difficulté">
-				<p>Site intéressant pour les voies</p>
-				<div class="inline">
-					<p>de
-						{{ site.difficulte ? site.difficulte|join(', ') : '' }}</p>
-					<p>à
-						{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</p>
+			<div class="container-fluid">
+				<div class="row fficulté">
+					<p>Site intéressant pour les voies</p>
+					<div class="inline">
+						<p>de
+							{{ site.difficulte ? site.difficulte|join(', ') : '' }}</p>
+						<p>à
+							{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</p>
+					</div>
 				</div>
-			</div>
-			<div class="inline">
-				<p>Type d'escalade</p>
-				<p>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Type d'équipement</p>
-				<p>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Nombre de Voie</p>
-				<p>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Hauteur maximum</p>
-				<p>{{ site.hauteurMax }}</p>
-			</div>
-			<div class="inline">
-				<p>Type de rocher</p>
-				<p>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Profile de falaise:</p>
-				<p>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Type de Prise</p>
-				<p>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Exposition</p>
-				<p>{{ site.exposition ? site.exposition|join(', ') : '' }}</p>
-			</div>
-			<div class="inline">
-				<p>Altitude aux pieds des Voies</p>
-				<p>{{ site.altitudeAuxPiedsdesVoies }}</p>
+				<div class="row inline">
+					<div class="col">
+						<p>Type d'escalade :</p>
+					</div>
+					<div class="col">
+						<p>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Type d'équipement</p>
+					</div>
+					<div class="col">
+						<p>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Nombre de Voie</p>
+					</div>
+					<div class="col">
+						<p>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Hauteur maximum</p>
+					</div>
+					<div class="col">
+						<p>{{ site.hauteurMax }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Type de rocher</p>
+					</div>
+					<div class="col">
+						<p>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Profile de falaise:</p>
+					</div>
+					<div class="col">
+						<p>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Type de Prise</p>
+					</div>
+					<div class="col">
+						<p>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Exposition</p>
+					</div>
+					<div class="col">
+						<p>{{ site.exposition ? site.exposition|join(', ') : '' }}</p>
+					</div>
+				</div>
+				<div class="row inline">
+					<div class="col">
+						<p>Altitude aux pieds des Voies</p>
+					</div>
+					<div class="col">
+						<p>{{ site.altitudeAuxPiedsdesVoies }}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="panel">
@@ -82,128 +120,144 @@
 			{% endfor %}
 
 		</div>
-		<div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
+		<div class="panel">
+			
+			<section class="carte_panel">
+				<!-- Ici s'affichera la carte -->
+				<div id="macarte2"></div>
+			</section>
+		
+		</div>
 	</section>
 	{# <table class="table">
-			<tbody>
-				<tr>
-					<th>Id</th>
-					<td>{{ site.id }}</td>
-				</tr>
-				<tr>
-					<th>Nom</th>
-					<td>{{ site.nom }}</td>
-				</tr>
-				<tr>
-					<th>GrandeVilleProche</th>
-					<td>{{ site.grandeVilleProche }}</td>
-				</tr>
-				<tr>
-					<th>VilleLaPlusProche</th>
-					<td>{{ site.villeLaPlusProche }}</td>
-				</tr>
-				<tr>
-					<th>Exposition</th>
-					<td>{{ site.exposition ? site.exposition|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>AltitudeAuxPiedsdesVoies</th>
-					<td>{{ site.altitudeAuxPiedsdesVoies }}</td>
-				</tr>
-				<tr>
-					<th>DureeMarcheAproche</th>
-					<td>{{ site.dureeMarcheAproche }}</td>
-				</tr>
-				<tr>
-					<th>ProfilMarcheApproche</th>
-					<td>{{ site.profilMarcheApproche ? site.profilMarcheApproche|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>PracticabiitePiedsdesVoies</th>
-					<td>{{ site.practicabiitePiedsdesVoies ? site.practicabiitePiedsdesVoies|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>Latitude</th>
-					<td>{{ site.latitude }}</td>
-				</tr>
-				<tr>
-					<th>Longitude</th>
-					<td>{{ site.longitude }}</td>
-				</tr>
-				<tr>
-					<th>NombreFalaise</th>
-					<td>{{ site.nombreFalaise }}</td>
-				</tr>
-				<tr>
-					<th>HauteurMax</th>
-					<td>{{ site.hauteurMax }}</td>
-				</tr>
-				<tr>
-					<th>TypeEscalade</th>
-					<td>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>TypeEquipement</th>
-					<td>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>NombredeVoie</th>
-					<td>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>Difficulte</th>
-					<td>{{ site.difficulte ? site.difficulte|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>Difficulte2</th>
-					<td>{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>SiteInteressantpourGrimpeur</th>
-					<td>{{ site.siteInteressantpourGrimpeur ? site.siteInteressantpourGrimpeur|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>TypeRocher</th>
-					<td>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>ProfileFalaise</th>
-					<td>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>TypedePrise</th>
-					<td>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</td>
-				</tr>
-				<tr>
-					<th>Restriction</th>
-					<td>{{ site.restriction }}</td>
-				</tr>
-				<tr>
-					<th>InfoSuplementaire</th>
-					<td>{{ site.infoSuplementaire }}</td>
-				</tr>
-				<tr>
-					<th>SiteInternet</th>
-					<td>{{ site.siteInternet }}</td>
-				</tr>
-				<tr>
-					<th>VoieMythique</th>
-					<td>{{ site.voieMythique }}</td>
-				</tr>
-				<tr>
-					<th>Nomprenompseudo</th>
-					<td>{{ site.nomprenompseudo }}</td>
-				</tr>
-				<tr>
-					<th>AdresseMail</th>
-					<td>{{ site.adresseMail }}</td>
-				</tr>
-				<tr>
-					<th>Meilleurperiode</th>
-					<td>{{ site.meilleurperiode ? site.meilleurperiode|join(', ') : '' }}</td>
-				</tr>
-			</tbody>
-		</table> #}
+				<tbody>
+					<tr>
+						<th>Id</th>
+						<td>{{ site.id }}</td>
+					</tr>
+					<tr>
+						<th>Nom</th>
+						<td>{{ site.nom }}</td>
+					</tr>
+					<tr>
+						<th>GrandeVilleProche</th>
+						<td>{{ site.grandeVilleProche }}</td>
+					</tr>
+					<tr>
+						<th>VilleLaPlusProche</th>
+						<td>{{ site.villeLaPlusProche }}</td>
+					</tr>
+					<tr>
+						<th>Exposition</th>
+						<td>{{ site.exposition ? site.exposition|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>AltitudeAuxPiedsdesVoies</th>
+						<td>{{ site.altitudeAuxPiedsdesVoies }}</td>
+					</tr>
+					<tr>
+						<th>DureeMarcheAproche</th>
+						<td>{{ site.dureeMarcheAproche }}</td>
+					</tr>
+					<tr>
+						<th>ProfilMarcheApproche</th>
+						<td>{{ site.profilMarcheApproche ? site.profilMarcheApproche|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>PracticabiitePiedsdesVoies</th>
+						<td>{{ site.practicabiitePiedsdesVoies ? site.practicabiitePiedsdesVoies|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Latitude</th>
+						<td>{{ site.latitude }}</td>
+					</tr>
+					<tr>
+						<th>Longitude</th>
+						<td>{{ site.longitude }}</td>
+					</tr>
+					<tr>
+						<th>NombreFalaise</th>
+						<td>{{ site.nombreFalaise }}</td>
+					</tr>
+					<tr>
+						<th>HauteurMax</th>
+						<td>{{ site.hauteurMax }}</td>
+					</tr>
+					<tr>
+						<th>TypeEscalade</th>
+						<td>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>TypeEquipement</th>
+						<td>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>NombredeVoie</th>
+						<td>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Difficulte</th>
+						<td>{{ site.difficulte ? site.difficulte|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Difficulte2</th>
+						<td>{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>SiteInteressantpourGrimpeur</th>
+						<td>{{ site.siteInteressantpourGrimpeur ? site.siteInteressantpourGrimpeur|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>TypeRocher</th>
+						<td>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>ProfileFalaise</th>
+						<td>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>TypedePrise</th>
+						<td>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Restriction</th>
+						<td>{{ site.restriction }}</td>
+					</tr>
+					<tr>
+						<th>InfoSuplementaire</th>
+						<td>{{ site.infoSuplementaire }}</td>
+					</tr>
+					<tr>
+						<th>SiteInternet</th>
+						<td>{{ site.siteInternet }}</td>
+					</tr>
+					<tr>
+						<th>VoieMythique</th>
+						<td>{{ site.voieMythique }}</td>
+					</tr>
+					<tr>
+						<th>Nomprenompseudo</th>
+						<td>{{ site.nomprenompseudo }}</td>
+					</tr>
+					<tr>
+						<th>AdresseMail</th>
+						<td>{{ site.adresseMail }}</td>
+					</tr>
+					<tr>
+						<th>Meilleurperiode</th>
+						<td>{{ site.meilleurperiode ? site.meilleurperiode|join(', ') : '' }}</td>
+					</tr>
+				</tbody>
+			</table> #}
+
+			{# <section id="map">
+				<!-- Ici s'affichera la carte -->
+				<div id="macarte2"></div>
+			</section> #}
+	<input type="button" value="APPEL API METEO"  onclick="buttonClickGET()"  />
+	<input type="lat_long" value="Paris, fr"  onclick="buttonClickGET()"  />
+    <p id="zone_meteo">toto</p>
+
 
 	<a href="{{ path('site_index') }}">back to list</a>
 
@@ -215,41 +269,96 @@
 
 	<script>
 		// gestion du tab
-function tabsPlugin() {
-let onglets = $('#tabs .onglets a')
-let panels = $('#tabs .panel');
-// console.log(panels, onglets);
-function openPanel(index) { // console.log(index);
-panels.css({'display': 'none'}); // panels , vous allez tous disparaître
-panels.eq(index).css({'display': 'block'}); // sauf celui de l'index du lien affiche toi
-}
-function setCssClass(onglet) {
-onglets.removeClass('actif');
-onglet.addClass('actif');
-}
-function setSize() {
-let h = 0;
-panels.each(function () {
-if (h < $(this).innerHeight()) {
-h = $(this).innerHeight();
-}
-// console.log($(this).innerHeight(), h)
-});
-panels.css({'height': h});
-}
-onglets.on('click', function (ev) {
-ev.preventDefault();
-openPanel($(this).index());
-setCssClass($(this));
-});
-function init() {
-openPanel(0);
-setSize();
-}
-init();
-}
-$(document).ready(function () {
-tabsPlugin();
-});
+		function tabsPlugin() {
+			let onglets = $('#tabs .onglets a')
+			let panels = $('#tabs .panel');
+			// console.log(panels, onglets);
+			function openPanel(index) { // console.log(index);
+				panels.css({'display': 'none'}); // panels , vous allez tous disparaître
+				panels.eq(index).css({'display': 'block'}); // sauf celui de l'index du lien affiche toi
+			}
+			function setCssClass(onglet) {
+				onglets.removeClass('actif');
+				onglet.addClass('actif');
+			}
+			function setSize() {
+				let h = 0;
+				panels.each(function () {
+				if (h < $(this).innerHeight()) {
+				h = $(this).innerHeight();
+			}
+			// console.log($(this).innerHeight(), h)
+			});
+			panels.css({'height': h});
+			}
+				onglets.on('click', function (ev) {
+				ev.preventDefault();
+				openPanel($(this).index());
+				setCssClass($(this));
+			});
+			function init() {
+				openPanel(0);
+				setSize();
+			}
+			init();
+		}
+		$(document).ready(function () {
+		tabsPlugin();
+		});
+	
+		
+		{# var latLng = L.latLng(site.latitude, site.longitude)        #}
+		var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
+		//on charge les tuiles
+		
+		L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+				// Il est toujours bien de laisser le lien vers la source des données
+				attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+				minZoom: 1,
+				maxZoom: 20
+			}).addTo(carte);
+		
+		var icone = L.icon({
+					iconUrl:"../img/pointeur-de-carte.png",
+					iconSize: [50, 50],
+					iconAnchor: [25, 50],
+					popupAnchor: [-2, -44],
+				});
+		// Requête
+		{# $.ajax({
+			url: '/api/sites'
+		}).done(function(response){
+				//var datas = JSON.parse(response);
+				//console.log(response['hydra:member']);
+				var sites = response['hydra:member'];
+				var latLng = L.latLng(site.latitude, site.longitude)
+				var marqueur = L.marker(latLng).addTo(carte);
+				marqueur.bindPopup('<h3>'+site.nom+'</h3><p>'+site.nombredeVoie+'</p><a href="/site/'+site.id+'">site</a>');
+				
+		}); #}
+
+		function buttonClickGET() {
+			var url = "https://https://api.openweathermap.org/data/2.5/weather?q="+lat_long+",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
+
+			$.get(url, callBackGetSuccess).done(function() {
+				//alert( "second success" );
+			})
+			.fail(function() {
+				alert( "error" );
+			})
+			.always(function() {
+				//alert( "finished" );
+			});
+		}
+		var callBackGetSuccess = function(data) {
+			console/log("donnee api", data)
+			var element = document.getElementById("zone_meteo");
+			//var lat_long = document.getElementById("lat_long").value;
+			element.innerHTML = "La temperature est de " + data.main.temp;
+		}
+				          
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
 {% endblock %}

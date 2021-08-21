@@ -3,14 +3,16 @@
 {% block title %}New Topo{% endblock %}
 {# {% form_themes form 'bootstrap_5_layout.html.twig' %} #}
 {% block body %}
-    <section id="trouveSpot-section1">
+    <section id="nouveau_topo">
         <div>
             <h1>Création d'un nouveau topo</h1>
         </div>
     </section>
     
-
-    {{ include('topo/_form.html.twig') }}
+<div class="container container_topoNew">
+    
+        {{ include('topo/_form.html.twig') }}
+</div>
 
     <a href="{{ path('topo_index') }}">back to list</a>
 {% endblock %}

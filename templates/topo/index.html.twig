@@ -25,13 +25,21 @@
         </div>
         <div class="panel">
         {# dump{{topos}} #}
+            
             {% for topo in topos %}
                 <section class="index_topo">
+                    <div class="div">
+                        {% for image in topo.media %}
+                            <div class="panelImg">
+                                <img src="{{ asset('/uploads/' ~ image )}}" alt="Image">
+                            </div>
+                        {% endfor %}
+                    </div>
                     <div>
-                        <img src="{{topo.image }}">
+                        {# <img src="{{topo.image }}"> #}
                         {# <img src="{{app.request.basepath}}/public/img/{{topo.image}}" alt="monimg" /> #}
                         {# <img src="{{ vich_uploader_asset(Topo, 'imageFile' )}}" class="card-img-top" alt="images" width="350"> #}
-                        <p>{{ topo.image }}</p>
+                        {# <p>{{ topo.image }}</p> #}
                     </div>
                     <div>
                         <p>{{ topo.titre }}</p>
@@ -40,13 +48,12 @@
                     </div>   
                 </section>
             {% endfor %}
-            {% for image in topos %}
+            {# {% for image in topos %}
                 <div>
                     <img
                     src="{{ asset('/uploads/' ~ image.titre) }}" class="card-img-top" alt="images" width="350">
-                    {# src="{{ vich_uploader_asset(Topo, 'imageFile' )}}" class="card-img-top" alt="images" width="350"> #}
                 </div>
-		    {% endfor %}
+		    {% endfor %} #}
         </div>
         <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
     </section>
@@ -99,9 +106,9 @@
 
     {% if is_granted ('ROLE_USER')%}
 
-    <div class="Ajouter_topo">
-    <a href="{{ path('topo_new') }}">Créer un nouveau Topo</a>
-    </div>
+        <div class="Ajouter_topo">
+            <a href="{{ path('topo_new') }}">Créer un nouveau Topo</a>
+        </div>
     {% endif %}
 
 {% endblock %}

@@ -1,5 +1,18 @@
 <div class="container">
-	{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+	{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}    
+    {{ form_widget(form) }}
+    {# verifier si la route est topo_edit on affiche les images #}
+{% if app.request.attributes.get('_route') == 'topo_edit' %}
+
+    
+{% for image in topo.media %}
+    <div>
+        <img
+        src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
+        <a href="{{ path('topos_delete_image', {id:topo.id}) }}" data-delete data-token="{{csrf_token('delete' ~ topo.id )}}">Supprimer</a>
+    </div>
+{% endfor %}
+{% endif %}
+    <div><button class="btn">{{ button_label|default('Save') }}</button></div>
 {{ form_end(form) }}
 </div>

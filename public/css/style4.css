@@ -15,7 +15,7 @@
             margin: 0;
             padding: 0;
             /* background-color: #317133; */
-            background-color: rgba(49, 113, 51, 0.5);
+            background-color: rgba(49, 113, 51, 0.719);
             /*position: relative;
     float: left;*/
             overflow: scroll;
@@ -73,8 +73,7 @@
 
         nav * {
             color: #ffff;
-            /* font-size: 20px;
-  height: 50px; */
+            margin-right: 10px;
         }
 
         nav input[type="checkbox"], .nav-list {
@@ -116,6 +115,14 @@
 
         /*--------------------------  -1ère Page- mobile home section + consours photo----------------------------------------------------*/
 
+        /* .titre1{
+            height: 100%;
+        } */
+
+        .h1, h1 {
+            font-size: 1.5rem;
+        }
+
         .home-titre {
             height: 60vh;
             width: 100%;
@@ -127,7 +134,7 @@
         }
 
         .home-titre div {
-            position: absolute;
+            position: relative;
             margin-top: 100px;
             top: 20%;
             left: 50%;
@@ -137,6 +144,8 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            width: 73%;
+            min-width: 254px;
         }
 
         table .table {
@@ -373,20 +382,84 @@
         }
 
         /* ---------------------------------------- 3ième page - Ajout Site ---------------------------------------*/
+
         /* --------------------------------------------------------------------------------------------------- */
-        
-        .expo-checkbox{
+
+        .expo-checkbox {
             display: grid;
             grid-template-columns: 1fr 3fr 1fr 3fr;
         }
+
+        .labbel1 {
+            background-color: #859daf;
+            width: 30%;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .labbel2 {
+            background-color: #859daf;
+            width: 30%;
+            text-align: center;
+            border-radius: 5px;
+            margin-left: 0px ! important;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .col-form-label {
+            background-color: #859daf;
+            width: 52%;
+            text-align: center;
+            border-radius: 5px;
+            margin-left: 0px ! important;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        .nom {
+            width: 90%;
+        }
+
+        .expo-checkbox2 {
+            /* display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        }
+
+        .expo-checkbox3 {
+            /* display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        }
+
+        .expo-checkbox4 {
+            /* display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        }
+
+        .expo-checkbox5 {
+            /* display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        }
+
+        .expo-checkbox6 {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        }
+
+        .expo-checkbox7 {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        }
+
         #AjoutSite {
             height: 60vh;
             width: 100%;
         }
 
-        .form-control {
-            width: 120%;
-        }
+        /* .form-control {
+            width: 80%;
+        } */
 
         .custom-file-label {
             width: 95%;
@@ -525,22 +598,96 @@
             border: 1px solid black;
             grid-template-columns: 1fr 3fr 1fr 3fr;
         }
-        
-        .exposition .col-6 .premiere{
+
+        .exposition .col-6 .premiere {
             margin-right: 150px;
             padding: 30px;
         }
+
+        .col-form-label {
+            margin-left: 56px;
+        }
+
+        .boutonR2>a {
+            background-color: #144c74b7;
+            width: 26%;
+            border-radius: 5px;
+            text-align: center;
+            color: white !important;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 129px;
+            padding: 38px;
+            font-weight: 500;
+            font-size: 102%;
+            text-decoration: none;
+            margin-top: 266px;
+        }
+
         /* -----------------Page template de Sites ---------------------------------------------- */
 
         /* --------------------------------------------------------------------------------------- */
 
+        .titreTemplate {
+            height: 22%;
+            margin-top: 62px;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 145px;
+        }
+
         .difficulté {
-            display: block;
+            display: flex;
+            text-align: center;
         }
 
         .inline {
             display: flex;
             flex-direction: row;
+        }
+
+        .inlineA {
+            border: 2px solid black;
+            border-radius: 38px;
+            background-color: #859daf;
+            height: 87%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 16%;
+            min-width: 135px;
+        }
+
+        .diff1 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -13px;
+        }
+
+        .descriptionSite {
+            width: 41%;
+            min-width: 240px;
+            padding: 20px;
+            background-color: #3171337e;
+            margin: 0px 0px;
+            border-radius: 15px;
+            color: black;
+            text-align: center;
+            height: 51px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .difficulté2 {
+            margin-top: 7px;
+            margin-bottom: 8px;
         }
 
         .siteTemplate div {
@@ -564,6 +711,15 @@
             background-size: cover;
             margin-top: -20px;
         }
+        .panelImg>img{
+            height: 265px;
+            width: 60%;
+        }
+        /* img, svg {
+            height: 45vh;
+            width: 90vh;
+        } */
+
         /* --------------------------Editer un topo -------------------------------------- */
 
         .edition div {
@@ -587,9 +743,6 @@
             background-size: cover;
             margin-top: -20px;
         }
-
-
-
 
         /* ------------------- 4ième page -Topo ------------------------------------------------*/
 
@@ -645,7 +798,7 @@
         .tab-container .onglets {
             background-color: rgba(100, 161, 157, 0.5);
             display: flex;
-            height: 30px;
+            height: 34px;
             line-height: 30px;
             /* border:2px solid black; */
         }
@@ -662,15 +815,16 @@
             flex: 1;
             border: 1px solid rgba(100, 161, 157, 1);
             border-bottom: none;
-            color:  #317133;
+            color: #317133;
             text-align: center;
         }
 
         .tab-container .panel {
             padding: 10px;
-            background-color: #42637798;
+            background-color: #144c7448;
             position: relative;
             border: 1px solid rgba(100, 161, 157, 1);
+            /* height: 100% !important; */
         }
 
         .tab-container .onglets a.actif {
@@ -735,13 +889,39 @@
             border: none;
         }
 
-        .tab-container .onglets a.actif {
+        /* .tab-container .onglets a.actif {
             text-decoration: none;
-        }
+            margin-top: -9px;
+            height: 41px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
 
         /* ------------------------- 5ième page -Converter --------------------------------------*/
 
         /* ---------------------------------------------------------------------------------------------------- */
+
+        .row1 {
+            margin-top: 38px;
+        }
+
+        .convertisseur {
+            margin-top: 103px !important;
+            margin-left: 47px;
+        }
+
+        .right>img {
+            width: 95%;
+        }
+
+        .right {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
 
         #converter {
             height: 60vh;
@@ -885,7 +1065,7 @@
         /* ------------------------------------------------------------------------------------------------------ */
 
         #section_login {
-            height: 60vh;
+            height: 41vh;
             width: 100%;
             /* background-image: url("../img/Rclimbing.jpg"); */
             background-image: url("../img/saxon-switzerland-539418__340.jpg");
@@ -907,6 +1087,56 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+        }
+
+        .section_login>a>p {
+            background-color: #144c74b7;
+            width: 26%;
+            border-radius: 5px;
+            text-align: center;
+            color: white;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 22px;
+            padding: 29px;
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+
+        .btn-primary {
+            background-color: #144c74b7;
+            border: none;
+            height: 43px;
+            text-align: center;
+        }
+
+        .login {
+            /* background-color: lightcoral;
+            border: 2px solid black; */
+            margin-bottom: -504px;
+        }
+
+        /* --------------------------Formulaire d'enregistrement----------------------- */
+
+        /* ---------------------------------------------------------------------------- */
+
+        .boutonR>a {
+            background-color: #144c74b7;
+            width: 26%;
+            border-radius: 5px;
+            text-align: center;
+            color: white !important;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 15px;
+            padding: 38px;
+            font-weight: 500;
+            font-size: 102%;
+            text-decoration: none;
         }
 
         /* ----------------------------- Page 8 - Entrainement index----------------------- */
@@ -1071,6 +1301,30 @@
 
         /*-------------------------------------------------------------------------*/
 
+        @media screen and (min-width: 768px) {
+            .boutonR>a {
+                background-color: #144c74b7;
+                width: 26%;
+                border-radius: 5px;
+                text-align: center;
+                color: white !important;
+                height: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 17%;
+                padding: 38px;
+                font-weight: 500;
+                font-size: 102%;
+                text-decoration: none;
+                min-width: 108px;
+            }
+        }
+
+        .h1, h1 {
+            font-size: 2.5rem;
+        }
+
         /* lorsqu'on va arriver à une largeur min de 768px reférence pour les tablette, je vais modifier des choses */
 
         /* -------tablette welcome section------- */
@@ -1081,6 +1335,7 @@
             }
             h2 {
                 font-size: 2rem;
+                margin-bottom: 30px;
             }
             /* ----------tablette home section------------------------ */
             /* -------tablette gallery section------- */
@@ -1136,11 +1391,30 @@
                 justify-content: center;
                 align-items: center;
                 text-decoration: none;
+                margin-right: -5px;
             }
-            /*------- laptop description section */
-            /* #description-section .container {
-        padding: 150px;
-    } */
+            /* -------Laptop Titre Section--- */
+            .home-titre div {
+                position: relative;
+                margin-top: 100px;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                width: 55%;
+                min-width: 254px;
+            }
+            .logo {
+                width: auto;
+                height: 5.5em;
+                font-size: 0.5em;
+                margin-top: 15px;
+                margin-left: -20px;
+            }
             /*------- laptop gallery section */
             #gallery-section .container {
                 padding: 15px;
@@ -1162,8 +1436,4 @@
                 grid-row: span 2;
             }
             /*------- laptop review section */
-            /* #review-section .container {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    } */
         }

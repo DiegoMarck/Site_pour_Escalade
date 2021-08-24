@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TopoType extends AbstractType
@@ -30,17 +31,23 @@ class TopoType extends AbstractType
                         "en ligne"=>"en ligne",
                        
                 )))
-            // ->add('image', null, ["attr"=>["class"=>"form-control"]])
-            ->add('imageFile', VichImageType::class, [
-                "required"=>false,
-                'allow_delete'=>true,
-                'delete_label'=>"supprimer l'image téléchargée",
-                "download_uri"=>false, 
-                'image_uri'=>true, 
-                'asset_helper'=> false, 
-                'help'=>"test",
-                'label'=>"Fichier"
+            ->add('topo', FileType::class, [
+                'label' => 'photos',
+                'multiple' => true,
+                'mapped' =>false, 
+                'required' => false
             ])
+            // ->add('image', null, ["attr"=>["class"=>"form-control"]])
+            // ->add('imageFile', VichImageType::class, [
+            //     "required"=>false,
+            //     'allow_delete'=>true,
+            //     'delete_label'=>"supprimer l'image téléchargée",
+            //     "download_uri"=>false, 
+            //     'image_uri'=>true, 
+            //     'asset_helper'=> false, 
+            //     'help'=>"test",
+            //     'label'=>"Fichier"
+            // ])
             // ->add('maj')
             ->add('nomSite', null, ["attr"=>["class"=>"form-control"]])
             // ->add('media', MediaType::class,[])

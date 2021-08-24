@@ -93,7 +93,7 @@ class Topo
     private $imageFile;
 
     /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="topo")
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="topo", cascade={"persist"})
      */
     private $media;
 

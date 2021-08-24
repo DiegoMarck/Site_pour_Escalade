@@ -174,5 +174,50 @@ class SiteController extends AbstractController
         return $this->redirectToRoute('site_index');
     }
 
-    
+    // /**
+    //  * @Route("/supprime/image/{id}", name="annonce_delete_image", methods={"DELETE"})
+    //  */
+    // public function deleteImage(Site $site, Request $request){
+    //     $data = json_decode($request->getContent(), true);
+    //     // on vérifie si le token est valide
+    //     if($this->isCsrfTokenValid('delete').$site->getId(), $data['_token'])){
+    //         // on récupère le nom de l'image et on supprime le fichier
+    //         $nom = $site->getNom();
+    //         unlink($this->getParameter('images_directory').'/'.$nom);
+
+    //         $em = $this->getDoctrine()->getManager();
+    //         $em->remove($site);
+    //         $em->flush();
+    //         //on répond en json
+    //         return new JsonResponse(['succes' =>1]);
+    //     }else{
+    //         return new JsonResponse(['error' => 'Token Invalide'], 400);
+    //     }
+        
+    // }
+    /**
+     * @IsGranted("ROLE_ADMIN")
+     * @Route("/supprime/image/{id}", name="sites_delete_image", methods={"DELETE"})
+     */
+    public function deleteImage(Site $site, Request $request){
+        $data = json_decode($request->getContent(), true);
+
+        // On vérifie si le token est valide
+        if($this->isCsrfTokenValid('delete'.$site->getId(), $data['_token'])){
+            // On récupère le nom de l'image
+            $nom = $site->getNom();
+            // On supprime le fichier
+            unlink($this->getParameter('images_directory').'/'.$nom);
+
+            // On supprime l'entrée de la base
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($site);
+            $em->flush();
+
+            // On répond en json
+            return new JsonResponse(['success' => 1]);
+        }else{
+            return new JsonResponse(['error' => 'Token Invalide'], 400);
+        }
+    }
 }

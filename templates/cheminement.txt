@@ -262,3 +262,5 @@ php bin/console make:admin:crud
 <i class="fas fa-book"></i>
 <i class="fas fa-running"></i>
 <i class="fas fa-users"></i>
+
+L'algorithme bcrypt est le résultat du cryptage du texte "OrpheanBeholderScryDoubt" 64 fois à l'aide de Blowfish. Dans bcrypt, la fonction habituelle de configuration de clé Blowfish est remplacée par une fonction de configuration de clé coûteuse (EksBlowfishSetup)

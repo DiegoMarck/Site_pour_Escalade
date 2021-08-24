@@ -1,11 +1,22 @@
 <div class="container">
 	{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-
-	<div class="form-group">{{form_row(form.nom)}}</div>
-	
 		{{ form_errors(form.exposition) }}
-		{{ form_label(form.exposition, 'Exposition', {'label_attr': {'class': 'foo'}}) }}
+		{{ form_label(form.nom, null, {'label': 'Nom',
+		'label_attr': {'class': 'labbel1'}
+		}) }}
+		{{ form_widget(form.nom, {'attr': {'class': 'nom'}}) }}
+		{{ form_label(form.exposition, null, {'label': 'Exposition',
+		'label_attr': {'class': 'labbel2'}
+		}) }}
 		{{ form_widget(form.exposition, {'attr': {'class': 'expo-checkbox'}}) }}
+		{{ form_label(form.typeEscalade, 'Type d\'escalade', {'attr': {'class': 'labbel3'}}) }}
+		{{ form_widget(form.typeEscalade, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{# {{ form_widget(form.typeEquipement, {'attr': {'class': 'expo-checkbox3'}}) }}
+		{{ form_widget(form.siteInteressantpourGrimpeur, {'attr': {'class': 'expo-checkbox4'}}) }}
+		{{ form_widget(form.profileFalaise, {'attr': {'class': 'expo-checkbox5'}}) }}
+		{{ form_widget(form.typedePrise, {'attr': {'class': 'expo-checkbox6'}}) }}
+		{{ form_widget(form.meilleurperiode, {'attr': {'class': 'expo-checkbox7'}}) }} #}
+		
 	
 
 	
@@ -13,21 +24,24 @@
 	
 	
 {# verifier si la route est site_edit on affiche les images #}
-{% if app.request.attributes.get('_route') == 'site_edit' || app.request.attributes.get('_route') == 'site_index'%}
-	<h2>Images</h2>
+{% if app.request.attributes.get('_route') == 'site_edit' %}
+	{# <h2>Images</h2> #}
+		
+			{# {{ dump(medium) }} #}
+		
 	{% for image in site.media %}
 		<div>
 			<img
 			src="{{ asset('/uploads/' ~ image) }}" alt="image" width="350">
-		{# <a href="{{ path('siteDeleteImage', {'id':site.id}) }}" data-dlete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a> #}
+			<a href="{{ path('sites_delete_image', {id:site.id}) }}" data-delete data-token="{{csrf_token('delete' ~ site.id )}}">Supprimer</a>
 		</div>
 	{% endfor %}
 {% endif %}
 {# {{ form_row(form.save) }} #}
+<div>
+<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
 {{ form_end(form) }}
-	<div>
-	<button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-	</div>
 	
 
 </div>

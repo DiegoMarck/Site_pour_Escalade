@@ -6,9 +6,8 @@
 {% block body %}
 
 	<div class="siteTemplate">
-		<div>
-			<h1>Site</h1>
-
+		<div class="titreTemplate">
+			<h1>Sites</h1>
 		</div>
 	</div>
 	<a href='https://fr.freepik.com/photos/nuage'>Nuage photo créé par wirestock - fr.freepik.com</a>
@@ -18,7 +17,7 @@
 
 	<section id="tabs" class="tab-container">
 		<div>
-			<h2>{{ site.nom }}</h2>
+			<h2>Site de {{ site.nom }}</h2>
 		</div>
 		<div class="container">
 			<div class="onglets">
@@ -29,15 +28,18 @@
 		</div>
 		<div class="panel">
 			<div class="container-fluid">
-				<div class="row fficulté">
-					<p>Site intéressant pour les voies</p>
-					<div class="inline">
-						<p>de
-							{{ site.difficulte ? site.difficulte|join(', ') : '' }}</p>
-						<p>à
-							{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</p>
+				<div class="row difficulté">
+					<p class="">Site intéressant pour les voies</p>
+					<div class="diff1">
+						<div class="inline inlineA">
+							<p class="difficulté2">de
+								{{ site.difficulte ? site.difficulte|join(', ') : '' }}</p>
+							<p class="difficulté2">à
+								{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</p>
+						</div>
 					</div>
 				</div>
+				<h4 class="descriptionSite">Description du Site</h4>
 				<div class="row inline">
 					<div class="col">
 						<p>Type d'escalade :</p>
@@ -114,8 +116,8 @@
 		</div>
 		<div class="panel">
 			{% for image in site.media %}
-				<div>
-					<img src="{{ asset('/uploads/' ~ image )}}" alt="Image" width="150px" heigth="160">
+				<div class="panelImg">
+					<img src="{{ asset('/uploads/' ~ image )}}" alt="Image">
 				</div>
 			{% endfor %}
 

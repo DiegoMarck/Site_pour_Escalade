@@ -13,7 +13,11 @@ use App\Repository\EntrainementRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
+use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -38,12 +42,15 @@ class DashboardController extends AbstractDashboardController
     }
     /**
      * @Route("/admin", name="admin")
+     * @IsGranted("ROLE_ADMIN")
      */
     public function index(): Response
     {
         return $this->render('bundles/EasyAdminBundle/welcome.html.twig', [
-            'countAllUser' => $this->userRepository->findAll()
-            // 'allUser' => $this->userRepository->findAll(),
+            // 'countAllUser' => $this->userRepository->countAllUser(),
+            'countAllSite' => $this->siteRepository->countAllSite(),
+            'countAllTopo' => $this->topoRepository->countAllTopo(),
+            'users' => $this->userRepository->findAll()
         ]);
         // return parent::index();
     }
@@ -51,7 +58,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('ProjetEscalade4 4');
+            ->setTitle('Projet_Escalade');
     }
 
     public function configureMenuItems(): iterable
@@ -61,5 +68,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Topo', 'fa fa-book', Topo::class);
         yield MenuItem::linkToCrud('User', 'fa fa-users', User::class);
         yield MenuItem::linkToCrud('Entrainement', 'fa fa-running', Entrainement::class);
+        
+    }
+    public function configureUserMenu(UserInterface $user): UserMenu
+    {
+        return parent::configureUserMenu($user)
+            ->setName($user->getUsername())
+            ->setAvatarUrl('https://img1.freepng.fr/20180224/vte/kisspng-rock-climbing-icon-woman-rock-climbing-5a90fb26174870.4591308215194509180954.jpg')
+            // ->setGravatarEmail($user->getUsername())
+            ->displayUserAvatar(true)
+            ;
     }
 }

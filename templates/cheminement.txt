@@ -264,3 +264,22 @@ php bin/console make:admin:crud
 <i class="fas fa-users"></i>
 
 L'algorithme bcrypt est le résultat du cryptage du texte "OrpheanBeholderScryDoubt" 64 fois à l'aide de Blowfish. Dans bcrypt, la fonction habituelle de configuration de clé Blowfish est remplacée par une fonction de configuration de clé coûteuse (EksBlowfishSetup)
+
+video EasyAdmin3 Symfony 5 Tableau de bord et configuration
+essai avec dans wellcome.html.twig  : <img src="asset{{img/iconeDash/Rock_Climbing.png}}" alt="icone" width="150" height="150">
+
+changement de cette fct° avec updatedAt
+/**
+     * Set the value of imageFile
+     *
+     * @return  self
+     */ 
+    public function setImageFile(File $file)
+    {
+        $this->imageFile = $file;
+        if($file !== null){
+            $this->datedeMiseajour = new \DateTime();
+
+        }
+        return $this;
+    }

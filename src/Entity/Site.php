@@ -210,22 +210,34 @@ class Site
     private $photos;
     
     //cascade->upload multiple donc plus besoin des 2 suivant
-    // /**
-    //  * @ORM\Column(type="string", length=255, nullable=true)
-    //  */
-    // private $images;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $images;
 
-    // /**
-    //  * @Vich\UploadableField(mapping="sites", fileNameProperty="images" )
-    //  * 
-    //  */
-    // private $imageFile;
+    /**
+     * @Vich\UploadableField(mapping="sites", fileNameProperty="images" )
+     * 
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
         $this->media = new ArrayCollection();
         $this->entrainements = new ArrayCollection();
         $this->photos = new ArrayCollection();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
     }
 
     public function __toString(){
@@ -640,39 +652,39 @@ class Site
         return $this;
     }
 
-    // public function getImages(): ?string
-    // {
-    //     return $this->images;
-    // }
+    public function getImages(): ?string
+    {
+        return $this->images;
+    }
     
-    // public function setImages(?string $images): self
-    // {
-    //     $this->images = $images;
+    public function setImages(?string $images): self
+    {
+        $this->images = $images;
 
-    //     return $this;
-    // }
-    //  /**
-    //  * Get the value of imageFile
-    //  */ 
-    // public function getImageFile()
-    // {
-    //     return $this->imageFile;
-    // }
+        return $this;
+    }
+     /**
+     * Get the value of imageFile
+     */ 
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
 
-    // /**
-    //  * Set the value of imageFile
-    //  *
-    //  * @return  self
-    //  */ 
-    // public function setImageFile(File $file)
-    // {
-    //     $this->imageFile = $file;
-    //     if($file !== null){
-    //         $this->datedeMiseajour = new \DateTime();
+    /**
+     * Set the value of imageFile
+     *
+     * @return  self
+     */ 
+    public function setImageFile(File $file)
+    {
+        $this->imageFile = $file;
+        if($file !== null){
+            $this->updatedAt = new \DateTime();
 
-    //     }
-    //     return $this;
-    // }
+        }
+        return $this;
+    }
 
     /**
      * @return Collection|Entrainement[]
@@ -727,6 +739,30 @@ class Site
                 $photo->setPhotoSite(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

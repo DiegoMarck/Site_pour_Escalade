@@ -630,6 +630,14 @@
 
         /* --------------------------------------------------------------------------------------- */
 
+        element.style {
+            width: 260px;
+            height: 276px;
+            backface-visibility: hidden;
+            transform: translate3d(-81px, -163px, 0px);
+            opacity: 1;
+            
+        }
         .titreTemplate {
             height: 22%;
             margin-top: 62px;

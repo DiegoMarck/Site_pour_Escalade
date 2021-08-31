@@ -20,21 +20,20 @@ class SiteRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return Site[] Returns an array of Site objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    //   * @return Site[] Returns an array of Site objects
+    //   */
+    // public function findByExampleField($value)
+    // {
+    //     return $this->createQueryBuilder('s')
+    //         ->andWhere('s.exampleField = :val')
+    //         ->setParameter('val', $value)
+    //         ->orderBy('s.id', 'ASC')
+    //         ->setMaxResults(10)
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
+    
 
     /*
     public function findOneBySomeField($value): ?Site
@@ -47,4 +46,13 @@ class SiteRepository extends ServiceEntityRepository
         ;
     }
     */
+    /**
+     * @return int/mixed/string
+     */
+    public function countAllSite(){
+        $queryBuilder = $this->createQueryBuilder('a');
+        $queryBuilder->select('COUNT(a.id) as value');
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

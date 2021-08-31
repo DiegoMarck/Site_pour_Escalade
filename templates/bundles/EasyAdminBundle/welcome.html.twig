@@ -6,38 +6,45 @@
 {% block page_content %}
 	<div class="container">
 		<div class="row">
-
-			<div class="col-6">
+			<div class="col-6 alert-info">
+		
 				<span class="display-3">
-					3
+					{{countAllSite['value']}}
 				</span>
 				Sites
 			</div>
 			<div
-				class="col-6">
+				class="col-6 alert-success">
 				<span class="display-3">
-					3
+				{{countAllTopo['value']}}
 				</span>
 				Topos
 			</div>
+			{# <div
+				class="col-4 alert-info">
+				<span class="display-3">
+				{{countAllUser['value']}}
+				</span>
+				Users
+			</div> #}
 		</div>
-		<div class="row">
+		<div class="row mt-3">
 			<h4>Entrainement</h4>
 			<div class="col-6">Coach</div>
 			<div class="col-6"></div>
 		</div>
 		<div class="row mt-3">
 			<div class="col-12">
-            <p class="h3">liste des Sites</p>
+            <p class="h3">liste des Users</p>
                 <ul class="list-group">
-{# {{dump('$site')}} #}
-				{# {% for site in  sites %}
+{# {{dump('Site')}} #}
+				{% for item in  users %}
 
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{site.nom}}
-                        <span class="badge badge-primary badge-pill">Site <i></i></span>
+                        {{item.email}}
+                        <span class="badge badge-primary badge-pill"><i class="fas fa-users"></i>Users</span>
                     </li>
-                {% endfor %}   #}
+                {% endfor %}  
                 </ul>
             </div>
 		</div>

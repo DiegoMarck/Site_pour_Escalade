@@ -69,6 +69,11 @@
             #macarte2 {
                 height: 450px;
                 margin: 20px;
+                /* width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0; */
             }
 
 				
@@ -189,6 +194,8 @@
                 </div>
             </nav> #}
         </header>
+        
+
         {% if app.user %}
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -197,7 +204,10 @@
             </ul>
         {% endif %}
 
-        {% block body %}{% endblock %}
+        {% block body %}
+        
+    
+        {% endblock %}
         
         {% block javascripts %}{% endblock %}
         <footer>

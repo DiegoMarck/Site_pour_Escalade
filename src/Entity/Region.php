@@ -24,7 +24,7 @@ class Region
     /**
      * @ORM\ManyToMany(targetEntity=Topo::class)
      */
-    private $nom;
+    private $topo;
 
     public function __construct()
     {

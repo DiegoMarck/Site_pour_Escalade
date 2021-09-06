@@ -41,7 +41,7 @@ class AppFixtures extends Fixture
 
         $manager->flush();
 
-        $manager->flush();
+        
     }
     
     // public function load(ObjectManager $manager)

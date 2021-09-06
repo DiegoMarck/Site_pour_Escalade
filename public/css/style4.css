@@ -119,6 +119,11 @@
             height: 100%;
         } */
 
+        .box_e {
+            height: 30%;
+            border: 2px solid red;
+        }
+
         .h1, h1 {
             font-size: 1.5rem;
         }
@@ -381,7 +386,7 @@
             flex-direction: row;
         }
 
-        /* ---------------------------------------- 3ième page - Ajout Site ---------------------------------------*/
+        /* -------------- 3ième page - Ajout Site ---------------------------------------*/
 
         /* --------------------------------------------------------------------------------------------------- */
 
@@ -392,10 +397,22 @@
 
         .labbel1 {
             background-color: #859daf;
-            width: 30%;
+            width: 67%;
+            max-width: 150px;
             text-align: center;
             border-radius: 5px;
             padding: 5px;
+            /* padding: 10px; */
+            height: 7vh;
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            color: black;
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2%;
         }
 
         .labbel2 {
@@ -407,6 +424,14 @@
             padding: 5px;
             margin-top: 5px;
         }
+        .form-check-label {
+            padding: 3px;
+            margin-right: 5px;
+            margin-top: -5px;
+        }
+        [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+            margin-top: 14px;
+        }
 
         .col-form-label {
             background-color: #859daf;
@@ -416,31 +441,32 @@
             margin-left: 0px ! important;
             padding: 5px;
             margin-top: 5px;
+            height: 45%;
         }
 
         .nom {
             width: 90%;
         }
 
-        .expo-checkbox2 {
-            /* display: grid;
-            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        /* .expo-checkbox2 {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
         }
 
         .expo-checkbox3 {
-            /* display: grid;
-            grid-template-columns: 1fr 3fr 1fr 3fr; */
-        }
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        } */
 
-        .expo-checkbox4 {
-            /* display: grid;
-            grid-template-columns: 1fr 3fr 1fr 3fr; */
+        /* .expo-checkbox4 {
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
         }
 
         .expo-checkbox5 {
-            /* display: grid;
-            grid-template-columns: 1fr 3fr 1fr 3fr; */
-        }
+            display: grid;
+            grid-template-columns: 1fr 3fr 1fr 3fr;
+        } */
 
         .expo-checkbox6 {
             display: grid;
@@ -490,7 +516,7 @@
 
         #AjoutSite div {
             position: absolute;
-            top: 38%;
+            top: 33%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: white;
@@ -501,7 +527,7 @@
         }
 
         #AjoutSite {
-            height: 60vh;
+            height: 51vh;
             width: 100%;
             background-image: url("../img/stunning-shot-of-young-man-climbing-up-cliff-on-cold-and-foggy-day.jpg");
             background-position: center;
@@ -636,8 +662,8 @@
             backface-visibility: hidden;
             transform: translate3d(-81px, -163px, 0px);
             opacity: 1;
-            
         }
+
         .titreTemplate {
             height: 22%;
             margin-top: 62px;
@@ -719,10 +745,24 @@
             background-size: cover;
             margin-top: -20px;
         }
-        .panelImg>img{
+
+        .panelImg>img {
             height: 265px;
             width: 60%;
         }
+
+        /* .carte_panel{
+            box-sizing: content-box !important;
+            background-color: aqua;
+        }
+        #macarte2{
+            box-sizing:content-box !important;
+            background-color: aqua;
+        }
+        .carte_panel, ::after, ::before{
+            box-sizing: content-box;
+        }  */
+
         /* img, svg {
             height: 45vh;
             width: 90vh;
@@ -730,7 +770,7 @@
 
         /* --------------------------Editer un topo -------------------------------------- */
 
-        .edition div {
+        #edition div {
             position: absolute;
             top: 25%;
             left: 40%;
@@ -742,7 +782,7 @@
             padding: 4px;
         }
 
-        .edition {
+        #edition {
             height: 60vh;
             width: 100%;
             background-image: url("../img/climbA.jpg");
@@ -1030,7 +1070,7 @@
             }
         }
 
-        /* ------------------------- 6ième page -Contact --------------------------------------------------------------*/
+        /* ------------ 6ième page -Contact --------------------------------------------------------------*/
 
         /* ------------------------------------------------------------------------------------------------------------ */
 
@@ -1068,7 +1108,21 @@
             margin-top: -16px;
         }
 
-        /* ------------------------- 7ième page -Security/Login --------------------------------------*/
+        .contact1 {
+            /* background-color: #2e6ea6; */
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+        }
+
+        textarea.form-control {
+            height: auto;
+            /* padding: 10px; */
+            margin-left: 10px;
+            width: 65% !important;
+        }
+
+        /* --------------- 7ième page -Security/Login --------------------------------------*/
 
         /* ------------------------------------------------------------------------------------------------------ */
 
@@ -1126,7 +1180,7 @@
             margin-bottom: -504px;
         }
 
-        /* --------------------------Formulaire d'enregistrement----------------------- */
+        /* -----------Formulaire d'enregistrement----------------------- */
 
         /* ---------------------------------------------------------------------------- */
 
@@ -1147,7 +1201,7 @@
             text-decoration: none;
         }
 
-        /* ----------------------------- Page 8 - Entrainement index----------------------- */
+        /* -------------- Page 8 - Entrainement index----------------------- */
 
         /* --------------------------------------------------------------------------------- */
 
@@ -1173,7 +1227,7 @@
             margin-top: -16px;
         }
 
-        /* ----------------------------- Page 9 -Ajouter un Entrainement ----------------------- */
+        /* ----------- Page 9 -Ajouter un Entrainement ----------------------- */
 
         /* --------------------------------------------------------------------------------- */
 
@@ -1204,7 +1258,7 @@
             width: 120vh;
         }
 
-        /* ----------------------------- Page 10 - User Registration ----------------------- */
+        /* ------------- Page 10 - User Registration ----------------------- */
 
         /* --------------------------------------------------------------------------------- */
 
@@ -1268,7 +1322,7 @@
             background-size: cover;
         }
 
-        /* -----------------Admin Section -----------------------*/
+        /* -----------Admin Section -----------------------*/
 
         #admin div {
             position: absolute;
@@ -1404,7 +1458,7 @@
             /* -------Laptop Titre Section--- */
             .home-titre div {
                 position: relative;
-                margin-top: 100px;
+                margin-top: 134px;
                 top: 20%;
                 left: 50%;
                 transform: translate(-50%, -50%);

@@ -119,146 +119,32 @@
 				<div class="panelImg">
 					<img src="{{ asset('/uploads/' ~ image )}}" alt="Image">
 				</div>
+				
 			{% endfor %}
+			<div class="panelImg">
+					<img src="{{ vich_uploader_asset(site, 'imageFile')}}" alt="Image">
+			</div>
 
 		</div>
-		<div class="panel">
+		<div class="panel" id="apiMeteo">
 			
-			<section class="carte_panel">
-				<!-- Ici s'affichera la carte -->
-				<div id="macarte2"></div>
-			</section>
-		
-		</div>
-	</section>
-	{# <table class="table">
-				<tbody>
-					<tr>
-						<th>Id</th>
-						<td>{{ site.id }}</td>
-					</tr>
-					<tr>
-						<th>Nom</th>
-						<td>{{ site.nom }}</td>
-					</tr>
-					<tr>
-						<th>GrandeVilleProche</th>
-						<td>{{ site.grandeVilleProche }}</td>
-					</tr>
-					<tr>
-						<th>VilleLaPlusProche</th>
-						<td>{{ site.villeLaPlusProche }}</td>
-					</tr>
-					<tr>
-						<th>Exposition</th>
-						<td>{{ site.exposition ? site.exposition|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>AltitudeAuxPiedsdesVoies</th>
-						<td>{{ site.altitudeAuxPiedsdesVoies }}</td>
-					</tr>
-					<tr>
-						<th>DureeMarcheAproche</th>
-						<td>{{ site.dureeMarcheAproche }}</td>
-					</tr>
-					<tr>
-						<th>ProfilMarcheApproche</th>
-						<td>{{ site.profilMarcheApproche ? site.profilMarcheApproche|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>PracticabiitePiedsdesVoies</th>
-						<td>{{ site.practicabiitePiedsdesVoies ? site.practicabiitePiedsdesVoies|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>Latitude</th>
-						<td>{{ site.latitude }}</td>
-					</tr>
-					<tr>
-						<th>Longitude</th>
-						<td>{{ site.longitude }}</td>
-					</tr>
-					<tr>
-						<th>NombreFalaise</th>
-						<td>{{ site.nombreFalaise }}</td>
-					</tr>
-					<tr>
-						<th>HauteurMax</th>
-						<td>{{ site.hauteurMax }}</td>
-					</tr>
-					<tr>
-						<th>TypeEscalade</th>
-						<td>{{ site.typeEscalade ? site.typeEscalade|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>TypeEquipement</th>
-						<td>{{ site.typeEquipement ? site.typeEquipement|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>NombredeVoie</th>
-						<td>{{ site.nombredeVoie ? site.nombredeVoie|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>Difficulte</th>
-						<td>{{ site.difficulte ? site.difficulte|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>Difficulte2</th>
-						<td>{{ site.difficulte2 ? site.difficulte2|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>SiteInteressantpourGrimpeur</th>
-						<td>{{ site.siteInteressantpourGrimpeur ? site.siteInteressantpourGrimpeur|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>TypeRocher</th>
-						<td>{{ site.typeRocher ? site.typeRocher|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>ProfileFalaise</th>
-						<td>{{ site.profileFalaise ? site.profileFalaise|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>TypedePrise</th>
-						<td>{{ site.typedePrise ? site.typedePrise|join(', ') : '' }}</td>
-					</tr>
-					<tr>
-						<th>Restriction</th>
-						<td>{{ site.restriction }}</td>
-					</tr>
-					<tr>
-						<th>InfoSuplementaire</th>
-						<td>{{ site.infoSuplementaire }}</td>
-					</tr>
-					<tr>
-						<th>SiteInternet</th>
-						<td>{{ site.siteInternet }}</td>
-					</tr>
-					<tr>
-						<th>VoieMythique</th>
-						<td>{{ site.voieMythique }}</td>
-					</tr>
-					<tr>
-						<th>Nomprenompseudo</th>
-						<td>{{ site.nomprenompseudo }}</td>
-					</tr>
-					<tr>
-						<th>AdresseMail</th>
-						<td>{{ site.adresseMail }}</td>
-					</tr>
-					<tr>
-						<th>Meilleurperiode</th>
-						<td>{{ site.meilleurperiode ? site.meilleurperiode|join(', ') : '' }}</td>
-					</tr>
-				</tbody>
-			</table> #}
-
-			{# <section id="map">
+			{# <section class="carte_panel">
 				<!-- Ici s'affichera la carte -->
 				<div id="macarte2"></div>
 			</section> #}
-	<input type="button" value="APPEL API METEO"  onclick="buttonClickGET()"  />
+			<div><p>Ici mon api Meteo</p></div>
+		
+		</div>
+	</section>
+	
+
+			<section id="map">
+				<!-- Ici s'affichera la carte -->
+				<div id="macarte2"></div>
+			</section>
+	{# <input type="button" value="APPEL API METEO"  onclick="buttonClickGET()"  />
 	<input type="lat_long" value="Paris, fr"  onclick="buttonClickGET()"  />
-    <p id="zone_meteo">toto</p>
+    <p id="zone_meteo">toto</p> #}
 
 
 	<a href="{{ path('site_index') }}">back to list</a>
@@ -308,7 +194,6 @@
 		tabsPlugin();
 		});
 	
-		
 		{# var latLng = L.latLng(site.latitude, site.longitude)        #}
 		var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
 		//on charge les tuiles

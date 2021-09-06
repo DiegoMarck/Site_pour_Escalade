@@ -69,7 +69,8 @@ class SiteType extends AbstractType
                         "par pont de singe"=>"par pont de singe",
                 )))
             ->add('practicabiitePiedsdesVoies', ChoiceType::class,
-            array(
+            array(  
+                    // 'mapped' => false,
                     'choices' => array(
                         'Non connu'=>'Non connu',
                         "confortable"=>"confortable",

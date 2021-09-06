@@ -1,16 +1,71 @@
 <div class="container">
 	{{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
-		{{ form_errors(form.exposition) }}
+		
 		{{ form_label(form.nom, null, {'label': 'Nom',
 		'label_attr': {'class': 'labbel1'}
 		}) }}
 		{{ form_widget(form.nom, {'attr': {'class': 'nom'}}) }}
+		{{ form_label(form.grandeVilleProche, null, {'label':'Grande Ville Proche','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.grandeVilleProche, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.villeLaPlusProche, null, {'label':'Ville La Plus Proche','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.villeLaPlusProche, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_errors(form.exposition) }}
 		{{ form_label(form.exposition, null, {'label': 'Exposition',
 		'label_attr': {'class': 'labbel2'}
 		}) }}
 		{{ form_widget(form.exposition, {'attr': {'class': 'expo-checkbox'}}) }}
 		{{ form_label(form.typeEscalade, 'Type d\'escalade', {'attr': {'class': 'labbel3'}}) }}
 		{{ form_widget(form.typeEscalade, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.altitudeAuxPiedsdesVoies, null, {'label':'Altitude aux pieds des voies','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.altitudeAuxPiedsdesVoies, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.dureeMarcheAproche,  null, {'label':'Durée marche d\'aproche','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.dureeMarcheAproche, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.profilMarcheApproche,  null, {'label':'Profil marche approche','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.profilMarcheApproche, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.practicabiitePiedsdesVoies,  null, {'label':'Practicabilité aux pieds des voies','label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.practicabiitePiedsdesVoies, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.latitude,  null, {'label':'Latitude','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.latitude, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.longitude,  null, {'label':'Longitude','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.longitude, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.nombreFalaise,  null, {'label':'Nombre de falaise','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.nombreFalaise, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.hauteurMax, null, {'label':'Hauteur Max','label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.hauteurMax, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.typeEquipement, 'Type d\'équipement', {'attr': {'class': 'labbel3'}}) }}
+		{{ form_widget(form.typeEquipement, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.nombredeVoie, null, {'label':'Nombre de voie','label_attr' : {'class': 'labbel1'}}) }}
+		{{ form_widget(form.nombredeVoie, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.difficulte,null, {'label':'Difficulte de','label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.difficulte, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.difficulte2, null, {'label':'à', 'label_attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.difficulte2, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.siteInteressantpourGrimpeur, 'Site interessant pour grimpeur', {'attr': {'class': 'labbel1'}}) }}
+		{{ form_widget(form.siteInteressantpourGrimpeur, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.typeRocher, null, {'label':'Type de rocher', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.typeRocher, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.profileFalaise, 'Profile de falaise', {'attr': {'class': 'labbel3'}}) }}
+		{{ form_widget(form.profileFalaise, {'attr': {'class': 'expo-checkbox'}}) }}
+		{{ form_label(form.typedePrise, 'Type de prise', {'attr': {'class': 'labbel3'}}) }}
+		{{ form_widget(form.typedePrise, {'attr': {'class': 'expo-checkbox'}}) }}
+		{{ form_label(form.restriction, null, {'label':'restriction', 'label_attr': {'class': 'labbel1'}}) }}  
+		{{ form_widget(form.restriction, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.infoSuplementaire, null, {'label':'Info suplementaire', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.infoSuplementaire, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.siteInternet, null, {'label':'Site internet', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.siteInternet, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.voieMythique, null, {'label':'Voie mythique', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.voieMythique, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.nomprenompseudo, null, {'label':'Nom prenom pseudo', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.nomprenompseudo, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.adresseMail, null, {'label':'Adresse mail', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.adresseMail, {'attr': {'class': 'expo-checkbox2'}}) }}
+		{{ form_label(form.meilleurperiode, 'Meilleur période', {'attr': {'class': 'labbel3'}}) }}
+		{{ form_widget(form.meilleurperiode, {'attr': {'class': 'expo-checkbox'}}) }}
+		{{ form_label(form.site, null, {'label': 'Photos', 'label_attr': {'class': 'labbel1'}}) }} 
+		{{ form_widget(form.site, {'attr': {'class': 'expo-checkbox2'}}) }}
+		
+		
 		{# {{ form_widget(form.typeEquipement, {'attr': {'class': 'expo-checkbox3'}}) }}
 		{{ form_widget(form.siteInteressantpourGrimpeur, {'attr': {'class': 'expo-checkbox4'}}) }}
 		{{ form_widget(form.profileFalaise, {'attr': {'class': 'expo-checkbox5'}}) }}

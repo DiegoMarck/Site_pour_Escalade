@@ -18,6 +18,6 @@
         </div>
     
         {{ form_widget(form) }} #}
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
     {{ form_end(form) }}
 </div>
-<button class="btn btn-primary">{{ button_label|default('Save') }}</button>

@@ -196,6 +196,8 @@ class Site
 
     /**
      * @ORM\OneToMany(targetEntity=Media::class, mappedBy="site", cascade={"persist"})
+     * 
+     * 
      */
     private $media;
 
@@ -215,8 +217,10 @@ class Site
      */
     private $images;
 
+    //  @var Images
     /**
      * @Vich\UploadableField(mapping="sites", fileNameProperty="images" )
+     *
      * 
      */
     private $imageFile;
@@ -676,11 +680,11 @@ class Site
      *
      * @return  self
      */ 
-    public function setImageFile(File $file)
+    public function setImageFile(File $file=null)
     {
         $this->imageFile = $file;
         if($file !== null){
-            $this->updatedAt = new \DateTime();
+            $this->updatedAt = new \DateTime('now');
 
         }
         return $this;

@@ -293,7 +293,6 @@ class SiteType extends AbstractType
                     'novembre ' => 'novembre',
                     'décembre ' => 'décembre',
                 ),
-                // 'choices_as_values' => true, 
                 'multiple' => true, 
                 'expanded' => true
                
@@ -306,16 +305,19 @@ class SiteType extends AbstractType
             ])
             //  ->add('save', SubmitType::class)
             // ->add('images')
-            // ->add('imageFile', VichImageType::class, [
-            //     "required"=>false,
-            //     'allow_delete'=>true,
-            //     'delete_label'=>"supprimer l'image téléchargée",
-            //     "download_uri"=>false, 
-            //     'image_uri'=>true, 
-            //     'asset_helper'=> false, 
-            //     'help'=>"test",
-            //     'label'=>"Fichier",
-            // ])
+            ->add('imageFile', VichImageType::class)
+                // "required"=>false,
+                // 'allow_delete'=>true,
+                // 'delete_label'=>"supprimer l'image téléchargée",
+                // "download_uri"=>false, 
+                // 'image_uri'=>true, 
+                // 'asset_helper'=> false, 
+                // 'help'=>"test",
+                // 'label'=>"Fichier"
+                
+                
+            
+            
             // ->add('media', MediaType::class,[])
             // ->add('image', EntityType::class, [
             //     "class"=>Media::class, 

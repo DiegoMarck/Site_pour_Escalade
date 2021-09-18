@@ -11,3 +11,6 @@ vich_uploader:
         # topos:
         #     uri_prefix: /uploads/topos
         #     upload_destination: '%kernel.project_dir%/public/uploads/topos'
+        images:
+            uri_prefix: /uploads/images
+            upload_destination: '%kernel.project_dir%/public/uploads/topos'

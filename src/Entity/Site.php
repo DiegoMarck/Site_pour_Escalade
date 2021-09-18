@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SiteRepository;
 use Doctrine\Common\Collections\Collection;
@@ -40,11 +41,13 @@ class Site
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $grandeVilleProche;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      */
     private $villeLaPlusProche;
 
@@ -217,11 +220,10 @@ class Site
      */
     private $images;
 
-    //  @var Images
+    //  @var Images , cascade={"persist"}
     /**
      * @Vich\UploadableField(mapping="sites", fileNameProperty="images" )
      *
-     * 
      */
     private $imageFile;
 

@@ -1,0 +1,9 @@
+{# {{dump(field.value)}} #}
+
+<div class="form-widget">
+			{% for image in (field.value) %}
+				<a href="#" class="ea-lightbox-image" data-featherlight="#ea-lightbox-{{image.id}}" data-featherlight-close-on-click="anywhere"><img scr"/uploads/sites/{{image.image}}"></a>
+			    
+                <div id="ea-lightbox-{{image.id}}" class="ae-lightbox"><img scr"/uploads/sites/{{image.image}}"></div>
+			{% endfor %}
+</div>		

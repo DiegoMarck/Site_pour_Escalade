@@ -283,3 +283,11 @@ changement de cette fct° avec updatedAt
         }
         return $this;
     }
+
+Assert dans la validation des formulaires :
+@Assert\NotBlank() qui vérifie que le champ n’est pas vide.
+@Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least 2 characters long",
+     *      maxMessage = "Your first name cannot be longer than 50 characters")

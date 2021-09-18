@@ -121,37 +121,38 @@
 				</div>
 				
 			{% endfor %}
+			{# {% for imageFile in site.media %} #}
+				
 			<div class="panelImg">
 					<img src="{{ vich_uploader_asset(site, 'imageFile')}}" alt="Image">
 			</div>
+			{# {% endfor %} #}
+			
 
 		</div>
 		<div class="panel" id="apiMeteo">
 			
-			{# <section class="carte_panel">
-				<!-- Ici s'affichera la carte -->
-				<div id="macarte2"></div>
-			</section> #}
 			<div><p>Ici mon api Meteo</p></div>
+			{# <strong>wind speed:</strong> {{ wind.speed }} #}
+				{# {{dump(speed)}} #}
 		
 		</div>
 	</section>
 	
 
 			<section id="map">
-				<!-- Ici s'affichera la carte -->
 				<div id="macarte2"></div>
 			</section>
-	{# <input type="button" value="APPEL API METEO"  onclick="buttonClickGET()"  />
-	<input type="lat_long" value="Paris, fr"  onclick="buttonClickGET()"  />
-    <p id="zone_meteo">toto</p> #}
+	
+
+	
+	<div class="bouton">
+		<a href="{{ path('site_index') }}">back to list</a>
+		<a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
+		{{ include('site/_delete_form.html.twig') }}
+	</div>
 
 
-	<a href="{{ path('site_index') }}">back to list</a>
-
-	<a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
-
-	{{ include('site/_delete_form.html.twig') }}
 {% endblock %}
 {% block javascripts %}
 

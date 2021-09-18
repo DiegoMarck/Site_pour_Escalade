@@ -16,16 +16,19 @@ class MediaType extends AbstractType
             ->add('nom')
             ->add('description')
             ->add('image')
-            ->add('imageFile', VichImageType::class, [
-                "required"=>true,
-                'allow_delete'=>true,
-                'delete_label'=>"supprimer l'image téléchargée",
-                "download_uri"=>false, 
-                'image_uri'=>true, 
-                'asset_helper'=> false, 
-                'help'=>"test",
-                'label'=>"Fichier"
-            ])
+            ->add('imageFile', VichImageType::class
+            // , [
+            //     "required"=>true,
+            //     'allow_delete'=>true,
+            //     'delete_label'=>"supprimer l'image téléchargée",
+            //     "download_uri"=>false, 
+            //     'image_uri'=>true, 
+            //     'asset_helper'=> false, 
+            //     'help'=>"test",
+            //     'multiple'=>true,
+            //     'label'=>"Fichier"
+            // ]
+            )
             ->add('site')
         ;
     }

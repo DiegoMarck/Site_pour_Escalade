@@ -71,9 +71,15 @@ class Media
      */
     private $photoSite;
 
-    public function __toString(){
+    // public function __toString(){
+    //     return $this->nom;
+    // }
+    public function __toString() {
+        if(is_null($this->nom)) {
+            return 'NULL';
+        }    
         return $this->nom;
-    }
+     }
 
 
     public function getId(): ?int
@@ -145,7 +151,11 @@ class Media
     public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
+        if($imageFile !== null){
+            $this->maj = new \DateTime('now');
 
+        }
+        return $this;
         return $this;
     }
 

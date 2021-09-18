@@ -34,25 +34,12 @@ class SiteController extends AbstractController
      */
     public function index(SiteRepository $siteRepository): Response
     {
-        // $site = $siteRepository->findAll();
-        // $sites = [];
-        // foreach($site as $siteEsc ){
-        //     $sites [] = [
-        //         'id' => $siteEsc->getId(),
-        //         'nom' => $siteEsc->getNom(),
-        //     ];
-        // }
-        // $data = json_encode($sites);
-        // return $this->render('site/index.html.twig',
-        // compact('data') );
+        
         return $this->render('site/index.html.twig', [
             'sites' => $siteRepository->findAll(),
               
         ]);
-        // return $this->json([
-        //     ['nom' => 'Site 1', 'latitude' => 46.56, 'longitude', 7.3],
-        //     ['nom' => 'Site 2', 'latitude' => 44.38, 'longitude', 6.89],
-        // ]);
+        
     }
 
     /**

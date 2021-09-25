@@ -65,25 +65,8 @@
 		{{ form_label(form.site, null, {'label': 'Photos', 'label_attr': {'class': 'labbel1'}}) }} 
 		{{ form_widget(form.site, {'attr': {'class': 'expo-checkbox2'}}) }}
 		
-		
-		{# {{ form_widget(form.typeEquipement, {'attr': {'class': 'expo-checkbox3'}}) }}
-		{{ form_widget(form.siteInteressantpourGrimpeur, {'attr': {'class': 'expo-checkbox4'}}) }}
-		{{ form_widget(form.profileFalaise, {'attr': {'class': 'expo-checkbox5'}}) }}
-		{{ form_widget(form.typedePrise, {'attr': {'class': 'expo-checkbox6'}}) }}
-		{{ form_widget(form.meilleurperiode, {'attr': {'class': 'expo-checkbox7'}}) }} #}
-		
-	
-
-	
-
-	
-	
 {# verifier si la route est site_edit on affiche les images #}
-{% if app.request.attributes.get('_route') == 'site_edit' %}
-	{# <h2>Images</h2> #}
-		
-			{# {{ dump(medium) }} #}
-		
+{% if app.request.attributes.get('_route') == 'site_edit' %}		
 	{% for image in site.media %}
 		<div>
 			<img

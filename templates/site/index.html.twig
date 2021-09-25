@@ -24,9 +24,9 @@
 		<!-- Ici s'affichera la carte -->
 		<div id="macarte"></div>
 	</section>
-
-	<a href="{{ path('site_new') }}">Ajouter un nouveau site</a>
-
+	{% if app.user %}
+	<a href="{{ path('site_new') }}" class="bouton2">Ajouter un nouveau site</a>
+	{% endif %}
 {% endblock %}
 
 {% block javascripts %}

@@ -23,7 +23,7 @@
 			<div class="onglets">
 				<a href="#" class="actif" class="col-4" class="tabA">Détail</a>
 				<a href="#" class="col-4" class="tabA">Photo</a>
-				<a href="#" class="col-4" class="tabA">Carte</a>
+				<a href="#" class="col-4" class="tabA">Météo</a>
 			</div>
 		</div>
 		<div class="panel">
@@ -130,19 +130,24 @@
 			
 
 		</div>
+		{# api Météo #}
 		<div class="panel" id="apiMeteo">
-			
-			<div><p>Ici mon api Meteo</p></div>
-			{# <strong>wind speed:</strong> {{ wind.speed }} #}
-				{# {{dump(speed)}} #}
-		
+			<section id="app">
+				<h1>
+					<span id="ville">Marseille</span>
+					<span class="tooltip1">Tapez un autre ville si vous la souhaitez</span>
+				</h1>
+				<i class="wi wi-day-rain"></i>
+				<h2>
+					<span id="temperature">25</span>°C ( <span id="conditions">Ciel dégagé</span> )
+				</h2>
+			</section>    
 		</div>
 	</section>
-	
-
-			<section id="map">
-				<div id="macarte2"></div>
-			</section>
+	{# map #}
+	<section id="map">
+		<div id="macarte2"></div>
+	</section>
 	
 
 	
@@ -152,105 +157,145 @@
 		{{ include('site/_delete_form.html.twig') }}
 	</div>
 
+	
 
 {% endblock %}
 {% block javascripts %}
 
-	<script>
-		// gestion du tab
-		function tabsPlugin() {
-			let onglets = $('#tabs .onglets a')
-			let panels = $('#tabs .panel');
-			// console.log(panels, onglets);
-			function openPanel(index) { // console.log(index);
-				panels.css({'display': 'none'}); // panels , vous allez tous disparaître
-				panels.eq(index).css({'display': 'block'}); // sauf celui de l'index du lien affiche toi
-			}
-			function setCssClass(onglet) {
-				onglets.removeClass('actif');
-				onglet.addClass('actif');
-			}
-			function setSize() {
-				let h = 0;
-				panels.each(function () {
-				if (h < $(this).innerHeight()) {
-				h = $(this).innerHeight();
-			}
-			// console.log($(this).innerHeight(), h)
-			});
-			panels.css({'height': h});
-			}
-				onglets.on('click', function (ev) {
-				ev.preventDefault();
-				openPanel($(this).index());
-				setCssClass($(this));
-			});
-			function init() {
-				openPanel(0);
-				setSize();
-			}
-			init();
-		}
-		$(document).ready(function () {
-		tabsPlugin();
-		});
+<script>
+	const weatherIcons = {
+		"Rain": "wi wi-day-rain",
+		"Clouds": "wi wi-day-cloudy",
+		"Clear": "wi wi-day-sunny",
+		"Snow": "wi wi-day-snow",
+		"mist": "wi wi-day-fog",
+		"Drizzle": "wi wi-day-sleet",
+	}
+	// var lat = site.latitude;
+	// var lon = site.longitude;
+    function capitalize(str) {
+        return str[0].toUpperCase() + str.slice(1);
+    }
 	
-		{# var latLng = L.latLng(site.latitude, site.longitude)        #}
-		var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
-		//on charge les tuiles
-		
-		L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-				// Il est toujours bien de laisser le lien vers la source des données
-				attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-				minZoom: 1,
-				maxZoom: 20
-			}).addTo(carte);
-		
-		var icone = L.icon({
-					iconUrl:"../img/pointeur-de-carte.png",
-					iconSize: [50, 50],
-					iconAnchor: [25, 50],
-					popupAnchor: [-2, -44],
-				});
-		// Requête
-		{# $.ajax({
-			url: '/api/sites'
-		}).done(function(response){
-				//var datas = JSON.parse(response);
-				//console.log(response['hydra:member']);
-				var sites = response['hydra:member'];
-				var latLng = L.latLng(site.latitude, site.longitude)
-				var marqueur = L.marker(latLng).addTo(carte);
-				marqueur.bindPopup('<h3>'+site.nom+'</h3><p>'+site.nombredeVoie+'</p><a href="/site/'+site.id+'">site</a>');
-				
-		}); #}
+    async function main2() {
+        const meteo = await fetch('https://api.openweathermap.org/data/2.5/weather?q=santiago&appid=902dc3bb337a0fba35d5043e139dbc11&lang=fr&units=metric')
+        // const meteo = await fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=902dc3bb337a0fba35d5043e139dbc11&lang=fr&units=metric')
+                .then(resultat => resultat.json())
+                .then(json => json )
+                console.log('coord')
+                displayWeatherInfos(meteo)               
+	}
 
-		function buttonClickGET() {
-			var url = "https://https://api.openweathermap.org/data/2.5/weather?q="+lat_long+",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
+	function displayWeatherInfos(data) {
+		const name = data.name;
+		const temperature = data.main.temp;
+		const conditions = data.weather[0].main;
+		const description = data.weather[0].description;
 
-			$.get(url, callBackGetSuccess).done(function() {
-				//alert( "second success" );
-			})
-			.fail(function() {
-				alert( "error" );
-			})
-			.always(function() {
-				//alert( "finished" );
+		document.querySelector('#ville').textContent = name;
+		document.querySelector('#temperature').textContent = Math.round(temperature);
+		document.querySelector('#conditions').textContent = capitalize(description);
+		document.querySelector('i.wi').className = weatherIcons[conditions];
+		document.querySelector('#app').className = conditions.toLowerCase();
+	}               
+
+
+    main2();
+
+</script>
+
+<script>
+	// gestion du tab
+	function tabsPlugin() {
+		let onglets = $('#tabs .onglets a')
+		let panels = $('#tabs .panel');
+		// console.log(panels, onglets);
+		function openPanel(index) { // console.log(index);
+			panels.css({'display': 'none'}); // panels , vous allez tous disparaître
+			panels.eq(index).css({'display': 'block'}); // sauf celui de l'index du lien affiche toi
+		}
+		function setCssClass(onglet) {
+			onglets.removeClass('actif');
+			onglet.addClass('actif');
+		}
+		function setSize() {
+			let h = 0;
+			panels.each(function () {
+			if (h < $(this).innerHeight()) {
+			h = $(this).innerHeight();
+		}
+		// console.log($(this).innerHeight(), h)
+		});
+		panels.css({'height': h});
+		}
+			onglets.on('click', function (ev) {
+			ev.preventDefault();
+			openPanel($(this).index());
+			setCssClass($(this));
+		});
+		function init() {
+			openPanel(0);
+			setSize();
+		}
+		init();
+	}
+	$(document).ready(function () {
+	tabsPlugin();
+	});
+
+	{# var latLng = L.latLng(site.latitude, site.longitude)        #}
+	var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
+	//on charge les tuiles
+	
+	L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+			// Il est toujours bien de laisser le lien vers la source des données
+			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+			minZoom: 1,
+			maxZoom: 20
+		}).addTo(carte);
+	
+	var icone = L.icon({
+				iconUrl:"../img/pointeur-de-carte.png",
+				iconSize: [50, 50],
+				iconAnchor: [25, 50],
+				popupAnchor: [-2, -44],
 			});
-		}
-		var callBackGetSuccess = function(data) {
-			console/log("donnee api", data)
-			var element = document.getElementById("zone_meteo");
-			//var lat_long = document.getElementById("lat_long").value;
-			element.innerHTML = "La temperature est de " + data.main.temp;
-		}
-				          
-	</script>
-	<script>setTimeout(function(){ map.invalidateSize()}, 400);
-		$mapContainer.on('map-container-resize', function () {
-		map.invalidateSize(); // doesn't seem to do anything
-		});</script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	// Requête
+	{# $.ajax({
+		url: '/api/sites'
+	}).done(function(response){
+			//var datas = JSON.parse(response);
+			//console.log(response['hydra:member']);
+			var sites = response['hydra:member'];
+			var latLng = L.latLng(site.latitude, site.longitude)
+			var marqueur = L.marker(latLng).addTo(carte);
+			marqueur.bindPopup('<h3>'+site.nom+'</h3><p>'+site.nombredeVoie+'</p><a href="/site/'+site.id+'">site</a>');
+			
+	}); #}
+
+	function buttonClickGET() {
+		var url = "https://https://api.openweathermap.org/data/2.5/weather?q="+lat_long+",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
+
+		$.get(url, callBackGetSuccess).done(function() {
+			//alert( "second success" );
+		})
+		.fail(function() {
+			alert( "error" );
+		})
+		.always(function() {
+			//alert( "finished" );
+		});
+	}
+	var callBackGetSuccess = function(data) {
+		console/log("donnee api", data)
+		var element = document.getElementById("zone_meteo");
+		//var lat_long = document.getElementById("lat_long").value;
+		element.innerHTML = "La temperature est de " + data.main.temp;
+	}
+						
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
     
 {% endblock %}

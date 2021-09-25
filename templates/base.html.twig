@@ -45,7 +45,8 @@
 
             <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
             <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
-
+            <!-- link cdnjs weather icone -->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" integrity="sha512-r/Gan7PMSRovDus++vDS2Ayutc/cSdl268u047n4z+k7GYuR7Hiw71FsT3QQxdKJBVHYttOJ6IGLnlM9IoMToQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             {# <!-- lien map google map -->
             			<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> #}
 
@@ -61,19 +62,15 @@
             <link rel="stylesheet" href="{{ asset ("css/style4.css") }}">
             <style type="text/css">
 				
-            #macarte {
+            /* #macarte {
                 height: 850px;
                 margin: 50px 100px;
                 padding: 20px;
-            }
+            } */
             #macarte2 {
                 height: 450px;
                 margin: 20px;
-                /* width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0; */
+                
             }
 
 				
@@ -90,7 +87,7 @@
             
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <!--script converter-->
-        <script src="{{ asset('js/scripts.js') }}"></script>
+        {# // <script src="{{ asset('js/converter.js') }}"></script> #}
         <!--script ajax-->
         {# <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script> #}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -146,53 +143,7 @@
                     </li>
                 </ul>
             </nav>
-            {# <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">
-                    Navbar
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">
-                                Home 
-                                <span class="sr-only">
-                                    (current)
-                                </span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Features
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                Pricing
-                            </a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown link
-                                        
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="#">
-                                    Action
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    Another action
-                                </a>
-                                <a class="dropdown-item" href="#">
-                                    Something else here
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav> #}
+            
         </header>
         
 

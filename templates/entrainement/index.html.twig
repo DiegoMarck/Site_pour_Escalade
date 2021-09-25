@@ -9,7 +9,10 @@
             <h1>Entrainements</h1>
         </div>
     </section>
-
+<div class="container video">
+<h3>Exploits et dernière nouvelles des meilleurs grimpeurs et grimpeuses aoujourd'hui</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
         
         {% for entrainement in entrainements %}
             <section class="index_entrainement">
@@ -27,6 +30,9 @@
                     <a href="{{ path('entrainement_show', {'id': entrainement.id}) }}">show</a>
                     <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
             </section>
+            <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/D6Ac5JpCHmI?&autoplay=1"frameborder="0" 
+            allowfullscreen></iframe>
             
         {% else %}
             <tr>

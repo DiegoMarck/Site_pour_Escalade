@@ -5,10 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\Site;
 use App\Entity\Topo;
 use App\Entity\User;
+use App\Entity\Carousel;
 use App\Entity\Entrainement;
 use App\Repository\SiteRepository;
 use App\Repository\TopoRepository;
 use App\Repository\UserRepository;
+use App\Repository\CarouselRepository;
 use App\Repository\EntrainementRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,19 +28,22 @@ class DashboardController extends AbstractDashboardController
     protected $topoRepository;
     protected $siteRepository;
     protected $entrainementRepository;
+    protected $carouselRepository;
 
     public function __construct(
 
         UserRepository $userRepository,
         TopoRepository $topoRepository,
         SiteRepository $siteRepository,
-        EntrainementRepository $entrainementRepository
+        EntrainementRepository $entrainementRepository,
+        CarouselRepository $carouselRepository
     )
     {
         $this->userRepository = $userRepository;
         $this->topoRepository = $topoRepository;
         $this->siteRepository = $siteRepository;
         $this->entrainementRepository = $entrainementRepository;
+        $this->CarouselRepository = $carouselRepository;
     }
     /**
      * @Route("/admin", name="admin")
@@ -68,6 +73,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Topo', 'fa fa-book', Topo::class);
         yield MenuItem::linkToCrud('User', 'fa fa-users', User::class);
         yield MenuItem::linkToCrud('Entrainement', 'fa fa-running', Entrainement::class);
+        yield MenuItem::linkToCrud('Carousel', 'fa fa-images', Carousel::class);
         
     }
     public function configureUserMenu(UserInterface $user): UserMenu

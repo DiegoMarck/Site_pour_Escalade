@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
+use App\Repository\CarouselRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,11 +14,13 @@ class FrontController extends AbstractController
     /**
      * @Route("/", name="front")
      */
-    public function index(): Response
-    {
+    public function index(CarouselRepository $repoCarousel): Response
+    {  
+        $carousel=$repoCarousel->findAll();
         return $this->render('front/index.html.twig', [
-            // 'controller_name' => 'FrontController',
+            'carousel'=> $carousel,
         ]);
+        
     }
     /**
      * @Route("/form/contact", name="contact", methods={"GET", "POST"} )

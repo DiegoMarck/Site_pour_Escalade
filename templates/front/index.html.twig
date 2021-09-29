@@ -85,24 +85,24 @@
     <div class="text-div">
         <p>
             Qu'est-ce que l'escalade?
-                                                                                                                                                                                                                                                                                                                                                                A l'origine, l'escalade apparaissait comme une activité dérivée de l'alpinisme.
-                                                                                                                                                                                                                                                                                                                                                                Elle n'était alors considérée que comme un moyen d'entraînement pour les courses d'alpinisme. C'est
-                                                                                                                                                                                                                                                                                                                                                                au 19e siècle que l'escalade est devenue un sport à part entière en Allemagne et en Angleterre. Le
-                                                                                                                                                                                                                                                                                                                                                                but était déjà d'atteindre le haut d'une paroi rocheuse, d'un bloc ou d'un mur d'escalade le plus
-                                                                                                                                                                                                                                                                                                                                                                rapidement possible. Pendant un siècle, le matériel a évolué au rythme des performances des
-                                                                                                                                                                                                                                                                                                                                                                grimpeurs. C'est à partir des années 1960 que les salles d'escalade se sont multipliées donnant un
-                                                                                                                                                                                                                                                                                                                                                                réel élan à la pratique de la discipline. Au niveau mondial, mais aussi dans l'Hexagone, les
-                                                                                                                                                                                                                                                                                                                                                                Français obtiennent généralement des bons résultats dans les trois épreuves possibles (difficulté,
-                                                                                                                                                                                                                                                                                                                                                                vitesse et bloc). A l'image de Juliette Danion, championne du monde 2007 de bloc. « C'est un sport
-                                                                                                                                                                                                                                                                                                                                                                riche et praticable par tout le monde, quelles que soient ses capacités physiques »
-                                                                                                                                                                                                                                                                                                                                                                « C'est une activité qui prône la confiance en soi, la solidarité envers ses copains et le
-                                                                                                                                                                                                                                                                                                                                                                dépassement de soi à tous les niveaux. Dans les Associations sportives, on peut faire de l'escalade
-                                                                                                                                                                                                                                                                                                                                                                en toute sécurité, soit en loisir, soit en compétition avec en ligne de mire les championnats de
-                                                                                                                                                                                                                                                                                                                                                                France UNSS ».
-                                                                                                                                                                                                                                                                                                                                                                Présentée parfois comme une activité à risques, l'escalade est une pratique très sécurisée; donc
-                                                                                                                                                                                                                                                                                                                                                                aucun risque de se faire mal et beaucoup de plaisir à prendre. Les collégiens et lycéens l'ont bien
-                                                                                                                                                                                                                                                                                                                                                                compris puisqu'ils sont 58 500, avec autant de filles que de garçons, à avoir pris une licence
-                                                                                                                                                                                                                                                                                                                                                                scolaire.
+            A l'origine, l'escalade apparaissait comme une activité dérivée de l'alpinisme.
+            Elle n'était alors considérée que comme un moyen d'entraînement pour les courses d'alpinisme. C'est
+            au 19e siècle que l'escalade est devenue un sport à part entière en Allemagne et en Angleterre. Le
+            but était déjà d'atteindre le haut d'une paroi rocheuse, d'un bloc ou d'un mur d'escalade le plus
+            rapidement possible. Pendant un siècle, le matériel a évolué au rythme des performances des
+            grimpeurs. C'est à partir des années 1960 que les salles d'escalade se sont multipliées donnant un
+            réel élan à la pratique de la discipline. Au niveau mondial, mais aussi dans l'Hexagone, les
+            Français obtiennent généralement des bons résultats dans les trois épreuves possibles (difficulté,
+            vitesse et bloc). A l'image de Juliette Danion, championne du monde 2007 de bloc. « C'est un sport
+            riche et praticable par tout le monde, quelles que soient ses capacités physiques »
+            « C'est une activité qui prône la confiance en soi, la solidarité envers ses copains et le
+            dépassement de soi à tous les niveaux. Dans les Associations sportives, on peut faire de l'escalade
+            en toute sécurité, soit en loisir, soit en compétition avec en ligne de mire les championnats de
+            France UNSS ».
+            Présentée parfois comme une activité à risques, l'escalade est une pratique très sécurisée; donc
+            aucun risque de se faire mal et beaucoup de plaisir à prendre. Les collégiens et lycéens l'ont bien
+            compris puisqu'ils sont 58 500, avec autant de filles que de garçons, à avoir pris une licence
+            scolaire.
                                                                                                         
                                                                                             
                                                                 
@@ -110,7 +110,7 @@
         </p>
     </div>
 
-        <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
+        {# <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
 
             <ol class="carousel-indicators">
                 <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
@@ -151,7 +151,37 @@
                     Next                                         
                 </span>
             </a>
-        </div>
+        </div> #}
+        
+            <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">  
+                    {# <ol class="carousel-indicators">
+                    <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExemple" data-slide-to="1"></li>
+                    <li data-target="#carouselExemple" data-slide-to="2"></li>
+                    </ol> #}
+                {% for carousel in carousel %}
+                        <div class="carousel-inner">
+                        {# {{dump('images')}}  #}
+                                <div class="carousel-item  {{loop.index is same as(1) ? 'active'}}">
+                                    <div class="img-container">
+                                        <img src="/uploads/sites/{{carousel.imagescarousel }}" class="d-block">
+                                    </div>
+                                </div>
+                        </div>
+                {% endfor %}}
+                <a href="#carouselExemple" class="carousel-control-prev" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="ture"></span>
+                    <span class="sr-only">
+                        Previous                             
+                    </span>
+                </a>
+                <a href="#carouselExemple" class="carousel-control-next" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">
+                        Next                                         
+                    </span>
+                </a>
+            </div>
 
         <div class="accueil_concours">
             <h2>

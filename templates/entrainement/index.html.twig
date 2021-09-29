@@ -9,30 +9,85 @@
             <h1>Entrainements</h1>
         </div>
     </section>
-<div class="container video">
-<h3>Exploits et dernière nouvelles des meilleurs grimpeurs et grimpeuses aoujourd'hui</h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-        
+
+    <h3 class="entrainement">Exploits et dernière nouvelles des meilleurs grimpeurs et grimpeuses aujourd'hui</h3>
+    
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 ">
+            <div class="card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+        {# <div class="card">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        <div class="card">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div> #}
+    
+    </div>
+            
+            
         {% for entrainement in entrainements %}
             <section class="index_entrainement">
-                <div>
-                    <p>{{ entrainement.id }}</p>
-                    <p>{{ entrainement.exercice }}</p>
-                    <p>{{ entrainement.type }}</p>
-                    <p>{{ entrainement.materiel }}</p>
-                    <p>{{ entrainement.description }}</p>
+                <div>                  
+                    <div class="row">
+                        <div class="col-6">
+                            <p>{{ entrainement.exercice }}</p>
+                            <p>{{ entrainement.type }}</p>
+                        </div>
+                        <div class="col-6">
+                            <p>{{ entrainement.materiel }}</p>
+                            <p>{{ entrainement.description }}</p>
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <p>{{ entrainement.media }}</p>
                 </div>
-                
-                    <a href="{{ path('entrainement_show', {'id': entrainement.id}) }}">show</a>
-                    <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
+                <div class="bouton3">
+                    {% if app.user %}
+                        <a href="{{ path('entrainement_show', {'id': entrainement.id}) }}">show</a>
+                        <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
+                    {% endif %}
+                </div>
             </section>
-            <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/D6Ac5JpCHmI?&autoplay=1"frameborder="0" 
-            allowfullscreen></iframe>
+            
             
         {% else %}
             <tr>
@@ -40,6 +95,8 @@
             </tr>
         {% endfor %}
         
+        {% if app.user %}
+            <a href="{{ path('entrainement_new') }}">Create new</a>
+        {% endif %}
 
-    <a href="{{ path('entrainement_new') }}">Create new</a>
 {% endblock %}

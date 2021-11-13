@@ -13,41 +13,83 @@
         <h2>Liste de des Topos de France</h2>
         <div class="container">
             <div class="onglets">
-                    <a href="#" class="actif"  class="col-4" class="tabA">Par Régions</a>
-                    <a href="#" class="col-4" class="tabA">Par Nom</a>
+                    <a href="#" class="actif"  class="col-4" class="tabA">Par nom</a>
+                    <a href="#" class="col-4" class="tabA">Par région</a>
                     <a href="#" class="col-4" class="tabA">Téléchargeables</a>  
             </div>
         </div>
         <div class="panel">
-                        <p>Choisi une région</p>
-                        <h5>Lsite de Régions</h5>
-                            
-                        <img src="{{asset('img/SitesFrance.png')}}" alt="image" >
-                        
-        </div>
-        <div class="panel">
-        {# dump{{topos}} #}
-            
             {% for topo in topos %}
                 <section class="index_topo">
-                    <div class="div">
-                        {% for image in topo.media %}
-                            <div class="panelImg">
-                                <img src="{{ asset('/uploads/' ~ image )}}" alt="Image">
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div>
+                    {# <div> #}
                         {# <img src="{{topo.image }}"> #}
                         {# <img src="{{app.request.basepath}}/public/img/{{topo.image}}" alt="monimg" /> #}
                         {# <img src="{{ vich_uploader_asset(Topo, 'imageFile' )}}" class="card-img-top" alt="images" width="350"> #}
-                        {# <p>{{ topo.image }}</p> #}
+                    {# <p>{{ topo.image }}</p> #}
+                    {# </div> #}
+                    <div class="row">
+                            <div class="col-md-3 col-sm-6 col-xs-12 bootCols div">
+                                {% for image in topo.media %}
+                                    <div class="panelImgTopo">
+                                        <img src="{{ asset('/uploads/' ~ image )}}" alt="Image">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 bootCols">
+                                <div>
+                                    <p>Titre : {{ topo.titre }}</p>
+                                    <p>Région : {{ topo.region }}</p>
+                                    <p>Pays : {{topo.pays}}</p> 
+                                </div>
+                                {# <div class="row r1">
+                                            <div class="col-4">
+                                                Titre : 
+                                            </div>
+                                            <div class="col-8">
+                                                {{ topo.titre }}
+                                            </div>
+                                            </div>
+                                </div>
+                                <div class="row r2">
+                                            <div class="col-4">
+                                                Région :
+                                            </div>
+                                            <div class="col-8">
+                                                {{ topo.region }}<
+                                            </div>
+                                            </div>
+                                </div>
+                                <div class="row r3">
+                                            <div class="col-4">
+                                                Pays : 
+                                            </div>
+                                            <div class="col-8">
+                                                {{topo.pays}}
+                                            </div>
+                                </div>#}
+                                </div> 
+                            <div class="col-md-3 col-sm-6 col-xs-12 bootCols">
+                                <div>
+                                    <p>Description : {{ topo.description }}</p>
+                                    <p>Auteur : {{ topo.auteur }}</p>
+                                    <p>Prix : {{ topo.prix }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 col-xs-12 bootCols">
+                                <div>
+                                    <p>Type : {{ topo.Type }}</p>
+                                    <p>Date de parution : {{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</p>
+                                    <p>Date de mise à jour : {{ topo.datedeMiseajour ? topo.datedeMiseajour|date('Y-m-d') : '' }}</p>
+                                </div>
+                            </div>
+                            
                     </div>
-                    <div>
-                        <p>{{ topo.titre }}</p>
-                        <p>{{ topo.region }}</p>
-                        <p>{{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</p>
-                    </div>   
+                </section>
+                <section class="lien">
+        
+                        <a href="{{ path('topo_show', {'id': topo.id}) }}">show</a>
+                        <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
+                    
                 </section>
             {% endfor %}
             {# {% for image in topos %}
@@ -55,10 +97,17 @@
                     <img
                     src="{{ asset('/uploads/' ~ image.titre) }}" class="card-img-top" alt="images" width="350">
                 </div>
-		    {% endfor %} #}
+            {% endfor %} #}       
+                        
+        </div>
+        <div class="panel">
+            <p>Choisi une région</p>
+            <h5>Liste des Régions</h5>   
+            <img src="{{asset('img/SitesFrance.png')}}" alt="image" >  
         </div>
         <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
     </section>
+    
                
 
     {# <table class="table tableTopos">
@@ -106,12 +155,12 @@
         </tbody>
     </table> #}
 
-    {% if is_granted ('ROLE_USER')%}
+    {# {% if is_granted ('ROLE_USER')%} #}
 
         <div class="Ajouter_topo">
             <a href="{{ path('topo_new') }}">Créer un nouveau Topo</a>
         </div>
-    {% endif %}
+    {# {% endif %} #}
 
 {% endblock %}
 

@@ -2,7 +2,7 @@
 <html>
     <head>
         <!---  Converter   -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84160849-4"></script>
+        {# // <script async src="https://www.googletagmanager.com/gtag/js?id=UA-84160849-4"></script> #}
         <script>
 			window.dataLayer = window.dataLayer || [];
             function gtag() {
@@ -13,7 +13,8 @@
             gtag('config', 'UA-84160849-4');
 		</script>
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
-        <link rel="stylesheet" href="../public/css/stylesConverter.css">
+        {# <link rel="stylesheet"  href="{{ asset ("css/stylesConverter.css") }}"> #}
+
         {# <script src="../public/js/scripts.js"></script> #}
 
         <!-- général  -->
@@ -42,35 +43,34 @@
 
             <!-- Nous chargeons les fichiers CDN de Leaflet. Le CSS AVANT le JS -->
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
-
             <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
             <link rel="stylesheet" type="text/css" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+
             <!-- link cdnjs weather icone -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css" integrity="sha512-r/Gan7PMSRovDus++vDS2Ayutc/cSdl268u047n4z+k7GYuR7Hiw71FsT3QQxdKJBVHYttOJ6IGLnlM9IoMToQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
             {# <!-- lien map google map -->
             			<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> #}
 
             {# <!-- lien javascript google map api loader -->
             <script src="https://unpkg.com/@googlemaps/js-api-loader@1.0.0/dist/index.min.js"></script> #}
 
-            <script type="text/javascript" src="{{ asset ("js/main.js") }}"></script>
+            {# // <script type="text/javascript" src="{{ asset ("js/main.js") }}"></script> #}
 
             <!-- lien carroussel -->
 
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> <!-- lien fichier css -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+            
+            <!-- lien fichier css -->
 
             <link rel="stylesheet" href="{{ asset ("css/style4.css") }}">
             <style type="text/css">
 				
-            /* #macarte {
-                height: 850px;
-                margin: 50px 100px;
-                padding: 20px;
-            } */
             #macarte2 {
                 height: 450px;
                 margin: 20px;
-                
+                margin-left: 35px;
+                margin-right: 35px;
             }
 
 				
@@ -81,15 +81,17 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
-        <!-- Fichiers Javascript -->
+
                 <!-- script carroussel -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
             
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
         <!--script converter-->
         {# // <script src="{{ asset('js/converter.js') }}"></script> #}
+
         <!--script ajax-->
-        {# <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script> #}
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         {# script images delete #}
         <script src="{{asset('js/images.js')}}"></script>
@@ -104,6 +106,9 @@
                 <label for="menu">
                     <i class="fas fa-bars"></i>
                 </label>
+                {# <div class="menu-btn">
+				    <span></span>
+			    </div> #}
                 <input type="checkbox" id="menu">
                 <ul class="nav-list">
                     <li>
@@ -117,9 +122,11 @@
                         </a>
                     </li>
                     <li>
+                        {# {% if app.user %} #}
                         <a href="{{ path("site_new" ) }}">
                             Ajouter un site
                         </a>
+                        {# {% endif %} #}
                     </li>
                     <li>
                         <a href="{{ path("topo_index" ) }}">

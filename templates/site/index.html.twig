@@ -24,12 +24,15 @@
 		<!-- Ici s'affichera la carte -->
 		<div id="macarte"></div>
 	</section>
-	{% if app.user %}
+	{# {% if app.user %} #}
 	<a href="{{ path('site_new') }}" class="bouton2">Ajouter un nouveau site</a>
-	{% endif %}
+	{# {% endif %} #}
 {% endblock %}
 
 {% block javascripts %}
+{# <script src="{{ asset('js/jquery.min.js') }}"></script> #}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script>
 		var carte = L.map('macarte').setView([
 		48.852969, 2.349903
@@ -53,17 +56,29 @@
 		popupAnchor: [-2, -44]
 		});
 		// Requête
-		$.ajax({url: '/api/sites'}).done(function (response) { // var datas = JSON.parse(response);
+		$.ajax({
+			url: '/api/sites',
+			
+		}).done(function (response) { // var datas = JSON.parse(response);
 		console.log(response['hydra:member']);
 		var sites = response['hydra:member'];
 		sites.forEach(site => {
 		// Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
 		// on crée un marqueur et on lui donne un popup
 		var latLng = L.latLng(site.latitude, site.longitude)
-		var marqueur = L.marker(latLng).addTo(carte);
+		var marqueur = L.marker(latLng, {icon: icone}).addTo(carte);
+		console.log('marqueur', marqueur)
 		marqueur.bindPopup('<h3>' + site.nom + '</h3><p>' + site.nombredeVoie + '</p><a href="/site/' + site.id + '">site</a>');
+		// marqueur.bindPopup('<h1>coucou</h1>');
 		})
 		});
 	</script>
+	
 
 {% endblock %}
+{# {% block javascript %}
+<script>
+	
+</script>
+
+{% endblock %} #}

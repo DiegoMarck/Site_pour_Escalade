@@ -291,3 +291,5 @@ Assert dans la validation des formulaires :
      *      max = 50,
      *      minMessage = "Your first name must be at least 2 characters long",
      *      maxMessage = "Your first name cannot be longer than 50 characters")
+
+"cache:clear": "symfony-cmd",

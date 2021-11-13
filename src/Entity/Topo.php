@@ -48,7 +48,7 @@ class Topo
     private $region;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="date", nullable=true)site
      */
     private $datedeParution;
 
@@ -82,7 +82,7 @@ class Topo
     // private $type = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
 

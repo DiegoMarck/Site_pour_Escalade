@@ -57,7 +57,7 @@ class Media
 
     /**
      * @ORM\ManyToOne(targetEntity=Topo::class, inversedBy="media")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $topo;
 

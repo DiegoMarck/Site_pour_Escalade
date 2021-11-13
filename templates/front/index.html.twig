@@ -110,7 +110,7 @@
         </p>
     </div>
 
-        {# <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">
 
             <ol class="carousel-indicators">
                 <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
@@ -151,17 +151,16 @@
                     Next                                         
                 </span>
             </a>
-        </div> #}
+        </div>
         
-            <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">  
-                    {# <ol class="carousel-indicators">
+            {# <div id="carouselExemple" class="carousel slide" data-ride="carousel" data-interval="3000">  
+                    <ol class="carousel-indicators">
                     <li data-target="#carouselExemple" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExemple" data-slide-to="1"></li>
                     <li data-target="#carouselExemple" data-slide-to="2"></li>
-                    </ol> #}
+                    </ol>
                 {% for carousel in carousel %}
                         <div class="carousel-inner">
-                        {# {{dump('images')}}  #}
                                 <div class="carousel-item  {{loop.index is same as(1) ? 'active'}}">
                                     <div class="img-container">
                                         <img src="/uploads/sites/{{carousel.imagescarousel }}" class="d-block">
@@ -181,7 +180,7 @@
                         Next                                         
                     </span>
                 </a>
-            </div>
+            </div> #}
 
         <div class="accueil_concours">
             <h2>

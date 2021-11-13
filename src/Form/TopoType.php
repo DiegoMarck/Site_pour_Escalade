@@ -37,18 +37,7 @@ class TopoType extends AbstractType
                 'mapped' =>false, 
                 'required' => false
             ])
-            // ->add('image', null, ["attr"=>["class"=>"form-control"]])
-            // ->add('imageFile', VichImageType::class, [
-            //     "required"=>false,
-            //     'allow_delete'=>true,
-            //     'delete_label'=>"supprimer l'image téléchargée",
-            //     "download_uri"=>false, 
-            //     'image_uri'=>true, 
-            //     'asset_helper'=> false, 
-            //     'help'=>"test",
-            //     'label'=>"Fichier"
-            // ])
-            // ->add('maj')
+            
             ->add('nomSite', null, ["attr"=>["class"=>"form-control"]])
             // ->add('media', MediaType::class,[])
 

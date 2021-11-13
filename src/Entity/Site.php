@@ -86,11 +86,21 @@ class Site
 
     /**
      * @ORM\Column(type="decimal", precision=20, scale=16)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Your latitude must be at least 2 characters long",
+     *      maxMessage = "Your latitude cannot be longer than 50 characters")
      */
     private $latitude;
 
     /**
      * @ORM\Column(type="decimal", precision=20, scale=16)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 20,
+     *      minMessage = "Your longitude must be at least 2 characters long",
+     *      maxMessage = "Your longitude cannot be longer than 50 characters")
      */
     private $longitude;
 

@@ -18,6 +18,7 @@
             background-color: rgba(49, 113, 51, 0.719);
             overflow: scroll;
         }
+
         #macarte {
             height: 850px;
             margin: 11px 15px;
@@ -44,7 +45,17 @@
             padding: 2px 10px;
         }
 
+        /* .bootCols{
+            height:100px;
+            margin:0;
+            box-sizing:border-box;
+            padding:5px;
+            border:2px solid black;
+            background-color:red;
+          } */
+
         /* @import "~bootstrap/scss/bootstrap"; */
+
         /*---- philosophie mobile first 1ère Page------------------------------------*/
 
         /* ----- élément de section de navigation  --------------------------------  */
@@ -81,12 +92,12 @@
 
         nav input[type="checkbox"], .nav-list {
             display: none;
-            /* fait dispraitre la case à cocher    */
+            /* fait dispraitre la case à cocher */
             /* height: 35px; */
         }
 
         nav input[type="checkbox"]:checked+.nav-list {
-            /* fait appraitre le menu quand la case est cliqué   */
+            /* fait appraitre le menu quand la case est cliqué */
             display: flex;
             flex-direction: column;
             position: absolute;
@@ -724,6 +735,8 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            width: 37%;
+            margin-left: 85px;
         }
 
         .siteTemplate {
@@ -736,9 +749,28 @@
             margin-top: -20px;
         }
 
-        .panelImg>img {
+        /* .panelImg>img {
             height: 265px;
             width: 60%;
+        } */
+
+        .panelImgSite>img {
+            height: 295px;
+            width: 89%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: -60px;
+        }
+
+        .panelImgSite {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            width: 52%;
+            margin-top: 4px;
+            margin-left: 51px;
+            margin-right: 20px;
         }
 
         .clear {
@@ -826,7 +858,7 @@
             margin-top: -20px;
         }
 
-        /* ------------------- 4ième page -Topo ------------------------------------------------*/
+        /* ------------------- 4ième page -Topo_index ------------------------------------------------*/
 
         /* ---------------------------------------------------------------------------------------------- */
 
@@ -843,7 +875,7 @@
         }
 
         #topoIndex div {
-            position: absolute;
+            position: relative;
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -852,6 +884,7 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            width: 42%;
         }
 
         #topoIndex {
@@ -914,15 +947,15 @@
             color: #fff;
         }
 
-        .tab-container .panel img {
-            max-width: 94%;
+        /* .tab-container .panel img {
             justify-content: center;
             margin: auto;
             padding: 10px;
-        }
+            margin-left: 299px;
+            height: 350px;
+        } */
 
         .Ajouter_topo {
-            /* border:2px solid black; */
             text-align: center;
             color: black;
             font-size: 20px;
@@ -932,6 +965,10 @@
             border-bottom: 2mm ridge rgba(100, 161, 157, 1);
             display: flex;
         }
+        .panelImgTopo>img{
+            width: 100%;
+            height: 21vh;
+        }
 
         /* ------------------------Création d'un nouveau topo---------------------------------- */
 
@@ -940,7 +977,6 @@
         #nouveau_topo {
             height: 60vh;
             width: 100%;
-            /* background-image: url("../img/Rclimbing.jpg"); */
             background-image: url("https://www.alpiniste.fr/out/pictures/wysiwigpro/kalkulatoren/img-fr/vtt-single-track.jpg");
             background-position: center;
             background-repeat: no-repeat;
@@ -971,14 +1007,7 @@
             border: none;
         }
 
-        /* .tab-container .onglets a.actif {
-            text-decoration: none;
-            margin-top: -9px;
-            height: 41px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        } */
+        
 
         /* ------------------------- 5ième page -Converter --------------------------------------*/
 
@@ -1089,7 +1118,7 @@
             appearance: none;
             border-radius: 2px;
             padding: 4px 8px;
-            background: url('./images/menu-down.svg') 96% / 15% no-repeat;
+            background: url('../images/menu-down.svg') 96% / 15% no-repeat;
         }
 
         @media screen and (max-width: 540px) {
@@ -1112,31 +1141,73 @@
             margin-top: 27px;
             /* margin-bottom: 20px; */
         }
+
         .entrainement {
             color: white;
             margin-bottom: 40px;
             margin-left: 46px;
             margin-top: 36px;
         }
+
+        .card.entrai {
+            width: 100%;
+            margin-top: 20px;
+        }
+
         iframe {
             width: 94%;
         }
+
         .row {
             margin-left: 30px;
             margin-right: 64px;
         }
+
         .card.card2 {
             width: 54vh;
             height: 50vh;
         }
+
         section.index_entrainement {
             margin-left: 75px;
             border: 2px solid;
             margin-top: 30px;
             margin-right: 30px;
+            background-color: #859daf;
         }
 
-
+        .bouton3_sh {
+            margin-left: 30px;
+            background: #3171337e;
+            bottom: -879px;
+            margin-bottom: -90px;
+            position: absolute;
+            color: white;
+            border: 1px solid black;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .bouton3_ed {
+            margin-left: 30px;
+            background: #3171337e;
+            bottom: -879px;
+            margin-bottom: -90px;
+            position: absolute;
+            color: white;
+            border: 1px solid black;
+            border-radius: 8px;
+            padding: 3px;
+        }
+        .bouton_entrai{
+                
+        }
+        section.articleEntrai {
+            margin-left: 35px;
+            margin-right: 35px;
+        }
+        .exoEntrai>h3{
+            margin-left: 20px;
+        }
 
         /* ------------ 7ième page -Contact --------------------------------------------------------------*/
 
@@ -1186,7 +1257,7 @@
         textarea.form-control {
             height: auto;
             /* padding: 10px; */
-            margin-left: 10px;
+            /* margin-left: 10px; */
             width: 65% !important;
         }
 

@@ -293,3 +293,5 @@ Assert dans la validation des formulaires :
      *      maxMessage = "Your first name cannot be longer than 50 characters")
 
 "cache:clear": "symfony-cmd",
+tentative d'installation de lipp imagine mais ca ne marche pas
+symfony composer req "imagine/imagine:^1.2"

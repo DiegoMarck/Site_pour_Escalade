@@ -295,3 +295,4 @@ Assert dans la validation des formulaires :
 "cache:clear": "symfony-cmd",
 tentative d'installation de lipp imagine mais ca ne marche pas
 symfony composer req "imagine/imagine:^1.2"
+test modifications

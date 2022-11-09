@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Entrainement index{% endblock %}
+
+{% block body %}
+
+    <section id="section_entrainement">
+        <div>
+            <h1>Entrainements</h1>
+        </div>
+    </section>
+
+    <h3 class="entrainement">Exploits et dernière nouvelles des meilleurs grimpeurs et grimpeuses aujourd'hui</h3>
+    
+    <div class="row entrai">
+        {# <div class="col-12 col-sm-12 col-md-12 col-lg-4 "> #}
+        <div class="col-md-12 col-lg-6 col-xl-4 ">
+            <div class="card entrai">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/PCCYYxxzv7s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-4 ">
+            <div class="card entrai">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/q4tf_RP3j8c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6 col-xl-4 ">
+            <div class="card entrai">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/b6OvrRbGU68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <section class="articleEntrai">
+    <h3>L’échauffement</h3>
+<p>
+    S’il y a une chose obligatoire en escalade, quel que soit son niveau, c’est bien l’échauffement. Il doit devenir rituel, n’être plus qu’un réflexe. On peut le décomposer en deux parties.
+
+
+    L’échauffement général : il concerne les grands groupes musculaires et le système cardio-respiratoire. Il s’agit d’exercices simples comme le saut à la corde, le footing, les étirements ou les assouplissements. Comme son nom l’indique, le but de l’échauffement est de faire monter le corps en température et de préparer toutes les articulations, muscles et tendons à faire un effort. Il s’agit également d’optimiser la préparation motrice et psychologique à l’effort.
+    
+    L’échauffement spécifique : il précède la séance d’escalade et concerne les muscles, tendons, articulations directement utilisés en escalade. Avant cet échauffement, vous pouvez poser des contentions de protection comme des bagues en Strappal pour un problème de poulie par exemple. La durée minimale de l’échauffement spécifique est d’une quinzaine de minutes, sachant que l’on monte progressivement en intensité. De plus, cet échauffement doit tenir compte des paramètres extérieurs comme la météo. Par temps froid, il sera plus long et encore plus progressif, de même si la séance est axée sur les fléchisseurs des doigts.
+    
+    Exemple : suspensions lestées sur poutre, bloc difficile de moins de dix mouvements.
+</p>
+    
+    </section>
+            
+    <section class="exoEntrai">
+    <h3>Exercices d'entrainement</h3>
+    {% for entrainement in entrainements %}
+        <section class="index_entrainement">
+            <div>                  
+                <div class="row">
+                    <div class="col-6">
+                        <p>Exercices : {{ entrainement.exercice }}</p>
+                        <p>Types : {{ entrainement.type }}</p>
+                        {# <p>Lieu{{ entrainement.lieu_entrainement }}</p> #}
+                    </div>
+                    <div class="col-6">
+                        <p>Matériel : {{ entrainement.materiel }}</p>
+                        <p>Description : {{ entrainement.description }}</p>
+                        {# <p>Participant{{ entrainement.participant }}</p> #}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>{{ entrainement.media }}</p>
+            </div>
+            
+                {% if app.user %}
+                <div class="bouton_entrai">
+                    <div class="bouton3_sh">
+                            <a href="{{ path('entrainement_show', {'id': entrainement.id}) }}">show</a>
+                    </div>
+                    <div class="bouton3_ed">
+                            <a href="{{ path('entrainement_edit', {'id': entrainement.id}) }}">edit</a>
+                    </div>
+                </div>
+                    
+                {% endif %}
+           
+        </section>
+        
+        
+    {% else %}
+        <tr>
+            <td colspan="7">no records found</td>
+        </tr>
+    {% endfor %}
+    
+    {% if app.user %}
+        <a href="{{ path('entrainement_new') }}">Create new</a>
+    {% endif %}
+    </section>      
+
+{% endblock %}

@@ -1397,6 +1397,38 @@
             width: 120vh;
         }
 
+        .exoEntrai .bouton_entrai {
+            display: flex;
+            justify-content: flex-end;
+
+        }
+
+        .exoEntrai .bouton_entrai .bouton3_sh_ee>a {
+            text-decoration: none;
+            color: white;
+            float: right;
+            padding: 10px;
+        }
+
+        .exoEntrai .bouton_entrai .bouton3_ed_ee>a {
+            
+            text-decoration: none;
+            color: whitesmoke;
+            float: right;
+            padding: 10px;
+
+
+        }
+
+        .bouton_cr_ee > a {
+            margin-top: 50px;
+            margin-right: 10%;
+            float: right;
+            text-decoration: none;
+            color: black;
+        }
+
+
         /* ------------- Page 10 - User Registration ----------------------- */
 
         /* --------------------------------------------------------------------------------- */

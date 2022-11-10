@@ -45,7 +45,7 @@
             padding: 2px 10px;
         }
 
-        
+
 
         /* @import "~bootstrap/scss/bootstrap"; */
 
@@ -88,6 +88,7 @@
             /* fait dispraitre la case à cocher */
             /* height: 35px; */
         }
+
         nav input[type="checkbox"], .nav-list a:hover {
             margin-left: 8px;
             transition: 1s;
@@ -963,7 +964,8 @@
             border-bottom: 2mm ridge rgba(100, 161, 157, 1);
             display: flex;
         }
-        .panelImgTopo>img{
+
+        .panelImgTopo>img {
             width: 100%;
             height: 21vh;
         }
@@ -1005,7 +1007,7 @@
             border: none;
         }
 
-        
+
 
         /* ------------------------- 5ième page -Converter --------------------------------------*/
 
@@ -1123,9 +1125,11 @@
             .title {
                 text-align: center;
             }
+
             .section--converter {
                 grid-template-columns: 1fr;
             }
+
             .col--center {
                 height: 20px;
             }
@@ -1185,6 +1189,7 @@
             border-radius: 8px;
             padding: 3px;
         }
+
         .bouton3_ed {
             margin-left: 30px;
             background: #3171337e;
@@ -1196,14 +1201,15 @@
             border-radius: 8px;
             padding: 3px;
         }
-        .bouton_entrai{
-                
-        }
+
+        .bouton_entrai {}
+
         section.articleEntrai {
             margin-left: 35px;
             margin-right: 35px;
         }
-        .exoEntrai>h3{
+
+        .exoEntrai>h3 {
             margin-left: 20px;
         }
 
@@ -1289,6 +1295,7 @@
         }
 
         .section_login>a>p {
+            text-decoration: none;
             background-color: #144c74b7;
             width: 26%;
             border-radius: 5px;
@@ -1304,6 +1311,14 @@
             font-size: 1.2em;
         }
 
+        .section_login>a:hover {
+            text-decoration: none;
+        }
+
+        .section_login>a>p:hover {
+            background-color: #247fc1b7;
+        }
+
         .btn-primary {
             background-color: #144c74b7;
             border: none;
@@ -1311,14 +1326,16 @@
             text-align: center;
         }
 
+        .btn-primary:hover {
+            background-color: #247fc1b7;
+        }
+
+
         .login {
-            /* background-color: lightcoral;
-            border: 2px solid black; */
             margin-bottom: -504px;
         }
 
         /* -----------Formulaire d'enregistrement----------------------- */
-
         /* ---------------------------------------------------------------------------- */
 
         .boutonR>a {
@@ -1339,7 +1356,6 @@
         }
 
         /* -------------- Page 8 - Entrainement index----------------------- */
-
         /* --------------------------------------------------------------------------------- */
 
         #section_entrainement div {
@@ -1365,7 +1381,6 @@
         }
 
         /* ----------- Page 9 -Ajouter un Entrainement ----------------------- */
-
         /* --------------------------------------------------------------------------------- */
 
         #section_entrainement_ajout div {
@@ -1409,7 +1424,7 @@
         }
 
         .exoEntrai .bouton_entrai .bouton3_ed_ee>a {
-            
+
             text-decoration: none;
             color: whitesmoke;
             float: right;
@@ -1418,7 +1433,7 @@
 
         }
 
-        .bouton_cr_ee > a {
+        .bouton_cr_ee>a {
             margin-top: 50px;
             margin-right: 10%;
             float: right;
@@ -1564,16 +1579,19 @@
             #home-section3 {
                 background-position-y: top;
             }
+
             h2 {
                 font-size: 2rem;
                 margin-bottom: 30px;
             }
+
             /* ----------tablette home section------------------------ */
             /* -------tablette gallery section------- */
             #gallery-section .container {
                 column-count: 2;
                 gap: 0;
             }
+
             /* -------tablette contact section------- */
             #contact-section .form-div {
                 margin: 0px 80px;
@@ -1590,14 +1608,17 @@
                 text-align: center;
                 margin-top: 0px;
             }
+
             nav * {
                 font-size: 1rem;
                 margin: 5px 20px 5px 20px;
                 padding: 4px;
             }
+
             nav label {
                 display: none;
             }
+
             nav .nav-list {
                 display: flex;
                 width: 87%;
@@ -1605,15 +1626,18 @@
                 margin-left: -20px;
                 margin-right: 20px;
             }
+
             nav .nav-list a {
                 transition: 1s;
                 text-decoration: none;
             }
+
             nav .nav-list a:hover {
                 margin-left: 8px;
                 transition: 1s;
                 color: black;
             }
+
             nav .nav-list li {
                 margin: 17px 11px 5px 14px;
                 text-align: center;
@@ -1625,6 +1649,7 @@
                 text-decoration: none;
                 margin-right: -5px;
             }
+
             /* -------Laptop Titre Section--- */
             .home-titre div {
                 position: relative;
@@ -1640,6 +1665,7 @@
                 width: 55%;
                 min-width: 254px;
             }
+
             .logo {
                 width: auto;
                 height: 5.5em;
@@ -1647,26 +1673,32 @@
                 margin-top: 15px;
                 margin-left: -20px;
             }
+
             /*------- laptop gallery section */
             #gallery-section .container {
                 padding: 15px;
                 display: grid;
                 grid-template: "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh;
             }
+
             #gallery-section .box {
                 transition: 1s;
             }
+
             #gallery-section .box:hover {
                 transform: scale(1.05);
                 transition: 1s;
                 color: #2e6ea6;
             }
+
             .box_b, .box_f, .box_h {
                 grid-column: span 2;
             }
+
             .box_a, .box_g {
                 grid-row: span 2;
             }
+
             /*------- laptop review section */
         }
 
@@ -1676,6 +1708,7 @@
             .h1, h1 {
                 font-size: 2.7rem;
             }
+
             #trouveSpot div {
                 position: absolute;
                 top: 25%;
@@ -1693,22 +1726,26 @@
                 align-items: center;
                 width: 53vh;
             }
+
             #macarte {
                 height: 806px;
                 margin: 24px 18px;
                 padding: 20px;
                 /* max-height: max-content; */
             }
+
             .row {
                 display: flex;
                 flex-direction: row;
                 height: 351px;
                 margin-top: -19px;
             }
+
             .col-xs-12.col-sm-12.col-md-6.col-lg-6.titre2 {
                 height: 195px;
                 margin-top: -46px;
             }
+
             .bouton2 {
                 /* margin-top: 83193px; */
                 margin-left: 30px;
@@ -1721,6 +1758,7 @@
                 border-radius: 8px;
                 padding: 3px;
             }
+
             .h1, h1 {
                 font-size: 2.2rem;
             }
@@ -1728,10 +1766,11 @@
 
         /* iphone eg (landscape) ----and (max-width:567px)------- */
 
-        @media screen and (min-width: 480px) and ( orientation: landscape) {
+        @media screen and (min-width: 480px) and (orientation: landscape) {
             .h1, h1 {
                 font-size: 2.7rem;
             }
+
             #trouveSpot div {
                 position: absolute;
                 top: 25%;
@@ -1749,6 +1788,7 @@
                 align-items: center;
                 width: 84vh;
             }
+
             #macarte {
                 height: 806px;
                 margin: 26px 38px;
@@ -1787,6 +1827,7 @@
                 align-items: center;
                 width: 87vh;
             }
+
             .container {
                 width: 100%;
                 padding-right: 15px;
@@ -1795,6 +1836,7 @@
                 margin-left: auto;
                 height: 400px;
             }
+
             #macarte {
                 height: 806px;
                 margin: 24px 18px;
@@ -1825,6 +1867,7 @@
                 align-items: center;
                 width: 43vh;
             }
+
             #trouveSpot {
                 height: 385px;
                 width: 100%;
@@ -1834,6 +1877,7 @@
                 background-size: cover;
                 margin-top: -16px;
             }
+
             .bouton2 {
                 /* margin-top: 83193px; */
                 margin-left: 30px;
@@ -1847,6 +1891,7 @@
                 padding: 3px;
                 text-decoration: none !important;
             }
+
             a:hover {
                 color: white;
                 text-decoration: underline;
@@ -1913,9 +1958,11 @@
                 align-items: center;
                 font-size: 0.2em;
             }
+
             .h1, h1 {
                 font-size: 3.5rem;
             }
+
             #macarte {
                 height: 850px;
                 margin: 42px 50px;
@@ -1931,6 +1978,7 @@
                 margin: 5px 20px 5px 20px;
                 padding: 4px;
             }
+
             #trouveSpot div {
                 position: absolute;
                 top: 17%;
@@ -1998,6 +2046,7 @@
                 font-size: 0.2em;
                 width: 50vh;
             }
+
             .h1, h1 {
                 font-size: 4.5rem;
             }
@@ -2023,6 +2072,7 @@
                 align-items: center;
                 font-size: 0.2em;
             }
+
             nav * {
                 font-size: 1.2rem;
                 margin: 5px 20px 5px 20px;

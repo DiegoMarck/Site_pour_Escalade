@@ -1,0 +1,36 @@
+.nomSiteCarte {
+    color: black;
+    background-color: white;
+    padding: 0px;
+    width: 90%;
+    margin: 0px 0px;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.nombredevoie {
+    color: black;
+    padding: 0;
+}
+
+.visiteSite {
+    text-decoration: none;
+    color: black !important;
+}
+.visiteSite:hover {
+    color: #333;
+    text-decoration: none;
+}
+.opengps {
+    text-decoration: none;
+    color: black !important;
+}
+.opengps:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    width: 90%;
+    height: 90%;
+}

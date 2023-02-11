@@ -19,7 +19,7 @@ NomDeLaClasse concernée
 
 Mise en place de la sécurité : 
 
-création d'un espace priver pour les users et les admins
+création d'un espace privé pour les users et les admins
 
 1.	composer require symfony/security-bundle
 Début de la mise en place de la sécurité
@@ -296,3 +296,18 @@ Assert dans la validation des formulaires :
 tentative d'installation de lipp imagine mais ca ne marche pas
 symfony composer req "imagine/imagine:^1.2"
 test modifications
+
+Création de la partie itinéraire redirection vers google map, 11/02/23:
+// marqueur.bindPopup('<h3>' + site.nom + '</h3><p>' + site.nombredeVoie + '</p><a href="/site/' + site.id + '">site</a><a href="https://maps.google.com/?q={{ sites.latitude }},{{ sites.longitude }}">Open in GPS</a>');
+anciens marqueur : 
+// marqueur.bindPopup('<h3>' + site.nom + '</h3><p>' + site.nombredeVoie + '</p><a href="/site/' + site.id + '">site</a>');
+// marqueur.bindPopup('<h3>' + site.nom + '</h3><p>' + site.nombredeVoie + '</p><a href="/site/' + site.id + '">site</a><a href="https://maps.google.com/?q=' + site.latitude + ',' + site.longitude + '">Open in GPS</a>')
+function openGPS(latitude, longitude) {
+			if (confirm('Do you want to open this location in Google Maps or Apple Maps?')) {
+				if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1 || navigator.userAgent.indexOf('iPod') != -1) {
+				window.open('maps://maps.apple.com/?q=' + latitude + ',' + longitude)
+				} else {
+				window.open('https://maps.google.com/?q=' + latitude + ',' + longitude)
+				}
+			}
+			}

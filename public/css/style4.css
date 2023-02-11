@@ -268,7 +268,7 @@
             overflow: scroll;
         }
 
-        #trouveSpot div {
+        #trouveSpot div { 
             position: absolute;
             top: 25%;
             left: 48%;

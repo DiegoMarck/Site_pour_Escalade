@@ -36,7 +36,6 @@
 {% endblock %}
 
 {% block javascripts %}
-  {# <script src="{{ asset('js/jquery.min.js') }}"></script> #}
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
@@ -78,9 +77,28 @@
         var latLng = L.latLng(site.latitude, site.longitude)
         var marqueur = L.marker(latLng, { icon: icone }).addTo(carte)
         // console.log('marqueur', marqueur)
-        marqueur.bindPopup('<h5 class="nomSiteCarte">' + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p><a href="/site/' + site.id + '" class="visiteSite">Visite du site </a><br /><a href="#" class="opengps" onclick="openGPS(\'' + site.latitude + "','" + site.longitude + '\')">Ouvrir dans le GPS</a>')
+        console.log(site)
+        marqueur.bindPopup('<h5 class="nomSiteCarte">' + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p><a href="/site/' + site.id + '" class="visiteSite" onclick="openSecondMap(\'' + site.latitude + "','" + site.longitude + '\')">Visite du site </a><br /><a href="#" class="opengps" onclick="openGPS(\'' + site.latitude + "','" + site.longitude + '\')">Ouvrir dans le GPS</a>')
         // console.log(window)
-          })
+        
+        
+        })
     })
+
+    // create the second map
+   function openSecondMap(latitude, longitude) {
+      var secondMap = L.map('macarte2').setView([latitude, longitude], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+        minZoom: 1,
+        maxZoom: 20
+      }).addTo(secondMap);
+    }
+
+    $('.visiteSite').click(function (event) {
+      event.preventDefault();
+      openSecondMap(site.latitude, site.longitude);
+    });
+
   </script>
 {% endblock %}

@@ -12,8 +12,8 @@
 	</div>
 	<a href='https://fr.freepik.com/photos/nuage'>Nuage photo créé par wirestock - fr.freepik.com</a>
 
-	{% dump(media) %}
-
+	{# {% dump(media) %} #}
+{# {{ dump(site) }} #}
 
 	<section id="tabs" class="tab-container">
 		<div>
@@ -151,6 +151,7 @@
 			</section>    
 		</div>
 	</section>
+
 	{# map #}
 	<section id="map">
 		<div id="macarte2"></div>
@@ -169,7 +170,9 @@
 {% endblock %}
 {% block javascripts %}
 
-<script>
+{# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> #}
+
+<script>//api meteo
 	const weatherIcons = {
 		"Rain": "wi wi-day-rain",
 		"Clouds": "wi wi-day-cloudy",
@@ -178,8 +181,7 @@
 		"mist": "wi wi-day-fog",
 		"Drizzle": "wi wi-day-sleet",
 	}
-	// var lat = site.latitude;
-	// var lon = site.longitude;
+	 
     function capitalize(str) {
         return str[0].toUpperCase() + str.slice(1);
     }
@@ -189,7 +191,7 @@
         // const meteo = await fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=902dc3bb337a0fba35d5043e139dbc11&lang=fr&units=metric')
                 .then(resultat => resultat.json())
                 .then(json => json )
-                console.log('coord')
+               // console.log('coord')
                 displayWeatherInfos(meteo)               
 	}
 
@@ -211,8 +213,8 @@
 
 </script>
 
-<script>
-	// gestion du tab
+<script>// gestion du tab/onglets
+
 	function tabsPlugin() {
 		let onglets = $('#tabs .onglets a')
 		let panels = $('#tabs .panel');
@@ -249,9 +251,11 @@
 	$(document).ready(function () {
 	tabsPlugin();
 	});
-
-	{# var latLng = L.latLng(site.latitude, site.longitude)        #}
+</script>
+{# <script>
+	// code de la carte
 	var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
+
 	//on charge les tuiles
 	
 	L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
@@ -267,19 +271,41 @@
 				iconAnchor: [25, 50],
 				popupAnchor: [-2, -44],
 			});
-	// Requête
-	{# $.ajax({
-		url: '/api/sites'
-	}).done(function(response){
-			//var datas = JSON.parse(response);
-			//console.log(response['hydra:member']);
-			var sites = response['hydra:member'];
-			var latLng = L.latLng(site.latitude, site.longitude)
-			var marqueur = L.marker(latLng).addTo(carte);
-			marqueur.bindPopup('<h3>'+site.nom+'</h3><p>'+site.nombredeVoie+'</p><a href="/site/'+site.id+'">site</a>');
-			
-	}); #}
+</script> #}
 
+<script>
+
+var latitude = {{ site.latitude|default(0) }};
+var longitude = {{ site.longitude|default(0) }};
+var site = {{ site|json_encode|raw }};
+
+{# var site = {{site|default(0)}}; #}
+{# var latLng = L.latLng(site.latitude, site.longitude) #}
+
+
+  var carte = L.map('macarte2').setView([latitude, longitude], 10);
+  console.log(latitude, longitude);
+	console.log(site)
+  
+  L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+    minZoom: 1,
+    maxZoom: 20
+  }).addTo(carte)
+  
+  var icone = L.icon({
+    iconUrl: '../img/pointeur-de-carte.png',
+    iconSize: [50, 50],
+    iconAnchor: [25, 50],
+    popupAnchor: [-2, -44]
+  });
+  
+  var marqueur = L.marker([latitude, longitude], { icon: icone }).addTo(carte);
+  marqueur.bindPopup('<h5 class="nomSiteCarte">'  + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p>')
+  console.log(nom)
+</script>
+
+<script>
 	function buttonClickGET() {
 		var url = "https://https://api.openweathermap.org/data/2.5/weather?q="+lat_long+",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
 
@@ -298,8 +324,7 @@
 		var element = document.getElementById("zone_meteo");
 		//var lat_long = document.getElementById("lat_long").value;
 		element.innerHTML = "La temperature est de " + data.main.temp;
-	}
-						
+	}					
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

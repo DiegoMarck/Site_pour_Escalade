@@ -25,6 +25,13 @@
             padding: 20px;
         }
 
+        #macarte2 {
+            height: 450px;
+            margin: 20px;
+            margin-left: 35px;
+            margin-right: 35px;
+        }
+
         section {
             padding: 20px 0px;
         }
@@ -327,7 +334,7 @@
 
         #map {
             bottom: -50px;
-            /* border: 2px solid black; */
+            border: 2px solid black;
             margin-bottom: -350px;
         }
 

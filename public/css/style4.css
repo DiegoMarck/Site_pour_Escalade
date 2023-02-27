@@ -175,14 +175,19 @@
             flex-direction: column;
         }
 
-        .concours>a {
-            /* color: rgba(143, 108, 224, 0.561); */
+        .concours {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0px 20px 20px 20px;
-            padding: 10px 10px;
             text-align: center;
+            color: black;
+        }
+
+        .concours:hover {
+            color: #2e6ea6;
+            text-decoration: none;
+
         }
 
         #concours article {

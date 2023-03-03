@@ -1,66 +1,51 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
-    <section id="contact">
-        <div>
-            <h2>N'hésitez pas me contacter</h2>
-        </div>
-    </section>
-    {# afficher le message de réservation efféctué #}
-{% if app.flashes("info") is defined  %} 
-    {% for message in app.flashes("info")%}
-        <div class= "text">
-            {{message}}
-        </div>
-    {% endfor %}
-{% endif %}
-
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-<div class="container">
-    <div class="form-group">
-        <section id="form">
-        <div class="container containerContact">
-            {{ form_start( form ) }}
-            <div class="row contact1">
-                {{ form_label(form.name, null, {'label': 'Nom',
-                        'label_attr': {'class': 'labbel1'}
-                        }) }}
-                {{ form_widget( form.name ) }}
-            </div>
-            {# <div class="row contact1">
-                {{ form_label(form.prenom, null, {'label': 'Nom',
-                        'label_attr': {'class': 'labbel1'}
-                        }) }}
-                {{ form_widget( form.prenom ) }}
-            </div> #}
-            <div class="row contact1">
-                {{ form_label(form.email, null, {'label': 'Email',
-                        'label_attr': {'class': 'labbel1'}
-                        }) }}
-                {{ form_widget( form.email ) }}
-            </div>
-            <div class="row contact1">
-                {{ form_label(form.message, null, {'label': 'Message',
-                        'label_attr': {'class': 'labbel1'}
-                        }) }}
-                {{ form_widget( form.message ) }}
-            </div>
-            <div class="row contact1">
-                {{ form_label(form.telephone, null, {'label': 'Téléphone',
-                        'label_attr': {'class': 'labbel1'}
-                        }) }}
-                {{ form_widget( form.telephone ) }}
-            </div>
-            {# {{ form_row( form.email ) }}
-            {{ form_row(form.message)}}
-            {{ form_row(form.telephone)}} #}
-            <button type="submit">Envoyer le message</button>
-            {{ form_end( form ) }}
-        </div>
-    
-        </section>
+  <section id="contact">
+    <div>
+      <h2>Nous contacter</h2>
     </div>
-</div>
-    
+  </section>
+  <section class="accueil_contact">
+    <div class="accueil_contact">
+      <p>Bienvenue ! Si vous avez des questions, des commentaires ou des suggestions à partager, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous serons ravis d'échanger avec vous sur notre passion commune pour ce sport palpitant.</p>
+    </div>
+  </section>
+  {# afficher le message de réservation efféctué #}
+  {% if app.flashes('info') is defined %}
+    {% for message in app.flashes('info') %}
+      <div class="text">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  
+
+  {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+  <div class="container">
+    <div class="form-group">
+      <section id="form">
+        <div class="container containerContact">
+          {{ form_start(form) }}
+          <div class="row contact1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.name, null, { label: 'Nom', label_attr: { class: 'labbel4' } }) }}</div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.name) }}</div>
+          </div>
+          <div class="row contact1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.email, null, { label: 'Email', label_attr: { class: 'labbel4' } }) }}</div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.email) }}</div>
+          </div>
+          <div class="row contact1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.telephone, null, { label: 'Téléphone', label_attr: { class: 'labbel4' } }) }}</div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.telephone) }}</div>
+          </div>
+          <div class="row contact1">
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.message, null, { label: 'Message', label_attr: { class: 'labbel4' } }) }}</div>
+            <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.message) }}</div>
+          </div>
+          <button type="submit">Envoyer le message</button>
+          {{ form_end(form) }}
+        </div>
+      </section>
+    </div>
+  </div>
 {% endblock %}

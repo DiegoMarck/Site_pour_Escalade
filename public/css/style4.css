@@ -412,22 +412,15 @@
 
         .labbel1 {
             background-color: #859daf;
-            width: 67%;
             max-width: 150px;
-            text-align: center;
             border-radius: 5px;
             padding: 5px;
-            /* padding: 10px; */
-            height: 7vh;
-            display: flex;
-            text-align: center;
-            justify-content: center;
+            height: 6.5vh;
             color: black;
             margin-top: 10px;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 2%;
         }
 
         .labbel2 {
@@ -1264,7 +1257,6 @@
         }
 
         .contact1 {
-            /* background-color: #2e6ea6; */
             display: flex;
             flex-direction: row;
             padding: 10px;
@@ -1272,9 +1264,31 @@
 
         textarea.form-control {
             height: auto;
-            /* padding: 10px; */
-            /* margin-left: 10px; */
-            width: 65% !important;
+            width: 100% !important;
+        }
+        .labbel4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #859daf;
+            max-width: 150px;
+            border-radius: 5px;
+            padding: 5px;
+            height: 4.5vh;
+            color: black;
+            margin-top: 10px;
+            
+            margin-left: 20%;
+        }
+        .form-control {
+            margin-top: 10px;
+            min-width: 225px;
+        }
+        .accueil_contact p {
+            margin-top: -180px;
+            color: #fff;
+            width: 70%;
+            margin-left: 15%;
         }
 
         /* --------------- 7ième page -Security/Login --------------------------------------*/

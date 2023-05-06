@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ec64502d-163d-43e3-b7a6-1f003d631677" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/public/css/style4.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/stylemarker.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/stylemarker.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/site/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/site/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/site/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/site/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/MediaFixrures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/MediaFixrures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/SiteFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/SiteFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TopoFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TopoFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/front/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/front/contact.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,15 +23,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/ddema/OneDrive/Documents/Informatique/coursInformatique/NextFormation/ProjetEscalade4-4",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ddema/OneDrive/Documents/Informatique/coursInformatique/NextFormation/ProjetEscalade4-4&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -39,6 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1676935374101</updated>
       <workItem from="1676935375280" duration="304000" />
+      <workItem from="1681651609535" duration="111000" />
     </task>
     <servers />
   </component>

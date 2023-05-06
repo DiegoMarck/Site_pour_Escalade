@@ -157,6 +157,7 @@
 		<div id="macarte2"></div>
 	</section>
 	
+	{# {{ dump(site) }} #}
 
 	
 	<div class="bouton">
@@ -272,8 +273,9 @@
 				popupAnchor: [-2, -44],
 			});
 </script> #}
+{# <script src="monscript.js" data-site="{{ site|json_encode }}"></script> #}
 
-<script>
+<script>//code de la carte
 
 var latitude = {{ site.latitude|default(0) }};
 var longitude = {{ site.longitude|default(0) }};
@@ -302,10 +304,12 @@ var site = {{ site|json_encode|raw }};
   
   var marqueur = L.marker([latitude, longitude], { icon: icone }).addTo(carte);
   marqueur.bindPopup('<h5 class="nomSiteCarte">'  + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p>')
-  console.log(nom)
+  console.log(site.nom)
+  
+  
 </script>
 
-<script>
+{# <script>
 	function buttonClickGET() {
 		var url = "https://https://api.openweathermap.org/data/2.5/weather?q="+lat_long+",fr&appid=c21a75b667d6f7abb81f118dcf8d4611&units=metric"
 
@@ -325,7 +329,7 @@ var site = {{ site|json_encode|raw }};
 		//var lat_long = document.getElementById("lat_long").value;
 		element.innerHTML = "La temperature est de " + data.main.temp;
 	}					
-</script>
+</script> #}
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 {# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> #}

@@ -280,7 +280,7 @@
             overflow: scroll;
         }
 
-        #trouveSpot div { 
+        #trouveSpot div {
             position: absolute;
             top: 25%;
             left: 48%;
@@ -1266,6 +1266,7 @@
             height: auto;
             width: 100% !important;
         }
+
         .labbel4 {
             display: flex;
             justify-content: center;
@@ -1277,18 +1278,34 @@
             height: 4.5vh;
             color: black;
             margin-top: 10px;
-            
+
             margin-left: 20%;
         }
+
         .form-control {
             margin-top: 10px;
             min-width: 225px;
         }
+
         .accueil_contact p {
             margin-top: -180px;
             color: #fff;
             width: 70%;
             margin-left: 15%;
+        }
+
+        .submit_contact {
+            color: black;
+            background-color: #859daf;
+            border-radius: 8px;
+            -webkit-border-radius: 8px;
+            -moz-border-radius: 8px;
+            -ms-border-radius: 8px;
+            -o-border-radius: 8px;
+            min-width: 110px;
+            margin-left: 16%;
+            border: none;
+            line-height: 4.5;
         }
 
         /* --------------- 7ième page -Security/Login --------------------------------------*/
@@ -1607,7 +1624,7 @@
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 4rem;
                 margin-bottom: 30px;
             }
 

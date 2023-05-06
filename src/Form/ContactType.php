@@ -25,9 +25,14 @@ class ContactType extends AbstractType
         $builder
             ->add('name', null, [
                 "required"=>true,
-                "label"=>"Nom et prenom",
+                "label"=>"Nom",
                 "data"=> $user ? $user->getPseudo() : "" 
             ])
+            // ->add('firsrtname', null, [
+            //     "required"=>true,
+            //     "label"=>"Prénom",
+            //     "data"=> $user ? $user->getPseudo() : "" 
+            // ])
             ->add('message', TextareaType::class, [
                 "attr"=>[
                     "cols"=>100,

@@ -14,7 +14,6 @@
         body {
             margin: 0;
             padding: 0;
-            /* background-color: #317133; */
             background-color: rgba(49, 113, 51, 0.719);
             overflow: scroll;
         }
@@ -28,8 +27,8 @@
         #macarte2 {
             height: 450px;
             margin: 20px;
-            margin-left: 35px;
-            margin-right: 35px;
+            margin-left: 12%;
+            margin-right: 12%;
         }
 
         section {
@@ -753,11 +752,6 @@
             margin-top: -20px;
         }
 
-        /* .panelImg>img {
-            height: 265px;
-            width: 60%;
-        } */
-
         .panelImgSite>img {
             height: 295px;
             width: 89%;
@@ -776,6 +770,9 @@
             margin-left: 51px;
             margin-right: 20px;
         }
+
+
+        /*-------API METEO--------*/
 
         .clear {
             background-image: url(https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.alamyimages.fr%2Fplage-de-rena-majore-par-temps-clair-en-sardaigne-image368088456.html&psig=AOvVaw1rIcy6RF3pwK30dP7jiesy&ust=1632293087084000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCJD72N-7j_MCFQAAAAAdAAAAABAD);
@@ -814,29 +811,98 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
+            margin-top: 70px;
         }
 
-        #apiMeteo {
-            font-family: roboto;
+
+        .description {
+            background-color: rgba(41, 128, 185, 0.75);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .wi {
-            font-size: 2em;
-            line-height: 2em;
-            background-color: red;
+        .temp {
+            background-color: rgba(43, 78, 101, 0.75);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        h1 {
-            font-size: 3em;
+        .humidity {
+            background-color: rgba(52, 152, 219, 0.75);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        h2 {
-            font-size: 2em;
+        .wind {
+            background-color: rgba(143, 146, 154, 0.75);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        .tooltip1 {
-            display: none;
+        .square {
+            width: 370px;
+            height: 370px;
+            background-color: #ccc;
+            position: relative;
         }
+
+        .square:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 50%;
+            background-color: #333;
+        }
+
+        .square:after {
+            content: "";
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 50%;
+            background-color: #666;
+        }
+
+        .square>div {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+        }
+
+        .square>div:first-child {
+            top: 0;
+            left: 0;
+        }
+
+        .square>div:nth-child(2) {
+            top: 0;
+            right: 0;
+        }
+
+        .square>div:nth-child(3) {
+            bottom: 0;
+            left: 0;
+        }
+
+        .square>div:last-child {
+            bottom: 0;
+            right: 0;
+        }
+
+        .mesure {
+            padding: 8px;
+        }
+
 
         /* --------------------------Editer un topo -------------------------------------- */
 
@@ -1584,6 +1650,14 @@
             /* width: 100vh; */
         }
 
+
+
+
+
+
+
+
+
         /*-------------------------------------------------------------------------*/
 
         /*-----------------------------RESPONSIVE----------------------------------*/
@@ -1842,7 +1916,7 @@
 
         /* iphone 5 (portrait) ----and (max-width: 374px) ------- */
 
-        ​@media screen and (min-width: 320px) and (max-width: 374px) and (orientation: portrait) {
+        @media screen and (min-width: 320px) and (max-width: 374px) and (orientation: portrait) {
             #macarte {
                 height: 850px;
                 margin: 12px 20px;
@@ -1949,12 +2023,12 @@
 
         @media screen and (min-width: 414px) and (max-width: 599px) and (orientation: portrait) {}
 
-        ​
+
         /* Iphone7+ -landscape */
 
         @media screen and (min-width: 736px) and (max-height: 414px) and (orientation: landscape) {}
 
-        ​
+
         /*---small tablette ------------------------------------------- */
 
         @media screen and (min-width: 600px) and (max-height: 800px) and (orientation: portrait) {}

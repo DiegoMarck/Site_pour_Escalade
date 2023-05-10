@@ -140,16 +140,32 @@
 		{# api Météo #}
 		<div class="panel" id="apiMeteo">
 			<section id="app">
-				<h1>
-					<span id="ville">Marseille</span>
-					<span class="tooltip1">Tapez un autre ville si vous la souhaitez</span>
-				</h1>
-				<i class="wi wi-day-rain"></i>
-				<h2>
-					<span id="temperature">25</span>°C ( <span id="conditions">Ciel dégagé</span> )
-				</h2>
+				<div class="container">
+					<div class="row justify-content-center">
+							<div class="box-container square">
+								<div class="description box inner-square">
+									<div id="description"></div>
+									<div id="icon" class="mesure"></div>
+								</div>
+								<div class="temp box inner-square">
+									<i class="fa-solid fa-temperature-three-quarters"></i>
+									<div id="temp" class="mesure"></div>
+								</div>
+								<div class="humidity box inner-square">
+									<i>Humidité</i>
+									<i class="fa-sharp fa-solid fa-droplet-percent"></i>
+									<div id="humidity" class="mesure"></div>
+								</div>
+								<div class="wind box inner-square">
+									<i class="fa-solid fa-wind"></i>
+									<div id="wind" class="mesure"></div>
+								</div>
+							</div>
+					</div>
+				</div>
 			</section>    
 		</div>
+
 	</section>
 
 	{# map #}
@@ -174,43 +190,48 @@
 {# <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> #}
 
 <script>//api meteo
-	const weatherIcons = {
-		"Rain": "wi wi-day-rain",
-		"Clouds": "wi wi-day-cloudy",
-		"Clear": "wi wi-day-sunny",
-		"Snow": "wi wi-day-snow",
-		"mist": "wi wi-day-fog",
-		"Drizzle": "wi wi-day-sleet",
-	}
-	 
-    function capitalize(str) {
-        return str[0].toUpperCase() + str.slice(1);
-    }
+
+{# const weatherIcons = {
+"Rain": "wi wi-day-rain",
+"Clouds": "wi wi-day-cloudy",
+"Clear": "wi wi-day-sunny",
+"Snow": "wi wi-day-snow",
+"mist": "wi wi-day-fog",
+"Drizzle": "wi wi-day-sleet",
+} #}
+const API_KEY = 'ff5d53b6045f9333580b4c1992052756'; 
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+function getPosition() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+async function main2() {
+  const position = await getPosition();
+  const {latitude, longitude} = position.coords;
+
+  const meteo = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=fr&units=metric&appid=${API_KEY}`)
+		.then((response) =>
+			response.json().then((data) => {
+				console.log(data);
+				document.querySelector('#description').innerHTML = data.weather[0].description;
+				document.querySelector('#icon').innerHTML = data.weather[0].icon;
+				document.querySelector('#temp').innerHTML = data.main.temp + '°';
+				document.querySelector('#humidity').innerHTML = data.main.humidity + '%';
+				document.querySelector('#wind').innerHTML = data.wind.speed + '°';
+			})
+		)
+		.catch((err) => console.log('erreur: ' + err));
 	
-    async function main2() {
-        const meteo = await fetch('https://api.openweathermap.org/data/2.5/weather?q=santiago&appid=902dc3bb337a0fba35d5043e139dbc11&lang=fr&units=metric')
-        // const meteo = await fetch('https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=902dc3bb337a0fba35d5043e139dbc11&lang=fr&units=metric')
-                .then(resultat => resultat.json())
-                .then(json => json )
-               // console.log('coord')
-                displayWeatherInfos(meteo)               
-	}
+}
 
-	function displayWeatherInfos(data) {
-		const name = data.name;
-		const temperature = data.main.temp;
-		const conditions = data.weather[0].main;
-		const description = data.weather[0].description;
+main2();
 
-		document.querySelector('#ville').textContent = name;
-		document.querySelector('#temperature').textContent = Math.round(temperature);
-		document.querySelector('#conditions').textContent = capitalize(description);
-		document.querySelector('i.wi').className = weatherIcons[conditions];
-		document.querySelector('#app').className = conditions.toLowerCase();
-	}               
-
-
-    main2();
 
 </script>
 
@@ -253,27 +274,6 @@
 	tabsPlugin();
 	});
 </script>
-{# <script>
-	// code de la carte
-	var carte = L.map('macarte2').setView([48.859669,2.349903], 10);
-
-	//on charge les tuiles
-	
-	L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-			// Il est toujours bien de laisser le lien vers la source des données
-			attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-			minZoom: 1,
-			maxZoom: 20
-		}).addTo(carte);
-	
-	var icone = L.icon({
-				iconUrl:"../img/pointeur-de-carte.png",
-				iconSize: [50, 50],
-				iconAnchor: [25, 50],
-				popupAnchor: [-2, -44],
-			});
-</script> #}
-{# <script src="monscript.js" data-site="{{ site|json_encode }}"></script> #}
 
 <script>//code de la carte
 
@@ -281,31 +281,46 @@ var latitude = {{ site.latitude|default(0) }};
 var longitude = {{ site.longitude|default(0) }};
 var site = {{ site|json_encode|raw }};
 
-{# var site = {{site|default(0)}}; #}
-{# var latLng = L.latLng(site.latitude, site.longitude) #}
 
 
-  var carte = L.map('macarte2').setView([latitude, longitude], 10);
-  console.log(latitude, longitude);
-	console.log(site)
-  
-  L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-    attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-    minZoom: 1,
-    maxZoom: 20
-  }).addTo(carte)
-  
-  var icone = L.icon({
-    iconUrl: '../img/pointeur-de-carte.png',
-    iconSize: [50, 50],
-    iconAnchor: [25, 50],
-    popupAnchor: [-2, -44]
-  });
-  
-  var marqueur = L.marker([latitude, longitude], { icon: icone }).addTo(carte);
-  marqueur.bindPopup('<h5 class="nomSiteCarte">'  + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p>')
-  console.log(site.nom)
-  
+var carte = L.map('macarte2').setView([latitude, longitude], 12);
+{# console.log(latitude, longitude);
+console.log(site) #}
+
+L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+	attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
+	minZoom: 1,
+	maxZoom: 20
+}).addTo(carte)
+
+var icone = L.icon({
+	iconUrl: '../img/pointeur-de-carte.png',
+	iconSize: [50, 50],
+	iconAnchor: [25, 50],
+	popupAnchor: [-2, -44]
+});
+function openGPS(latitude, longitude) {//open in GPS
+	if (confirm('Do you want to open this location in Google Maps or Apple Maps?')) {
+	if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1 || navigator.userAgent.indexOf('iPod') != -1) {
+		window.open('maps://maps.apple.com/?q=' + latitude + ',' + longitude)
+	} else {
+		window.open('https://maps.google.com/?q=' + latitude + ',' + longitude)
+	}
+	}
+}
+$.ajax({
+	url: '/api/sites'
+}).done(function (response) {
+	var sites = response['hydra:member'];
+	sites.forEach((site) => {
+		if (site.nom == "{{site.nom}}") { // vérifie si le site actuel correspond au site de la page
+			var latLng = L.latLng(site.latitude, site.longitude);
+			var marqueur = L.marker(latLng, { icon: icone }).addTo(carte);
+			marqueur.bindPopup('<h5 class="nomSiteCarte">' + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p><br /><a href="#" class="opengps" onclick="openGPS(\'' + site.latitude + "','" + site.longitude + '\')">Ouvrir dans le GPS</a>').openPopup();
+			carte.setView([site.latitude, site.longitude], 14); // zoom sur le site
+		}
+	});
+});
   
 </script>
 

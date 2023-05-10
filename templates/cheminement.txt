@@ -311,3 +311,123 @@ function openGPS(latitude, longitude) {
 				}
 			}
 			}
+
+Essai pour l'api meteo
+<script>//api meteo
+
+const weatherIcons = {
+"Rain": "wi wi-day-rain",
+"Clouds": "wi wi-day-cloudy",
+"Clear": "wi wi-day-sunny",
+"Snow": "wi wi-day-snow",
+"mist": "wi wi-day-fog",
+"Drizzle": "wi wi-day-sleet",
+}
+const API_KEY = 'ff5d53b6045f9333580b4c1992052756'; 
+
+const part = 'current,minutely,hourly,daily,alerts'; // ajout de la variable "part"
+
+function capitalize(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+
+function getPosition() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+
+async function main2() {
+  const position = await getPosition();
+  const {latitude, longitude} = position.coords;
+
+  const meteo = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&lang=fr&units=metric&appid=${API_KEY}`)
+    .then(response => response.json())
+    .then(json => json)
+
+  displayWeatherInfos(meteo)
+}
+
+function displayWeatherInfos(data) {
+		console.log(data) 
+
+  const temperature = data.main.temp;
+  const conditions = data.main.weather[0].main;
+  const description = data.main.weather[0].description;
+
+  document.querySelector('#ville').textContent = `${data.lat}, ${data.lon}`;
+  document.querySelector('#temperature').textContent = Math.round(temperature);
+  document.querySelector('#conditions').textContent = capitalize(description);
+  document.querySelector('i.wi').className = weatherIcons[conditions];
+  document.querySelector('#app').className = conditions.toLowerCase();
+  
+}
+
+main2();
+
+
+
+
+</script>
+
+fetch(url)
+.then((response) =>
+	response.json().then((data) => {
+		console.log(data)
+	})
+)
+
+{# <div class="panel" id="apiMeteo">
+			<section id="app">
+				<h1>
+					<span id="ville">Marseille</span>
+					<span class="tooltip1">Tapez un autre ville si vous la souhaitez</span>
+				</h1>
+				<i class="wi wi-day-rain"></i>
+				<h2>
+					<span id="temperature">25</span>°C ( <span id="conditions">Ciel dégagé</span> )
+				</h2>
+			</section>    
+		</div> #}
+
+
+#apiMeteo {
+            font-family: roboto;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            font-size: 2em;
+        }
+
+        #ville {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .tooltip1 {
+            font-size: 1rem;
+            margin-left: 1rem;
+        }
+        
+        .wi {
+            font-size: 3rem;
+            line-height: 2em;
+            color: white;
+            font-family: roboto;
+
+        }
+        
+        #temperature {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        
+        #conditions {
+            font-size: 2rem;
+            font-weight: bold;
+        }

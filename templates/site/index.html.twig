@@ -55,7 +55,7 @@
       iconAnchor: [25, 50],
       popupAnchor: [-2, -44]
     })
-    function openGPS(latitude, longitude) {
+    function openGPS(latitude, longitude) {// Open in GPS
           if (confirm('Do you want to open this location in Google Maps or Apple Maps?')) {
             if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1 || navigator.userAgent.indexOf('iPod') != -1) {
               window.open('maps://maps.apple.com/?q=' + latitude + ',' + longitude)

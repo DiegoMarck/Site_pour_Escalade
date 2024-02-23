@@ -30,20 +30,20 @@
 		<div class="row mt-3">
 			<h4>Entrainement</h4>
 			<div class="col-6">Coach</div>
-			<div class="col-6"></div>
+			<div class="col-6">Conseils d'enrtainement</div>
 		</div>
 		<div class="row mt-3">
 			<div class="col-12">
-            <p class="h3">liste des Users</p>
+            <p class="h3">liste des Utilisateurs :</p>
                 <ul class="list-group">
 {# {{dump('Site')}} #}
-				{% for item in  users %}
+					{% for item in  users %}
 
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{item.email}}
-                        <span class="badge badge-primary badge-pill"><i class="fas fa-users"></i>Users</span>
-                    </li>
-                {% endfor %}  
+						<li class="list-group-item d-flex justify-content-between align-items-center">
+							{{item.email}}
+							<span class="badge badge-primary badge-pill"><i class="fas fa-users"></i>Users</span>
+						</li>
+					{% endfor %}  
                 </ul>
             </div>
 		</div>

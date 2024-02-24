@@ -176,12 +176,14 @@
 	
 	{# {{ dump(site) }} #}
 
-	
+	{% if app.user %}
 	<div class="bouton">
 		<a href="{{ path('site_index') }}">back to list</a>
 		<a href="{{ path('site_edit', {'id': site.id}) }}">edit</a>
 		{{ include('site/_delete_form.html.twig') }}
 	</div>
+	{% endif %}
+
 
 	
 

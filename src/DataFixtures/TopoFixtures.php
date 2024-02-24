@@ -19,7 +19,7 @@ class TopoFixtures extends Fixture
         // $media->setImage(new UploadedFile('path/to/file', 'file.jpg', 'image/jpeg', null, true));
        
 
-        $manager->persist($media);
+        // $manager->persist($media);
         $manager->flush();
     }
         

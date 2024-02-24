@@ -16,10 +16,10 @@ class SiteFixtures extends Fixture
         $site = new Site();
         $site->setNom('Nom');
         $site->setGrandeVilleProche('nom grande ville');
-        $site->setImage(new UploadedFile('path/to/file', 'file.jpg', 'image/jpeg', null, true));
+        // $site->setImage(new UploadedFile('path/to/file', 'file.jpg', 'image/jpeg', null, true));
        
 
-        $manager->persist($media);
+        // $manager->persist($media);
         $manager->flush();
     }
         

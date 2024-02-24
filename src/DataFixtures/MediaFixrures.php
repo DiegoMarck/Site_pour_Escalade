@@ -3,7 +3,7 @@
 namespace App\DataFixtures;
 
 use Faker\Factory;
-// use App\Entity\Media;
+use App\Entity\Media;
 use App\DataFixtures;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;

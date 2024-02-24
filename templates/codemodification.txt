@@ -245,3 +245,50 @@ controller index thomes
             
         ]);
     }
+
+topo / index.html.twig
+code enlevé : 
+ {# <table class="table tableTopos">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Pays</th>
+                <th>Region</th>
+                <th>DatedeParution</th>
+                <th>DatedeMiseajour</th>
+                <th>Prix</th>
+                <th>Auteur</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Image</th>
+               
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for topo in topos %}
+            <tr>
+                <td>{{ topo.id }}</td>
+                <td>{{ topo.titre }}</td>
+                <td>{{ topo.pays }}</td>
+                <td>{{ topo.region }}</td>
+                <td>{{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</td>
+                <td>{{ topo.datedeMiseajour ? topo.datedeMiseajour|date('Y-m-d') : '' }}</td>
+                <td>{{ topo.prix }}</td>
+                <td>{{ topo.auteur }}</td>
+                <td>{{ topo.description }}</td>
+                <td>{{ topo.type ? topo.type|join(', ') : '' }}</td>
+                <td>{{ topo.image }}</td>
+                <td>
+                    <a href="{{ path('topo_show', {'id': topo.id}) }}">show</a>
+                    <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> #}

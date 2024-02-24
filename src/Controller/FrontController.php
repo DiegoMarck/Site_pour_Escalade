@@ -42,7 +42,7 @@ class FrontController extends AbstractController
             $data=$form->getData();
             // dump($data);
             //recupérer les contenu des champsdans le tableau
-            dump($data["email"]);
+            // dump($data["email"]);
             //créer un email
             $message = new \Swift_Message("Demande de contact");
             $message->setFrom("admin@monsite.com")
@@ -65,7 +65,7 @@ class FrontController extends AbstractController
                     //affiche un petit message vous avez bien envoyé un petit message -> flash message
         }
 
-        dump($form->createView());
+        // dump($form->createView());
         return $this->render("front/contact.html.twig", [
             "form"=>$form->createView()
         ]);

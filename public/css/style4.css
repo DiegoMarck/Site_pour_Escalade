@@ -322,13 +322,6 @@
             width: 100%;
         }
 
-        /* .container2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            text-align: left;
-            width: 10%;
-        } */
-
         div #map {
             width: auto;
             height: 600px;
@@ -1016,14 +1009,6 @@
             background-color: rgba(100, 161, 157, 1);
             color: #fff;
         }
-
-        /* .tab-container .panel img {
-            justify-content: center;
-            margin: auto;
-            padding: 10px;
-            margin-left: 299px;
-            height: 350px;
-        } */
 
         .Ajouter_topo {
             text-align: center;

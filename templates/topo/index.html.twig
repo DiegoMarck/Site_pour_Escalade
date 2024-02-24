@@ -41,33 +41,7 @@
                                     <p>Région : {{ topo.region }}</p>
                                     <p>Pays : {{topo.pays}}</p> 
                                 </div>
-                                {# <div class="row r1">
-                                            <div class="col-4">
-                                                Titre : 
-                                            </div>
-                                            <div class="col-8">
-                                                {{ topo.titre }}
-                                            </div>
-                                            </div>
-                                </div>
-                                <div class="row r2">
-                                            <div class="col-4">
-                                                Région :
-                                            </div>
-                                            <div class="col-8">
-                                                {{ topo.region }}<
-                                            </div>
-                                            </div>
-                                </div>
-                                <div class="row r3">
-                                            <div class="col-4">
-                                                Pays : 
-                                            </div>
-                                            <div class="col-8">
-                                                {{topo.pays}}
-                                            </div>
-                                </div>#}
-                                </div> 
+                            </div> 
                             <div class="col-md-3 col-sm-6 col-xs-12 bootCols">
                                 <div>
                                     <p>Description : {{ topo.description }}</p>
@@ -85,19 +59,14 @@
                             
                     </div>
                 </section>
+                {% if app.user %}
                 <section class="lien">
-        
                         <a href="{{ path('topo_show', {'id': topo.id}) }}">show</a>
-                        <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
-                    
+                        <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>   
                 </section>
+                {% endif %}
             {% endfor %}
-            {# {% for image in topos %}
-                <div>
-                    <img
-                    src="{{ asset('/uploads/' ~ image.titre) }}" class="card-img-top" alt="images" width="350">
-                </div>
-            {% endfor %} #}       
+            
                         
         </div>
         <div class="panel">
@@ -108,59 +77,12 @@
         <div class="panel">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eius aliquam praesentium aut, quod maiores, blanditiis pariatur. Laboriosam incidunt dolorum officiis accusantium delectus velit nihil aliquid quam, suscipit qui nemo nostrum?</div>
     </section>
     
-               
-
-    {# <table class="table tableTopos">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Pays</th>
-                <th>Region</th>
-                <th>DatedeParution</th>
-                <th>DatedeMiseajour</th>
-                <th>Prix</th>
-                <th>Auteur</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Image</th>
-               
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for topo in topos %}
-            <tr>
-                <td>{{ topo.id }}</td>
-                <td>{{ topo.titre }}</td>
-                <td>{{ topo.pays }}</td>
-                <td>{{ topo.region }}</td>
-                <td>{{ topo.datedeParution ? topo.datedeParution|date('Y-m-d') : '' }}</td>
-                <td>{{ topo.datedeMiseajour ? topo.datedeMiseajour|date('Y-m-d') : '' }}</td>
-                <td>{{ topo.prix }}</td>
-                <td>{{ topo.auteur }}</td>
-                <td>{{ topo.description }}</td>
-                <td>{{ topo.type ? topo.type|join(', ') : '' }}</td>
-                <td>{{ topo.image }}</td>
-                <td>
-                    <a href="{{ path('topo_show', {'id': topo.id}) }}">show</a>
-                    <a href="{{ path('topo_edit', {'id': topo.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="13">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> #}
-
-    {# {% if is_granted ('ROLE_USER')%} #}
+    {% if is_granted ('ROLE_USER')%}
 
         <div class="Ajouter_topo">
             <a href="{{ path('topo_new') }}">Créer un nouveau Topo</a>
         </div>
-    {# {% endif %} #}
+    {% endif %}
 
 {% endblock %}
 

@@ -1,0 +1,539 @@
+
+        /*-------------------------------------------------------------------------*/
+
+        /*-----------------------------RESPONSIVE----------------------------------*/
+
+        /*-------------------------------------------------------------------------*/
+
+        @media screen and (min-width: 768px) {
+            .boutonR>a {
+                background-color: #144c74b7;
+                width: 26%;
+                border-radius: 5px;
+                text-align: center;
+                color: white !important;
+                height: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 17%;
+                padding: 38px;
+                font-weight: 500;
+                font-size: 102%;
+                text-decoration: none;
+                min-width: 108px;
+            }
+        }
+
+        .h1, h1 {
+            font-size: 2.5rem;
+        }
+
+        /* lorsqu'on va arriver à une largeur min de 768px reférence pour les tablette, je vais modifier des choses */
+
+        /* -------tablette welcome section------- */
+
+        @media screen and (min-width: 768px) {
+            #home-section3 {
+                background-position-y: top;
+            }
+
+            h2 {
+                font-size: 4rem;
+                margin-bottom: 30px;
+            }
+
+            /* ----------tablette home section------------------------ */
+            /* -------tablette gallery section------- */
+            #gallery-section .container {
+                column-count: 2;
+                gap: 0;
+            }
+
+            /* -------tablette contact section------- */
+            #contact-section .form-div {
+                margin: 0px 80px;
+            }
+        }
+
+        /*--------- laptop------------ */
+
+        @media screen and (min-width: 1024px) {
+            nav {
+                position: fixed;
+                z-index: 1000;
+                background: rgba(20, 76, 116, 0.37);
+                text-align: center;
+                margin-top: 0px;
+            }
+
+            nav * {
+                font-size: 1rem;
+                margin: 5px 20px 5px 20px;
+                padding: 4px;
+            }
+
+            nav label {
+                display: none;
+            }
+
+            nav .nav-list {
+                display: flex;
+                width: 87%;
+                justify-content: space-evenly;
+                margin-left: -20px;
+                margin-right: 20px;
+            }
+
+            nav .nav-list a {
+                transition: 1s;
+                text-decoration: none;
+            }
+
+            nav .nav-list a:hover {
+                margin-left: 8px;
+                transition: 1s;
+                color: black;
+            }
+
+            nav .nav-list li {
+                margin: 17px 11px 5px 14px;
+                text-align: center;
+                padding: 2px;
+                font-size: 20px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                margin-right: -5px;
+            }
+
+            /* -------Laptop Titre Section--- */
+            .home-titre div {
+                position: relative;
+                margin-top: 134px;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                width: 55%;
+                min-width: 254px;
+            }
+
+            .logo {
+                width: auto;
+                height: 5.5em;
+                font-size: 0.5em;
+                margin-top: 15px;
+                margin-left: -20px;
+            }
+
+            /*------- laptop gallery section */
+            #gallery-section .container {
+                padding: 15px;
+                display: grid;
+                grid-template: "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh "1fr 1fr 1fr 1fr 1fr"33.33vh;
+            }
+
+            #gallery-section .box {
+                transition: 1s;
+            }
+
+            #gallery-section .box:hover {
+                transform: scale(1.05);
+                transition: 1s;
+                color: #2e6ea6;
+            }
+
+            .box_b, .box_f, .box_h {
+                grid-column: span 2;
+            }
+
+            .box_a, .box_g {
+                grid-row: span 2;
+            }
+
+            /*------- laptop review section */
+        }
+
+        /* iphone eg (portrait) ---and (max-width: 374px)-------- */
+
+        @media screen and (min-width: 320px) and (max-height: 480px) and (orientation: portrait) {
+            .h1, h1 {
+                font-size: 2.7rem;
+            }
+
+            #trouveSpot div {
+                position: absolute;
+                top: 25%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 41%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 53vh;
+            }
+
+            #macarte {
+                height: 806px;
+                margin: 24px 18px;
+                padding: 20px;
+                /* max-height: max-content; */
+            }
+
+            .row {
+                display: flex;
+                flex-direction: row;
+                height: 351px;
+                margin-top: -19px;
+            }
+
+            .col-xs-12.col-sm-12.col-md-6.col-lg-6.titre2 {
+                height: 195px;
+                margin-top: -46px;
+            }
+
+            .bouton2 {
+                /* margin-top: 83193px; */
+                margin-left: 30px;
+                background: #3171337e;
+                bottom: -1160px;
+                margin-bottom: -90px;
+                position: absolute;
+                color: white;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding: 3px;
+            }
+
+            .h1, h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* iphone eg (landscape) ----and (max-width:567px)------- */
+
+        @media screen and (min-width: 480px) and (orientation: landscape) {
+            .h1, h1 {
+                font-size: 2.7rem;
+            }
+
+            #trouveSpot div {
+                position: absolute;
+                top: 25%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 41%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 84vh;
+            }
+
+            #macarte {
+                height: 806px;
+                margin: 26px 38px;
+                padding: 20px;
+                /* max-height: max-content; */
+            }
+        }
+
+        /* iphone 5 (portrait) ----and (max-width: 374px) ------- */
+
+        @media screen and (min-width: 320px) and (max-width: 374px) and (orientation: portrait) {
+            #macarte {
+                height: 850px;
+                margin: 12px 20px;
+                padding: 20px;
+            }
+        }
+
+        /* iphone5 landscape -------------- */
+
+        @media screen and (min-width: 568px) and (max-height: 320px) and (orientation: landscape) {
+            #trouveSpot div {
+                position: absolute;
+                top: 25%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 44%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 87vh;
+            }
+
+            .container {
+                width: 100%;
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: auto;
+                height: 400px;
+            }
+
+            #macarte {
+                height: 806px;
+                margin: 24px 18px;
+                padding: 20px;
+                /* max-height: max-content; */
+                margin-bottom: 150px;
+                margin-top: -30px;
+            }
+        }
+
+        /* Iphone 7 -portrait---------------------- */
+
+        @media screen and (min-width: 375px) and (orientation: portrait) {
+            #trouveSpot div {
+                position: absolute;
+                top: 25%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 33%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 43vh;
+            }
+
+            #trouveSpot {
+                height: 385px;
+                width: 100%;
+                background-image: url(../img/escalade2.jpg);
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                margin-top: -16px;
+            }
+
+            .bouton2 {
+                /* margin-top: 83193px; */
+                margin-left: 30px;
+                background: #3171337e;
+                bottom: -906px;
+                margin-bottom: -90px;
+                position: absolute;
+                color: white;
+                border: 1px solid black;
+                border-radius: 8px;
+                padding: 3px;
+                text-decoration: none !important;
+            }
+
+            a:hover {
+                color: white;
+                text-decoration: underline;
+            }
+        }
+
+        /* Iphone 7 -Landscape---------------------- */
+
+        @media screen and (min-width: 667px) and (max-width: 735px) and (orientation: landscape) {}
+
+        /* Iphone 7+ -portrait---------------------- */
+
+        @media screen and (min-width: 414px) and (max-width: 599px) and (orientation: portrait) {}
+
+
+        /* Iphone7+ -landscape */
+
+        @media screen and (min-width: 736px) and (max-height: 414px) and (orientation: landscape) {}
+
+
+        /*---small tablette ------------------------------------------- */
+
+        @media screen and (min-width: 600px) and (max-height: 800px) and (orientation: portrait) {}
+
+        /* small tablette landscape ------------------ */
+
+        @media screen and (min-width: 800px) and (orientation: landscape) {
+            #trouveSpot div {
+                position: absolute;
+                top: 29%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 29%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+            }
+        }
+
+        /*  Tablet eg apple Ipad 2-3, mini --------- */
+
+        @media screen and (min-width: 768px) and (orientation: portrait) {
+            #trouveSpot div {
+                position: absolute;
+                top: 20%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 27%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+            }
+
+            .h1, h1 {
+                font-size: 3.5rem;
+            }
+
+            #macarte {
+                height: 850px;
+                margin: 42px 50px;
+                /* padding: 13px; */
+            }
+        }
+
+        /*  Tablet eg apple Ipad 2-3, mini landsacpe--------- */
+
+        @media screen and (min-width: 1024px) and (orientation: landscape) {
+            nav * {
+                font-size: 1.1rem;
+                margin: 5px 20px 5px 20px;
+                padding: 4px;
+            }
+
+            #trouveSpot div {
+                position: absolute;
+                top: 17%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 29%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+                width: 68vh;
+            }
+        }
+
+        /* widescreen landscape------------ */
+
+        @media screen and (min-width: 1280px) and (orientation: landscape) {}
+
+        /* widescreen ------------ */
+
+        @media screen and (min-width: 800px) and (orientation: portrait) {
+            #trouveSpot div {
+                position: absolute;
+                top: 15%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 20%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+            }
+        }
+
+        /* HDTV 1080 lanscape ------------- */
+
+        @media screen and (min-width: 1920px) and (orientation: landscape) {
+            #trouveSpot div {
+                position: absolute;
+                top: 17%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 29%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+                width: 50vh;
+            }
+
+            .h1, h1 {
+                font-size: 4.5rem;
+            }
+        }
+
+        /* HDTV 1080 portrait --------------*/
+
+        @media screen and (min-width: 1080px) and (orientation: portrait) {
+            #trouveSpot div {
+                position: absolute;
+                top: 9%;
+                left: 48%;
+                transform: translate(-50%, -50%);
+                color: white;
+                text-align: center;
+                background: rgba(66, 99, 119, 0.38);
+                border-radius: 10px;
+                padding: 4px;
+                margin-top: 90px;
+                height: 15%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 0.2em;
+            }
+
+            nav * {
+                font-size: 1.2rem;
+                margin: 5px 20px 5px 20px;
+                padding: 4px;
+            }
+        }

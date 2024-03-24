@@ -86,8 +86,10 @@
 
         nav * {
             color: #ffff;
-            margin-right: 10px;
+            margin-right: 6px;
+            margin-left: 3px;
         }
+
 
         nav input[type="checkbox"], .nav-list {
             display: none;
@@ -1276,6 +1278,7 @@
         nav {
             display: flex !important;
         }
+
         #form {
             color: lightcoral;
             width: 100%;
@@ -1283,6 +1286,7 @@
             justify-content: center;
             margin: 30px 30px;
         }
+
         #accueil_contact {
             color: red;
             width: 100%;
@@ -1290,6 +1294,7 @@
             justify-content: center;
             margin: 30px 30px;
         }
+
         #contact_message {
             width: 50%;
         }
@@ -1314,7 +1319,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             margin-top: 0px;
-            
+
         }
 
         .contact1 {
@@ -1643,11 +1648,3 @@
             margin-top: 90vh;
             /* width: 100vh; */
         }
-
-
-
-
-
-
-
-

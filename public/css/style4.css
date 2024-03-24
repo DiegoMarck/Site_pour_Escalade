@@ -1277,6 +1277,7 @@
 
         nav {
             display: flex !important;
+            margin-top: 0;
         }
 
         #form {

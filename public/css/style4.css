@@ -39,12 +39,14 @@
             color: #fff;
             margin: 20px 20px;
             text-align: center;
+            padding: 38px;
         }
 
         h2 {
             color: #fff;
             margin: 20px;
             text-align: center;
+            padding: 30px;
         }
 
         p {
@@ -162,8 +164,13 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
-            width: 73%;
+            width: 50%;
             min-width: 254px;
+            height: 12em;
+        }
+        .home-titre div h1 {
+            padding: 4px;
+            margin-top: 4vh;
         }
 
         table .table {
@@ -292,7 +299,7 @@
             border-radius: 10px;
             padding: 4px;
             margin-top: 90px;
-            height: 33%;
+            height: 20vh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1114,6 +1121,7 @@
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            width: 32%;
         }
 
         .color--highlight {
@@ -1303,13 +1311,14 @@
         #contact div {
             position: absolute;
             top: 30%;
-            left: 40%;
+            left: 50%;
             transform: translate(-50%, -50%);
             color: white;
             text-align: center;
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            height: 20vh;
         }
 
         #contact {
@@ -1470,13 +1479,14 @@
         #section_entrainement div {
             position: absolute;
             top: 30%;
-            left: 40%;
+            left: 50%;
             transform: translate(-50%, -50%);
             color: white;
             text-align: center;
             background: rgba(66, 99, 119, 0.38);
             border-radius: 10px;
             padding: 4px;
+            width: 32%;
         }
 
         #section_entrainement {

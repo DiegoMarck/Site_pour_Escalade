@@ -3,10 +3,13 @@
 namespace App\Entity;
 
 use App\Repository\CarouselRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CarouselRepository::class)
+ * @ORM\Table(name="carousel")
  */
 class Carousel
 {
@@ -32,15 +35,49 @@ class Carousel
      */
     private $imagescarousel;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="carousel")
+     */
+    private $media;
+
+    public function __construct()
+    {
+        $this->media = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getMedia(): Collection
+    {
+        return $this->media;
+    }
+
+    public function addMedia(Media $media): self
+    {
+        if (!$this->media->contains($media)) {
+            $this->media[] = $media;
+            $media->setCarousel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMedia(Media $media): self
+    {
+        if ($this->media->removeElement($media)) {
+            // set the owning side to null (unless already changed)
+            if ($media->getCarousel() === $this) {
+                $media->setCarousel(null);
+            }
+        }
+
+        return $this;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-    public function setId(?string $id): self
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getTitre(): ?string

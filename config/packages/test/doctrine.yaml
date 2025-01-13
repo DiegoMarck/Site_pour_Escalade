@@ -2,3 +2,22 @@ doctrine:
     dbal:
         # "TEST_TOKEN" is typically set by ParaTest
         dbname: 'main_test%env(default::TEST_TOKEN)%'
+        logging: true
+        profiling: true
+        url: '%env(resolve:DATABASE_URL)%'
+        driver: 'pdo_mysql'
+        server_version: '10.6'
+        # mapping:
+        #     app:
+        #         is_bundle: false
+        #         type: annotation
+        #         dir: '%kernel.project_dir%/src/Entity'
+        #         prefix: 'App\Entity'
+        #         alias: App
+        #     carousel:
+        #         is_bundle: false
+        #         type: annotation
+        #         dir: '%kernel.project_dir%/src/Entity'
+        #         prefix: 'App\Entity'
+        #         alias: Carousel
+

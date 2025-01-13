@@ -43,7 +43,7 @@ class Media
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $image;
-    
+
     /**
      * @Vich\UploadableField(mapping="sites", fileNameProperty="image" )
      * 
@@ -71,16 +71,23 @@ class Media
      */
     private $photoSite;
 
-    
+    /**
+     * @ORM\ManyToOne(targetEntity=Carousel::class)
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $carousel;
+
+
     // public function __toString(){
     //     return $this->nom;
     // }
-    public function __toString() {
-        if(is_null($this->nom)) {
+    public function __toString()
+    {
+        if (is_null($this->nom)) {
             return 'NULL';
-        }    
+        }
         return $this->nom;
-     }
+    }
 
 
     public function getId(): ?int
@@ -138,7 +145,7 @@ class Media
 
     /**
      * Get the value of imageFile
-     */ 
+     */
     public function getImageFile()
     {
         return $this->imageFile;
@@ -148,21 +155,19 @@ class Media
      * Set the value of imageFile
      *
      * @return  self
-     */ 
+     */
     public function setImageFile($imageFile)
     {
         $this->imageFile = $imageFile;
-        if($imageFile !== null){
+        if ($imageFile !== null) {
             $this->maj = new \DateTime('now');
-
         }
-        return $this;
         return $this;
     }
 
     /**
      * Get the value of maj
-     */ 
+     */
     public function getMaj()
     {
         return $this->maj;
@@ -172,7 +177,7 @@ class Media
      * Set the value of maj
      *
      * @return  self
-     */ 
+     */
     public function setMaj($maj)
     {
         $this->maj = $maj;
@@ -216,4 +221,15 @@ class Media
         return $this;
     }
 
+    public function getCarousel(): ?Carousel
+    {
+        return $this->carousel;
+    }
+
+    public function setCarousel(?Carousel $carousel): self
+    {
+        $this->carousel = $carousel;
+
+        return $this;
+    }
 }

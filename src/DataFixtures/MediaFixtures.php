@@ -32,7 +32,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class MediaFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $media = new Media();
         $media->setNom('Nom de mon image');

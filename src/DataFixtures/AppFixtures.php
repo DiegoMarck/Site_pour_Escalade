@@ -6,17 +6,17 @@ use Faker\Factory;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-// use Faker\Factory;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+
 class AppFixtures extends Fixture
 {
-    private $encoder;
+    private $passwordHasher;
 
-    public function __construct(UserPasswordEncoderInterface $encoder){
-        $this->encoder=$encoder;
+    public function __construct(UserPasswordHasherInterface $passwordHasher){
+        $this->passwordHasher = $passwordHasher;
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $users=[//on a rajouté les user et admin
             ["Laura",  "user1@user1.fr", "mdp", "ROLE_USER"], 
@@ -28,7 +28,7 @@ class AppFixtures extends Fixture
         ];
         foreach( $users as $u ){
             $user = new User();
-            $password = $this->encoder->encodePassword($user, $u[2]);
+            $password = $this->passwordHasher->hash($u[2]);
             $user->setPseudo( $u[0])
             ->setEmail($u[1])
             ->setPassword( $password )

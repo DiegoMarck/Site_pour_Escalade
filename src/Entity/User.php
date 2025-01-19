@@ -4,63 +4,43 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-// use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
-
-
-/**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- */
-class User implements UserInterface
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @Assert\NotBlank()
-     * @Assert\Email()
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
+    #[Assert\NotBlank]
+    #[Assert\Email]
+    #[ORM\Column(length: 180, unique: true)]
+    private ?string $email = null;
 
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
+    #[ORM\Column]
+    private array $roles = [];
 
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
      */
-    private $password;
+    #[ORM\Column]
+    private ?string $password = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $pseudo;
+    #[ORM\Column(length: 255)]
+    private ?string $pseudo = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $prenom;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $prenom = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Entrainement::class, inversedBy="participant")
-     */
-    private $entrainement;
+    #[ORM\ManyToOne(targetEntity: Entrainement::class, inversedBy: "participant")]
+    private ?Entrainement $entrainement = null;
 
     public function getId(): ?int
     {
@@ -72,10 +52,9 @@ class User implements UserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): self
+    public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -83,6 +62,14 @@ class User implements UserInterface
      * A visual identifier that represents this user.
      *
      * @see UserInterface
+     */
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
      */
     public function getUsername(): string
     {
@@ -101,46 +88,24 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): self
+    public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 
     /**
-     * @see UserInterface
+     * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
-    }
-
-    /**
-     * Returning a salt is only needed, if you are not using a modern
-     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
-     *
-     * @see UserInterface
-     */
-    public function getSalt(): ?string
-    {
-        return null;
-    }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
     }
 
     public function getPseudo(): ?string
@@ -148,10 +113,9 @@ class User implements UserInterface
         return $this->pseudo;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setPseudo(string $pseudo): static
     {
         $this->pseudo = $pseudo;
-
         return $this;
     }
 
@@ -160,10 +124,9 @@ class User implements UserInterface
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -172,10 +135,9 @@ class User implements UserInterface
         return $this->prenom;
     }
 
-    public function setPrenom(?string $prenom): self
+    public function setPrenom(?string $prenom): static
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -184,10 +146,18 @@ class User implements UserInterface
         return $this->entrainement;
     }
 
-    public function setEntrainement(?Entrainement $entrainement): self
+    public function setEntrainement(?Entrainement $entrainement): static
     {
         $this->entrainement = $entrainement;
-
         return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }

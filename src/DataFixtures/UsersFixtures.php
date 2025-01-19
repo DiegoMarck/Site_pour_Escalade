@@ -2,25 +2,35 @@
 
 namespace App\DataFixtures;
 
-use Faker\Factory;
 use App\Entity\User;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UsersFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
     {
-        // Création d'un média
+        $this->passwordHasher = $passwordHasher;
+    }
+
+    public function load(ObjectManager $manager): void
+    {
+        // Création d'un utilisateur
         $user = new User();
-        $user->setEmail('Email');
-        $user->setPassword('Mot de passe');
-        // $media->setImage(new UploadedFile('path/to/file', 'file.jpg', 'image/jpeg', null, true));
-       
+        $user->setEmail('admin@example.com');
+        
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $user,
+            'password123'
+        );
+        $user->setPassword($hashedPassword);
+        $user->setPseudo('Admin');
+        $user->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($user);
         $manager->flush();
     }
-        
 }

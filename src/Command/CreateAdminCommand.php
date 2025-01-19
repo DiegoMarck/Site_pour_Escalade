@@ -8,22 +8,22 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class CreateAdminCommand extends Command
 {
     protected static $defaultName = 'app:create-admin';
     private $entityManager;
-    private $passwordEncoder;
+    private $passwordHasher;
 
-    public function __construct(EntityManagerInterface $entityManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
         $this->entityManager = $entityManager;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordHasher = $passwordHasher;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Creates a new admin user');
     }
@@ -39,8 +39,8 @@ class CreateAdminCommand extends Command
         $user->setPrenom('Admin');  // Ajout du prénom (nullable mais on le met quand même)
         $user->setRoles(['ROLE_ADMIN']);
         
-        $password = $this->passwordEncoder->encodePassword($user, 'admin123');
-        $user->setPassword($password);
+        $hashedPassword = $this->passwordHasher->hashPassword($user, 'admin123');
+        $user->setPassword($hashedPassword);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

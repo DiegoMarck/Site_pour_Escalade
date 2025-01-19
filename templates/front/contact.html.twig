@@ -1,5 +1,82 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .contact-form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 40px auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        @media (max-width: 768px) {
+            .contact-form-container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+{% endblock %}
+
 {% block body %}
   <section id="contact">
     <div>
@@ -13,10 +90,9 @@
     {# afficher le message de réservation efféctué #}
     {% if app.flashes('info') is defined %}
       {% for message in app.flashes('info') %}
-        <div class="text">{{ message }}</div>
+        <div class="alert alert-success">{{ message }}</div>
       {% endfor %}
     {% endif %}
-    
 
     {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
@@ -25,24 +101,30 @@
         <section id="form">
           <div class="container containerContact">
             {{ form_start(form) }}
-            <div class="row contact1">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.name, null, { label: 'Nom', label_attr: { class: 'labbel4' } }) }}</div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.name) }}</div>
-            </div>
-            <div class="row contact1">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.email, null, { label: 'Email', label_attr: { class: 'labbel4' } }) }}</div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.email) }}</div>
-            </div>
-            <div class="row contact1">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.telephone, null, { label: 'Téléphone', label_attr: { class: 'labbel4' } }) }}</div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.telephone) }}</div>
-            </div>
-            <div class="row contact1">
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_label(form.message, null, { label: 'Message', label_attr: { class: 'labbel4' } }) }}</div>
-              <div class="col-12 col-sm-12 col-md-6 col-lg-6">{{ form_widget(form.message) }}</div>
-            </div>
-            <button type="submit" class="submit_contact">Envoyer</button>
+            <div class="contact-form-container">
+                <div class="form-group">
+                    {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder': 'votre@email.com'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.telephone, 'Téléphone', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.telephone, {'attr': {'class': 'form-control', 'placeholder': 'Votre numéro de téléphone'}}) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.message, 'Message', {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Votre message...', 'rows': 5}}) }}
+                </div>
+
+                <button type="submit" class="submit-btn">Envoyer le message</button>
             {{ form_end(form) }}
+            </div>
           </div>
         </section>
       </div>

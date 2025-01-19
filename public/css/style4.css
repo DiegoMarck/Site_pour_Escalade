@@ -110,6 +110,7 @@
         /* ----- élément de section de navigation  --------------------------------  */
 
         /* Styles de la navbar */
+        
         .navbar {
             font-family: var(--font-headers);
             text-transform: uppercase;
@@ -308,8 +309,21 @@
         }
 
         .text-div {
-            width: 95%;
+            width: 80%;
             padding: 10px;
+            margin-left: 10%;
+        }
+        .text-div p{
+            padding: 3em;
+        }
+        .text-div h5 {
+            margin-left: 1em;
+            margin-top: 1em;
+            font-weight: 700;                /* Texte en gras */
+            text-decoration: underline;      /* Texte souligné */
+            text-underline-offset: 5px;      /* Espace entre le texte et le soulignement */
+            font-size: 1.5em;               /* Taille de police plus grande */
+            color: #333;                    /* Couleur plus foncée pour meilleur contraste */
         }
 
         .container_presentation {

@@ -5,22 +5,24 @@ namespace App\Controller;
 use App\Entity\Media;
 use App\Form\MediaType;
 use App\Repository\MediaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/media")
- */
+#[Route('/media')]
 class MediaController extends AbstractController
 {
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/", name="media_index", methods={"GET"})
-     */
+    public function __construct(
+        private EntityManagerInterface $entityManager
+    ) {
+    }
+
+    #[Route('/', name: 'media_index', methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(MediaRepository $mediaRepository): Response
     {
         return $this->render('media/index.html.twig', [
@@ -28,9 +30,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="media_new", methods={"GET","POST"})
-     */
+    #[Route('/new', name: 'media_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $medium = new Media();
@@ -38,9 +38,8 @@ class MediaController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($medium);
-            $entityManager->flush();
+            $this->entityManager->persist($medium);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('media_index');
         }
@@ -51,9 +50,7 @@ class MediaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="media_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'media_show', methods: ['GET'])]
     public function show(Media $medium): Response
     {
         return $this->render('media/show.html.twig', [
@@ -61,17 +58,15 @@ class MediaController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/{id}/edit", name="media_edit", methods={"GET","POST"})
-     */
+    #[Route('/{id}/edit', name: 'media_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Media $medium): Response
     {
         $form = $this->createForm(MediaType::class, $medium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('media_index');
         }
@@ -82,19 +77,17 @@ class MediaController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="media_delete", methods={"POST"})
-     */
+    #[Route('/{id}', name: 'media_delete', methods: ['POST'])]
     public function delete(Request $request, Media $medium): Response
     {
         if ($this->isCsrfTokenValid('delete'.$medium->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($medium);
-            $entityManager->flush();
+            $this->entityManager->remove($medium);
+            $this->entityManager->flush();
         }
 
         return $this->redirectToRoute('media_index');
     }
+
     // /**
     //  * @Route("/supprime/media/{id}, name="siteDeleteImage", methods={"DELETE"})//cette methode récupère info envoyée permet de surpimer l'image  -ajax
     //  */

@@ -5,20 +5,22 @@ namespace App\Controller;
 use App\Entity\Entrainement;
 use App\Form\EntrainementType;
 use App\Repository\EntrainementRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-/**
- * @Route("/entrainement")
- */
+#[Route('/entrainement')]
 class EntrainementController extends AbstractController
 {
-    /**
-     * @Route("/", name="entrainement_index", methods={"GET"})
-     */
+    public function __construct(
+        private EntityManagerInterface $entityManager
+    ) {
+    }
+
+    #[Route('/', name: 'entrainement_index', methods: ['GET'])]
     public function index(EntrainementRepository $entrainementRepository): Response
     {
         return $this->render('entrainement/index.html.twig', [
@@ -26,9 +28,7 @@ class EntrainementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/new", name="entrainement_new", methods={"GET","POST"})
-     */
+    #[Route('/new', name: 'entrainement_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
         $entrainement = new Entrainement();
@@ -36,9 +36,8 @@ class EntrainementController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($entrainement);
-            $entityManager->flush();
+            $this->entityManager->persist($entrainement);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('entrainement_index');
         }
@@ -49,9 +48,7 @@ class EntrainementController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="entrainement_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'entrainement_show', methods: ['GET'])]
     public function show(Entrainement $entrainement): Response
     {
         return $this->render('entrainement/show.html.twig', [
@@ -59,17 +56,15 @@ class EntrainementController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/{id}/edit", name="entrainement_edit", methods={"GET","POST"})
-     */
+    #[Route('/{id}/edit', name: 'entrainement_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Entrainement $entrainement): Response
     {
         $form = $this->createForm(EntrainementType::class, $entrainement);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('entrainement_index');
         }
@@ -80,16 +75,13 @@ class EntrainementController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/{id}", name="entrainement_delete", methods={"POST"})
-     */
+    #[Route('/{id}', name: 'entrainement_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Entrainement $entrainement): Response
     {
         if ($this->isCsrfTokenValid('delete'.$entrainement->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($entrainement);
-            $entityManager->flush();
+            $this->entityManager->remove($entrainement);
+            $this->entityManager->flush();
         }
 
         return $this->redirectToRoute('entrainement_index');

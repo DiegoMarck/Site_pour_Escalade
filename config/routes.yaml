@@ -1,3 +1,11 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+controllers:
+    resource: ../src/Controller/
+    type: attribute
+
+kernel:
+    resource: ../src/Kernel.php
+    type: attribute

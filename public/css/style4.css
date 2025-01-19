@@ -4,7 +4,55 @@
             box-sizing: border-box;
             text-decoration: none;
             list-style-type: none;
-            font-family: "AveriaLibre-Light", cursive;
+            /* font-family: "AveriaLibre-Light", cursive; */
+        }
+
+        /* Import des polices Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Oswald:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap');
+
+        /* Configuration des polices principales */
+        :root {
+            --font-primary: 'Montserrat', sans-serif;
+            /* Pour le texte principal */
+            --font-headers: 'Oswald', sans-serif;
+            /* Pour les titres */
+            --font-accent: 'Nunito', sans-serif;
+            /* Pour les accents et call-to-actions */
+        }
+
+        body {
+            font-family: var(--font-primary);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-headers);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .nav-link,
+        .btn {
+            font-family: var(--font-accent);
+            font-weight: 600;
+        }
+
+        .site-title {
+            font-family: var(--font-headers);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .difficulty-level {
+            font-family: var(--font-accent);
+            font-weight: 700;
         }
 
         html {
@@ -61,6 +109,44 @@
 
         /* ----- élément de section de navigation  --------------------------------  */
 
+        /* Styles de la navbar */
+        .navbar {
+            font-family: var(--font-headers);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand {
+            font-family: var(--font-headers);
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 1.4rem;
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            font-family: var(--font-accent);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-nav .nav-item .nav-link:hover {
+            color: #ff6b6b;
+        }
+
+        .dropdown-menu {
+            font-family: var(--font-accent);
+            border-radius: 8px;
+        }
+
+        .dropdown-item {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        .difficulty-level {
+            font-family: var(--font-accent);
+            font-weight: 700;
+        }
         nav {
             display: flex;
             justify-content: space-between;
@@ -93,13 +179,15 @@
         }
 
 
-        nav input[type="checkbox"], .nav-list {
+        nav input[type="checkbox"],
+        .nav-list {
             display: none;
             /* fait dispraitre la case à cocher */
             /* height: 35px; */
         }
 
-        nav input[type="checkbox"], .nav-list a:hover {
+        nav input[type="checkbox"],
+        .nav-list a:hover {
             margin-left: 8px;
             transition: 1s;
             color: black;
@@ -139,7 +227,8 @@
             text-decoration: none;
         }
 
-        .h1, h1 {
+        .h1,
+        h1 {
             font-size: 1.5rem;
         }
 
@@ -168,6 +257,7 @@
             min-width: 254px;
             height: 12em;
         }
+
         .home-titre div h1 {
             padding: 4px;
             margin-top: 4vh;
@@ -440,7 +530,10 @@
             margin-top: -5px;
         }
 
-        [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        [type=button]:not(:disabled),
+        [type=reset]:not(:disabled),
+        [type=submit]:not(:disabled),
+        button:not(:disabled) {
             margin-top: 14px;
         }
 

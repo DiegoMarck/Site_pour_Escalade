@@ -47,13 +47,27 @@ class TopoRepository extends ServiceEntityRepository
         ;
     }
     */
-     /**
+    /**
      * @return int/mixed/string
      */
-    public function countAllTopo(){
+    public function countAllTopo()
+    {
         $queryBuilder = $this->createQueryBuilder('a');
         $queryBuilder->select('COUNT(a.id) as value');
 
         return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+    // src/Repository/UserRepository.php, SiteRepository.php, TopoRepository.php, etc.
+    public function count(array $criteria = []): int
+    {
+        return $this->createQueryBuilder('e')
+            ->select('COUNT(e.id)')
+            ->where('1=1')
+            ->andWhere(array_map(function ($field, $value) {
+                return "e.$field = :$field";
+            }, array_keys($criteria), $criteria))
+            ->setParameters($criteria)
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 }

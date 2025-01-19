@@ -35,16 +35,44 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->_em->persist($user);
         $this->_em->flush();
     }
-     /**
+    /**
      * @return int/mixed/string
      */
-    public function countAllUser(){
-        $queryBuilder = $this->createQueryBuilder('a');
-        $queryBuilder->select('COUNT(a.id) as value');
+    // public function countAllUser()
+    // {
+    //     $queryBuilder = $this->createQueryBuilder('a');
+    //     $queryBuilder->select('COUNT(a.id) as value');
 
-        return $queryBuilder->getQuery()->getOneOrNullResult();
+    //     return $queryBuilder->getQuery()->getOneOrNullResult();
+    // }
+
+    // src/Repository/UserRepository.php
+    // src/Repository/UserRepository.php
+    public function countAllUser()
+    {
+        try {
+            return $this->createQueryBuilder('u')
+                ->select('COUNT(u.id)')
+                ->getQuery()
+                ->getSingleScalarResult();
+        } catch (\Exception $e) {
+            return 0;
+        }
     }
 
+    // src/Repository/UserRepository.php, SiteRepository.php, TopoRepository.php, etc.
+    public function count(array $criteria = []): int
+    {
+        return $this->createQueryBuilder('e')
+            ->select('COUNT(e.id)')
+            ->where('1=1')
+            ->andWhere(array_map(function ($field, $value) {
+                return "e.$field = :$field";
+            }, array_keys($criteria), $criteria))
+            ->setParameters($criteria)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

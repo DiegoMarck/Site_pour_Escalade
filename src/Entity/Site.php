@@ -2,250 +2,149 @@
 
 namespace App\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SiteRepository;
 use Doctrine\Common\Collections\Collection;
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
-/**
- * 
- * @ORM\Entity(repositoryClass=SiteRepository::class)
- * @Vich\Uploadable
- * @ApiResource()
- */
+#[ORM\Entity(repositoryClass: SiteRepository::class)]
+#[Vich\Uploadable]
+#[ApiResource]
 class Site
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least 2 characters long",
-     *      maxMessage = "Your first name cannot be longer than 50 characters")
-     */
-    private $nom;
+    #[ORM\Column(type: 'string', length: 255)]
+    #[Assert\Length(
+        min: 2,
+        max: 50,
+        minMessage: 'Your first name must be at least 2 characters long',
+        maxMessage: 'Your first name cannot be longer than 50 characters'
+    )]
+    private ?string $nom = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
-     */
-    private $grandeVilleProche;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\NotBlank]
+    private ?string $grandeVilleProche = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
-     */
-    private $villeLaPlusProche;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Assert\NotBlank]
+    private ?string $villeLaPlusProche = null;
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $exposition = [];
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $exposition = [];
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $altitudeAuxPiedsdesVoies;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $altitudeAuxPiedsdesVoies = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $dureeMarcheAproche;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $dureeMarcheAproche = null;
 
-    // /**
-    //  * @ORM\Column(type="array", nullable=true)
-    //  */
-    // private $profilMarcheApproche = [];
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $profilMarcheApproche;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $profilMarcheApproche = null;
 
-    // /**
-    //  * @ORM\Column(type="array", nullable=true)
-    //  */
-    // private $practicabiitePiedsdesVoies = [];
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private  $practicabiitePiedsdesVoies ;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $practicabiitePiedsdesVoies = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=20, scale=16)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 20,
-     *      minMessage = "Your latitude must be at least 2 characters long",
-     *      maxMessage = "Your latitude cannot be longer than 50 characters")
-     */
-    private $latitude;
+    #[ORM\Column(type: 'decimal', precision: 20, scale: 16)]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Your latitude must be at least 2 characters long',
+        maxMessage: 'Your latitude cannot be longer than 50 characters'
+    )]
+    private ?string $latitude = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=20, scale=16)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 20,
-     *      minMessage = "Your longitude must be at least 2 characters long",
-     *      maxMessage = "Your longitude cannot be longer than 50 characters")
-     */
-    private $longitude;
+    #[ORM\Column(type: 'decimal', precision: 20, scale: 16)]
+    #[Assert\Length(
+        min: 2,
+        max: 20,
+        minMessage: 'Your longitude must be at least 2 characters long',
+        maxMessage: 'Your longitude cannot be longer than 50 characters'
+    )]
+    private ?string $longitude = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $nombreFalaise;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $nombreFalaise = null;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $hauteurMax;
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private ?int $hauteurMax = null;
 
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $typeEscalade = [];
+    #[ORM\Column(type: 'array')]
+    private ?array $typeEscalade = [];
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $typeEquipement = [];
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $typeEquipement = [];
 
-    // /**
-    //  * @ORM\Column(type="array", nullable=true)
-    //  */
-    // private $nombredeVoie = [];
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $nombredeVoie;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $nombredeVoie = null;
 
-    // /**
-    //  * @ORM\Column(type="array")
-    //  */
-    // private $difficulte = [];
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $difficulte;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $difficulte = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $difficulte2;
+    #[ORM\Column(type: 'string', length: 255)]
+    private ?string $difficulte2 = null;
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $siteInteressantpourGrimpeur = [];
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $siteInteressantpourGrimpeur = [];
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $typeRocher = [];
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $typeRocher = [];
 
-    //  /**
-    //  * @ORM\Column(type="string", length=255, nullable=true)
-    //  */
-    // private $typeRocher;
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $profileFalaise = [];
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $profileFalaise = [];
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $typedePrise = [];
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $typedePrise = [];
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $restriction = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $restriction;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $infoSuplementaire = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $infoSuplementaire;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $siteInternet = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $siteInternet;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $voieMythique = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $voieMythique;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $nomprenompseudo = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $nomprenompseudo;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $adresseMail = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $adresseMail;
+    #[ORM\Column(type: 'array', nullable: true)]
+    private ?array $meilleurperiode = [];
 
-    /**
-     * @ORM\Column(type="array", nullable=true)
-     */
-    private $meilleurperiode = [];
+    #[ORM\OneToMany(mappedBy: 'site', targetEntity: Media::class, cascade: ['persist'])]
+    private Collection $media;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="site", cascade={"persist"})
-     * 
-     * 
-     */
-    private $media;
+    #[ORM\ManyToMany(targetEntity: Entrainement::class, mappedBy: 'lieu_entrainement')]
+    private Collection $entrainements;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=Entrainement::class, mappedBy="lieu_entrainement")
-     */
-    private $entrainements;
+    #[ORM\OneToMany(mappedBy: 'photoSite', targetEntity: Media::class)]
+    private Collection $photos;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="photoSite")
-     */
-    private $photos;
-    
-    //cascade->upload multiple donc plus besoin des 2 suivant
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $images;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $images = null;
 
-    //  @var Images , cascade={"persist"}
-    /**
-     * @Vich\UploadableField(mapping="sites", fileNameProperty="images" )
-     *
-     */
-    private $imageFile;
+    #[Vich\UploadableField(mapping: 'sites', fileNameProperty: 'images')]
+    private ?File $imageFile = null;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $createdAt;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $createdAt = null;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $updatedAt;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $updatedAt = null;
 
     public function __construct()
     {
@@ -256,8 +155,8 @@ class Site
         $this->updatedAt = new \DateTime();
     }
 
-    public function __toString(){
-        // return $this->getMedia;
+    public function __toString()
+    {
         return $this->getNom();
     }
 
@@ -274,7 +173,6 @@ class Site
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -286,7 +184,6 @@ class Site
     public function setGrandeVilleProche(?string $grandeVilleProche): self
     {
         $this->grandeVilleProche = $grandeVilleProche;
-
         return $this;
     }
 
@@ -298,7 +195,6 @@ class Site
     public function setVilleLaPlusProche(?string $villeLaPlusProche): self
     {
         $this->villeLaPlusProche = $villeLaPlusProche;
-
         return $this;
     }
 
@@ -310,7 +206,6 @@ class Site
     public function setExposition(?array $exposition): self
     {
         $this->exposition = $exposition;
-
         return $this;
     }
 
@@ -322,7 +217,6 @@ class Site
     public function setAltitudeAuxPiedsdesVoies(?int $altitudeAuxPiedsdesVoies): self
     {
         $this->altitudeAuxPiedsdesVoies = $altitudeAuxPiedsdesVoies;
-
         return $this;
     }
 
@@ -334,21 +228,9 @@ class Site
     public function setDureeMarcheAproche(?int $dureeMarcheAproche): self
     {
         $this->dureeMarcheAproche = $dureeMarcheAproche;
-
         return $this;
     }
 
-    // public function getProfilMarcheApproche(): ?array
-    // {
-    //     return $this->profilMarcheApproche;
-    // }
-
-    // public function setProfilMarcheApproche(?array $profilMarcheApproche): self
-    // {
-    //     $this->profilMarcheApproche = $profilMarcheApproche;
-
-    //     return $this;
-    // }
     public function getProfilMarcheApproche(): ?string
     {
         return $this->profilMarcheApproche;
@@ -357,7 +239,6 @@ class Site
     public function setProfilMarcheApproche(?string $profilMarcheApproche): self
     {
         $this->profilMarcheApproche = $profilMarcheApproche;
-
         return $this;
     }
 
@@ -369,7 +250,6 @@ class Site
     public function setPracticabiitePiedsdesVoies(?string $practicabiitePiedsdesVoies): self
     {
         $this->practicabiitePiedsdesVoies = $practicabiitePiedsdesVoies;
-
         return $this;
     }
 
@@ -381,7 +261,6 @@ class Site
     public function setLatitude(string $latitude): self
     {
         $this->latitude = $latitude;
-
         return $this;
     }
 
@@ -393,7 +272,6 @@ class Site
     public function setLongitude(string $longitude): self
     {
         $this->longitude = $longitude;
-
         return $this;
     }
 
@@ -405,7 +283,6 @@ class Site
     public function setNombreFalaise(?int $nombreFalaise): self
     {
         $this->nombreFalaise = $nombreFalaise;
-
         return $this;
     }
 
@@ -417,7 +294,6 @@ class Site
     public function setHauteurMax(?int $hauteurMax): self
     {
         $this->hauteurMax = $hauteurMax;
-
         return $this;
     }
 
@@ -429,7 +305,6 @@ class Site
     public function setTypeEscalade(array $typeEscalade): self
     {
         $this->typeEscalade = $typeEscalade;
-
         return $this;
     }
 
@@ -441,21 +316,8 @@ class Site
     public function setTypeEquipement(?array $typeEquipement): self
     {
         $this->typeEquipement = $typeEquipement;
-
         return $this;
     }
-
-    // public function getNombredeVoie(): ?array
-    // {
-    //     return $this->nombredeVoie;
-    // }
-
-    // public function setNombredeVoie(?array $nombredeVoie): self
-    // {
-    //     $this->nombredeVoie = $nombredeVoie;
-
-    //     return $this;
-    // }
 
     public function getNombredeVoie(): ?string
     {
@@ -465,10 +327,8 @@ class Site
     public function setNombredeVoie(?string $nombredeVoie): self
     {
         $this->nombredeVoie = $nombredeVoie;
-
         return $this;
     }
-
 
     public function getDifficulte(): ?string
     {
@@ -478,7 +338,6 @@ class Site
     public function setDifficulte(?string $difficulte): self
     {
         $this->difficulte = $difficulte;
-
         return $this;
     }
 
@@ -490,7 +349,6 @@ class Site
     public function setDifficulte2(string $difficulte2): self
     {
         $this->difficulte2 = $difficulte2;
-
         return $this;
     }
 
@@ -502,7 +360,6 @@ class Site
     public function setSiteInteressantpourGrimpeur(?array $siteInteressantpourGrimpeur): self
     {
         $this->siteInteressantpourGrimpeur = $siteInteressantpourGrimpeur;
-
         return $this;
     }
 
@@ -514,21 +371,8 @@ class Site
     public function setTypeRocher(?array $typeRocher): self
     {
         $this->typeRocher = $typeRocher;
-
         return $this;
     }
-
-    // public function getTypeRocher(): ?string
-    // {
-    //     return $this->typeRocher;
-    // }
-
-    // public function setTypeRocher(?string $typeRocher): self
-    // {
-    //     $this->typeRocher = $typeRocher;
-
-    //     return $this;
-    // }
 
     public function getProfileFalaise(): ?array
     {
@@ -538,7 +382,6 @@ class Site
     public function setProfileFalaise(?array $profileFalaise): self
     {
         $this->profileFalaise = $profileFalaise;
-
         return $this;
     }
 
@@ -550,7 +393,6 @@ class Site
     public function setTypedePrise(?array $typedePrise): self
     {
         $this->typedePrise = $typedePrise;
-
         return $this;
     }
 
@@ -562,7 +404,6 @@ class Site
     public function setRestriction(?string $restriction): self
     {
         $this->restriction = $restriction;
-
         return $this;
     }
 
@@ -574,7 +415,6 @@ class Site
     public function setInfoSuplementaire(?string $infoSuplementaire): self
     {
         $this->infoSuplementaire = $infoSuplementaire;
-
         return $this;
     }
 
@@ -586,7 +426,6 @@ class Site
     public function setSiteInternet(?string $siteInternet): self
     {
         $this->siteInternet = $siteInternet;
-
         return $this;
     }
 
@@ -598,7 +437,6 @@ class Site
     public function setVoieMythique(?string $voieMythique): self
     {
         $this->voieMythique = $voieMythique;
-
         return $this;
     }
 
@@ -610,7 +448,6 @@ class Site
     public function setNomprenompseudo(?string $nomprenompseudo): self
     {
         $this->nomprenompseudo = $nomprenompseudo;
-
         return $this;
     }
 
@@ -622,7 +459,6 @@ class Site
     public function setAdresseMail(?string $adresseMail): self
     {
         $this->adresseMail = $adresseMail;
-
         return $this;
     }
 
@@ -634,7 +470,6 @@ class Site
     public function setMeilleurperiode(?array $meilleurperiode): self
     {
         $this->meilleurperiode = $meilleurperiode;
-
         return $this;
     }
 
@@ -672,14 +507,15 @@ class Site
     {
         return $this->images;
     }
-    
+
     public function setImages(?string $images): self
     {
         $this->images = $images;
 
         return $this;
     }
-     /**
+
+    /**
      * Get the value of imageFile
      */ 
     public function getImageFile()
@@ -782,6 +618,4 @@ class Site
 
         return $this;
     }
-
-    
 }

@@ -7,22 +7,25 @@ use App\Entity\Media;
 use App\Form\TopoType;
 use App\Repository\TopoRepository;
 use App\Repository\MediaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-/**
- * @Route("/topo")
- */
+#[Route('/topo')]
 class TopoController extends AbstractController
 {
-    /**
-     * @Route("/", name="topo_index", methods={"GET"})
-     */
+    public function __construct(
+        private EntityManagerInterface $entityManager,
+        private KernelInterface $kernel
+    ) {
+    }
+
+    #[Route('/', name: 'topo_index', methods: ['GET'])]
     public function index(TopoRepository $topoRepository): Response
     {
         return $this->render('topo/index.html.twig', [
@@ -30,10 +33,8 @@ class TopoController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_USER")
-     * @Route("/new", name="topo_new", methods={"GET","POST"})
-     */
+    #[Route('/new', name: 'topo_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function new(Request $request): Response
     {
         $topo = new Topo();
@@ -41,37 +42,23 @@ class TopoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //on recupère les medias transmises
             $media = $form->get('topo')->getData();
-            //on boucle sur les medias 
             foreach($media as $medi){
-                //on génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $medi->guessExtension();
-                //on copie le fichier dans le dossier img
                 $medi->move(
-                    $this->getParameter('images_directory'),
+                    $this->kernel->getProjectDir().'/public/uploads',
                     $fichier
                 );
-                //on stocke l'image dans la bdd
                 $img = new Media();
                 $img->setNom($fichier);
                 $topo->addMedium($img);
-
             }
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($topo);
-            $entityManager->flush();
+            $this->entityManager->persist($topo);
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('topo_index');
         }
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($topo);
-        //     $entityManager->flush();
-
-        //     return $this->redirectToRoute('topo_index');
-        // }
 
         return $this->render('topo/new.html.twig', [
             'topo' => $topo,
@@ -79,55 +66,41 @@ class TopoController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="topo_show", methods={"GET"})
-     * 
-     */
-    public function show(Topo $topo, MediaRepository $mediarepository, $id): Response
+    #[Route('/{id}', name: 'topo_show', methods: ['GET'])]
+    public function show(Topo $topo, MediaRepository $mediaRepository): Response
     {
-        $media = $mediarepository->findBy(
-            ['topo'=>$id]
-        );
+        $media = $mediaRepository->findBy(['topo' => $topo->getId()]);
+
         return $this->render('topo/show.html.twig', [
             'topo' => $topo,
             'media' => $media,
-
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/{id}/edit", name="topo_edit", methods={"GET","POST"})
-     */
+    #[Route('/{id}/edit', name: 'topo_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_USER')]
     public function edit(Request $request, Topo $topo): Response
     {
         $form = $this->createForm(TopoType::class, $topo);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //on recupère les medias transmises
             $media = $form->get('topo')->getData();
-            //on boucle sur les medias 
             foreach($media as $medi){
-                //on génère un nouveau nom de fichier
                 $fichier = md5(uniqid()) . '.' . $medi->guessExtension();
-                //on copie le fichier dans le dossier img
                 $medi->move(
-                    $this->getParameter('images_directory'),
+                    $this->kernel->getProjectDir().'/public/uploads',
                     $fichier
                 );
-                //on stocke l'image dans la bdd
                 $img = new Media();
                 $img->setNom($fichier);
                 $topo->addMedium($img);
-
             }
-            
-            $this->getDoctrine()->getManager()->flush();
+
+            $this->entityManager->flush();
+
             return $this->redirectToRoute('topo_index');
         }
-
-        
 
         return $this->render('topo/edit.html.twig', [
             'topo' => $topo,
@@ -135,43 +108,34 @@ class TopoController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/{id}", name="topo_delete", methods={"POST"})
-     */
+    #[Route('/{id}', name: 'topo_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_USER')]
     public function delete(Request $request, Topo $topo): Response
     {
         if ($this->isCsrfTokenValid('delete'.$topo->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($topo);
-            $entityManager->flush();
+            $this->entityManager->remove($topo);
+            $this->entityManager->flush();
         }
 
         return $this->redirectToRoute('topo_index');
     }
-    /**
-     * @IsGranted("ROLE_ADMIN")
-     * @Route("/supprime/image/{id}", name="topos_delete_image", methods={"DELETE"})
-     */
-    public function deleteImage(Topo $topo, Request $request){
+
+    #[Route('/supprime/image/{id}', name: 'topo_delete_image', methods: ['DELETE'])]
+    #[IsGranted('ROLE_USER')]
+    public function deleteImage(Media $media, Request $request): JsonResponse
+    {
         $data = json_decode($request->getContent(), true);
 
-        // On vérifie si le token est valide
-        if($this->isCsrfTokenValid('delete'.$topo->getId(), $data['_token'])){
-            // On récupère le nom de l'image
-            $nom = $topo->getTitre();
-            // On supprime le fichier
-            unlink($this->getParameter('images_directory').'/'.$nom);
+        if ($this->isCsrfTokenValid('delete'.$media->getId(), $data['_token'])) {
+            $nom = $media->getNom();
+            unlink($this->kernel->getProjectDir().'/public/uploads/'.$nom);
 
-            // On supprime l'entrée de la base
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($topo);
-            $em->flush();
+            $this->entityManager->remove($media);
+            $this->entityManager->flush();
 
-            // On répond en json
-            return new JsonResponse(['success' => 1]);
-        }else{
-            return new JsonResponse(['error' => 'Token Invalide'], 400);
+            return new JsonResponse(['success' => true]);
         }
+
+        return new JsonResponse(['error' => 'Token invalide'], 400);
     }
 }

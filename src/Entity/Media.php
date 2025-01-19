@@ -9,78 +9,47 @@ use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
-
-
-/**
- * @ORM\Entity(repositoryClass=MediaRepository::class)
- * @Vich\Uploadable
- */
+#[ORM\Entity(repositoryClass: MediaRepository::class)]
+#[Vich\Uploadable]
 class Media
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="media")
-     */
-    private $site;
+    #[ORM\ManyToOne(targetEntity: Site::class, inversedBy: 'media')]
+    private ?Site $site = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $nom;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $nom = null;
 
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $description;
+    #[ORM\Column(type: 'text', nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $image;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $image = null;
 
-    /**
-     * @Vich\UploadableField(mapping="sites", fileNameProperty="image" )
-     * 
-     */
-    private $imageFile;
+    #[Vich\UploadableField(mapping: 'sites', fileNameProperty: 'image')]
+    private ?File $imageFile = null;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
-    private $maj;
+    #[ORM\Column(type: 'datetime', nullable: true)]
+    private ?\DateTimeInterface $maj = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Topo::class, inversedBy="media")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $topo;
+    #[ORM\ManyToOne(targetEntity: Topo::class, inversedBy: 'media')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Topo $topo = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Entrainement::class, inversedBy="media2")
-     */
-    private $entrainement;
+    #[ORM\ManyToOne(targetEntity: Entrainement::class, inversedBy: 'media2')]
+    private ?Entrainement $entrainement = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Site::class, inversedBy="photos")
-     */
-    private $photoSite;
+    #[ORM\ManyToOne(targetEntity: Site::class, inversedBy: 'photos')]
+    private ?Site $photoSite = null;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Carousel::class)
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $carousel;
+    #[ORM\ManyToOne(targetEntity: Carousel::class)]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Carousel $carousel = null;
 
-
-    // public function __toString(){
-    //     return $this->nom;
-    // }
     public function __toString()
     {
         if (is_null($this->nom)) {
@@ -88,7 +57,6 @@ class Media
         }
         return $this->nom;
     }
-
 
     public function getId(): ?int
     {
@@ -103,7 +71,6 @@ class Media
     public function setSite(?Site $site): self
     {
         $this->site = $site;
-
         return $this;
     }
 
@@ -115,7 +82,6 @@ class Media
     public function setNom(?string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -127,7 +93,6 @@ class Media
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -139,49 +104,31 @@ class Media
     public function setImage(?string $image): self
     {
         $this->image = $image;
-
         return $this;
     }
 
-    /**
-     * Get the value of imageFile
-     */
-    public function getImageFile()
+    public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
 
-    /**
-     * Set the value of imageFile
-     *
-     * @return  self
-     */
-    public function setImageFile($imageFile)
+    public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
-        if ($imageFile !== null) {
-            $this->maj = new \DateTime('now');
+
+        if (null !== $imageFile) {
+            $this->maj = new \DateTimeImmutable();
         }
-        return $this;
     }
 
-    /**
-     * Get the value of maj
-     */
-    public function getMaj()
+    public function getMaj(): ?\DateTimeInterface
     {
         return $this->maj;
     }
 
-    /**
-     * Set the value of maj
-     *
-     * @return  self
-     */
-    public function setMaj($maj)
+    public function setMaj(?\DateTimeInterface $maj): self
     {
         $this->maj = $maj;
-
         return $this;
     }
 
@@ -193,7 +140,6 @@ class Media
     public function setTopo(?Topo $topo): self
     {
         $this->topo = $topo;
-
         return $this;
     }
 
@@ -205,7 +151,6 @@ class Media
     public function setEntrainement(?Entrainement $entrainement): self
     {
         $this->entrainement = $entrainement;
-
         return $this;
     }
 
@@ -217,7 +162,6 @@ class Media
     public function setPhotoSite(?Site $photoSite): self
     {
         $this->photoSite = $photoSite;
-
         return $this;
     }
 
@@ -229,7 +173,6 @@ class Media
     public function setCarousel(?Carousel $carousel): self
     {
         $this->carousel = $carousel;
-
         return $this;
     }
 }

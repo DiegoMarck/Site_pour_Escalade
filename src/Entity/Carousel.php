@@ -7,72 +7,30 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass=CarouselRepository::class)
- * @ORM\Table(name="carousel")
- */
+#[ORM\Entity(repositoryClass: CarouselRepository::class)]
+#[ORM\Table(name: 'carousel')]
 class Carousel
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $titre;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $titre = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $description;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $description = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $imagescarousel;
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $imagescarousel = null;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Media::class, mappedBy="carousel")
-     */
-    private $media;
+    #[ORM\OneToMany(mappedBy: 'carousel', targetEntity: Media::class)]
+    private Collection $media;
 
     public function __construct()
     {
         $this->media = new ArrayCollection();
-    }
-
-    /**
-     * @return Collection|Media[]
-     */
-    public function getMedia(): Collection
-    {
-        return $this->media;
-    }
-
-    public function addMedia(Media $media): self
-    {
-        if (!$this->media->contains($media)) {
-            $this->media[] = $media;
-            $media->setCarousel($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMedia(Media $media): self
-    {
-        if ($this->media->removeElement($media)) {
-            // set the owning side to null (unless already changed)
-            if ($media->getCarousel() === $this) {
-                $media->setCarousel(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getId(): ?int
@@ -88,7 +46,6 @@ class Carousel
     public function setTitre(?string $titre): self
     {
         $this->titre = $titre;
-
         return $this;
     }
 
@@ -100,7 +57,6 @@ class Carousel
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -112,7 +68,33 @@ class Carousel
     public function setImagescarousel(?string $imagescarousel): self
     {
         $this->imagescarousel = $imagescarousel;
+        return $this;
+    }
 
+    /**
+     * @return Collection|Media[]
+     */
+    public function getMedia(): Collection
+    {
+        return $this->media;
+    }
+
+    public function addMedium(Media $medium): self
+    {
+        if (!$this->media->contains($medium)) {
+            $this->media[] = $medium;
+            $medium->setCarousel($this);
+        }
+        return $this;
+    }
+
+    public function removeMedium(Media $medium): self
+    {
+        if ($this->media->removeElement($medium)) {
+            if ($medium->getCarousel() === $this) {
+                $medium->setCarousel(null);
+            }
+        }
         return $this;
     }
 }

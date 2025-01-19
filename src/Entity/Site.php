@@ -6,22 +6,40 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SiteRepository;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Delete;
 use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SiteRepository::class)]
 #[Vich\Uploadable]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection(),
+        new Post(),
+        new Put(),
+        new Delete()
+    ],
+    normalizationContext: ['groups' => ['site:read']],
+    denormalizationContext: ['groups' => ['site:write']]
+)]
 class Site
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['site:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['site:read', 'site:write'])]
     #[Assert\Length(
         min: 2,
         max: 50,
@@ -31,29 +49,37 @@ class Site
     private ?string $nom = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     #[Assert\NotBlank]
     private ?string $grandeVilleProche = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     #[Assert\NotBlank]
     private ?string $villeLaPlusProche = null;
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $exposition = [];
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?int $altitudeAuxPiedsdesVoies = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?int $dureeMarcheAproche = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $profilMarcheApproche = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $practicabiitePiedsdesVoies = null;
 
     #[ORM\Column(type: 'decimal', precision: 20, scale: 16)]
+    #[Groups(['site:read', 'site:write'])]
     #[Assert\Length(
         min: 2,
         max: 20,
@@ -63,6 +89,7 @@ class Site
     private ?string $latitude = null;
 
     #[ORM\Column(type: 'decimal', precision: 20, scale: 16)]
+    #[Groups(['site:read', 'site:write'])]
     #[Assert\Length(
         min: 2,
         max: 20,
@@ -72,78 +99,103 @@ class Site
     private ?string $longitude = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?int $nombreFalaise = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?int $hauteurMax = null;
 
     #[ORM\Column(type: 'array')]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $typeEscalade = [];
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $typeEquipement = [];
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $nombredeVoie = null;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $difficulte = null;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $difficulte2 = null;
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $siteInteressantpourGrimpeur = [];
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $typeRocher = [];
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $profileFalaise = [];
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $typedePrise = [];
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $restriction = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $infoSuplementaire = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $siteInternet = null;
 
     #[ORM\Column(type: 'text', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $voieMythique = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $nomprenompseudo = null;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?string $adresseMail = null;
 
     #[ORM\Column(type: 'array', nullable: true)]
+    #[Groups(['site:read', 'site:write'])]
     private ?array $meilleurperiode = [];
 
     #[ORM\OneToMany(mappedBy: 'site', targetEntity: Media::class, cascade: ['persist'])]
+    #[Groups(['site:read'])]
     private Collection $media;
 
     #[ORM\ManyToMany(targetEntity: Entrainement::class, mappedBy: 'lieu_entrainement')]
+    #[Groups(['site:read'])]
     private Collection $entrainements;
 
     #[ORM\OneToMany(mappedBy: 'photoSite', targetEntity: Media::class)]
+    #[Groups(['site:read'])]
     private Collection $photos;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    #[Groups(['site:read'])]
     private ?string $images = null;
 
     #[Vich\UploadableField(mapping: 'sites', fileNameProperty: 'images')]
+    #[Groups(['site:write'])]
     private ?File $imageFile = null;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(['site:read'])]
     private ?\DateTimeInterface $createdAt = null;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
+    #[Groups(['site:read'])]
     private ?\DateTimeInterface $updatedAt = null;
 
     public function __construct()

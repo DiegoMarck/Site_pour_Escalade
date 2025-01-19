@@ -16,7 +16,6 @@
         <h4>Carte des Sites de France</h4>
       </div>
       <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 titre2">
-        {# <img src="{{asset("\img\mountaineer.jpg")}}" alt="deco"> #}
         <img src="{{ asset('img/mountaineer.jpg') }}" alt="image" />
       </div>
     </div>
@@ -24,81 +23,107 @@
   <section id="map">
     <div class="container">
       <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-      
       </div>
       <!-- Ici s'affichera la carte -->
       <div id="macarte" class="col-xs-9 col-sm-9 col-md-9 col-lg-9"></div>
     </div>
   </section>
-  {# {% if app.user %} #}
   <a href="{{ path('site_new') }}" class="bouton2">Ajouter un nouveau site</a>
-  {# {% endif %} #}
 {% endblock %}
 
 {% block javascripts %}
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
-    var carte = L.map('macarte').setView([48.852969, 2.349903], 5)
-    // on charge les tuiles
+    var carte = L.map('macarte').setView([46.603354, 1.888334], 6); // Centré sur la France
     
     L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-      // Il est toujours bien de laisser le lien vers la source des données
       attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
       minZoom: 1,
       maxZoom: 20
-    }).addTo(carte)
-    
+    }).addTo(carte);
+
+    // Définir l'icône personnalisée
     var icone = L.icon({
-      iconUrl: '../img/pointeur-de-carte.png',
+      iconUrl: '{{ asset('img/pointeur-de-carte.png') }}',
       iconSize: [50, 50],
       iconAnchor: [25, 50],
       popupAnchor: [-2, -44]
-    })
-    function openGPS(latitude, longitude) {// Open in GPS
-          if (confirm('Do you want to open this location in Google Maps or Apple Maps?')) {
-            if (navigator.userAgent.indexOf('iPhone') != -1 || navigator.userAgent.indexOf('iPad') != -1 || navigator.userAgent.indexOf('iPod') != -1) {
-              window.open('maps://maps.apple.com/?q=' + latitude + ',' + longitude)
-            } else {
-              window.open('https://maps.google.com/?q=' + latitude + ',' + longitude)
-            }
-          }
-        }
-    // Requête
-    $.ajax({
-      url: '/api/sites'
-    }).done(function (response) {
-      // var datas = JSON.parse(response);
-      // console.log(response['hydra:member'])
-      var sites = response['hydra:member']
-      sites.forEach((site) => {
-        // Nous définissons l'icône à utiliser pour le marqueur, sa taille affichée (iconSize), sa position (iconAnchor) et le décalage de son ancrage (popupAnchor)
-        // on crée un marqueur et on lui donne un popup
-        var latLng = L.latLng(site.latitude, site.longitude)
-        var marqueur = L.marker(latLng, { icon: icone }).addTo(carte)
-        // console.log('marqueur', marqueur)
-        console.log(site)
-        marqueur.bindPopup('<h5 class="nomSiteCarte">' + site.nom + '</h5><p class="nombredevoie">' + site.nombredeVoie + '</p><a href="/site/' + site.id + '" class="visiteSite" onclick="openSecondMap(\'' + site.latitude + "','" + site.longitude + '\')">Visite du site </a><br /><a href="#" class="opengps" onclick="openGPS(\'' + site.latitude + "','" + site.longitude + '\')">Ouvrir dans le GPS</a>')
-        // console.log(window)
-        
-        
-        })
-    })
-
-    // create the second map
-   function openSecondMap(latitude, longitude) {
-      var secondMap = L.map('macarte2').setView([latitude, longitude], 13);
-      L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
-        attribution: 'données © <a href="//osm.org/copyright">OpenStreetMap</a>/ODbL - rendu <a href="//openstreetmap.fr">OSM France</a>',
-        minZoom: 1,
-        maxZoom: 20
-      }).addTo(secondMap);
-    }
-
-    $('.visiteSite').click(function (event) {
-      event.preventDefault();
-      openSecondMap(site.latitude, site.longitude);
     });
 
+    // Fonction pour ouvrir dans GPS
+    function openGPS(latitude, longitude) {
+      if (confirm('Voulez-vous ouvrir cet emplacement dans Google Maps ou Apple Maps ?')) {
+        if (navigator.userAgent.indexOf('iPhone') != -1 || 
+            navigator.userAgent.indexOf('iPad') != -1 || 
+            navigator.userAgent.indexOf('iPod') != -1) {
+          window.open('maps://maps.apple.com/?q=' + latitude + ',' + longitude);
+        } else {
+          window.open('https://maps.google.com/?q=' + latitude + ',' + longitude);
+        }
+      }
+    }
+
+    // Charger les sites depuis l'API
+    fetch('/site/api/sites')
+      .then(response => response.json())
+      .then(sites => {
+        sites.forEach(site => {
+          if (site.latitude && site.longitude) {
+            const marker = L.marker([parseFloat(site.latitude), parseFloat(site.longitude)], { icon: icone })
+              .addTo(carte);
+            
+            // Créer le contenu du popup
+            const popupContent = `
+              <div class="site-popup">
+                <h3 class="nomSiteCarte">${site.nom}</h3>
+                ${site.description ? `<p>${site.description}</p>` : ''}
+                <p class="nombredevoie">Nombre de voies: ${site.nombreVoies || 'Non spécifié'}</p>
+                <p>Difficulté: ${site.difficulte || 'Non spécifiée'}</p>
+                <div class="popup-actions">
+                  <a href="/site/${site.id}" class="visiteSite btn btn-primary">
+                    Visite du site
+                  </a>
+                  <a href="#" class="opengps btn btn-secondary" onclick="openGPS(${site.latitude}, ${site.longitude}); return false;">
+                    Ouvrir dans le GPS
+                  </a>
+                </div>
+              </div>
+            `;
+            
+            marker.bindPopup(popupContent);
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Erreur lors du chargement des sites:', error);
+      });
   </script>
+
+  <style>
+    .site-popup {
+      padding: 10px;
+    }
+    .site-popup h3 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .popup-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .popup-actions a {
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      color: white;
+    }
+    .popup-actions .visiteSite {
+      background-color: #007bff;
+    }
+    .popup-actions .opengps {
+      background-color: #6c757d;
+    }
+  </style>
 {% endblock %}

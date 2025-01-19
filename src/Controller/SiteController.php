@@ -32,6 +32,27 @@ class SiteController extends AbstractController
         return $this->render('site/show.html.twig');
     }
 
+    #[Route('/api/sites', name: 'api_sites', methods: ['GET'])]
+    public function apiSites(SiteRepository $siteRepository): JsonResponse
+    {
+        $sites = $siteRepository->findAll();
+        $sitesData = [];
+
+        foreach ($sites as $site) {
+            $sitesData[] = [
+                'id' => $site->getId(),
+                'nom' => $site->getNom(),
+                'latitude' => $site->getLatitude(),
+                'longitude' => $site->getLongitude(),
+                'description' => $site->getInfoSuplementaire(),
+                'difficulte' => $site->getDifficulte(),
+                'nombreVoies' => $site->getNombredeVoie(),
+            ];
+        }
+
+        return new JsonResponse($sitesData);
+    }
+
     #[Route('/', name: 'site_index', methods: ['GET'])]
     public function index(SiteRepository $siteRepository): Response
     {

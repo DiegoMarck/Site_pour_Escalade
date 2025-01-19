@@ -31,7 +31,6 @@ class DashboardController extends AbstractDashboardController
     protected $carouselRepository;
 
     public function __construct(
-
         UserRepository $userRepository,
         TopoRepository $topoRepository,
         SiteRepository $siteRepository,
@@ -42,7 +41,7 @@ class DashboardController extends AbstractDashboardController
         $this->topoRepository = $topoRepository;
         $this->siteRepository = $siteRepository;
         $this->entrainementRepository = $entrainementRepository;
-        $this->CarouselRepository = $carouselRepository;
+        $this->carouselRepository = $carouselRepository;
     }
     // /**
     //  * @Route("/admin", name="admin")

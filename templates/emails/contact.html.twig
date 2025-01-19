@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nouveau message de contact</title>
+</head>
+<body>
+    <h1>Nouveau message de contact</h1>
+    
+    <p><strong>De :</strong> {{ prenom }} {{ nom }}</p>
+    <p><strong>Email :</strong> {{ email }}</p>
+    
+    <h2>Message :</h2>
+    <p>{{ message|nl2br }}</p>
+</body>
+</html>

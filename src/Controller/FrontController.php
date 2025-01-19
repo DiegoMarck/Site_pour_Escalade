@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Form\ContactType;
 use App\Repository\CarouselRepository;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FrontController extends AbstractController
@@ -22,52 +24,44 @@ class FrontController extends AbstractController
         ]);
         
     }
+
     /**
      * @Route("/form/contact", name="contact", methods={"GET", "POST"} )
      */
-    public function contact( Request $req, \Swift_Mailer $mailer){ //fait la requette de contact en rajoutant Request quand on valide il sera pris en compte. Informations renvoyé au code on veut que le formulaire soit post donc + methodes
-
+    public function contact(Request $req, MailerInterface $mailer): Response
+    {
         $form = $this->createForm(ContactType::class, null, [
-            "user"=>$this->getUser()
-        ] );
+            "user" => $this->getUser()
+        ]);
 
         $form->handleRequest($req);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            
+            $email = (new Email())
+                ->from('admin@monsite.com')
+                ->to('diego@gmail.com')
+                ->addTo('test@gmail.com')
+                ->subject('Demande de contact')
+                ->html($this->renderView(
+                    'emails/contact.html.twig',
+                    [
+                        'nom' => $data['nom'],
+                        'prenom' => $data['prenom'],
+                        'email' => $data['email'],
+                        'message' => $data['message']
+                    ]
+                ));
 
-        //validationform
-        if($form->isSubmitted() && $form->isValid()){
-            // dump("form validé");
-            // dump($form->getData());
-            // dump($form);
-            $data=$form->getData();
-            // dump($data);
-            //recupérer les contenu des champsdans le tableau
-            // dump($data["email"]);
-            //créer un email
-            $message = new \Swift_Message("Demande de contact");
-            $message->setFrom("admin@monsite.com")
-                    // ->setTo($data["email"])
-                    ->setTo(["diego@gmail.com", "test@gmail.com"])
-                    ->setBody(
-                        $this->renderView('email/contact.html.twig', [
-                            "data"=>$data
-                        ]), "text/html"
-                    );
+            $mailer->send($email);
 
-                    $mailer->send($message);//envoie le message
-                    //message de notification
-                    $this->addFlash(
-                        'info', 
-                        "Nous avons bien reçu votre message. Nous vous remercions de votre intéret."
-                    );
-                    return $this->redirectToRoute("front");
-                    //redirige vers la page d'accueil
-                    //affiche un petit message vous avez bien envoyé un petit message -> flash message
+            $this->addFlash('success', 'Votre message a bien été envoyé !');
+            return $this->redirectToRoute('front');
         }
 
-        // dump($form->createView());
-        return $this->render("front/contact.html.twig", [
-            "form"=>$form->createView()
+        return $this->render('front/contact.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 }

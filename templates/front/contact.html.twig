@@ -3,26 +3,66 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
+        /* Styles communs */
+        #contact {
+            position: relative;
+            padding: 60px 20px;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .accueil_contact {
+            padding: 30px 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+
+        .accueil_contact p {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            font-size: 1.1em;
+            text-align: center;
+            color: #2c3e50;
+        }
+
         .contact-form-container {
             background: white;
             border-radius: 15px;
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             max-width: 800px;
-            margin: 40px auto;
+            margin: 0 auto;
+            transition: all 0.3s ease;
         }
 
         .form-group {
             margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+            transition: all 0.3s ease;
         }
 
         .form-control {
+            width: 100%;
+            padding: 12px 15px;
             border: 2px solid #e9ecef;
             border-radius: 8px;
-            padding: 12px 15px;
             font-size: 1em;
             transition: all 0.3s ease;
-            width: 100%;
         }
 
         .form-control:focus {
@@ -57,9 +97,10 @@
 
         .alert {
             padding: 15px;
-            margin-bottom: 20px;
+            margin: 20px auto;
             border-radius: 8px;
             text-align: center;
+            max-width: 800px;
         }
 
         .alert-success {
@@ -68,40 +109,131 @@
             border: 1px solid #c3e6cb;
         }
 
-        @media (max-width: 768px) {
+        /* Desktop (>= 1024px) */
+        @media (min-width: 1024px) {
             .contact-form-container {
-                margin: 20px;
+                padding: 50px;
+                margin: 40px auto;
+            }
+
+            .form-group {
+                display: flex;
+                align-items: flex-start;
+                margin-bottom: 30px;
+            }
+
+            .form-label {
+                width: 30%;
+                padding-right: 20px;
+                text-align: right;
+                padding-top: 12px;
+            }
+
+            .form-control {
+                width: 70%;
+            }
+
+            .submit-btn {
+                margin-left: 30%;
+                width: 70%;
+            }
+
+            #contact h2 {
+                font-size: 3em;
+            }
+        }
+
+        /* Tablet (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .contact-form-container {
+                padding: 30px;
+                margin: 30px 20px;
+            }
+
+            .form-group {
+                margin-bottom: 25px;
+            }
+
+            .form-label {
+                margin-bottom: 10px;
+            }
+
+            #contact h2 {
+                font-size: 2.5em;
+            }
+
+            .accueil_contact p {
+                padding: 0 30px;
+            }
+        }
+
+        /* Mobile (<= 767px) */
+        @media (max-width: 767px) {
+            .contact-form-container {
                 padding: 20px;
+                margin: 20px;
+                border-radius: 10px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-label {
+                margin-bottom: 8px;
+                font-size: 0.9em;
+            }
+
+            .form-control {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            #contact {
+                padding: 40px 15px;
+            }
+
+            #contact h2 {
+                font-size: 2em;
+            }
+
+            .accueil_contact {
+                padding: 20px 15px;
+            }
+
+            .accueil_contact p {
+                font-size: 0.9em;
+                padding: 0 15px;
+            }
+
+            .submit-btn {
+                padding: 10px 20px;
+                font-size: 1em;
             }
         }
     </style>
 {% endblock %}
 
 {% block body %}
-  <section id="contact">
-    <div>
-      <h2>Nous contacter</h2>
-    </div>
-  </section>
-  <section class="accueil_contact">
-    <div class="accueil_contact">
-      <p>Bienvenue ! Si vous avez des questions, des commentaires ou des suggestions à partager, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous serons ravis d'échanger avec vous sur notre passion commune pour ce sport palpitant.</p>
-    </div>
-    {# afficher le message de réservation efféctué #}
-    {% if app.flashes('info') is defined %}
-      {% for message in app.flashes('info') %}
-        <div class="alert alert-success">{{ message }}</div>
-      {% endfor %}
-    {% endif %}
+    <section id="contact">
+        <div>
+            <h2>Nous contacter</h2>
+        </div>
+    </section>
 
-    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+    <section class="accueil_contact">
+        <div class="accueil_contact">
+            <p>Bienvenue ! Si vous avez des questions, des commentaires ou des suggestions à partager, n'hésitez pas à nous contacter via le formulaire ci-dessous. Nous serons ravis d'échanger avec vous sur notre passion commune pour ce sport palpitant.</p>
+        </div>
 
-    <div class="container">
-      <div class="form-group">
-        <section id="form">
-          <div class="container containerContact">
+        {% if app.flashes('info') is defined %}
+            {% for message in app.flashes('info') %}
+                <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="contact-form-container">
             {{ form_start(form) }}
-            <div class="contact-form-container">
                 <div class="form-group">
                     {{ form_label(form.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
                     {{ form_widget(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Votre nom'}}) }}
@@ -124,10 +256,6 @@
 
                 <button type="submit" class="submit-btn">Envoyer le message</button>
             {{ form_end(form) }}
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-  </section>
+        </div>
+    </section>
 {% endblock %}
